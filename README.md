@@ -1,12 +1,13 @@
 # Eina de suport per a l'elaboració dels horaris dels graus de l'EPS
 <br>
 
-Aquest repositori conté la documentació del **Projecte de Fi de Grau**, escrita en <span><img src="/imatges/latexlogo.png>
+Aquest repositori conté la documentació del **Projecte de Fi de Grau**, escrita en *LaTeX*.
 
 ### AUTOR
 - Adrià Ribas Chico
   - :computer: Estudi: Grau en Enginyeria Informàtica
-  - :incoming_envelope: E-mail: u1959540@campus.udg.edu / ribasadria00@gmail.com
+  - :calendar: Quart curs - :two::zero::two::two:
+  - :incoming_envelope: Contacte: u1959540@campus.udg.edu / ribasadria00@gmail.com
   
 
 ### TUTORS
@@ -19,7 +20,7 @@ Aquest repositori conté la documentació del **Projecte de Fi de Grau**, escrit
 
 <br><br>
 
-<p align="center"><img src="/imatges/logo.jpg" alt="UdGEPS" width="300" hAlign="center"/>
+<p align="center"><img src="/imatges/logo.jpg" alt="UdGEPS" width="300"/>
 
 <br><br>
  
