@@ -1,7 +1,7 @@
 # Eina de suport per a l'elaboració dels horaris dels graus de l'EPS
 <br>
 
-Aquest repositori conté la documentació del **Projecte de Fi de Grau**, escrita en <span><img src="/images/latexlogo.png"/>
+Aquest repositori conté la documentació del **Projecte de Fi de Grau**, escrita en <span><img src="/imatges/latexlogo.png>
 
 ### AUTOR
 - Adrià Ribas Chico
