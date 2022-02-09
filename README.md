@@ -5,7 +5,7 @@ Aquest repositori conté la documentació del **Projecte de Fi de Grau**, escrit
 
 ### AUTOR
 - Adrià Ribas Chico
-  - :computer: Estudi: Grau en Enginyeria Informàtica
+  - :computer: Estudis: Grau en Enginyeria Informàtica
   - :calendar: Quart curs - :two::zero::two::two:
   - :incoming_envelope: Contacte: u1959540@campus.udg.edu / ribasadria00@gmail.com
   
