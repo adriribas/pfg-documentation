@@ -13,36 +13,36 @@
 \begin{table}[htb]
 \centering
 \begin{Large}
-\resizebox{\textwidth}{!}{\begin{tabular}{ | l |}
+\resizebox{\textwidth}{!}{\begin{tabular}{| l |}
   \hline
   \\
-\includegraphics[scale=0.9]{imatges/logo_eps.png} \\[0.7cm]
-\centerline{Projecte fi de grau}\\[1cm]
+\includegraphics[scale=0.9]{imatges/logo_eps.png}\\[0.7cm]
+\centerline{\texttt{Projecte fi de grau}}\\[1cm]
 \hline
 \\
-Estudi: Grau en Enginyeria Informàtica\\[0.7cm]
+\textbf{Estudi}: Grau en Enginyeria Informàtica\\[0.7cm]
 \hline
 \\
-Títol: Eina de suport per a l’elaboració dels horaris dels graus de l’EPS\\[0.7cm]
+\textbf{Títol}: Eina de suport per a l’elaboració dels horaris dels graus de l’EPS\\[0.7cm]
 \hline
 \\
-Document: Memòria\\[0.7cm]
+\textbf{Document}: Memòria\\[0.7cm]
 \hline
 \\
-Alumne: Adrià Ribas Chico\\[0.7cm]
+\textbf{Alumne}: Adrià Ribas Chico\\[0.7cm]
 \hline
 \\
-Tutor 1: Dra. Marta Fort Masdevall\\
-Departament: Informàtica, matemàtica aplicada i estadística\\
-Àrea: Llenguatges i sistemes informàtics\\[0.7cm]
+\textbf{Tutor 1}: Dra. Marta Fort Masdevall\\
+\textbf{Departament}: Informàtica, matemàtica aplicada i estadística\\
+\textbf{Àrea}: Llenguatges i sistemes informàtics\\[0.7cm]
 \hline
 \\
-Tutor 2: Dr. Antonio Rodríguez Benítez\\
-Departament: Informàtica, matemàtica aplicada i estadística\\
-Àrea: Llenguatges i sistemes informàtics\\[0.7cm]
+\textbf{Tutor 2}: Dr. Antonio Rodríguez Benítez\\
+\textbf{Departament}: Informàtica, matemàtica aplicada i estadística\\
+\textbf{Àrea}: Llenguatges i sistemes informàtics\\[0.7cm]
 \hline
 \\
-Convocatòria (mes/any): Juny de 2022\\[0.7cm]
+\textbf{Convocatòria (mes/any)}: Juny de 2022\\[0.7cm]
 \hline
 
 \end{tabular}}
@@ -73,8 +73,8 @@ Adrià \textsc{Ribas Chico} \\[1cm]
 Juny 2022 \\[1cm]
 Grau en Enginyeria Informàtica \\[1cm]
 \emph{Tutors:} \\
-Marta \textsc{Fort Masdevall} \\
-Antonio \textsc{Rodríguez Benítez} \\
+Dra. Marta \textsc{Fort Masdevall} \\
+Dr. Antonio \textsc{Rodríguez Benítez} \\
 }
 
 \end{center}
@@ -247,11 +247,6 @@ o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
 
 
 
-\chapter{Planificació}
-\label{cap:planificacio}
-
-
-
 \chapter{Marc de treball i conceptes previs}
 \label{cap:marcdetreball}
 
@@ -260,12 +255,28 @@ o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
 \chapter{Requisits del sistema}
 \label{cap:requisits}
 
+\begin{itemize}
+  \item 
+\end{itemize}
+
+\chapter{Planificació}  % Ordre canviat. Ordre antic: Planificació --> Marc de treball --> Requisits
+\label{cap:planificacio}
+
 
 
 \chapter{Estudi i decisions}
 \label{cap:estudi}
 
-
+\begin{itemize}
+  \item Visual Studio Code. Extensions?
+  \item Git i GitHub
+  \item YouTrack ?
+  \item Node js
+  \item Express
+  \item MySQL
+  \item Postman
+  \item \ldots
+\end{itemize}
 
 \chapter{Anàlisi i disseny del sistema}
 \label{cap:analisi}
@@ -295,13 +306,31 @@ o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
 
 \backmatter
 
+\bibliographystyle{ThesisStyleBreakable}
+\bibliography{biblio}
+%\printnomenclature
+
 %\appendix
 
 %\include{Appendix1}
 
-\bibliographystyle{ThesisStyleBreakable}
-\bibliography{biblio}
+\chapter*{Manual d'usuari}
 
-%\printnomenclature
+\section*{Rol 1}
+
+
+
+\section*{Rol 2}
+
+
+
+\section*{Rol 3}
+
+
+
+\section*{Rol 4}
+
+
+
 
 \end{document}
