@@ -17,7 +17,7 @@
   \hline
   \\
 \includegraphics[scale=0.9]{imatges/logo_eps.png}\\[0.7cm]
-\centerline{\texttt{Projecte fi de grau}}\\[1cm]
+\centerline{Projecte fi de grau}\\[1cm]
 \hline
 \\
 \textbf{Estudi}: Grau en Enginyeria Informàtica\\[0.7cm]
@@ -113,12 +113,12 @@ Per començar vull agrair molt especialment a \ldots
 
 En aquesta secció, es resumiran els antecedents que han donat peu al plantejament d'aquest projecte.
 
-La idea del projecte néix de determinades necessitats que cert personal de l'\emph{Escola Politècnica Superior} de la \emph{Universitat de Girona} fa temps que
+La idea del projecte neix de determinades necessitats que cert personal de l'Escola Politècnica Superior de la Universitat de Girona fa temps que
 té. Més concretament, es tracta d'una necessitat del personal encarregat de gestionar tot el que fa referència a la confecció i manteniment dels horaris del
 centre: horaris dels graus, dels professors, ocupació d'aules i espais, etc.
 
-Actualment, per a dur a terme la creació dels horaris, aquestes persones utilitzen mètodes i eines poc àgils i incòmodes, a part de no estar automatitzades
-ni específicament dissenyades per a abordar aquest tipus de tasques.
+Actualment, per dur a terme la creació dels horaris, aquestes persones utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades
+ni específicament dissenyades per abordar aquest tipus de tasques.
 
 Ara per ara, per exemple, no tenen manera de detectar incompatibilitats horàries ni solapaments de manera automàtica. A la secció~\ref{sec:situacio_actual} es
 descriuran els mètodes emprats actualment amb més profunditat.
@@ -136,12 +136,12 @@ Parlar del fluxe dels processos, etc \ldots
 
 En aquesta secció, s'exposarà el propòsit general del projecte, tenint en compte els antecedents vists a la secció~\ref{sec:antecedents}.
 
-En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per la gent que se n'ocupa. És per això, que la
-\emph{Dra. Marta Fort Masdevall}, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau que té la finalitat
-de trobar una solució al problema descrit.
+En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per a la gent que se n'ocupa. És per això que la
+Dra. Marta Fort Masdevall, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau que té la finalitat
+de trobar una solució al problema.
 
 El propòsit és desenvolupar una eina de suport informàtic que permeti a l'usuari elaborar horaris de forma àgil, eficient i segura. L'eina també hauria de ser capaç
-de comprovar automàticament la disponibilitat de les aules, les incompatibilitats horàries dels professors i la concordança entre assignatures i el nombre de grups
+de comprovar automàticament la disponibilitat de les aules, les incompatibilitats horàries dels professors i la concordança entre les assignatures i el nombre de grups
 previstos. A més a més, hauria d'oferir diverses vistes per tal que l'usuari pugui visualitzar la informació, com ara:
 \begin{itemize}
   \item Els horaris d'un grau per curs i quadrimestre.
@@ -152,7 +152,7 @@ previstos. A més a més, hauria d'oferir diverses vistes per tal que l'usuari p
 També es planteja la possibilitat de disposar d'un sistema de control d'usuaris. Cada usuari tindria assignat un conjunt de rols determinat. Els rols representarien
 els diferents càrrecs del personal de l'EPS en matèria de gestió d'horaris. Així doncs, cada usuari podria executar les accions i consultar la informació que el seu
 conjunt de rols li permeti. D'aquesta manera, es dividirien les diferents tasques i processos entre rols d'usuari i cadascun dels càrrecs podria realitzar la feina
-que li correspon. La proposta inicial comprèn els següents rols d'usuari:
+que li correspon. La proposta inicial comprèn els rols d'usuari següents:
 \begin{itemize}
   \item \texttt{Administrador}: Introdueix les aules i els grups previstos.
   \item \texttt{Coordinador}: Elabora els horaris.
@@ -160,33 +160,33 @@ que li correspon. La proposta inicial comprèn els següents rols d'usuari:
   \item \texttt{Professor}: Visualitza el seu horari.
 \end{itemize}
 
-A més a més, l'aplicació hauria de ser accessible via \emph{web}. D'aquesta manera, tots els seus usuaris podrien utilitzar-la des de qualsevol lloc i dispositiu, sense
+A més a més, l'aplicació hauria de ser accessible via web. D'aquesta manera, tots els usuaris podrien utilitzar-la des de qualsevol lloc i dispositiu, sense
 preocupar-se d'instal·lacions ni actualitzacions.
 
 \section{Motivacions}
 \label{sec:motivacions}
 
-En aquesta secció, es parlarà en primera persona sobre quines motivacions personals hi ha al darrera del projecte i justifiquen la seva elecció.
+En aquesta secció, es parlarà en primera persona sobre quines motivacions personals hi ha darrere del projecte i en justifiquen l'elecció.
 
 \ldots
 
 \section{Objectius generals}
 \label{sec:objectius_generals}
 
-En aquesta secció, s'enumeraran els objectius generals del projecte, que ja s'han deixat entreveure prèviament a la secció~\ref{sec:proposit}. No obstant aixó,
-la llista completa és la següent:
+En aquesta secció, s'enumeraran els objectius generals del projecte, que ja s'han deixat entreveure prèviament a la secció~\ref{sec:proposit}. No obstant això,
+a continuació se'n presenta la llista completa:
 \begin{itemize}
-  \item Proporcionar una interfície còmoda i intuïtiva per a dur a terme les tasques de gestió i elaboració dels horaris de l'EPS.
+  \item Proporcionar una interfície còmoda i intuïtiva per dur a terme les tasques de gestió i elaboració dels horaris de l'EPS.
   \item Emmagatzemar i processar dinàmicament les dades i relacions referents als diversos graus, cursos, quadrimestres, assignatures, grups, espais, professors, etc.
   \item Detectar i evitar automàticament qualsevol tipus d'inconsistència o incompatibilitat horària, per tal d'aportar seguretat al treball.
-  \item Possibilitar la pujada d'arxius externs de dades que serveixin per obtenir les dades bàsiques necessàries pel funcionament de l'aplicació i generar possibles
+  \item Possibilitar la pujada d'arxius externs de dades que serveixin per obtenir la informació bàsica necessària per al funcionament de l'aplicació i generar possibles
   punts de partida per a la planificació dels horaris.
   \item Permetre la visualització de l'ocupació de les aules, dels horaris dels professors i dels horaris dels grups de cada grau, entre d'altres vistes que puguin ser
   d'utilitat pels usuaris.
-  \item Admetre diferents rols d'usuari, als quals se'ls assigni una sèrie de tasques i un conjunt de permisos concret.
+  \item Admetre diferents rols d'usuari, als quals s'assigni una sèrie de tasques i un conjunt de permisos concret.
 \end{itemize}
 
-Al capítol~\ref{cap:requisits} es desenvoluparan dits objectius generals del projecte i es concretaran els requeriments específics de l'aplicatiu.
+Al capítol~\ref{cap:requisits} es desenvoluparan aquests objectius generals i es concretaran els requeriments específics de l'aplicatiu.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -194,7 +194,7 @@ Al capítol~\ref{cap:requisits} es desenvoluparan dits objectius generals del pr
 \subsection{Paraules per començar seccions}
 \textbf{Idees:}
 
-Abordar, concretar, exposar, parlar, descriure, repassar, mostrar, ensenyar, desenvolupar, tractar, veure, aprofundir, investigar, discutir, indagar?, detallar,
+Abordar, concretar, exposar, parlar, descriure, repassar, mostrar, ensenyar, desenvolupar, tractar, veure, aprofundir, investigar, discutir, indagar, detallar,
 enumerar,
 
 
