@@ -131,6 +131,11 @@ de l'escola hi participen i les seves funcions, així com la manera en què inte
 
 Parlar del fluxe dels processos, etc \ldots
 
+Rectorat reparteix crèdits a les facultats. Cada facultat decideix quants grups grans, petits, etc. de cada grau en funció dels alumnes. Introdueix els excels.
+A partir d'aquí, entren els coordinadors, per fer els horaris amb els seus mètodes. Canviar-los el mínim possible respecte l'any passat, per intentar evitar
+solapaments. Un cop fets, els coordinadors passen els horaris a direcció. S'entren al sistema i revisen solapaments. Si tot està bé, els responsables de docència,
+que assignen professors als grups. 
+
 \section{Propòsit}
 \label{sec:proposit}
 
@@ -249,14 +254,92 @@ o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
 
 \chapter{Marc de treball i conceptes previs}
 \label{cap:marcdetreball}
+Explicar setmanes a i b, assignatures compartides, què són els blocs (especials també)..., quantes hores
+són un crèdit, ¿explicar funcions de cada rol?... 
 
+
+
+Explicar tecnologies.
+
+% Grups grans i mitjans no hi ha restriccions d'aules. Grups petits sí,
 
 
 \chapter{Requisits del sistema}
 \label{cap:requisits}
 
+\section{Requisits generals}
+\label{sec:requisits_generals} % Poder guardar versions del procés d'elaboració d'horaris.
+
+En aquesta secció, es llistaran els requisits generals del sistema, comuns per a tots els usuaris, independentment dels seus rols.
+
 \begin{itemize}
-  \item 
+  \item Assegurar l'autenticació de tots els usuaris a través d'un formulari de \emph{login}. S'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir.
+  \item No permetre el registre d'usuaris des de fora. Usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui.
+  \item Proporcionar accés als manuals d'usuari de l'aplicació, així com a la informació de contacte i als aspectes legals.
+\end{itemize}
+
+% ADMINISTRADORS
+\section{Requisits dels Administradors} % TO DO
+\label{sec:requisits_administradors}
+
+En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol d'Administrador.
+
+\begin{itemize}
+  \item Entra l'excel amb les previsions. Aquest també té quantes aules de cada tipus hi ha.
+  \item Pot editar el nombre d'aules de cada tipus i afegir-ne, etc.
+  \item Dóna d'alta noves assignatures, graus, etc (estarà a l'excel)
+  \item Dóna d'alta directors de departament i coordinadors dels graus.
+  \item Assigna aules als diferents blocs.
+\end{itemize}
+
+% COORDINADORS
+\section{Requisits dels Coordinadors} % TO DO
+\label{sec:requisits_coordinadors}
+
+En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol de Coordinador.
+
+Bloc:
+
+\begin{itemize} % En general fa horaris
+  \item Veu horaris dels seus graus i dels graus amb assignatures compartides i ocupació d'aules.
+  \item Veu horaris dels professors que fan docència a algun dels seus graus.
+  \item Poder partir d'un horari d'un curs anterior.
+  \item Poder esborrar els bloc que sobren.
+  \item Nom
+  \item Poder moure els blocs i assignar-los a franges horàries del calendari.
+  \item Poder tenir blocs especials: PACs, reunions amb profes, etc.
+\end{itemize}
+
+% DIRECTORS DE DEPARTAMENT
+\section{Requisits dels Director de departament} % TO DO  Els departaments estan dividits en àrees. Cada àrea té un responsable de docència.
+\label{sec:requisits_director_departament}
+\begin{itemize}
+  \item Dóna d'alta responsables de docència.
+  \item Pot veure horaris dels graus que tenen assignatures del seu departament i dels professors del departament.
+\end{itemize}
+
+% RESPONSABLES DE DOCÈNCIA
+\section{Requisits dels Responsables de docència} % TO DO Està lligat a una àrea. Pot haver-hi més d'un.
+\label{sec:requisits_responsables_docencia}
+
+En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol de Responsable de docència.
+
+\begin{itemize} % Pot anar assignant quan els horaris encara s'estan fent
+  \item Dóna d'alta els professors, només del seu departament.
+  \item Assignen professors als grups de les assignatures de la seva àrea. (pot ser que en tinguin més d'una)
+  \item Veuen horaris dels professors i les assignatures de la seva àrea.
+\end{itemize}
+
+% PROFESSORS
+\section{Requisits dels Professors} % TO DO
+\label{sec:requisits_professors}
+
+En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol de Professor.
+
+\begin{itemize} % vistes per separat
+  \item Veure horaris dels seus grups.
+  \item Veure horaris de les assignatures on fa docència.
+  \item Veure horaris dels graus en què fa docència a alguna de les seves assignatures.
 \end{itemize}
 
 \chapter{Planificació}  % Ordre canviat. Ordre antic: Planificació --> Marc de treball --> Requisits
