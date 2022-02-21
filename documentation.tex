@@ -113,21 +113,16 @@ Per començar vull agrair molt especialment a \ldots
 
 En aquesta secció, es resumiran els antecedents que han donat peu al plantejament d'aquest projecte.
 
-La idea del projecte neix de determinades necessitats que cert personal de l'Escola Politècnica Superior de la Universitat de Girona fa temps que
-té. Més concretament, es tracta d'una necessitat del personal encarregat de gestionar tot el que fa referència a la confecció i manteniment dels horaris del
-centre: horaris dels graus, dels professors, ocupació d'aules i espais, etc.
+La idea del projecte neix de determinades necessitats que cert personal de l'Escola Politècnica Superior de la Universitat de Girona fa temps que té. Més concretament, es tracta d'una necessitat del personal encarregat de gestionar tot el que fa referència a la confecció i manteniment dels horaris del centre: horaris dels graus, dels professors, ocupació d'aules i espais, etc.
 
-Actualment, per dur a terme la creació dels horaris, aquestes persones utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades
-ni específicament dissenyades per abordar aquest tipus de tasques.
+Actualment, per dur a terme la creació dels horaris, aquestes persones utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades ni específicament dissenyades per abordar aquest tipus de tasques.
 
-Ara per ara, per exemple, no tenen manera de detectar incompatibilitats horàries ni solapaments de manera automàtica. A la secció~\ref{sec:situacio_actual} es
-descriuran els mètodes emprats actualment amb més profunditat.
+Ara per ara, per exemple, no tenen manera de detectar incompatibilitats horàries ni solapaments de manera automàtica. A la secció~\ref{sec:situacio_actual} es descriuran els mètodes emprats actualment amb més profunditat.
 
 \section{Situació actual}
 \label{sec:situacio_actual}
 
-En aquesta secció, es detallaran quins són i com funcionen els mètodes de gestió i elaboració d'horaris de l'EPS que s'utilitzen actualment. Es veuran quins càrrecs
-de l'escola hi participen i les seves funcions, així com la manera en què interactuen entre ells i intercanvien la informació corresponent.
+En aquesta secció, es detallaran quins són i com funcionen els mètodes de gestió i elaboració d'horaris de l'EPS que s'utilitzen actualment. Es veuran quins càrrecs de l'escola hi participen i les seves funcions, així com la manera en què interactuen entre ells i intercanvien la informació corresponent.
 
 Parlar del fluxe dels processos, etc \ldots
 
@@ -141,32 +136,25 @@ que assignen professors als grups.
 
 En aquesta secció, s'exposarà el propòsit general del projecte, tenint en compte els antecedents vists a la secció~\ref{sec:antecedents}.
 
-En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per a la gent que se n'ocupa. És per això que la
-Dra. Marta Fort Masdevall, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau que té la finalitat
-de trobar una solució al problema.
+En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per a la gent que se n'ocupa. És per això que la Dra. Marta Fort Masdevall, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau que té la finalitat de trobar una solució al problema.
 
-El propòsit és desenvolupar una eina de suport informàtic que permeti a l'usuari elaborar horaris de forma àgil, eficient i segura. L'eina també hauria de ser capaç
-de comprovar automàticament la disponibilitat de les aules, les incompatibilitats horàries dels professors i la concordança entre les assignatures i el nombre de grups
-previstos. A més a més, hauria d'oferir diverses vistes per tal que l'usuari pugui visualitzar la informació, com ara:
+El propòsit és desenvolupar una eina de suport informàtic que permeti a l'usuari elaborar horaris de forma àgil, eficient i segura. L'eina també hauria de ser capaç de comprovar automàticament la disponibilitat de les aules, les incompatibilitats horàries dels professors i la concordança entre les assignatures i el nombre de grups previstos. A més a més, hauria d'oferir diverses vistes per tal que l'usuari pugui visualitzar la informació, com ara:
 \begin{itemize}
   \item Els horaris d'un grau per curs i quadrimestre.
   \item Els horaris d'un professor per quadrimestre.
   \item L'ocupació d'un espai per quadrimestre.
 \end{itemize}
 
-També es planteja la possibilitat de disposar d'un sistema de control d'usuaris. Cada usuari tindria assignat un conjunt de rols determinat. Els rols representarien
-els diferents càrrecs del personal de l'EPS en matèria de gestió d'horaris. Així doncs, cada usuari podria executar les accions i consultar la informació que el seu
-conjunt de rols li permeti. D'aquesta manera, es dividirien les diferents tasques i processos entre rols d'usuari i cadascun dels càrrecs podria realitzar la feina
-que li correspon. La proposta inicial comprèn els rols d'usuari següents:
+També es planteja la possibilitat de disposar d'un sistema de control d'usuaris. Cada usuari tindria assignat un conjunt de rols determinat. Els rols representarien els diferents càrrecs del personal de l'EPS en matèria de gestió d'horaris. Així doncs, cada usuari podria executar les accions i consultar la informació que el seu conjunt de rols li permeti. D'aquesta manera, es dividirien les diferents tasques i processos entre rols d'usuari i cadascun dels càrrecs podria realitzar la feina que li correspon. La proposta inicial comprèn els rols d'usuari següents:
 \begin{itemize}
   \item \texttt{Administrador}: Introdueix les aules i els grups previstos.
   \item \texttt{Coordinador}: Elabora els horaris.
+  \item \texttt{Director de departament}: Dóna d'alta responsables de docència.
   \item \texttt{Responsable de docència}: Dóna d'alta i assigna professors als grups.
   \item \texttt{Professor}: Visualitza el seu horari.
 \end{itemize}
 
-A més a més, l'aplicació hauria de ser accessible via web. D'aquesta manera, tots els usuaris podrien utilitzar-la des de qualsevol lloc i dispositiu, sense
-preocupar-se d'instal·lacions ni actualitzacions.
+A més a més, l'aplicació hauria de ser accessible via web. D'aquesta manera, tots els usuaris podrien utilitzar-la des de qualsevol lloc i dispositiu, sense preocupar-se d'instal·lacions ni actualitzacions.
 
 \section{Motivacions}
 \label{sec:motivacions}
@@ -178,23 +166,20 @@ En aquesta secció, es parlarà en primera persona sobre quines motivacions pers
 \section{Objectius generals}
 \label{sec:objectius_generals}
 
-En aquesta secció, s'enumeraran els objectius generals del projecte, que ja s'han deixat entreveure prèviament a la secció~\ref{sec:proposit}. No obstant això,
-a continuació se'n presenta la llista completa:
+En aquesta secció, s'enumeraran els objectius generals del projecte, que ja s'han deixat entreveure prèviament a la secció~\ref{sec:proposit}. No obstant això, a continuació se'n presenta la llista completa:
 \begin{itemize}
   \item Proporcionar una interfície còmoda i intuïtiva per dur a terme les tasques de gestió i elaboració dels horaris de l'EPS.
   \item Emmagatzemar i processar dinàmicament les dades i relacions referents als diversos graus, cursos, quadrimestres, assignatures, grups, espais, professors, etc.
   \item Detectar i evitar automàticament qualsevol tipus d'inconsistència o incompatibilitat horària, per tal d'aportar seguretat al treball.
-  \item Possibilitar la pujada d'arxius externs de dades que serveixin per obtenir la informació bàsica necessària per al funcionament de l'aplicació i generar possibles
-  punts de partida per a la planificació dels horaris.
-  \item Permetre la visualització de l'ocupació de les aules, dels horaris dels professors i dels horaris dels grups de cada grau, entre d'altres vistes que puguin ser
-  d'utilitat pels usuaris.
+  \item Possibilitar la pujada d'arxius externs de dades que serveixin per obtenir la informació bàsica necessària per al funcionament de l'aplicació i generar possibles punts de partida per a la planificació dels horaris.
+  \item Permetre la visualització de l'ocupació de les aules, dels horaris dels professors i dels horaris dels grups de cada grau, entre d'altres vistes que puguin ser d'utilitat pels usuaris.
   \item Admetre diferents rols d'usuari, als quals s'assigni una sèrie de tasques i un conjunt de permisos concret.
 \end{itemize}
 
-Al capítol~\ref{cap:requisits} es desenvoluparan aquests objectius generals i es concretaran els requeriments específics de l'aplicatiu.
+Al capítol~\ref{cap:requisits} es desenvoluparan aquests objectius generals i es concretaran els requisits específics de l'aplicatiu.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{-------------- EXEMPLES I UTILITATS --------------}
 \subsection{Paraules per començar seccions}
 \textbf{Idees:}
@@ -236,10 +221,9 @@ H(X) = -\sum_{i=1}^{N}p_s(x_i) \log \left( p_s(x_i) \right).
 \end{equation}
 
 
-També es pot fer referència en el text a les taules (p.ex. veure la Taula~\ref{taula:taulaexemple}), a les figures (p.ex. veure la Figura~\ref{fig:logo})
-o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
+També es pot fer referència en el text a les taules (p.ex. veure la Taula~\ref{taula:taulaexemple}), a les figures (p.ex. veure la Figura~\ref{fig:logo}) o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Viabilitat}
@@ -275,71 +259,97 @@ En aquesta secció, es llistaran els requisits generals del sistema, comuns per 
 \begin{itemize}
   \item Assegurar l'autenticació de tots els usuaris a través d'un formulari de \emph{login}. S'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir.
   \item No permetre el registre d'usuaris des de fora. Usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui.
+  \item Possibilitar a tots els usuaris la consulta tant de les seves dades, com les de l'usuari que l'ha donat d'alta, mitjançant perfils personals.
   \item Proporcionar accés als manuals d'usuari de l'aplicació, així com a la informació de contacte i als aspectes legals.
 \end{itemize}
 
 % ADMINISTRADORS
-\section{Requisits dels Administradors} % TO DO
+\section{Requisits dels Administradors}
 \label{sec:requisits_administradors}
 
 En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol d'Administrador.
 
 \begin{itemize}
-  \item Entra l'excel amb les previsions. Aquest també té quantes aules de cada tipus hi ha.
-  \item Pot editar el nombre d'aules de cada tipus i afegir-ne, etc.
-  \item Dóna d'alta noves assignatures, graus, etc (estarà a l'excel)
-  \item Dóna d'alta directors de departament i coordinadors dels graus.
-  \item Assigna aules als diferents blocs.
+  \item Carregar el pla docent d'un curs acadèmic per tal d'inicialitzar i poblar la base de dades amb la informació del següent quadrimestre. Aquesta entrada es fa mitjançant un fitxer de format \emph{xlsx} (Microsoft Excel).
+    \begin{itemize}
+      \item Descriure en algun lloc què porta aquest fitxer i posar-hi una referència des d'aquí?
+      \item Què passa si l'Administrador torna a penjar el pla docent quan ja hi hagi horaris fets/començats?
+    \end{itemize}
+  \item Modificar, si s'escau, un conjunt específic de paràmetres del pla docent sense haver de tornar-lo a carregar, detallat a continuació:
+    \begin{itemize}
+      \item Nombre d'aules habilitades de cada tipus.
+      \item \ldots
+    \end{itemize}
+  \item Assignar una aula a cada bloc horari, a mesura que els coordinadors acabin d'elaborar els horaris que els pertòquin.
+  \item Donar d'alta o de baixa usuaris dels rols Coordinador i Director de departament, a banda de poder veure'n el llistat.
 \end{itemize}
 
 % COORDINADORS
-\section{Requisits dels Coordinadors} % TO DO
+\section{Requisits dels Coordinadors}
 \label{sec:requisits_coordinadors}
 
 En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol de Coordinador.
 
-Bloc:
-
-\begin{itemize} % En general fa horaris
-  \item Veu horaris dels seus graus i dels graus amb assignatures compartides i ocupació d'aules.
-  \item Veu horaris dels professors que fan docència a algun dels seus graus.
-  \item Poder partir d'un horari d'un curs anterior.
-  \item Poder esborrar els bloc que sobren.
-  \item Nom
-  \item Poder moure els blocs i assignar-los a franges horàries del calendari.
-  \item Poder tenir blocs especials: PACs, reunions amb profes, etc.
+\begin{itemize}
+  \item Visualitzar els horaris dels graus que coordina.
+  \item Visualitzar els horaris dels graus (o cursos o quadrimestres dels graus?) que ofereixin alguna assignatura compartida amb qualsevol dels graus que coordina.
+  \item Visualitzar els horaris dels professors que imparteixin docència a alguna de les assignatures que ofereixi qualsevol dels graus que coordina.
+  \item Visualitzar els horaris de l'ocupació de qualsevol aula de l'escola.
+  \item Carregar opcionalment els horaris que ha tingut anteriorment qualsevol dels graus que coordina per tal d'omplir els actuals i tenir un punt de partida.
+  \item Editar els horaris de cada quadrimestre dels cursos de qualsevol dels graus que coordina. El ventall de possibilitats del procés d'edició es detalla a continuació:
+    \begin{itemize}
+      \item Seleccionar una vista setmanal per tal de visualitzar només els blocs horaris situats a un tipus de setmana concret. Les vistes setmanals són les següents:
+        \begin{itemize}
+          \item Vista dels blocs horaris situats només a les setmanes de tipus A.
+          \item Vista dels blocs horaris situats només a les setmanes de tipus B.
+          \item Vista dels blocs horaris situats alhora a tots els tipus de setmana.
+          \item Vista de tots els blocs horaris, independentment del tipus de setmana en què estigui situat.
+        \end{itemize}
+      \item Consultar el nombre d'aules disponibles de qualsevol tipus en una franja horària de setmanes de tipus A i/o B determinada (s'ha d'escriure millor).
+      \item Visualitzar els blocs horaris pendents de situar i, si s'escau, modificar-ne la duració.
+      \item Situar o moure blocs horaris a franges horàries concretes de setmanes de tipus A i/o B.
+      \item Treure blocs horaris ja situats en una franja horària.
+      \item Modificar el nombre de blocs horaris de cada tipus de grup de qualsevol assignatura.
+      \item Crear nous grups de qualsevol assignatura. Cal que n'especifiqui el tipus i el nombre de blocs horaris. A partir d'això, es crearan els corresponents blocs horaris pendents de situar.
+      \item Modificar el número de qualsevol dels grups de les assignatures.
+      \item Esborrar grups de qualsevol assignatura.
+      \item Crear manualment blocs horaris genèrics que no estiguin associats a cap grup de cap assignatura. Cal que n'especifiqui una duració, un títol i, opcionalment, un subtítol.
+    \end{itemize}
 \end{itemize}
 
 % DIRECTORS DE DEPARTAMENT
-\section{Requisits dels Director de departament} % TO DO  Els departaments estan dividits en àrees. Cada àrea té un responsable de docència.
+\section{Requisits dels Directors de departament} % Els departaments estan dividits en àrees. Cada àrea té un responsable de docència.
 \label{sec:requisits_director_departament}
+
+En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol de Director de departament.
+
 \begin{itemize}
-  \item Dóna d'alta responsables de docència.
-  \item Pot veure horaris dels graus que tenen assignatures del seu departament i dels professors del departament.
+  \item Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament i dels graus (o curs o quadrimestre del grau?) que en continguin alguna.
+  \item Donar d'alta o de baixa usuaris del rol Responsable de docència que s'encarreguin de qualsevol de les àrees del seu departament, a banda de poder veure'n el llistat i consultar-ne el perfil.
 \end{itemize}
 
 % RESPONSABLES DE DOCÈNCIA
-\section{Requisits dels Responsables de docència} % TO DO Està lligat a una àrea. Pot haver-hi més d'un.
+\section{Requisits dels Responsables de docència} % Està lligat a una àrea. Pot haver-hi més d'un.
 \label{sec:requisits_responsables_docencia}
 
 En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol de Responsable de docència.
 
 \begin{itemize} % Pot anar assignant quan els horaris encara s'estan fent
-  \item Dóna d'alta els professors, només del seu departament.
-  \item Assignen professors als grups de les assignatures de la seva àrea. (pot ser que en tinguin més d'una)
-  \item Veuen horaris dels professors i les assignatures de la seva àrea.
+  \item Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les seves àrees.
+  \item Assignar un professor a cada bloc horari de cadascun dels grups de les assignatures de qualsevol de les seves àrees.
+  \item Donar d'alta o de baixa usuaris del rol Professor que hagin d'impartir docència a alguna de les assignatures de la seva àrea, a banda de poder veure'n el llistat i consultar-ne el perfil.
 \end{itemize}
 
 % PROFESSORS
-\section{Requisits dels Professors} % TO DO
+\section{Requisits dels Professors}
 \label{sec:requisits_professors}
 
 En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol de Professor.
 
 \begin{itemize} % vistes per separat
-  \item Veure horaris dels seus grups.
-  \item Veure horaris de les assignatures on fa docència.
-  \item Veure horaris dels graus en què fa docència a alguna de les seves assignatures.
+  \item Visualitzar els seus propis horaris, és a dir, els blocs horaris que li han estat assignats.
+  \item Visualitzar els horaris de les assignatures a les que imparteixi docència.
+  \item Visualitzar els horaris dels graus (o curs o quadrimestre del grau?) que ofereixin alguna de les assignatures en què imparteixi docència.
 \end{itemize}
 
 \chapter{Planificació}  % Ordre canviat. Ordre antic: Planificació --> Marc de treball --> Requisits
@@ -357,7 +367,7 @@ En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol 
   \item Node js
   \item Express
   \item MySQL
-  \item Postman
+  \item Postman, Insomnia o altres?
   \item \ldots
 \end{itemize}
 
@@ -384,7 +394,10 @@ En aquesta secció, es llistaran els requisits particulars dels usuaris amb rol 
 \chapter{Treball futur}
 \label{cap:treball_futur}
 
-
+\begin{itemize}
+  \item Poder buscar usuaris per consultar les seves dades (nom, rol, departament, telèfon, email, etc.) i habilitar un link per enviar-li un email.
+  \item \ldots
+\end{itemize}
 
 
 \backmatter
