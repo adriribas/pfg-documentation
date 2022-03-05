@@ -20,7 +20,7 @@ Aquest repositori conté la documentació del **Projecte de Fi de Grau**, escrit
 
 <br><br>
 
-<p align="center"><img src="/imatges/logo.jpg" alt="UdGEPS" width="300"/>
+<p align="center"><img src="/assets/logos/EPS_colour.jpg" alt="UdGEPS" width="300"/>
 
 <br><br>
  
