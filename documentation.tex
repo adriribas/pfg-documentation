@@ -116,9 +116,9 @@ En aquesta secció, es resumiran els antecedents que han donat peu al plantejame
 
 La idea del projecte neix de determinades necessitats que cert personal de l'Escola Politècnica Superior de la Universitat de Girona fa temps que té. Més concretament, es tracta d'una necessitat del personal encarregat de gestionar tot el que fa referència a la confecció i manteniment dels horaris del centre: horaris dels graus, dels professors, ocupació d'aules i espais, etc.
 
-Actualment, per dur a terme l'elaboració dels horaris, aquestes persones utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades ni específicament dissenyades per abordar aquest tipus de tasques. Tampoc existeix cap plataforma que unifiqui les fases d'aquest procés de gestió ni n'estableixi una manera de fer comuna.
+Actualment, per dur a terme l'elaboració dels horaris, aquestes persones utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades ni específicament dissenyades per abordar aquest tipus de tasques. Tampoc existeix cap plataforma que unifiqui les fases d'aquest procés de gestió ni que n'estableixi una manera de fer comuna.
 
-Ara per ara, per exemple, no tenen manera de detectar incompatibilitats horàries ni solapaments a priori de manera automàtica. Degut a això, en moltes ocasions s'han de repetir certes fases del procés fins que el resultat és vàlid i la gent implicada hi està d'acord. 
+Ara per ara, per exemple, no tenen manera de detectar incompatibilitats horàries ni solapaments \textit{a priori} de manera automàtica. Degut a això, en moltes ocasions s'han de repetir certes fases del procés fins que el resultat és vàlid i la gent implicada hi està d'acord. 
 
 Al capítol~\ref{cap:marcdetreball} es descriurà amb més profunditat com funcionen avui en dia aquests processos d'elaboració i gestió d'horaris de l'escola.
 
@@ -149,12 +149,16 @@ A més a més, l'aplicació hauria de ser accessible via web. D'aquesta manera, 
 
 \section{Motivacions}
 \label{sec:motivacions}
-
+% Queda pendent -------------------------------------------------------------------------------------------
 En aquesta secció, es parlarà en primera persona sobre quines motivacions personals hi ha darrere del projecte i en justifiquen l'elecció.
 
-Un dels meus objectius principals i que més em motiven de la informàtica és ajudar a la gent a estalivar temps del seu dia a dia a l'hora de realitzar tasques o accions repetitives i pesades que podrien automatitzar-se, siguin en l'àmbit personal o laboral.
+%Un dels meus objectius principals i que més em motiven de la informàtica és ajudar la gent a estalviar temps a l'hora de dur a terme tasques o accions quotidianes que repetitives i pesades que podrien automatitzar-se, ja sigui en l'àmbit personal o laboral, de manera que la seva realització resulti més còmoda i pràctica.
 
-Per aquest motiu, m'ha cridat molt l'atenció la proposta d'aquest projecte. És una molt bona oportunitat per solucionar un problema que s'emporta més temps del que podria ser a tota la gent que s'ocupa de la gestió i elaboració d'horaris de l'escola.
+Un dels meus obje
+
+%Per aquest motiu, m'ha cridat molt l'atenció la proposta d'aquest projecte. És una molt bona oportunitat per solucionar un problema que s'emporta més temps del que podria ser a tota la gent que s'ocupa de la gestió i elaboració dels horaris de l'escola.
+
+Per aquest motiu, m'ha cridat molt l'atenció la proposta d'aquest projecte. 
 
 A més a més, és genial que un dels requisits del projecte sigui desenvolupar la solució informàtica sobre web, ja que una altra de les meves motivacions actuals és aprendre programació web a fons. De fet, això era una condició essencial per a mi a l'hora d'escollir una proposta de projecte de fi de grau.
 
@@ -264,7 +268,7 @@ Explicar tecnologies.
 \section{Consideracions inicials}
 \label{sec:consideracions_inicials}
 
-En aquesta secció, es realitzaran una sèrie de consideracions inicials, amb l'objectiu de clarificar el contingut de les seccions que segueixen.
+En aquesta secció, es presentaran una sèrie de consideracions inicials amb l'objectiu de clarificar el contingut de les seccions que segueixen.
 
 En primer lloc, és necessari definir el format que adoptarà cadascun dels requisits del sistema:
 \vspace*{-0.4cm}
@@ -272,16 +276,18 @@ En primer lloc, és necessari definir el format que adoptarà cadascun dels requ
   \texttt{\textbf{Tipus-Numeració [Prioritat]}}: Descripció
 \end{center}
 
-Més concretament, el tipus de requisit es representarà mitjançant les seves sigles, com ara \texttt{RF} pels funcionals o \texttt{RNF} pels no funcionals. Pel que fa a la prioritat, se n'ha definit tres nivells:
+Més concretament, el tipus de requisit es representarà mitjançant les seves sigles, com ara \texttt{RF} pels funcionals o \texttt{RNF} pels no funcionals. Pel que fa a la prioritat, se n'han definit tres nivells:
 \begin{itemize}
   \item Prioritat \texttt{\textbf{[3]}} o essencial: El requisit s'ha de satisfer per tal que l'aplicació funcioni correctament, a nivell elemental.
   \item Prioritat \texttt{\textbf{[2]}} o recomanable: El requisit s'hauria de satisfer per tal que l'aplicació garanteixi una bona experiència d'usuari.
-  \item Prioritat \texttt{\textbf{[1]}} o opcional: El requisit es podria satisfer per tal que l'aplicació brindés una excel·lent experiència d'usuari.
+  \item Prioritat \texttt{\textbf{[1]}} o opcional: El requisit es podria satisfer per tal que l'aplicació ofereixi una excel·lent experiència d'usuari.
 \end{itemize}
 
-D'altra banda, cal remarcar que les descripcions dels requisits utilitzen nomenclatura específica del marc de treball, definida al capítol~\ref{cap:marcdetreball}.
+D'altra banda, cal remarcar que les descripcions dels requisits utilitzen la nomenclatura específica del marc de treball, detallada al capítol~\ref{cap:marcdetreball}.
 
-A més a més, per evitar explicacions redundants, d'ara en endavant, quan es parli de la visualització dels horaris d'un grau en concret, no es refereix a una vista del conglomerat d'horaris de tots els seus cursos i quadrimestres, sinó de vistes separades precisament per aquests dos termes. Tanmateix, la visualització dels horaris d'un professor o la de l'ocupació d'una aula es separa en quadrimestres.
+%A més a més, per evitar explicacions redundants, d'ara en endavant, quan es parli de la visualització dels horaris d'un grau, no s'estarà fent referència a una vista del conglomerat d'horaris de tots els seus cursos i quadrimestres, sinó de vistes separades precisament per aquests dos termes. Tanmateix, la visualització dels horaris d'un professor o la de l'ocupació d'una aula es separa en quadrimestres.
+
+A més a més, per evitar explicacions redundants, d'ara en endavant, quan es parli de la visualització dels horaris d'un grau, no s'estarà fent referència a una vista del conglomerat d'horaris de tots els seus cursos i quadrimestres, sinó de vistes en què es mostra l'horari d'un quadrimestre específic en un curs específic. De la mateixa manera, la visualització dels horaris d'un professor o la de l'ocupació d'una aula es separa en quadrimestres.
 
 \section{Requisits funcionals}
 \label{sec:requisits_funcionals}
@@ -292,9 +298,9 @@ A més a més, per evitar explicacions redundants, d'ara en endavant, quan es pa
 En aquesta subsecció, es llistaran els requisits funcionals generals del sistema, comuns per a tots els usuaris, independentment dels seus rols.
 
 \begin{itemize}
-  \item \texttt{\textbf{RF- [3]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \emph{login}. S'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir.
+  \item \texttt{\textbf{RF- [3]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \emph{login}, que s'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir.
   \item \texttt{\textbf{RF- [3]}}: No permetre l'autoregistre d'usuaris, ja que usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui.
-  \item \texttt{\textbf{RF- [1]}}: Possibilitar a tots els usuaris la consulta tant de les seves dades, com les de l'usuari que l'ha donat d'alta, mitjançant perfils personals.
+  \item \texttt{\textbf{RF- [1]}}: Possibilitar a tots els usuaris la consulta tant de les seves dades com les de l'usuari que l'ha donat d'alta, mitjançant perfils personals.
   \item \texttt{\textbf{RF- [3]}}: Proporcionar accés als manuals d'usuari de l'aplicació, així com a la informació de contacte i als aspectes legals.
 \end{itemize}
 
@@ -305,12 +311,12 @@ En aquesta subsecció, es llistaran els requisits funcionals generals del sistem
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol d'Administrador.
 
 \begin{itemize}
-  \item \texttt{\textbf{RF- [3]}}: Carregar el pla docent d'un curs acadèmic per tal d'inicialitzar i poblar la base de dades amb la informació del següent curs. Aquesta entrada es fa mitjançant un fitxer de format \emph{xlsx} (Microsoft Excel).
+  \item \texttt{\textbf{RF- [3]}}: Carregar el pla docent d'un curs acadèmic futur per tal d'inicialitzar i poblar la base de dades amb la informació que conté. Aquesta entrada es fa mitjançant un fitxer de format \emph{xlsx} (Microsoft Excel).
     \begin{itemize}
       \item Descriure en algun lloc què porta aquest fitxer i posar-hi una referència des d'aquí?
     \end{itemize}
-  \item \texttt{\textbf{RF- [3]}}: En cas que tornés a pujar el pla docent, no hauria d'afectar a la feina que ja hagin pogut realitzar altres usuaris. En cas que el nou contingués més blocs horaris d'una assignatura determinada que l'anterior, s'han de quedar com a ``pendents de situar''. Per contra, si n'hi ha menys, senzillament s'ha d'indicar que en sobren als usuaris involucrats.
-  \item \texttt{\textbf{RF- [2]}}: Modificar, si s'escau, un conjunt específic de paràmetres del pla docent sense haver de tornar-lo a carregar, detallat a continuació:
+  \item \texttt{\textbf{RF- [3]}}: En cas que tornés a pujar el pla docent, no s'hauria d'alterar la feina que ja hagin pogut realitzar altres usuaris. Si el nou pla contingués més blocs horaris d'una assignatura determinada que l'anterior, s'haurien de quedar com a ``pendents de situar''. Per contra, si n'hi hagués menys, senzillament s'hauria d'indicar als usuaris involucrats que en sobren.
+  \item \texttt{\textbf{RF- [2]}}: Modificar, si s'escau, un conjunt específic de paràmetres del pla docent sense haver de tornar-lo a carregar:
     \begin{itemize}
       \item Nombre d'aules habilitades de cada tipus.
       \item \ldots
