@@ -321,7 +321,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
       \item Nombre d'aules habilitades de cada tipus.
       \item \ldots
     \end{itemize}
-  \item \texttt{\textbf{RF- [2]}}: Assignar una aula concreta a cada bloc horari que pugui realitzar-se a més d'una, a mesura que els coordinadors acabin d'elaborar els horaris que els pertòquin.
+  \item \texttt{\textbf{RF- [2]}}: Assignar una aula concreta a cada bloc horari que pugui realitzar-se a més d'una, a mesura que els coordinadors acabin d'elaborar els horaris que els pertoquin.
   \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris dels rols Coordinador i Director de departament, a banda de poder veure'n el llistat.
 \end{itemize}
 
@@ -339,7 +339,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
   \item \texttt{\textbf{RF- [3]}}: Carregar opcionalment uns horaris elaborats prèviament per tal d'omplir els actuals i tenir un punt de partida. Si els torna a carregar es substituiran. (Pendent escriure-ho bé + dubte fitxer horaris)
   \item \texttt{\textbf{RF- [3]}}: Editar els horaris de cada quadrimestre dels cursos de qualsevol dels graus que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
     \begin{itemize}
-      \item Consultar el nombre d'aules disponibles de qualsevol tipus en una franja horària de setmanes de tipus A i/o B determinada (s'ha d'escriure millor).
+      \item Consultar el nombre d'aules disponibles de qualsevol tipus en una franja horària de setmanes de tipus A i/o B determinada.
       \item Seleccionar una vista setmanal per tal de visualitzar només els blocs horaris situats a un tipus de setmana concret. Les vistes setmanals són les següents:
         \begin{itemize}
           \item Vista dels blocs horaris situats a les setmanes de tipus A.
@@ -352,7 +352,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
       \item Modificar la duració de qualsevol bloc horari. Si la suma de les duracions dels blocs horaris d'un grup determinat no concorda amb la quantitat d'hores setmanals que li imposi el seu tipus, se l'avisarà.
       
       \item Situar o moure blocs horaris a franges horàries concretes del tipus de setmana que s'estigui visualitzant.
-      \item Treure blocs horaris ja situats en una franja horària, deixant-los com a ``pendents de situar''.
+      \item Treure blocs horaris ja situats en una franja horària, que quedaran com a ``pendents de situar''.
       \item Crear manualment blocs horaris genèrics que no estiguin associats a cap grup de cap assignatura. Cal que n'especifiqui una duració, un títol i, opcionalment, un subtítol.
       
       \item Crear nous grups de qualsevol assignatura. Cal que n'especifiqui el tipus i el nombre de blocs horaris. A partir d'això, es crearan els corresponents blocs horaris pendents de situar.
@@ -373,7 +373,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 \begin{itemize}
   \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament i dels graus (o curs o quadrimestre del grau?) que n'ofereixin alguna.
-  \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris del rol Responsable de docència que s'encarreguin de qualsevol de les àrees del seu departament, a banda de poder veure'n el llistat i consultar-ne el perfil.
+  \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris del rol Responsable de docència que s'encarreguin de qualsevol de les àrees del seu departament, a banda de poder-ne veure el llistat i consultar-ne el perfil.
 \end{itemize}
 
 % RESPONSABLES DE DOCÈNCIA
@@ -385,7 +385,7 @@ En aquesta subsecció, es llistaran els requisits particulars dels usuaris amb r
 \begin{itemize} % Pot anar assignant quan els horaris encara s'estan fent
   \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de la seva àrea.
   \item \texttt{\textbf{RF- [3]}}: Assignar un professor a cada bloc horari de cadascun dels grups de les assignatures de la seva àrea.
-  \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris del rol Professor que hagin d'impartir docència a alguna de les assignatures de la seva àrea, a banda de poder veure'n el llistat i consultar-ne el perfil.
+  \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris del rol Professor que hagin d'impartir docència a alguna de les assignatures de la seva àrea, a banda de poder-ne veure el llistat i consultar-ne el perfil.
 \end{itemize}
 
 % PROFESSORS
@@ -396,7 +396,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 \begin{itemize} % vistes per separat
   \item \texttt{\textbf{RF- [3]}}: Visualitzar els seus propis horaris, és a dir, els blocs horaris que li han estat assignats.
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris de les assignatures a les que imparteixi docència.
+  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris de les assignatures a les quals imparteixi docència.
   \item \texttt{\textbf{RF- [2]}}: Visualitzar els horaris dels graus (o curs o quadrimestre del grau?) que ofereixin alguna de les assignatures en què imparteixi docència.
 \end{itemize}
 
@@ -406,8 +406,8 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 En aquesta secció, es llistaran els requisits no funcionals del sistema.
 
 \begin{itemize}
-  \item \texttt{\textbf{RNF-1 [3]}}: El client de l'aplicació ha d'executar-se sobre un entorn web i ha de ser suportada pels principals navegadors web (Google Chrome, Mozilla Firefox, Safari, etc.). S'ha de poder comunicar amb el procés del servidor mitjançant una RESTful API.
-  \item \texttt{\textbf{RNF-2 [3]}}: La part de gestió i persistència de dades ha de ser administrada pel l'aplicació del servidor, que ha d'exposar una RESTful API. Aquest procés ha de comunicar-se amb els Sistemes Gestors de Bases de Dades escollits per allotjar la informació del projecte.
+  \item \texttt{\textbf{RNF-1 [3]}}: El client de l'aplicació ha d'executar-se sobre un entorn web i ha de ser suportat pels principals navegadors web (Google Chrome, Mozilla Firefox, Safari, etc.). S'ha de poder comunicar amb el procés del servidor mitjançant una RESTful API.
+  \item \texttt{\textbf{RNF-2 [3]}}: La part de gestió i persistència de dades ha de ser administrada per l'aplicació del servidor, que ha d'exposar una RESTful API. Aquest procés ha de comunicar-se amb els Sistemes Gestors de Bases de Dades escollits per allotjar la informació del projecte.
   \item \texttt{\textbf{RNF-3 [3]}}: El mecanisme d'autenticació ha de ser segur. <Especificar quin es farà servir>
 \end{itemize}
 
