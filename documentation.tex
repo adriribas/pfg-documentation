@@ -149,18 +149,18 @@ A més a més, l'aplicació hauria de ser accessible via web. D'aquesta manera, 
 
 \section{Motivacions}
 \label{sec:motivacions}
-% Queda pendent -------------------------------------------------------------------------------------------
+
 En aquesta secció, es parlarà en primera persona sobre quines motivacions personals hi ha darrere del projecte i en justifiquen l'elecció.
 
-%Un dels meus objectius principals i que més em motiven de la informàtica és ajudar la gent a estalviar temps a l'hora de dur a terme tasques o accions quotidianes que repetitives i pesades que podrien automatitzar-se, ja sigui en l'àmbit personal o laboral, de manera que la seva realització resulti més còmoda i pràctica.
+Un dels aspectes que més em motiven de la informàtica en general és el fet de poder ajudar la gent a estalviar el seu temps, el qual penso que és de gran valor. En moltes ocasions, una persona, un grup o fins i tot una institució, inverteix una quantitat elevada de temps en realitzar certes accions o activitats, sigui en l'àmbit que sigui. Aquest temps es pot reduir si l'acció o activitat en qüestió té una part suficientment mecànica. Tanmateix, encara que no la tingui, sovint és possible desenvolupar una eina informàtica que n'augmenti l'eficiència o, si més no, dinamitzar-la i fer que resulti més còmoda i pràctica.
 
-Un dels meus obje
+D'aquí sorgeix el meu objectiu principal pel que fa a la informàtica, que és precisament aportar el meu gra de sorra a aquesta causa.
 
-%Per aquest motiu, m'ha cridat molt l'atenció la proposta d'aquest projecte. És una molt bona oportunitat per solucionar un problema que s'emporta més temps del que podria ser a tota la gent que s'ocupa de la gestió i elaboració dels horaris de l'escola.
+Per aquest motiu, m'ha cridat molt l'atenció la proposta d'aquest projecte. És una molt bona oportunitat per contribuir a millorar el procés de gestió i elaboració d'horaris de l'escola, que sol resultar bastant costós en temps per a les persones que hi participen.
 
-Per aquest motiu, m'ha cridat molt l'atenció la proposta d'aquest projecte. 
+D'altra banda, em motiva molt el fet de desenvolupar una aplicació que podrà ser implantada en un entorn real i que podrà beneficiar les persones que la facin servir. No em cridaria tant dur a terme un altre projecte que, un cop finalitzat, fos simplement arxivat, sense utilitat pràctica per a ningú més excepte per a mi, que seria l'únic que me'n beneficiaria, ja que igualment obtindria coneixements i experiència.
 
-A més a més, és genial que un dels requisits del projecte sigui desenvolupar la solució informàtica sobre web, ja que una altra de les meves motivacions actuals és aprendre programació web a fons. De fet, això era una condició essencial per a mi a l'hora d'escollir una proposta de projecte de fi de grau.
+Actualment i cada vegada més, m'interessa el desenvolupament d'entorns web. És per això que un factor decisiu a l'hora d'escollir aquesta proposta de PFG ha estat que un dels requisits sigui desenvolupar-lo en format de plataforma web.
 
 \section{Objectius generals}
 \label{sec:objectius_generals}
@@ -278,9 +278,9 @@ En primer lloc, és necessari definir el format que adoptarà cadascun dels requ
 
 Més concretament, el tipus de requisit es representarà mitjançant les seves sigles, com ara \texttt{RF} pels funcionals o \texttt{RNF} pels no funcionals. Pel que fa a la prioritat, se n'han definit tres nivells:
 \begin{itemize}
-  \item Prioritat \texttt{\textbf{[3]}} o essencial: El requisit s'ha de satisfer per tal que l'aplicació funcioni correctament, a nivell elemental.
+  \item Prioritat \texttt{\textbf{[1]}} o essencial: El requisit s'ha de satisfer per tal que l'aplicació funcioni correctament, a nivell elemental.
   \item Prioritat \texttt{\textbf{[2]}} o recomanable: El requisit s'hauria de satisfer per tal que l'aplicació garanteixi una bona experiència d'usuari.
-  \item Prioritat \texttt{\textbf{[1]}} o opcional: El requisit es podria satisfer per tal que l'aplicació ofereixi una excel·lent experiència d'usuari.
+  \item Prioritat \texttt{\textbf{[3]}} o opcional: El requisit es podria satisfer per tal que l'aplicació ofereixi una excel·lent experiència d'usuari.
 \end{itemize}
 
 D'altra banda, cal remarcar que les descripcions dels requisits utilitzen la nomenclatura específica del marc de treball, detallada al capítol~\ref{cap:marcdetreball}.
@@ -298,10 +298,15 @@ A més a més, per evitar explicacions redundants, d'ara en endavant, quan es pa
 En aquesta subsecció, es llistaran els requisits funcionals generals del sistema, comuns per a tots els usuaris, independentment dels seus rols.
 
 \begin{itemize}
-  \item \texttt{\textbf{RF- [3]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \emph{login}, que s'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir.
-  \item \texttt{\textbf{RF- [3]}}: No permetre l'autoregistre d'usuaris, ja que usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui.
-  \item \texttt{\textbf{RF- [1]}}: Possibilitar a tots els usuaris la consulta tant de les seves dades com les de l'usuari que l'ha donat d'alta, mitjançant perfils personals.
-  \item \texttt{\textbf{RF- [3]}}: Proporcionar accés als manuals d'usuari de l'aplicació, així com a la informació de contacte i als aspectes legals.
+  \item \texttt{\textbf{RF- [1]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \emph{login}, que s'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir. L'autenticació d'un usuari ha de suposar la generació d'un \textit{JSON Web Token}~\cite{JWT}, per tal de mantenir la seva sessió i poder ser identificat de forma segura pel procés d'autorització del servidor.
+  \item \texttt{\textbf{RF- [1]}}: No permetre l'autoregistre d'usuaris, ja que usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui. El procés d'alta d'usuaris es detalla a continuació:
+    \begin{enumerate}
+      \item L'usuari que registra introdueix certes dades de l'usuari que vol donar d'alta, entre les quals hi consta la seva adreça de correu electrònic. Hi ha informació del nou usuari que s'obté automàticament a partir de les dades de l'usuari que registra.
+      \item El nou usuari rep un \textit{email} de confirmació amb un enllaç. Mentrestant, no pot autenticar-se a l'aplicació, ja que encara està deshabilitat.
+      \item Un cop l'usuari accedeix a dit enllaç, envia el \textit{token} que conté al servidor. Si és vàlid i no ha expirat, pot procedir a crear la seva contrassenya mitjançant el formulari presentat a la pantalla.
+    \end{enumerate}
+  \item \texttt{\textbf{RF- [3]}}: Possibilitar a tots els usuaris la consulta tant de les seves dades com les de l'usuari que l'ha donat d'alta, mitjançant perfils personals.
+  \item \texttt{\textbf{RF- [1]}}: Proporcionar accés als manuals d'usuari de l'aplicació, així com a la informació de contacte i als aspectes legals.
 \end{itemize}
 
 % ADMINISTRADORS
@@ -311,18 +316,18 @@ En aquesta subsecció, es llistaran els requisits funcionals generals del sistem
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol d'Administrador.
 
 \begin{itemize}
-  \item \texttt{\textbf{RF- [3]}}: Carregar el pla docent d'un curs acadèmic futur per tal d'inicialitzar i poblar la base de dades amb la informació que conté. Aquesta entrada es fa mitjançant un fitxer de format \emph{xlsx} (Microsoft Excel).
+  \item \texttt{\textbf{RF- [1]}}: Carregar el pla docent d'un curs acadèmic futur per tal d'inicialitzar i poblar la base de dades amb la informació que conté. Aquesta entrada es fa mitjançant un fitxer, format del qual es concreta a la secció~\ref{sec:requisits_domini}.
     \begin{itemize}
       \item Descriure en algun lloc què porta aquest fitxer i posar-hi una referència des d'aquí?
     \end{itemize}
-  \item \texttt{\textbf{RF- [3]}}: En cas que tornés a pujar el pla docent, no s'hauria d'alterar la feina que ja hagin pogut realitzar altres usuaris. Si el nou pla contingués més blocs horaris d'una assignatura determinada que l'anterior, s'haurien de quedar com a ``pendents de situar''. Per contra, si n'hi hagués menys, senzillament s'hauria d'indicar als usuaris involucrats que en sobren.
+  \item \texttt{\textbf{RF- [1]}}: En cas que tornés a pujar el pla docent, no s'hauria d'alterar la feina que ja hagin pogut realitzar altres usuaris. Si el nou pla contingués més blocs horaris d'una assignatura determinada que l'anterior, s'haurien de quedar com a ``pendents de situar''. Per contra, si n'hi hagués menys, senzillament s'hauria d'indicar als usuaris involucrats que en sobren.
   \item \texttt{\textbf{RF- [2]}}: Modificar, si s'escau, un conjunt específic de paràmetres del pla docent sense haver de tornar-lo a carregar:
     \begin{itemize}
       \item Nombre d'aules habilitades de cada tipus.
       \item \ldots
     \end{itemize}
   \item \texttt{\textbf{RF- [2]}}: Assignar una aula concreta a cada bloc horari que pugui realitzar-se a més d'una, a mesura que els coordinadors acabin d'elaborar els horaris que els pertoquin.
-  \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris dels rols Coordinador i Director de departament, a banda de poder veure'n el llistat.
+  \item \texttt{\textbf{RF- [1]}}: Donar d'alta o de baixa usuaris dels rols Coordinador i Director de departament, a banda de poder veure'n el llistat.
 \end{itemize}
 
 % COORDINADORS
@@ -332,12 +337,12 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Coordinador.
 
 \begin{itemize}
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris dels graus que gestiona.
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris dels graus (o cursos o quadrimestres dels graus?) que ofereixin alguna assignatura compartida amb qualsevol dels graus que gestiona.
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna de les assignatures que ofereixi qualsevol dels graus que gestiona.
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris de l'ocupació de qualsevol aula de l'escola.
-  \item \texttt{\textbf{RF- [3]}}: Carregar opcionalment uns horaris elaborats prèviament per tal d'omplir els actuals i tenir un punt de partida. Si els torna a carregar es substituiran. (Pendent escriure-ho bé + dubte fitxer horaris)
-  \item \texttt{\textbf{RF- [3]}}: Editar els horaris de cada quadrimestre dels cursos de qualsevol dels graus que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels graus que gestiona.
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels graus (o cursos o quadrimestres dels graus?) que ofereixin alguna assignatura compartida amb qualsevol dels graus que gestiona.
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna de les assignatures que ofereixi qualsevol dels graus que gestiona.
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris de l'ocupació de qualsevol aula de l'escola.
+  \item \texttt{\textbf{RF- [1]}}: Carregar opcionalment uns horaris elaborats prèviament per tal d'omplir els actuals i tenir un punt de partida. Si els torna a carregar es substituiran. (Pendent escriure-ho bé + dubte fitxer horaris)
+  \item \texttt{\textbf{RF- [1]}}: Editar els horaris de cada quadrimestre dels cursos de qualsevol dels graus que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
     \begin{itemize}
       \item Consultar el nombre d'aules disponibles de qualsevol tipus en una franja horària de setmanes de tipus A i/o B determinada.
       \item Seleccionar una vista setmanal per tal de visualitzar només els blocs horaris situats a un tipus de setmana concret. Les vistes setmanals són les següents:
@@ -372,8 +377,8 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Director de departament.
 
 \begin{itemize}
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament i dels graus (o curs o quadrimestre del grau?) que n'ofereixin alguna.
-  \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris del rol Responsable de docència que s'encarreguin de qualsevol de les àrees del seu departament, a banda de poder-ne veure el llistat i consultar-ne el perfil.
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament i dels graus (o curs o quadrimestre del grau?) que n'ofereixin alguna.
+  \item \texttt{\textbf{RF- [1]}}: Donar d'alta o de baixa usuaris del rol Responsable de docència que s'encarreguin de qualsevol de les àrees del seu departament, a banda de poder-ne veure el llistat i consultar-ne el perfil.
 \end{itemize}
 
 % RESPONSABLES DE DOCÈNCIA
@@ -383,9 +388,9 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 En aquesta subsecció, es llistaran els requisits particulars dels usuaris amb rol de Responsable de docència.
 
 \begin{itemize} % Pot anar assignant quan els horaris encara s'estan fent
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de la seva àrea.
-  \item \texttt{\textbf{RF- [3]}}: Assignar un professor a cada bloc horari de cadascun dels grups de les assignatures de la seva àrea.
-  \item \texttt{\textbf{RF- [3]}}: Donar d'alta o de baixa usuaris del rol Professor que hagin d'impartir docència a alguna de les assignatures de la seva àrea, a banda de poder-ne veure el llistat i consultar-ne el perfil.
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de la seva àrea.
+  \item \texttt{\textbf{RF- [1]}}: Assignar un professor a cada bloc horari de cadascun dels grups de les assignatures de la seva àrea.
+  \item \texttt{\textbf{RF- [1]}}: Donar d'alta o de baixa usuaris del rol Professor que hagin d'impartir docència a alguna de les assignatures de la seva àrea, a banda de poder-ne veure el llistat i consultar-ne el perfil.
 \end{itemize}
 
 % PROFESSORS
@@ -395,8 +400,8 @@ En aquesta subsecció, es llistaran els requisits particulars dels usuaris amb r
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Professor.
 
 \begin{itemize} % vistes per separat
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els seus propis horaris, és a dir, els blocs horaris que li han estat assignats.
-  \item \texttt{\textbf{RF- [3]}}: Visualitzar els horaris de les assignatures a les quals imparteixi docència.
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els seus propis horaris, és a dir, els blocs horaris que li han estat assignats.
+  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris de les assignatures a les quals imparteixi docència.
   \item \texttt{\textbf{RF- [2]}}: Visualitzar els horaris dels graus (o curs o quadrimestre del grau?) que ofereixin alguna de les assignatures en què imparteixi docència.
 \end{itemize}
 
@@ -406,11 +411,30 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 En aquesta secció, es llistaran els requisits no funcionals del sistema.
 
 \begin{itemize}
-  \item \texttt{\textbf{RNF-1 [3]}}: El client de l'aplicació ha d'executar-se sobre un entorn web i ha de ser suportat pels principals navegadors web (Google Chrome, Mozilla Firefox, Safari, etc.). S'ha de poder comunicar amb el procés del servidor mitjançant una RESTful API.
-  \item \texttt{\textbf{RNF-2 [3]}}: La part de gestió i persistència de dades ha de ser administrada per l'aplicació del servidor, que ha d'exposar una RESTful API. Aquest procés ha de comunicar-se amb els Sistemes Gestors de Bases de Dades escollits per allotjar la informació del projecte.
-  \item \texttt{\textbf{RNF-3 [3]}}: El mecanisme d'autenticació ha de ser segur. <Especificar quin es farà servir>
+  \item \texttt{\textbf{RNF-1 [1]}}: El client de l'aplicació ha d'executar-se sobre un entorn web i ha de ser suportat pels principals navegadors web (Google Chrome, Mozilla Firefox, Safari, etc.). S'ha de poder comunicar amb el procés del servidor mitjançant crides HTTP a l'API del servidor.
+  \item \texttt{\textbf{RNF-2 [1]}}: La part de gestió i persistència de dades ha de ser administrada per l'aplicació del servidor, que ha d'exposar una RESTful API. Aquest procés ha de comunicar-se amb els Sistemes Gestors de Bases de Dades escollits per allotjar la informació del projecte.
+  \item \texttt{\textbf{RNF-3 [1]}}: L'aplicació del servidor ha d'integrar un mecanisme d'autorització per tal de restringir l'accés als \textit{endpoints} de l'API. Només han de poder utilitzar-los els usuaris que s'hagin autenticat prèviament i que, a més a més, tinguin permís per fer-ho, de manera que cada \textit{endpoint} sigui accessible només per un conjunt d'usuaris concret.
+  \item \texttt{\textbf{RNF-4 [1]}}: 
 \end{itemize}
 
+
+\section{Requisits de domini}
+\label{sec:requisits_domini}
+
+En aquesta secció, es llistaran els requisits de domini del sistema.
+
+\begin{itemize}
+  \item \texttt{\textbf{RD-1 [1]}}: El format del fitxer que conté les dades del pla docent d'un curs acadèmic està fixat per l'escola. Es tracta d'un fitxer en format \emph{xlsx} (Microsoft Excel). A continuació se'n detalla l'estructura:
+    \begin{itemize}
+      \item Full 1: Aquest full conté \ldots
+        \begin{itemize}
+          \item Columna 1: X. Aquesta columna \ldots
+          \item Columna \ldots
+        \end{itemize}
+      \item Full \ldots
+    \end{itemize}
+  \item \texttt{\textbf{RD-2 [1]}}: El format del fitxer de sortida dels horaris elaborats és \ldots
+\end{itemize}
 
 \section{Matriu de dependències}
 \label{sec:matriu_dependencies}
@@ -424,6 +448,7 @@ En aquesta secció, es llistaran els requisits no funcionals del sistema.
 \chapter{Estudi i decisions}
 \label{cap:estudi}
 
+Tecnologies:
 \begin{itemize}
   \item Visual Studio Code. Extensions?
   \item Git i GitHub
@@ -431,7 +456,7 @@ En aquesta secció, es llistaran els requisits no funcionals del sistema.
   \item Node js
   \item Express
   \item MySQL
-  \item Postman, Insomnia o altres?
+  \item Postman
   \item \ldots
 \end{itemize}
 
