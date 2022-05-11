@@ -3,6 +3,7 @@
 \usepackage{thesis-style}
 \usepackage{parskip}
 \usepackage{beramono}
+\usepackage[section]{placeins}
 
 \begin{document}
 
@@ -273,7 +274,7 @@ En primer lloc, és necessari definir el format que adoptarà cadascun dels requ
 \\[8pt]
 \centerline{\texttt{\textbf{Tipus-Numeració [Prioritat]}}: Descripció}
 
-Més concretament, el tipus de requisit es representarà mitjançant les seves sigles, com ara \texttt{RF} pels funcionals o \texttt{RNF} pels no funcionals. Pel que fa a la prioritat, se n'han definit tres nivells:
+Més concretament, el tipus de requisit es representarà mitjançant les seves sigles, com ara \texttt{RF} pels funcionals o \texttt{RNF} pels no funcionals. La numeració es dividirà en grups en funció del rol d'usuari al qual pertanyi el requisit i inclourà la inicial del nom del rol. Pel que fa a la prioritat, se n'han definit tres nivells:
 \begin{itemize}
   \item Prioritat \texttt{\textbf{[1]}} o essencial: El requisit s'ha de satisfer per tal que l'aplicació funcioni correctament, a nivell elemental.
   \item Prioritat \texttt{\textbf{[2]}} o recomanable: El requisit s'hauria de satisfer per tal que l'aplicació garanteixi una bona experiència d'usuari.
@@ -288,30 +289,25 @@ A més a més, per evitar explicacions redundants, d'ara en endavant, quan es pa
 \label{sec:requisits_funcionals}
 
 \subsection{Requisits generals}
-\label{subsec:requisits_generals} % Poder guardar versions del procés d'elaboració d'horaris.
+\label{subsec:requisits_generals}
 
 En aquesta subsecció, es llistaran els requisits funcionals generals del sistema, comuns per a tots els usuaris, independentment dels seus rols.
 
-\subsubsection{Autenticació i gestió d'usuaris}
-\label{ap:autenticacio_gestio_usuaris}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \textit{login}, que s'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir. L'autenticació d'un usuari ha de suposar la generació d'un \textit{JSON Web Token}~\cite{JWT}, per tal de mantenir la seva sessió i poder ser identificat de forma segura pel procés d'autorització del servidor.
-  \item \texttt{\textbf{RF- [1]}}: No permetre l'autoregistre d'usuaris, ja que usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui. El procés d'alta d'usuaris es detalla a continuació:
+  \item \texttt{\textbf{RF-G1 [1]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \textit{login}, que s'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir. L'autenticació d'un usuari ha de suposar la generació d'un \textit{JSON Web Token}~\cite{JWT}, per tal de mantenir la seva sessió i poder ser identificat de forma segura pel procés d'autorització del servidor.
+  \item \texttt{\textbf{RF-G2 [1]}}: No permetre l'autoregistre d'usuaris, ja que usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui. El procés d'alta d'usuaris es detalla a continuació:
         \begin{enumerate}
           \item L'usuari que registra introdueix les dades de l'usuari que vol donar d'alta, entre les quals consta la seva adreça de correu electrònic. A continuació, l'usuari es crea però amb l'estat de ``desactivat''.
           \item El nou usuari rep un \textit{email} de confirmació amb un enllaç. Mentrestant, no pot autenticar-se a l'aplicació, ja que encara està desactivat.
           \item Un cop l'usuari accedeix a l'enllaç, envia el \textit{token} que conté al servidor. Si és vàlid i no ha expirat, pot procedir a crear la seva contrasenya mitjançant el formulari presentat a la pantalla.
         \end{enumerate}
-  \item \texttt{\textbf{RF- [1]}}: Posar a disposició de l'usuari l'opció de restablir, en cas de pèrdua, la seva contrasenya des de la pàgina de \textit{login}. El procediment ha d'utilitzar el seu correu electrònic com a punt de recuperació.
-  \item \texttt{\textbf{RF- [1]}}: Permetre als usuaris canviar la seva contrasenya àgilment, sempre i quan estiguin autenticats. Per poder-ho fer, com a mesura de seguretat també han d'indicar la contrasenya actual.
-  \item \texttt{\textbf{RF- [1]}}: L'aplicació del servidor ha d'integrar un mecanisme d'autorització per tal de restringir l'accés als \textit{endpoints} de l'API. Només han de poder utilitzar-los els usuaris que s'hagin autenticat prèviament i que, a més, tinguin permís per fer-ho, de manera que cada \textit{endpoint} sigui accessible només per a un conjunt d'usuaris concret.
+  \item \texttt{\textbf{RF-G3 [1]}}: Posar a disposició de l'usuari l'opció de restablir, en cas de pèrdua, la seva contrasenya des de la pàgina de \textit{login}. El procediment ha d'utilitzar el seu correu electrònic com a punt de recuperació.
+  \item \texttt{\textbf{RF-G4 [1]}}: Permetre als usuaris canviar la seva contrasenya àgilment, sempre i quan estiguin autenticats. Per poder-ho fer, com a mesura de seguretat també han d'indicar la contrasenya actual.
+  \item \texttt{\textbf{RF-G5 [1]}}: L'aplicació del servidor ha d'integrar un mecanisme d'autorització per tal de restringir l'accés als \textit{endpoints} de l'API. Només han de poder utilitzar-los els usuaris que s'hagin autenticat prèviament i que, a més, tinguin permís per fer-ho, de manera que cada \textit{endpoint} sigui accessible només per a un conjunt d'usuaris concret.
+  \item \texttt{\textbf{RF-G6 [2]}}: Possibilitar a tots els usuaris la consulta de les seves dades personals i del seu context.
+  \item \texttt{\textbf{RF-G7 [1]}}: Mostrar un menú que permeti a l'usuari navegar entre les diferents pàgines que exposen les funcionalitats principals corresponents al seu rol.
 \end{itemize}
 
-\subsubsection{Altres}
-\begin{itemize}
-  \item \texttt{\textbf{RF- [2]}}: Possibilitar a tots els usuaris la consulta de les seves dades personals i del seu context.
-  \item \texttt{\textbf{RF- [1]}}: Mostrar un menú que permeti a l'usuari navegar entre les diferents pàgines que exposen les funcionalitats principals corresponents al seu rol.
-\end{itemize}
 
 % ADMINISTRADORS
 \subsection{Requisits dels Administradors}
@@ -321,11 +317,11 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 \subsubsection{Plans docents}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Seleccionar un curs acadèmic i veure la informació bàsica del seu pla docent, sempre i quan ja s'hagi carregat. S'han de poder seleccionar qualsevol dels cursos acadèmics passats (que tinguin pla docent), l'actual o el següent. El període en què un curs acadèmic s'ha de considerar ``actual'' comprèn des de l'1 de juny del primer any fins el 31 de maig del segon any. No ha de poder efectuar cap acció que alteri o modifiqui dades de cursos acadèmics anteriors a l'actual.
-  \item \texttt{\textbf{RF- [1]}}: Si encara no ho ha fet, carregar el pla docent a partir d'un fitxer de dades. A la secció~\ref{sec:requisits_domini}, es concretarà el seu format i la informació que conté.
-  \item \texttt{\textbf{RF- [1]}}: Tornar a pujar el pla docent, sobreescrivint les dades del que hi havia. No obstant això, aquesta acció no ha d'alterar la feina que hagin pogut fer fins el moment els Coordinadors i els Responsables de docència envers els horaris.
-  \item \texttt{\textbf{RF- [2]}}: Esborrar definitivament el pla docent, de manera que es destrueixi tota la feina s'hagi pogut fer fins el moment envers els horaris. A mode de confirmació, ha d'entrar la seva contrasenya abans no s'executi el procediment.
-  \item \texttt{\textbf{RF- [1]}}: Modificar un cert conjunt de paràmetres del pla docent sense haver de tornar-lo a carregar:
+  \item \texttt{\textbf{RF-A1 [1]}}: Seleccionar un curs acadèmic i veure la informació bàsica del seu pla docent, sempre i quan ja s'hagi carregat. S'han de poder seleccionar qualsevol dels cursos acadèmics passats (que tinguin pla docent), l'actual o el següent. El període en què un curs acadèmic s'ha de considerar ``actual'' comprèn des de l'1 de juny del primer any fins el 31 de maig del segon any. No ha de poder efectuar cap acció que alteri o modifiqui dades de cursos acadèmics anteriors a l'actual.
+  \item \texttt{\textbf{RF-A2 [1]}}: Si encara no ho ha fet, carregar el pla docent a partir d'un fitxer de dades.
+  \item \texttt{\textbf{RF-A3 [1]}}: Tornar a pujar el pla docent, sobreescrivint les dades del que hi havia. No obstant això, aquesta acció no ha d'alterar la feina que hagin pogut fer fins el moment els Coordinadors i els Responsables de docència envers els horaris.
+  \item \texttt{\textbf{RF-A4 [2]}}: Esborrar definitivament el pla docent, de manera que es destrueixi tota la feina s'hagi pogut fer fins el moment envers els horaris. A mode de confirmació, ha d'entrar la seva contrasenya abans no s'executi el procediment.
+  \item \texttt{\textbf{RF-A5 [1]}}: Modificar un cert conjunt de paràmetres del pla docent sense haver de tornar-lo a carregar:
         \begin{itemize}
           \item Nombre d'aules habilitades de cada tipus.
           \item \ldots
@@ -334,29 +330,29 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 \subsubsection{Assignació d'aules}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [2]}}: Assignar una aula concreta a cada bloc horari que pugui realitzar-se a més d'una, a mesura que els coordinadors acabin d'elaborar els horaris que els pertoquin.
+  \item \texttt{\textbf{RF-A6 [2]}}: Assignar una aula concreta a cada bloc horari que pugui realitzar-se a més d'una, a mesura que els coordinadors acabin d'elaborar els horaris que els pertoquin.
 \end{itemize}
 
 \subsubsection{Gestió de Coordinadors}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar la llista de les assignacions de Coordinador als diferents graus del curs acadèmic.
-  \item \texttt{\textbf{RF- [1]}}: Assignar un dels Coordinadors encara no assignats a qualsevol dels graus. Per fer efectiva l'assignació, ha de confirmar-la.
-  \item \texttt{\textbf{RF- [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada grau, s'ha de proposar l'assignació del mateix Coordinador que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
-  \item \texttt{\textbf{RF- [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció ha de comportar l'eliminació de la feina que hagi realitzat el Coordinador en qüestió mentre estava assignat al grau que fos.
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar el llistat de tots els usuaris Coordinadors, juntament amb la seva informació: nom complet, adreça de correu electrònic, grau al qual està assignat aquest curs acadèmic i si està o no activat.
-  \item \texttt{\textbf{RF- [1]}}: Donar d'alta usuaris Coordinadors, és a dir, usuaris amb rol de Coordinador. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a l'apartat~\ref{ap:autenticacio_gestio_usuaris}. A més a més, ha de poder reenviar-li el correu d'activació.
-  \item \texttt{\textbf{RF- [1]}}: Donar de baixa usuaris Coordinadors, sempre i quan no estiguin assignats a cap grau del curs acadèmic actual ni del següent. No s'ha d'eliminar la feina que hagin fet als cursos acadèmics anteriors.
+  \item \texttt{\textbf{RF-A7 [1]}}: Visualitzar la llista de les assignacions de Coordinador als diferents graus del curs acadèmic.
+  \item \texttt{\textbf{RF-A8 [1]}}: Assignar un dels Coordinadors encara no assignats a qualsevol dels graus. Per fer efectiva l'assignació, ha de confirmar-la.
+  \item \texttt{\textbf{RF-A9 [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada grau, s'ha de proposar l'assignació del mateix Coordinador que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
+  \item \texttt{\textbf{RF-A10 [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció ha de comportar l'eliminació de la feina que hagi realitzat el Coordinador en qüestió mentre estava assignat al grau que fos.
+  \item \texttt{\textbf{RF-A11 [1]}}: Visualitzar el llistat de tots els usuaris Coordinadors, juntament amb la seva informació: nom complet, adreça de correu electrònic, grau al qual està assignat aquest curs acadèmic i si està o no activat.
+  \item \texttt{\textbf{RF-A12 [1]}}: Donar d'alta usuaris Coordinadors, és a dir, usuaris amb rol de Coordinador. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
+  \item \texttt{\textbf{RF-A13 [1]}}: Donar de baixa usuaris Coordinadors, sempre i quan no estiguin assignats a cap grau del curs acadèmic actual ni del següent. No s'ha d'eliminar la feina que hagin fet als cursos acadèmics anteriors.
 \end{itemize}
 
 \subsubsection{Gestió de Directors de departament}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar la llista de les assignacions de Director de departament als diferents departaments del curs acadèmic.
-  \item \texttt{\textbf{RF- [1]}}: Assignar un dels Directors encara no assignats a qualsevol dels departaments. Per fer efectiva l'assignació, ha de confirmar-la.
-  \item \texttt{\textbf{RF- [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada departament, s'ha de proposar l'assignació del mateix Director que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
-  \item \texttt{\textbf{RF- [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció no ha d'afectar els usuaris que el Director en qüestió hagi donat d'alta.
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar el llistat de tots els usuaris Directors de departament, juntament amb la seva informació: nom complet, adreça de correu electrònic, departament al qual està assignat aquest curs acadèmic i si està o no activat.
-  \item \texttt{\textbf{RF- [1]}}: Donar d'alta usuaris Directors de departament, és a dir, usuaris amb rol de Director de departament. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a l'apartat~\ref{ap:autenticacio_gestio_usuaris}. A més a més, ha de poder reenviar-li el correu d'activació.
-  \item \texttt{\textbf{RF- [1]}}: Donar de baixa usuaris Directors de departament, sempre i quan no estiguin assignats a cap departament del curs acadèmic actual ni del següent.
+  \item \texttt{\textbf{RF-A14 [1]}}: Visualitzar la llista de les assignacions de Director de departament als diferents departaments del curs acadèmic.
+  \item \texttt{\textbf{RF-A15 [1]}}: Assignar un dels Directors encara no assignats a qualsevol dels departaments. Per fer efectiva l'assignació, ha de confirmar-la.
+  \item \texttt{\textbf{RF-A16 [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada departament, s'ha de proposar l'assignació del mateix Director que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
+  \item \texttt{\textbf{RF-A17 [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció no ha d'afectar els usuaris que el Director en qüestió hagi donat d'alta.
+  \item \texttt{\textbf{RF-A18 [1]}}: Visualitzar el llistat de tots els usuaris Directors de departament, juntament amb la seva informació: nom complet, adreça de correu electrònic, departament al qual està assignat aquest curs acadèmic i si està o no activat.
+  \item \texttt{\textbf{RF-A19 [1]}}: Donar d'alta usuaris Directors de departament, és a dir, usuaris amb rol de Director de departament. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
+  \item \texttt{\textbf{RF-A20 [1]}}: Donar de baixa usuaris Directors de departament, sempre i quan no estiguin assignats a cap departament del curs acadèmic actual ni del següent.
 \end{itemize}
 
 % COORDINADORS
@@ -365,63 +361,73 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Coordinador. Cadascun dels apartats que segueixen correspon a una de les seves funcionalitats principals.
 
+\subsubsection{Horaris de graus}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels graus que gestiona.
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels graus (o cursos o quadrimestres dels graus?) que ofereixin alguna assignatura compartida amb qualsevol dels graus que gestiona.
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna de les assignatures que ofereixi qualsevol dels graus que gestiona.
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris de l'ocupació de qualsevol aula de l'escola.
-  \item \texttt{\textbf{RF- [1]}}: Carregar opcionalment uns horaris elaborats prèviament per tal d'omplir els actuals i tenir un punt de partida. Si els torna a carregar es substituiran. (Pendent escriure-ho bé + dubte fitxer horaris)
-  \item \texttt{\textbf{RF- [1]}}: Editar els horaris de cada quadrimestre dels cursos de qualsevol dels graus que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
+  \item \texttt{\textbf{RF-C1 [1]}}: Visualitzar els horaris dels graus que gestiona, separats en cursos i quadrimestres.
+  \item \texttt{\textbf{RF-C2 [1]}}: Visualitzar els horaris dels graus que ofereixin alguna assignatura compartida amb qualsevol dels graus que gestiona.
+  \item \texttt{\textbf{RF-C3 [1]}}: Carregar opcionalment uns horaris elaborats prèviament per tal d'omplir els actuals i tenir un punt de partida. Si els torna a carregar es substituiran.
+  \item \texttt{\textbf{RF-C4 [1]}}: Editar els horaris dels quadrimestres dels cursos de qualsevol dels graus que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
         \begin{itemize}
-          \item Consultar el nombre d'aules disponibles de qualsevol tipus en una franja horària de setmanes de tipus A i/o B determinada.
-          \item Seleccionar una vista setmanal per tal de visualitzar només els blocs horaris situats a un tipus de setmana concret. Les vistes setmanals són les següents:
+          \item Un cop situat un bloc horari, consultar el nombre d'aules disponibles del seu tipus restants en la franja horària en qüestió.
+          \item Seleccionar una vista setmanal per tal de visualitzar els blocs horaris situats a un tipus de setmana concret. Les vistes setmanals són les següents:
                 \begin{itemize}
                   \item Vista dels blocs horaris situats a les setmanes de tipus A.
                   \item Vista dels blocs horaris situats a les setmanes de tipus B.
-                        %\item Vista dels blocs horaris situats alhora a tots els tipus de setmana.
                   \item Vista de tots els blocs horaris, independentment del tipus de setmana en què estigui situat.
                 \end{itemize}
           \item Visualitzar els blocs horaris pendents de situar.
-
-          \item Modificar la duració de qualsevol bloc horari. Si la suma de les duracions dels blocs horaris d'un grup determinat no concorda amb la quantitat d'hores setmanals que li imposi el seu tipus, se l'avisarà.
-
           \item Situar o moure blocs horaris a franges horàries concretes del tipus de setmana que s'estigui visualitzant.
-          \item Treure blocs horaris ja situats en una franja horària, que quedaran com a ``pendents de situar''.
-          \item Crear manualment blocs horaris genèrics que no estiguin associats a cap grup de cap assignatura. Cal que n'especifiqui una duració, un títol i, opcionalment, un subtítol.
-
+          \item Treure blocs horaris ja situats en una franja horària, que quedaran com a pendents de situar.
+          \item Crear manualment blocs horaris genèrics que no estiguin associats a cap grup de cap assignatura. Cal que n'especifiqui la seva duració, descripció i tipus.
+        \end{itemize}
+  \item \texttt{\textbf{RF-C5 [2]}}: Realitzar, en cas que sigui necessari, les següents modificacions sobre els paràmetres que involucren el grau que gestiona donats (inicialment) pel pla docent, amb possibilitat de desfer-les:
+        \begin{itemize}
+          \item Modificar la duració de qualsevol bloc horari.
           \item Crear nous grups de qualsevol assignatura. Cal que n'especifiqui el tipus i el nombre de blocs horaris. A partir d'això, es crearan els corresponents blocs horaris pendents de situar.
           \item Modificar el número identificador de qualsevol dels grups de les assignatures.
           \item Modificar el nombre de blocs horaris de cada tipus de grup de qualsevol assignatura.
           \item Esborrar grups de qualsevol assignatura.
-          \item Conèixer en temps real les discrepàncies entre l'horari que estigui elaborant i el pla docent vigent, així com qualsevol incompatibilitat horària que pugui sorgir.
-
-          \item Descarregar la versió actual de qualsevol dels horaris que estigui elaborant.
         \end{itemize}
+  \item \texttt{\textbf{RF-C6 [3]}}: Descarregar la versió actual de qualsevol dels horaris que estigui elaborant.
+  \item \texttt{\textbf{RF-C7 [1]}}: Conèixer en temps real les discrepàncies entre l'horari que estigui elaborant i el pla docent vigent, així com qualsevol incompatibilitat horària que pugui sorgir.
 \end{itemize}
 
+\subsubsection{Horaris de professors}
+\begin{itemize}
+  \item \texttt{\textbf{RF-C8 [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna de les assignatures que ofereixi qualsevol dels graus que gestiona.
+\end{itemize}
+
+\subsubsection{Horaris d'aules}
+\begin{itemize}
+  \item \texttt{\textbf{RF-C9 [2]}}: Visualitzar els horaris de l'ocupació de qualsevol aula de l'escola.
+\end{itemize}
+
+
 % DIRECTORS DE DEPARTAMENT
-\subsection{Requisits dels Directors de departament} % Els departaments estan dividits en àrees. Cada àrea té un responsable de docència.
+\subsection{Requisits dels Directors de departament}
 \label{subsec:requisits_director_departament}
 
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Director de departament. Cadascun dels apartats que segueixen correspon a una de les seves funcionalitats principals.
 
 \subsubsection{Horaris de professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament i dels graus (o curs o quadrimestre del grau?) que n'ofereixin alguna.
-  \item
+  \item \texttt{\textbf{RF-D1 [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament.
+\end{itemize}
+
+\subsubsection{Horaris de graus}
+\begin{itemize}
+  \item \texttt{\textbf{RF-D2 [1]}}: Visualitzar els horaris dels graus que ofereixin alguna assignatura de qualsevol de les àrees del seu departament.
 \end{itemize}
 
 \subsubsection{Gestió de Responsables de docència}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Donar d'alta o de baixa usuaris del rol Responsable de docència que s'encarreguin de qualsevol de les àrees del seu departament, a banda de poder-ne veure el llistat i consultar-ne el perfil.
-  \item
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar la llista de les assignacions de Responsable de docència a les diferents àrees del seu departament en un curs acadèmic.
-  \item \texttt{\textbf{RF- [1]}}: Assignar un dels Responsables encara no assignats a qualsevol de les àrees del seu departament. Per fer efectiva l'assignació, ha de confirmar-la.
-  \item \texttt{\textbf{RF- [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada àrea, s'ha de proposar l'assignació del mateix Responsable que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
-  \item \texttt{\textbf{RF- [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció no ha d'afectar els usuaris que el Responsable en qüestió hagi donat d'alta.
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar el llistat de tots els usuaris Responsables de docència, juntament amb la seva informació: nom complet, adreça de correu electrònic, àrea a la qual està assignat aquest curs acadèmic i si està o no activat.
-  \item \texttt{\textbf{RF- [1]}}: Donar d'alta usuaris Responsables de docència, és a dir, usuaris amb rol de Responsable de docència. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a l'apartat~\ref{ap:autenticacio_gestio_usuaris}. A més a més, ha de poder reenviar-li el correu d'activació.
-  \item \texttt{\textbf{RF- [1]}}: Donar de baixa usuaris Responsables de docència, sempre i quan no estiguin assignats a cap àrea del curs acadèmic actual ni del següent.
+  \item \texttt{\textbf{RF-D3 [1]}}: Visualitzar la llista de les assignacions de Responsable de docència a les diferents àrees del seu departament en un curs acadèmic.
+  \item \texttt{\textbf{RF-D4 [1]}}: Assignar un conjunt de Responsables encara no assignats a qualsevol de les àrees del seu departament. Per fer efectiva l'assignació, ha de confirmar-la.
+  \item \texttt{\textbf{RF-D5 [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada àrea, s'ha de proposar l'assignació del mateix Responsable que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
+  \item \texttt{\textbf{RF-D6 [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció no ha d'afectar els usuaris que el Responsable en qüestió hagi donat d'alta.
+  \item \texttt{\textbf{RF-D7 [1]}}: Visualitzar el llistat de tots els usuaris Responsables de docència, juntament amb la seva informació: nom complet, adreça de correu electrònic, àrea a la qual està assignat aquest curs acadèmic i si està o no activat.
+  \item \texttt{\textbf{RF-D8 [1]}}: Donar d'alta usuaris Responsables de docència, és a dir, usuaris amb rol de Responsable de docència. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
+  \item \texttt{\textbf{RF-D9 [1]}}: Donar de baixa usuaris Responsables de docència, sempre i quan no estiguin assignats a cap àrea del curs acadèmic actual ni del següent.
 \end{itemize}
 
 % RESPONSABLES DE DOCÈNCIA
@@ -432,20 +438,20 @@ En aquesta subsecció, es llistaran els requisits particulars dels usuaris amb r
 
 \subsubsection{Consulta d'horaris de Professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de la seva àrea.
-  \item
+  \item \texttt{\textbf{RF-R1 [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de la seva àrea.
 \end{itemize}
 
 \subsubsection{Assignació de Professors}
-\begin{itemize} % Pot anar assignant quan els horaris encara s'estan fent
-  \item \texttt{\textbf{RF- [1]}}: Assignar un professor a cada bloc horari de cadascun dels grups de les assignatures de la seva àrea.
-  \item
+\begin{itemize}
+  \item \texttt{\textbf{RF-R2 [1]}}: Assignar un professor a cada bloc horari de cadascun dels grups de les assignatures de la seva àrea.
+  \item \texttt{\textbf{RF-R3 [1]}}: Conèixer en temps real les incompatibilitats horàries que puguin sorgir mentre duu a terme les assignacions de professors.
 \end{itemize}
 
 \subsubsection{Gestió de Professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Donar d'alta o de baixa usuaris del rol Professor que hagin d'impartir docència a alguna de les assignatures de la seva àrea, a banda de poder-ne veure el llistat i consultar-ne el perfil.
-  \item
+  \item \texttt{\textbf{RF-R4 [1]}}: Visualitzar el llistat de tots els usuaris Professors que hagin d'impartir docència a alguna de les assignatures de la seva àrea, juntament amb la seva informació: nom complet, adreça de correu electrònic, graus que ofereixin alguna de les assignatures en què imparteix docència i si està o no activat.
+  \item \texttt{\textbf{RF-R5 [1]}}: Donar d'alta usuaris Professors, és a dir, usuaris amb rol de Professor. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
+  \item \texttt{\textbf{RF-R6 [1]}}: Donar de baixa usuaris Professors. Aquesta acció ha d'esborrar les seves possibles assignacions a blocs horaris.
 \end{itemize}
 
 % PROFESSORS
@@ -456,20 +462,17 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 \subsubsection{Consulta d'horaris propis}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els seus propis horaris, és a dir, els blocs horaris que li han estat assignats.
-  \item
+  \item \texttt{\textbf{RF-P1 [1]}}: Visualitzar els seus propis horaris, és a dir, els blocs horaris que li han estat assignats.
 \end{itemize}
 
 \subsubsection{Consulta d'horaris d'assignatures}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [1]}}: Visualitzar els horaris de les assignatures a les quals imparteixi docència.
-  \item
+  \item \texttt{\textbf{RF-P2 [1]}}: Visualitzar els horaris de les assignatures a les quals imparteixi docència.
 \end{itemize}
 
 \subsubsection{Consulta d'horaris de graus}
 \begin{itemize}
-  \item \texttt{\textbf{RF- [2]}}: Visualitzar els horaris dels graus que ofereixin alguna de les assignatures en què imparteixi docència.
-  \item
+  \item \texttt{\textbf{RF-P3 [2]}}: Visualitzar els horaris dels graus que ofereixin alguna de les assignatures en què imparteixi docència.
 \end{itemize}
 
 \section{Requisits no funcionals}
@@ -486,32 +489,48 @@ En aquesta secció, es llistaran els requisits no funcionals del sistema.
   \item \texttt{\textbf{RNF-5 [1]}}: L'aplicació ha de proporcionar accés als manuals d'usuari de l'aplicació, així com a la informació de contacte i als aspectes legals.
 \end{itemize}
 
-
 \section{Requisits de domini}
 \label{sec:requisits_domini}
 
 En aquesta secció, es llistaran els requisits de domini del sistema.
 
 \begin{itemize}
-  \item \texttt{\textbf{RD-1 [1]}}: El format del fitxer que conté les dades del pla docent d'un curs acadèmic està fixat per l'escola. Es tracta d'un fitxer en format \emph{xlsx} (Microsoft Excel). A continuació se'n detalla l'estructura:
-        \begin{itemize}
-          \item Full 1: Aquest full conté \ldots
-                \begin{itemize}
-                  \item Columna 1: X. Aquesta columna \ldots
-                  \item Columna \ldots
-                \end{itemize}
-          \item Full \ldots
-        \end{itemize}
-  \item \texttt{\textbf{RD-2 [1]}}: El format del fitxer de sortida dels horaris elaborats és \ldots
+  \item \texttt{\textbf{RD-1 [1]}}: El format del fitxer que conté les dades del pla docent d'un curs acadèmic està fixat per l'escola. Es tracta d'un fitxer en format \emph{xlsx} (Microsoft Excel).
+  %\item \texttt{\textbf{RD-2 [1]}}: El format del fitxer de sortida dels horaris elaborats és \ldots
 \end{itemize}
 
 \section{Matriu de dependències}
 \label{sec:matriu_dependencies}
 
+En aquesta secció, es dibuixarà/representarà la matriu de dependències dels requisits. D'aquesta manera, es podran identificar els requisits funcionals que necessitin l'implementació d'altres per poder-se dur a terme.
+
+El format que adoptarà cadascuna de les dependències es defineix a continuació:
+\\[8pt]
+\centerline{(\texttt{\textbf{RF-X, RF-Y, \ldots}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-P, RF-Q, \ldots}})}
+
+És a dir, la llista de requisits de la part anterior de la fletxa depèn de la de la part posterior.
+
+La matriu de depedències completa és la següent:
+
+\begin{itemize}
+  \item (\texttt{\textbf{RF-G4}}, \texttt{\textbf{RF-G6}}, \texttt{\textbf{RF-G7}}, \texttt{\textbf{RF-A2}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-G1}})
+  \item (\texttt{\textbf{RF-A1}}, \texttt{\textbf{RF-A3}}, \texttt{\textbf{RF-A4}}, \texttt{\textbf{RF-A5}}, \texttt{\textbf{RF-A6}}, \texttt{\textbf{RF-A9}}, \texttt{\textbf{RF-A12}}, \texttt{\textbf{RF-A16}}, \texttt{\textbf{RF-A19}}, \texttt{\textbf{RF-D5}}, \texttt{\textbf{RF-D8}}, \texttt{\textbf{RF-R5}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A2}})
+  \item (\texttt{\textbf{RF-C9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A6}})
+  \item (\texttt{\textbf{RF-A7}}, \texttt{\textbf{RF-A10}}, \texttt{\textbf{RF-C3}}, \texttt{\textbf{RF-C4}}, \texttt{\textbf{RF-C5}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A8}})
+  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-A8}}, \texttt{\textbf{RF-A11}}, \texttt{\textbf{RF-A13}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A12}})
+  \item (\texttt{\textbf{RF-A14}}, \texttt{\textbf{RF-A17}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A15}})
+  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-A15}}, \texttt{\textbf{RF-A18}}, \texttt{\textbf{RF-A20}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A19}})
+  \item (\texttt{\textbf{RF-A6}, \texttt{\textbf{RF-C1}}, \texttt{\textbf{RF-C2}}, \texttt{\textbf{RF-C6}}, \texttt{\textbf{RF-C7}}, \texttt{\textbf{RF-D2}}, \texttt{\textbf{RF-R1}}, \texttt{\textbf{RF-R2}}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-C4}})
+  \item (\texttt{\textbf{RF-D3}}, \texttt{\textbf{RF-D6}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-D4}})
+  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-D4}}, \texttt{\textbf{RF-D7}}, \texttt{\textbf{RF-D9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-D8}})
+  \item (\texttt{\textbf{RF-C8}}, \texttt{\textbf{RF-D1}}, \texttt{\textbf{RF-R3}}, \texttt{\textbf{RF-P1}}, \texttt{\textbf{RF-P2}}, \texttt{\textbf{RF-P3}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-R2}})
+  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-R4}}, \texttt{\textbf{RF-R6}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-R5}})
+\end{itemize}
 
 \chapter{Planificació}  % Ordre canviat. Ordre antic: Planificació --> Marc de treball --> Requisits
 \label{cap:planificacio}
 
+\section{Organització de tasques}
 
 
 \chapter{Estudi i decisions}
@@ -533,10 +552,181 @@ Tecnologies:
 \chapter{Anàlisi i disseny del sistema}
 \label{cap:analisi}
 
+\section{Interfícies d'usuari}
+\label{sec:interficies_usuari}
+
+En aquesta secció, 
+
+\subsection{Interfícies de \textit{login}}
+\label{subsec:interficies_login}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/login/login.png}
+	\caption{\label{img:login}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablishment.png}
+	\caption{\label{img:passwordRestablishment}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablished.png}
+	\caption{\label{img:passwordRestablished}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/login/newPassword.png}
+	\caption{\label{img:newPassword}Text}
+\end{figure}
+
+\FloatBarrier
+\subsection{Interfícies pels Administradors}
+\label{subsec:interficies_administradors}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainNoCarregat.png}
+	\caption{\label{img:plansDocents_mainNoCarregat}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainCarregat.png}
+	\caption{\label{img:plansDocents_mainCarregat}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/aulesDialog.png}
+	\caption{\label{img:plansDocents_aulesDialog}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/carregarDialog.png}
+	\caption{\label{img:plansDocents_carregarDialog}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/esborrarBox.png}
+	\caption{\label{img:plansDocents_esborrarBox}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/confirmarEsborrarBox.png}
+	\caption{\label{img:plansDocents_confirmarEsborrarBox}Text}
+\end{figure}
+
+%----------------------------
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/administradors/gestCoords/main.png}
+	\caption{\label{img:gestCoords_main}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.4]{assets/interfaces/administradors/gestCoords/confirmarBox.png}
+	\caption{\label{img:gestCoords_confirmarBox}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.4]{assets/interfaces/administradors/gestCoords/confirmarEsborrarBox.png}
+	\caption{\label{img:gestCoords_confirmarEsborrarBox}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/administradors/gestCoords/gestUsuarisDialog.png}
+	\caption{\label{img:gestCoords_gestUsuarisDialog}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.4]{assets/interfaces/administradors/gestCoords/nouUsuariDialog.png}
+	\caption{\label{img:gestCoords_nouUsuariDialog}Text}
+\end{figure}
+
+
+%----------------------------
+
+
+
+\FloatBarrier
+\subsection{Interfícies pels Coordinadors}
+\label{subsec:interficies_coordinadors}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/selHorari.png}
+	\caption{\label{img:horarisGraus_selHorari}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/visualitzacio.png}
+	\caption{\label{img:horarisGraus_visualitzacio}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/edicio.png}
+	\caption{\label{img:horarisGraus_edicio}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisProfessors/main.png}
+	\caption{\label{img:horarisProfessors_main}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisAules/main.png}
+	\caption{\label{img:horarisAules_main}Text}
+\end{figure}
+
+
+\FloatBarrier
+\subsection{Interfícies pels Directors de Departament}
+\label{subsec:interficies_directors}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/directors/gestResp/main.png}
+	\caption{\label{img:gestResp_main}Text}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.3]{assets/interfaces/directors/gestResp/assignDialog.png}
+	\caption{\label{img:gestResp_assignDialog}Text}
+\end{figure}
+
+\FloatBarrier
+\subsection{Interfícies pels Responsables de Docècia}
+\label{subsec:interficies_responsables}
+
+
+\FloatBarrier
+\subsection{Interfícies pels Professors}
+\label{subsec:interficies_professors}
+
 
 
 \chapter{Implementació i proves}
 \label{cap:implementacio}
+
+
 
 
 
@@ -545,8 +735,12 @@ Tecnologies:
 
 
 
+
+
 \chapter{Conclusions}
 \label{cap:conclusions}
+
+
 
 
 
