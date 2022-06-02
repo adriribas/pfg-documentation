@@ -4,6 +4,21 @@
 \usepackage{parskip}
 \usepackage{beramono}
 \usepackage[section]{placeins}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage[labelfont=bf]{caption}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+
+\definecolor{Gray}{HTML}{E2E2E2}
+\definecolor{Green}{HTML}{D5E8D4}
+\definecolor{Blue}{HTML}{DAE8FC}
+\definecolor{Orange}{HTML}{FFE6CC}
+\definecolor{Purple}{HTML}{E1D5E7}
+
 
 \begin{document}
 
@@ -19,7 +34,7 @@
         \hline
         \\
         \includegraphics[scale=0.9]{/assets/logos/EPS.png}                                 \\[0.7cm]
-        \centerline{Projecte fi de grau}                                                   \\[1cm]
+        \centerline{Projecte de fi de grau}                                                \\[1cm]
         \hline
         \\
         \textbf{Estudi}: Grau en Enginyeria Informàtica                                    \\[0.7cm]
@@ -127,7 +142,7 @@ Al capítol~\ref{cap:marcdetreball} es descriurà amb més profunditat com funci
 
 En aquesta secció, s'exposarà el propòsit general del projecte, tenint en compte els antecedents vists a la secció~\ref{sec:antecedents}.
 
-En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per a la gent que se n'ocupa. És per això que la Dra. Marta Fort Masdevall, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau que té la finalitat de trobar una solució al problema.
+En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per a la gent que se n'ocupa. És per això que Marta Fort Masdevall, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau que té la finalitat de trobar una solució al problema.
 
 El propòsit és desenvolupar una eina de suport informàtic que permeti a l'usuari elaborar horaris de forma àgil, eficient i segura. L'eina també hauria de ser capaç de comprovar automàticament la disponibilitat de les aules, les incompatibilitats horàries dels professors i la concordança entre les assignatures i el nombre de grups previstos. A més a més, hauria d'oferir diverses vistes per tal que l'usuari pugui visualitzar la informació, com ara:
 \begin{itemize}
@@ -138,10 +153,10 @@ El propòsit és desenvolupar una eina de suport informàtic que permeti a l'usu
 
 També es planteja la possibilitat de disposar d'un sistema de control d'usuaris. Cada usuari tindria assignat un conjunt de rols determinat. Els rols representarien els diferents càrrecs del personal de l'EPS en matèria de gestió d'horaris. Així doncs, cada usuari podria executar les accions i consultar la informació que el seu conjunt de rols li permeti. D'aquesta manera, es dividirien les diferents tasques i processos entre rols d'usuari i cadascun dels càrrecs podria realitzar la feina que li correspon. La proposta inicial comprèn els rols d'usuari següents:
 \begin{itemize}
-  \item \texttt{Administrador}: Introdueix les aules i els grups previstos.
+  \item \texttt{Administrador}: Introdueix les dades dels plans docents i dóna d'alta Coordinadors i Directors de departament.
   \item \texttt{Coordinador}: Elabora els horaris.
-  \item \texttt{Director de departament}: Dóna d'alta responsables de docència.
-  \item \texttt{Responsable de docència}: Dóna d'alta i assigna professors als grups.
+  \item \texttt{Director de departament}: Dóna d'alta Responsables de docència.
+  \item \texttt{Responsable de docència}: Dóna d'alta i assigna Professors als grups.
   \item \texttt{Professor}: Visualitza el seu horari.
 \end{itemize}
 
@@ -299,13 +314,16 @@ En aquesta subsecció, es llistaran els requisits funcionals generals del sistem
         \begin{enumerate}
           \item L'usuari que registra introdueix les dades de l'usuari que vol donar d'alta, entre les quals consta la seva adreça de correu electrònic. A continuació, l'usuari es crea però amb l'estat de ``desactivat''.
           \item El nou usuari rep un \textit{email} de confirmació amb un enllaç. Mentrestant, no pot autenticar-se a l'aplicació, ja que encara està desactivat.
-          \item Un cop l'usuari accedeix a l'enllaç, envia el \textit{token} que conté al servidor. Si és vàlid i no ha expirat, pot procedir a crear la seva contrasenya mitjançant el formulari presentat a la pantalla.
+          \item Un cop l'usuari accedeix a l'enllaç, envia el \textit{token} que conté al servidor. Si és vàlid i no ha expirat, pot procedir a crear la seva contrasenya mitjançant el formulari presentat a la pantalla. La contrasenya s'emmagatzema encriptada.
         \end{enumerate}
   \item \texttt{\textbf{RF-G3 [1]}}: Posar a disposició de l'usuari l'opció de restablir, en cas de pèrdua, la seva contrasenya des de la pàgina de \textit{login}. El procediment ha d'utilitzar el seu correu electrònic com a punt de recuperació.
   \item \texttt{\textbf{RF-G4 [1]}}: Permetre als usuaris canviar la seva contrasenya àgilment, sempre i quan estiguin autenticats. Per poder-ho fer, com a mesura de seguretat també han d'indicar la contrasenya actual.
   \item \texttt{\textbf{RF-G5 [1]}}: L'aplicació del servidor ha d'integrar un mecanisme d'autorització per tal de restringir l'accés als \textit{endpoints} de l'API. Només han de poder utilitzar-los els usuaris que s'hagin autenticat prèviament i que, a més, tinguin permís per fer-ho, de manera que cada \textit{endpoint} sigui accessible només per a un conjunt d'usuaris concret.
   \item \texttt{\textbf{RF-G6 [2]}}: Possibilitar a tots els usuaris la consulta de les seves dades personals i del seu context.
   \item \texttt{\textbf{RF-G7 [1]}}: Mostrar un menú que permeti a l'usuari navegar entre les diferents pàgines que exposen les funcionalitats principals corresponents al seu rol.
+  \item \texttt{\textbf{RF-G8 [1]}}: Totes les pàgines de l'aplicació han de permetre la selecció del curs acadèmic al qual l'usuari es vol situar. S'han de poder seleccionar qualsevol dels cursos acadèmics passats (que tinguin pla docent), l'actual o el següent. No obstant això, només ha de ser modificable la informació de l'actual i del següent, a excepció de l'anterior, que ha de seguir essent modificable fins el proper 30 de juny. Per exemple, la informació relacionada amb el curs acadèmic 2021 - 2022 ha de ser modificable fins el 30 de juny de 2022.
+  \item \texttt{\textbf{RF-G9 [1]}}: Els registres de la base de dades no s'han d'esborrar definitivament. En comptes d'això, tots han de tenir un camp que guardi la data en què han estat eliminats, si és que s'han eliminat. Si no ho estan, aquest camp ha de ser nul.
+  \item \texttt{\textbf{RF-G10 [1]}}: Per no desaprofitar espai de la memòria, una vegada la informació d'un curs acadèmic ja no es pugui modificar, s'esborraran definitivament tots els registres que tinguin data d'eliminació no nul·la de la base de dades en què està continguda.
 \end{itemize}
 
 
@@ -315,22 +333,22 @@ En aquesta subsecció, es llistaran els requisits funcionals generals del sistem
 
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol d'Administrador. Cadascun dels apartats que segueixen correspon a una de les seves funcionalitats principals.
 
-\subsubsection{Plans docents}
+\subsubsection{Gestió de plans docents}
 \begin{itemize}
-  \item \texttt{\textbf{RF-A1 [1]}}: Seleccionar un curs acadèmic i veure la informació bàsica del seu pla docent, sempre i quan ja s'hagi carregat. S'han de poder seleccionar qualsevol dels cursos acadèmics passats (que tinguin pla docent), l'actual o el següent. El període en què un curs acadèmic s'ha de considerar ``actual'' comprèn des de l'1 de juny del primer any fins el 31 de maig del segon any. No ha de poder efectuar cap acció que alteri o modifiqui dades de cursos acadèmics anteriors a l'actual.
+  \item \texttt{\textbf{RF-A1 [1]}}: Seleccionar un curs acadèmic i veure la informació bàsica del seu pla docent, sempre i quan ja s'hagi carregat. S'han de poder seleccionar qualsevol dels cursos acadèmics passats (que tinguin pla docent), l'actual o el següent. El període en què un curs acadèmic s'ha de considerar ``actual'' comprèn des de l'1 de juny del primer any fins el 30 d'abril del segon any. Malgrat això, podrà realitzar modificacions als No ha de poder efectuar cap acció que alteri o modifiqui dades de cursos acadèmics anteriors a l'actual. Marcar un curs acadèmic com a ``actual'', sempre i quan ja tingui un pla docent carregat.
   \item \texttt{\textbf{RF-A2 [1]}}: Si encara no ho ha fet, carregar el pla docent a partir d'un fitxer de dades.
-  \item \texttt{\textbf{RF-A3 [1]}}: Tornar a pujar el pla docent, sobreescrivint les dades del que hi havia. No obstant això, aquesta acció no ha d'alterar la feina que hagin pogut fer fins el moment els Coordinadors i els Responsables de docència envers els horaris.
-  \item \texttt{\textbf{RF-A4 [2]}}: Esborrar definitivament el pla docent, de manera que es destrueixi tota la feina s'hagi pogut fer fins el moment envers els horaris. A mode de confirmació, ha d'entrar la seva contrasenya abans no s'executi el procediment.
+  \item \texttt{\textbf{RF-A3 [1]}}: Tornar a pujar el pla docent. A mode de confirmació, ha d'entrar la seva contrasenya abans no s'executi el procediment.
+  \item \texttt{\textbf{RF-A4 [2]}}: Esborrar el pla docent. A mode de confirmació, ha d'entrar la seva contrasenya abans no s'executi el procediment.
   \item \texttt{\textbf{RF-A5 [1]}}: Modificar un cert conjunt de paràmetres del pla docent sense haver de tornar-lo a carregar:
         \begin{itemize}
           \item Nombre d'aules habilitades de cada tipus.
-          \item \ldots
+          \item Nombre de grups de qualsevol assignatura.
         \end{itemize}
 \end{itemize}
 
 \subsubsection{Assignació d'aules}
 \begin{itemize}
-  \item \texttt{\textbf{RF-A6 [2]}}: Assignar una aula concreta a cada bloc horari que pugui realitzar-se a més d'una, a mesura que els coordinadors acabin d'elaborar els horaris que els pertoquin.
+  \item \texttt{\textbf{RF-A6 [2]}}: Assignar una aula concreta a cada bloc horari que pugui realitzar-se a més d'una, a mesura que els Coordinadors acabin d'elaborar els horaris que els pertoquin.
 \end{itemize}
 
 \subsubsection{Gestió de Coordinadors}
@@ -338,10 +356,10 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
   \item \texttt{\textbf{RF-A7 [1]}}: Visualitzar la llista de les assignacions de Coordinador als diferents graus del curs acadèmic.
   \item \texttt{\textbf{RF-A8 [1]}}: Assignar un dels Coordinadors encara no assignats a qualsevol dels graus. Per fer efectiva l'assignació, ha de confirmar-la.
   \item \texttt{\textbf{RF-A9 [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada grau, s'ha de proposar l'assignació del mateix Coordinador que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
-  \item \texttt{\textbf{RF-A10 [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció ha de comportar l'eliminació de la feina que hagi realitzat el Coordinador en qüestió mentre estava assignat al grau que fos.
+  \item \texttt{\textbf{RF-A10 [1]}}: Eliminar qualsevol de les assignacions ja confirmades.
   \item \texttt{\textbf{RF-A11 [1]}}: Visualitzar el llistat de tots els usuaris Coordinadors, juntament amb la seva informació: nom complet, adreça de correu electrònic, grau al qual està assignat aquest curs acadèmic i si està o no activat.
   \item \texttt{\textbf{RF-A12 [1]}}: Donar d'alta usuaris Coordinadors, és a dir, usuaris amb rol de Coordinador. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
-  \item \texttt{\textbf{RF-A13 [1]}}: Donar de baixa usuaris Coordinadors, sempre i quan no estiguin assignats a cap grau del curs acadèmic actual ni del següent. No s'ha d'eliminar la feina que hagin fet als cursos acadèmics anteriors.
+  \item \texttt{\textbf{RF-A13 [1]}}: Donar de baixa usuaris Coordinadors. No s'ha d'eliminar la feina que hagin fet als cursos acadèmics anteriors.
 \end{itemize}
 
 \subsubsection{Gestió de Directors de departament}
@@ -352,7 +370,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
   \item \texttt{\textbf{RF-A17 [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció no ha d'afectar els usuaris que el Director en qüestió hagi donat d'alta.
   \item \texttt{\textbf{RF-A18 [1]}}: Visualitzar el llistat de tots els usuaris Directors de departament, juntament amb la seva informació: nom complet, adreça de correu electrònic, departament al qual està assignat aquest curs acadèmic i si està o no activat.
   \item \texttt{\textbf{RF-A19 [1]}}: Donar d'alta usuaris Directors de departament, és a dir, usuaris amb rol de Director de departament. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
-  \item \texttt{\textbf{RF-A20 [1]}}: Donar de baixa usuaris Directors de departament, sempre i quan no estiguin assignats a cap departament del curs acadèmic actual ni del següent.
+  \item \texttt{\textbf{RF-A20 [1]}}: Donar de baixa usuaris Directors de departament.
 \end{itemize}
 
 % COORDINADORS
@@ -361,12 +379,12 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Coordinador. Cadascun dels apartats que segueixen correspon a una de les seves funcionalitats principals.
 
-\subsubsection{Horaris de graus}
+\subsubsection{Gestió d'horaris de graus}
 \begin{itemize}
-  \item \texttt{\textbf{RF-C1 [1]}}: Visualitzar els horaris dels graus que gestiona, separats en cursos i quadrimestres.
-  \item \texttt{\textbf{RF-C2 [1]}}: Visualitzar els horaris dels graus que ofereixin alguna assignatura compartida amb qualsevol dels graus que gestiona.
+  \item \texttt{\textbf{RF-C1 [1]}}: Visualitzar els horaris del grau que gestiona, separats en cursos i quadrimestres.
+  \item \texttt{\textbf{RF-C2 [1]}}: Visualitzar els horaris dels graus que ofereixin alguna assignatura compartida amb el grau que gestiona.
   \item \texttt{\textbf{RF-C3 [1]}}: Carregar opcionalment uns horaris elaborats prèviament per tal d'omplir els actuals i tenir un punt de partida. Si els torna a carregar es substituiran.
-  \item \texttt{\textbf{RF-C4 [1]}}: Editar els horaris dels quadrimestres dels cursos de qualsevol dels graus que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
+  \item \texttt{\textbf{RF-C4 [1]}}: Editar els horaris dels quadrimestres de qualsevol dels cursos del grau que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
         \begin{itemize}
           \item Un cop situat un bloc horari, consultar el nombre d'aules disponibles del seu tipus restants en la franja horària en qüestió.
           \item Seleccionar una vista setmanal per tal de visualitzar els blocs horaris situats a un tipus de setmana concret. Les vistes setmanals són les següents:
@@ -383,21 +401,19 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
   \item \texttt{\textbf{RF-C5 [2]}}: Realitzar, en cas que sigui necessari, les següents modificacions sobre els paràmetres que involucren el grau que gestiona donats (inicialment) pel pla docent, amb possibilitat de desfer-les:
         \begin{itemize}
           \item Modificar la duració de qualsevol bloc horari.
-          \item Crear nous grups de qualsevol assignatura. Cal que n'especifiqui el tipus i el nombre de blocs horaris. A partir d'això, es crearan els corresponents blocs horaris pendents de situar.
           \item Modificar el número identificador de qualsevol dels grups de les assignatures.
           \item Modificar el nombre de blocs horaris de cada tipus de grup de qualsevol assignatura.
-          \item Esborrar grups de qualsevol assignatura.
         \end{itemize}
   \item \texttt{\textbf{RF-C6 [3]}}: Descarregar la versió actual de qualsevol dels horaris que estigui elaborant.
   \item \texttt{\textbf{RF-C7 [1]}}: Conèixer en temps real les discrepàncies entre l'horari que estigui elaborant i el pla docent vigent, així com qualsevol incompatibilitat horària que pugui sorgir.
 \end{itemize}
 
-\subsubsection{Horaris de professors}
+\subsubsection{Consulta d'horaris de Professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF-C8 [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna de les assignatures que ofereixi qualsevol dels graus que gestiona.
+  \item \texttt{\textbf{RF-C8 [1]}}: Visualitzar els horaris dels Professors que imparteixin docència a alguna de les assignatures que ofereixi el grau que gestiona.
 \end{itemize}
 
-\subsubsection{Horaris d'aules}
+\subsubsection{Consulta d'horaris d'aules}
 \begin{itemize}
   \item \texttt{\textbf{RF-C9 [2]}}: Visualitzar els horaris de l'ocupació de qualsevol aula de l'escola.
 \end{itemize}
@@ -409,12 +425,12 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Director de departament. Cadascun dels apartats que segueixen correspon a una de les seves funcionalitats principals.
 
-\subsubsection{Horaris de professors}
+\subsubsection{Consulta d'horaris de Professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF-D1 [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament.
+  \item \texttt{\textbf{RF-D1 [1]}}: Visualitzar els horaris dels Professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament.
 \end{itemize}
 
-\subsubsection{Horaris de graus}
+\subsubsection{Consulta d'horaris de graus}
 \begin{itemize}
   \item \texttt{\textbf{RF-D2 [1]}}: Visualitzar els horaris dels graus que ofereixin alguna assignatura de qualsevol de les àrees del seu departament.
 \end{itemize}
@@ -427,7 +443,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
   \item \texttt{\textbf{RF-D6 [1]}}: Eliminar qualsevol de les assignacions ja confirmades. Aquesta acció no ha d'afectar els usuaris que el Responsable en qüestió hagi donat d'alta.
   \item \texttt{\textbf{RF-D7 [1]}}: Visualitzar el llistat de tots els usuaris Responsables de docència, juntament amb la seva informació: nom complet, adreça de correu electrònic, àrea a la qual està assignat aquest curs acadèmic i si està o no activat.
   \item \texttt{\textbf{RF-D8 [1]}}: Donar d'alta usuaris Responsables de docència, és a dir, usuaris amb rol de Responsable de docència. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
-  \item \texttt{\textbf{RF-D9 [1]}}: Donar de baixa usuaris Responsables de docència, sempre i quan no estiguin assignats a cap àrea del curs acadèmic actual ni del següent.
+  \item \texttt{\textbf{RF-D9 [1]}}: Donar de baixa usuaris Responsables de docència.
 \end{itemize}
 
 % RESPONSABLES DE DOCÈNCIA
@@ -438,13 +454,13 @@ En aquesta subsecció, es llistaran els requisits particulars dels usuaris amb r
 
 \subsubsection{Consulta d'horaris de Professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF-R1 [1]}}: Visualitzar els horaris dels professors que imparteixin docència a alguna assignatura de la seva àrea.
+  \item \texttt{\textbf{RF-R1 [1]}}: Visualitzar els horaris dels Professors que imparteixin docència a alguna assignatura de la seva àrea.
 \end{itemize}
 
 \subsubsection{Assignació de Professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF-R2 [1]}}: Assignar un professor a cada bloc horari de cadascun dels grups de les assignatures de la seva àrea.
-  \item \texttt{\textbf{RF-R3 [1]}}: Conèixer en temps real les incompatibilitats horàries que puguin sorgir mentre duu a terme les assignacions de professors.
+  \item \texttt{\textbf{RF-R2 [1]}}: Assignar un Professor a cada bloc horari de cadascun dels grups de les assignatures de la seva àrea.
+  \item \texttt{\textbf{RF-R3 [1]}}: Conèixer en temps real les incompatibilitats horàries que puguin sorgir mentre duu a terme les assignacions de Professors.
 \end{itemize}
 
 \subsubsection{Gestió de Professors}
@@ -481,7 +497,7 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 En aquesta secció, es llistaran els requisits no funcionals del sistema.
 
 \begin{itemize}
-  \item \texttt{\textbf{RNF-1 [1]}}: El client de l'aplicació ha d'executar-se sobre un entorn web i ha de ser suportat pels principals navegadors web. S'ha de poder comunicar amb el procés del servidor mitjançant crides HTTP a l'API del servidor.
+  \item \texttt{\textbf{RNF-1 [1]}}: El client de l'aplicació ha d'executar-se sobre un entorn web i ha de ser suportat pels principals navegadors web. S'ha de poder comunicar amb el procés del servidor mitjançant crides HTTPS a l'API del servidor.
   \item \texttt{\textbf{RNF-2 [1]}}: La part de gestió i persistència de dades ha de ser administrada per l'aplicació del servidor, que ha d'exposar una RESTful API. Aquest procés ha de comunicar-se amb els Sistemes Gestors de Bases de Dades escollits per allotjar la informació del projecte.
 
   \item \texttt{\textbf{RNF-3 [1]}}: Senzilla de fer servir. Formació X dies.
@@ -513,24 +529,642 @@ El format que adoptarà cadascuna de les dependències es defineix a continuaci�
 La matriu de depedències completa és la següent:
 
 \begin{itemize}
-  \item (\texttt{\textbf{RF-G4}}, \texttt{\textbf{RF-G6}}, \texttt{\textbf{RF-G7}}, \texttt{\textbf{RF-A2}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-G1}})
+  \item (\texttt{\textbf{RF-G4}}, \texttt{\textbf{RF-G6}}, \texttt{\textbf{RF-G7}}, \texttt{\textbf{RF-G8}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-G1}})
+  \item (\texttt{\textbf{RF-A2}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-G8}})
+  \item (\texttt{\textbf{RF-G10}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-G9}})
   \item (\texttt{\textbf{RF-A1}}, \texttt{\textbf{RF-A3}}, \texttt{\textbf{RF-A4}}, \texttt{\textbf{RF-A5}}, \texttt{\textbf{RF-A6}}, \texttt{\textbf{RF-A9}}, \texttt{\textbf{RF-A12}}, \texttt{\textbf{RF-A16}}, \texttt{\textbf{RF-A19}}, \texttt{\textbf{RF-D5}}, \texttt{\textbf{RF-D8}}, \texttt{\textbf{RF-R5}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A2}})
   \item (\texttt{\textbf{RF-C9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A6}})
   \item (\texttt{\textbf{RF-A7}}, \texttt{\textbf{RF-A10}}, \texttt{\textbf{RF-C3}}, \texttt{\textbf{RF-C4}}, \texttt{\textbf{RF-C5}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A8}})
-  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-A8}}, \texttt{\textbf{RF-A11}}, \texttt{\textbf{RF-A13}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A12}})
+  \item (\texttt{\textbf{RF-A8}}, \texttt{\textbf{RF-A11}}, \texttt{\textbf{RF-A13}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A12}})
   \item (\texttt{\textbf{RF-A14}}, \texttt{\textbf{RF-A17}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A15}})
-  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-A15}}, \texttt{\textbf{RF-A18}}, \texttt{\textbf{RF-A20}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A19}})
+  \item (\texttt{\textbf{RF-A15}}, \texttt{\textbf{RF-A18}}, \texttt{\textbf{RF-A20}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-A19}})
   \item (\texttt{\textbf{RF-A6}, \texttt{\textbf{RF-C1}}, \texttt{\textbf{RF-C2}}, \texttt{\textbf{RF-C6}}, \texttt{\textbf{RF-C7}}, \texttt{\textbf{RF-D2}}, \texttt{\textbf{RF-R1}}, \texttt{\textbf{RF-R2}}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-C4}})
   \item (\texttt{\textbf{RF-D3}}, \texttt{\textbf{RF-D6}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-D4}})
-  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-D4}}, \texttt{\textbf{RF-D7}}, \texttt{\textbf{RF-D9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-D8}})
+  \item (\texttt{\textbf{RF-D4}}, \texttt{\textbf{RF-D7}}, \texttt{\textbf{RF-D9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-D8}})
   \item (\texttt{\textbf{RF-C8}}, \texttt{\textbf{RF-D1}}, \texttt{\textbf{RF-R3}}, \texttt{\textbf{RF-P1}}, \texttt{\textbf{RF-P2}}, \texttt{\textbf{RF-P3}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-R2}})
-  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}, \texttt{\textbf{RF-R4}}, \texttt{\textbf{RF-R6}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-R5}})
+  \item (\texttt{\textbf{RF-R4}}, \texttt{\textbf{RF-R6}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{RF-R5}})
 \end{itemize}
 
 \chapter{Planificació}  % Ordre canviat. Ordre antic: Planificació --> Marc de treball --> Requisits
 \label{cap:planificacio}
 
-\section{Organització de tasques}
+\section{Descomposició i planificació de tasques}
+\label{sec:descomposicio_planificacio_tasques}
+
+En aquesta secció, es durà a terme una descomposició del projecte en paquets de treball per tal d'organitzar i planificar totes les tasques que s'hi involucren.
+
+Primerament, es definirà un esquema arbòric que representi les diferents parts que conformen el projecte des d'una visió generalista.
+
+Tot seguit, es profunditzarà en cadascuna de les branques d'aquest arbre general i es determinaran els diversos paquets de treball que les formen. Degut a la grandària d'alguna de les branques, és possible que en alguns casos siguin necessaries més descomposicions.
+
+Cada paquet de treball contindrà la següent informació:
+\begin{itemize}
+  \item \textbf{Identificador}: Codi que servirà per referir-se al paquet en seccions posteriors.
+  \item \textbf{Nom}: Nom que se li haurà donat al paquet als esquemes arbòrics.
+  \item \textbf{Descripció}: Descripció breu del paquet.
+  \item \textbf{Tasques}: Conjunt de tasques que s'han de realitzar en el paquet.
+  \item \textbf{Temporalització}: Estimació del temps que es necessitarà per completar les tasques del paquet.
+  \item \textbf{Lliurable}: Resultat palpable que s'obtindrà un cop completades les tasques del paquet.
+\end{itemize}
+
+\subsection{Visió general}
+\label{subsec:visio_general}
+
+En aquesta subsecció, es mostrarà la descomposició general de les tasques del projecte en branques, la qual es pot veure a continuació:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/working_packages/general.pdf}
+	\caption{\label{img:pt_general}Descomposició general de les tasques del projecte}
+\end{figure}
+
+\subsection{Gestió i anàlisi del projecte}
+\label{subsec:gestio_projecte}
+
+En aquesta subsecció, s'exposaran els paquets de treball que formen part de la branca de planificació \emph{Gestió i anàlisi del projecte}, la qual es pot tornar a veure a l'esquema següent:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.35\textwidth]{assets/working_packages/gestioProjecte.pdf}
+	\caption{\label{img:pt_gestio_projecte}Esquema de la branca de planificació \emph{Gestió i anàlisi del projecte}.}
+\end{figure}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Gray}
+    \multicolumn{2}{c}{\textbf{PT\_1.1:} Definició dels requisits}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Anàlisi dels requisits que ha de complir l'aplicatiu del projecte.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Anàlisi i definició dels requisits no funcionals.
+    \newline \textbf{T2:} Anàlisi i definició dels requisits de domini.
+    \newline \textbf{T3:} Anàlisi i definició dels requisits funcionals.
+    \newline \textbf{T4:} Redacció del document de requisits.
+    \newline \textbf{T5:} Verificació i comentari dels requisits amb els tutors.
+    \newline \textbf{T6:} Correció del document de requisits.\\
+    \midrule
+    \textbf{Temporalització}  & 60 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Document de requisits del sistema (veure capítol~\ref{cap:requisits}).\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_1.1} Taula del paquet de treball \emph{Definició dels requisits}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Gray}
+    \multicolumn{2}{c}{\textbf{PT\_1.2:} Planificació de tasques}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Planificació de totes les tasques que involucra el projecte.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Descomposició i agrupació general de les tasques.
+    \newline \textbf{T2:} Determinació i elaboració dels paquets de treball de cada grup de tasques.
+    \newline \textbf{T3:} Confecció de la matriu de traçabilitat.
+    \newline \textbf{T4:} Estimació del temps necessari pel desenvolupament del projecte i elaboració del cronograma.\\
+    \midrule
+    \textbf{Temporalització}  & 30 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Documents de planificació i temporalització del projecte (veure capítol~\ref{cap:planificacio}).\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_1.2} Taula del paquet de treball \emph{Planificació de tasques}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Gray}
+    \multicolumn{2}{c}{\textbf{PT\_1.3:} Documentació}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Agrupació de la informació generada durant tot el procés de desenvolupament del projecte.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Redacció de la memòria del projecte.
+    \newline \textbf{T2:} Verificació i comentari de la memòria amb els tutors.
+    \newline \textbf{T3:} Correció i retocament final de la memòria.\\
+    \midrule
+    \textbf{Temporalització}  & 150 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Memòria del projecte.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_1.3} Taula del paquet de treball \emph{Documentació}.}
+\end{table}
+
+\subsection{Anàlisi i disseny}
+\label{subsec:analisi_disseny}
+
+En aquesta subsecció, s'exposaran els paquets de treball que formen part de la branca de planificació \emph{Anàlisi i disseny}, la qual es pot tornar a veure a l'esquema següent:
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.35\textwidth]{assets/working_packages/analisiDisseny.pdf}
+	\caption{\label{img:pt_analisi_disseny}Esquema de la branca de planificació \emph{Anàlisi i disseny}.}
+\end{figure}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Green}
+    \multicolumn{2}{c}{\textbf{PT\_2.1:} Disseny de l'arquitectura}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Estudi i disseny de l'arquitectura de l'aplicatiu del projecte.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Estudi dels requisits.
+    \newline \textbf{T2:} Estudi i decisió del tipus de base de dades que s'utilitzarà i del seu sistema gestor.
+    \newline \textbf{T2:} Estudi i decisió del tipus de tecnologia amb la qual s'implementarà l'aplicació web client.
+    \newline \textbf{T3:} Estudi i decisió del tipus de tecnologia amb la qual s'implementarà l'aplicació de l'API.\\
+    \midrule
+    \textbf{Temporalització}  & 30 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Document de valoració i justificació de les tecnologies que conformen l'arquitectura de l'aplicatiu del projecte.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_2.1} Taula del paquet de treball \emph{Disseny de l'arquitectura}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Green}
+    \multicolumn{2}{c}{\textbf{PT\_2.2:} Disseny de la base de dades}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Disseny de l'estructura de la base de dades de l'aplicatiu i determinació de l'informació que s'hi emmagatzemarà.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Detall de les entitats que conformaran la base de dades.
+    \newline \textbf{T2:} Decisió dels camps en què es dividiran les entitats, juntament amb el seu tipus i configuració.
+    \newline \textbf{T3:} Determinació de les relacions que existiran entre les diferents entitats.
+    \newline \textbf{T4:} Elaboració de l'esquema del model relacional.\\
+    \midrule
+    \textbf{Temporalització}  & 25 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Esquema del model relacional de la base de dades.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_2.2} Taula del paquet de treball \emph{Disseny de la base de dades}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Green}
+    \multicolumn{2}{c}{\textbf{PT\_2.3:} Disseny de les interfícies d'usuari}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Disseny de les interfícies d'usuari que es presentaran a l'aplicació web client.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Confecció dels esquemes de les interfícies d'usuari de les diferents parts de l'aplicació.
+    \newline \textbf{T2:} Anàlisi dels esquemes i verificació de la seva adaptació als requisits.
+    \newline \textbf{T3:} Plantejament de possibles nous requisits que hagin pogut sorgir gràcies als esquemes.\\
+    \midrule
+    \textbf{Temporalització}  & 85 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Esquemes de les interfícies d'usuari de l'aplicació web client.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_2.3} Taula del paquet de treball \emph{Disseny de les interfícies d'usuari}.}
+\end{table}
+
+\subsection{Desenvolupament}
+\label{subsec:desenvolupament}
+
+En aquesta subsecció, s'exposaran els paquets de treball que formen part de la branca de planificació \emph{Desenvolupament}, la qual es pot tornar a veure a l'esquema següent:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.35\textwidth]{assets/working_packages/desenvolupament/general.pdf}
+	\caption{\label{img:pt_desenvolupament}Esquema de la branca de planificació \emph{Desenvolupament}.}
+\end{figure}
+
+A diferència de les altres branques, aquesta no conté directament un conjunt de paquets de treball, sinó un conjunt de subbranques. Als apartats següents es detallaran els paquets de treball que conté cadascuna.
+
+\subsubsection{Implementació de l'API del servidor}
+\label{subsubsec:implementacio_api}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{assets/working_packages/desenvolupament/implementacioAPI.pdf}
+	\caption{\label{img:pt_implementacio_api}Esquema de la subbranca de planificació \emph{Implementació de l'API del servidor}.}
+\end{figure}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.1.1:} Preparació inicial de l'aplicació de l'API}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Preparació i configuració inicial de l'aplicació de l'API del servidor.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Preparació de l'entorn de desenvolupament.
+    \newline \textbf{T2:} Configuració del procés d'escolta de peticions.
+    \newline \textbf{T3:} Implementació del tractament general de peticions i d'errors.
+    \newline \textbf{T4:} Implementació del sistema de depuració i monitoreig.\\
+    \midrule
+    \textbf{Temporalització}  & 30 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Aplicació de l'API del servidor preparada per a ser implementada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.1.1} Taula del paquet de treball \emph{Preparació inicial de l'aplicació de l'API}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.1.2:} Configuració de la base de dades}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Configuració inicial del sistema gestor de la base de dades i de l'ORM (Object-Relational Mapping).\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Configuració de la connexió entre l'aplicació de l'API i el sistema gestor de la base de dades.
+    \newline \textbf{T2:} Configuració de l'ORM escollit.
+    \newline \textbf{T3:} Determinació dels usuaris del sistema gestor de la base de dades.\\
+    \midrule
+    \textbf{Temporalització}  & 6 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Sistema gestor de la base de dades configurat.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.1.2} Taula del paquet de treball \emph{Configuració de la base de dades}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.1.3:} Definició dels models de dades}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Definició dels models de dades a guardar a la base de dades.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Definició i configuració dels models de dades descrits a l'esquema del model relacional.
+    \newline \textbf{T2:} Implementació de validadors de dades per a cada camp dels models.
+    \newline \textbf{T3:} Implementació i configuració de les relacions entre models.\\
+    \midrule
+    \textbf{Temporalització}  & 55 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Models de dades definits.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.1.3} Taula del paquet de treball \emph{Definició dels models de dades}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.1.4:} Implementació de l'enrutament}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Definició dels diferents \textit{endpoints} de l'API i implementació de l'enrutament de peticions.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Definició dels \textit{endpoints} de l'API i de les seves rutes.
+    \newline \textbf{T2:} Implementació de l'enrutament de peticions al seu \textit{endpoint} corresponent.
+    \newline \textbf{T2:} Implementació dels mecanismes d'autorització pels diferents tipus d'usuari.\\
+    \midrule
+    \textbf{Temporalització}  & 25 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Enrutament implementat.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.1.4} Taula del paquet de treball \emph{Implementació de l'enrutament}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.1.5:} Implementació del \textit{login} i del registre}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació del tractament de peticions d'autenticació i de registre.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació inicial dels processos d'autenticació i de registre.
+    \newline \textbf{T2:} Implementació dels mecanismes de seguretat involucrats.
+    \newline \textbf{T3:} Implementació dels enviaments de correus electrònics involucrats.\\
+    \midrule
+    \textbf{Temporalització}  & 40 hores.\\
+    \midrule
+    \textbf{Lliurable}        & \textit{Login} i registre implementats.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.1.5} Taula del paquet de treball \emph{Implementació del \textit{login} i del registre}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.1.6:} Implementació dels serveis C.R.U.D.}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació dels serveis de C.R.U.D. dels diferents models de dades.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació del procés de creació d'instàncies de cadascun dels models de dades.
+    \newline \textbf{T2:} Implementació del procés de recuperació d'instàncies de cadascun dels models de dades.
+    \newline \textbf{T3:} Implementació del procés de modificació d'instàncies de cadascun dels models de dades.
+    \newline \textbf{T4:} Implementació del procés d'eliminació d'instàncies de cadascun dels models de dades.\\
+    \midrule
+    \textbf{Temporalització}  & 70 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Serveis de C.R.U.D. implementats.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.1.6} Taula del paquet de treball \emph{Implementació dels serveis C.R.U.D.}}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.1.7:} Implementació de testos unitaris}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Disseny i implementació de testos unitaris pels diferents procediments de l'aplicació de l'API del servidor.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Disseny, implementació i execució continuades de testos unitaris.\\
+    \midrule
+    \textbf{Temporalització}  & 25 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Testos implementats.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.1.7} Taula del paquet de treball \emph{Implementació de testos unitaris}.}
+\end{table}
+
+
+\subsubsection{Implementació del client}
+\label{subsubsec:implementacio_client}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{assets/working_packages/desenvolupament/implementacioClient.pdf}
+	\caption{\label{img:pt_implementacio_client}Esquema de la subbranca de planificació \emph{Implementació del client}.}
+\end{figure}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.2.1:} Preparació inicial de l'aplicació client}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Preparació i configuració inicial de l'aplicació client.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Preparació de l'entorn de desenvolupament.\\
+    \midrule
+    \textbf{Temporalització}  & 8 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Aplicació client preparada per a ser implementada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.2.1} Taula del paquet de treball \emph{Preparació inicial de l'aplicació client}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.2.2:} Implementació del \textit{login} i relacionats.}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació de les finestres i procediments relacionats amb l'autenticació dels usuaris.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació de la finestra d'autenticació.
+    \newline \textbf{T2:} Implementació del conjunt de finestres de restabliment de contrasenya.\\
+    \midrule
+    \textbf{Temporalització}  & 30 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Finestres i procediments de \textit{login} i relacionats implementats.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.2.2} Taula del paquet de treball \emph{Implementació del \textit{login} i relacionats}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.2.3:} Implementació de la part dels Administradors}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol d'Administrador.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres de la gestió de plans docents.
+    \newline \textbf{T2:} Implementació del conjunt de finestres de l'assignació d'aules.
+    \newline \textbf{T3:} Implementació del conjunt de finestres de la gestió de Coordinadors.
+    \newline \textbf{T4:} Implementació del conjunt de finestres de la gestió de Directors de departament.\\
+    \midrule
+    \textbf{Temporalització}  & 25 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Part dels usuaris Administradors implementada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.2.3} Taula del paquet de treball \emph{Implementació de la part dels Administradors}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.2.4:} Implementació de la part dels Coordinadors}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Coordinador.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres de la gestió d'horaris de graus.
+    \newline \textbf{T2:} Implementació del conjunt de finestres de la consulta d'horaris de Professors.
+    \newline \textbf{T3:} Implementació del conjunt de finestres de la consulta d'horaris d'aules.\\
+    \midrule
+    \textbf{Temporalització}  & 50 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Part dels usuaris Coordinadors implementada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.2.4} Taula del paquet de treball \emph{Implementació de la part dels Coordinadors}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.2.5:} Implementació de la part dels Directors de departament}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Director de departament.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres de la consulta d'horaris de Professors.
+    \newline \textbf{T2:} Implementació del conjunt de finestres de la consulta d'horaris de graus.
+    \newline \textbf{T3:} Implementació del conjunt de finestres de la gestió de Responsables de docència.\\
+    \midrule
+    \textbf{Temporalització}  & 15 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Part dels usuaris Directors de departament implementada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.2.5} Taula del paquet de treball \emph{Implementació de la part dels Directors de departament}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.2.6:} Implementació de la part dels Responsables de docència}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Responsable de docència.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres de la consulta d'horaris de Professors.
+    \newline \textbf{T2:} Implementació del conjunt de finestres de l'assignació de Professors.
+    \newline \textbf{T3:} Implementació del conjunt de finestres de la gestió de Professors.\\
+    \midrule
+    \textbf{Temporalització}  & 25 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Part dels usuaris Responsables de docència implementada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.2.6} Taula del paquet de treball \emph{Implementació de la part dels Responsables de docència}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\textbf{PT\_3.2.7:} Implementació de la part dels Professors}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Professor.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres de la consulta d'horaris propis.
+    \newline \textbf{T2:} Implementació del conjunt de finestres de la consulta d'horaris d'assignatures.
+    \newline \textbf{T3:} Implementació del conjunt de finestres de la consulta d'horaris de graus.\\
+    \midrule
+    \textbf{Temporalització}  & 15 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Part dels usuaris Responsables de docència implementada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_3.2.7} Taula del paquet de treball \emph{Implementació de la part dels Professors}.}
+\end{table}
+
+
+\subsection{Proves}
+\label{subsec:proves}
+
+En aquesta subsecció, s'exposaran els paquets de treball que formen part de la branca de planificació \emph{Proves}, la qual es pot tornar a veure a l'esquema següent:
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.35\textwidth]{assets/working_packages/proves.pdf}
+	\caption{\label{img:pt_proves}Esquema de la branca de planificació \emph{Proves}.}
+\end{figure}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Orange}
+    \multicolumn{2}{c}{\textbf{PT\_4.1:} Testeig de l'API del servidor}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Realització de proves i depuració de l'API del servidor.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Disseny de les proves a realitzar.
+    \newline \textbf{T2:} Efectuació de les proves i anàlisi dels resultats.
+    \newline \textbf{T3:} Correcció dels possibles errors que hagin pogut aparèixer.\\
+    \midrule
+    \textbf{Temporalització}  & 12 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Proves i depuració de l'API del servidor realitzada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_4.1} Taula del paquet de treball \emph{Testeig de l'API del servidor}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Orange}
+    \multicolumn{2}{c}{\textbf{PT\_4.2:} Testeig de l'aplicació client}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Realització de proves i depuració de l'aplicació client.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Disseny de les proves a realitzar.
+    \newline \textbf{T2:} Efectuació de les proves i anàlisi dels resultats.
+    \newline \textbf{T3:} Correcció dels possibles errors que hagin pogut aparèixer.\\
+    \midrule
+    \textbf{Temporalització}  & 16 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Proves i depuració de l'aplicació client realitzada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_4.2} Taula del paquet de treball \emph{Testeig de l'aplicació client}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Orange}
+    \multicolumn{2}{c}{\textbf{PT\_4.3:} Testeig en entorn pre-productiu}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Realització de proves i depuració en un entorn igual que el productiu.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Simulació de situacions reals a mode de prova.
+    \newline \textbf{T2:} Simulació de situacions reals a mode de prova pels usuaris finals.
+    \newline \textbf{T3:} Correcció dels possibles errors que hagin pogut aparèixer.\\
+    \midrule
+    \textbf{Temporalització}  & 10 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Proves i depuració en un entorn pre-productiu realitzada.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_4.3} Taula del paquet de treball \emph{Testeig en entorn pre-productiu}.}
+\end{table}
+
+
+\subsection{Llançament a producció}
+\label{subsec:llancament_produccio}
+
+En aquesta subsecció, s'exposaran els paquets de treball que formen part de la branca de planificació \emph{Llançament a producció}, la qual es pot tornar a veure a l'esquema següent:
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.35\textwidth]{assets/working_packages/llancamentProduccio.pdf}
+	\caption{\label{img:pt_llancament_roduccio}Esquema de la branca de planificació \emph{Llançament a producció}.}
+\end{figure}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Purple}
+    \multicolumn{2}{c}{\textbf{PT\_6.1:} Preparació de l'aplicatiu}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Preparació de l'aplicatiu pel llançament a producció.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Revisió i neteja del codi font.
+    \newline \textbf{T2:} Verificació de que no es mostra cap informació en pantalla o en consola que pugui comprometre la seguretat.
+    \newline \textbf{T3:} Comprovació de que les variables d'entorn es recuperin correctament.
+    \newline \textbf{T4:} Altres poliments.\\
+    \midrule
+    \textbf{Temporalització}  & 4 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Aplicatiu preparat pel llançament a producció.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_6.1} Taula del paquet de treball \emph{Preparació de l'aplicatiu}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Purple}
+    \multicolumn{2}{c}{\textbf{PT\_6.2:} Posta en marxa al servidor de \textit{hosting}}\\
+    \midrule[0.9pt]
+    \textbf{Descripció}       & Llançament a producció de l'aplicatiu al servidor de \textit{hosting}.\\
+    \midrule
+    \textbf{Tasques}          & \textbf{T1:} Configuració general del servidor.
+    \newline \textbf{T2:} Traspàs de l'aplicatiu al servidor.
+    \newline \textbf{T3:} Establiment de les variables d'entorn corresponents.
+    \newline \textbf{T4:} Posta en marxa de l'aplicatiu i realització de comprovacions.\\
+    \midrule
+    \textbf{Temporalització}  & 8 hores.\\
+    \midrule
+    \textbf{Lliurable}        & Aplicatiu en funcionament a l'entorn productiu.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:pt_6.2} Taula del paquet de treball \emph{Posta en marxa al servidor de \textit{hosting}}.}
+\end{table}
+
+
+\section{Matriu de traçabilitat}
+\label{sec:matriu_tracabilitat}
 
 
 \chapter{Estudi i decisions}
@@ -560,27 +1194,27 @@ En aquesta secció,
 \subsection{Interfícies de \textit{login}}
 \label{subsec:interficies_login}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/login.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/login/login.pdf}
 	\caption{\label{img:login}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablishment.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablishment.pdf}
 	\caption{\label{img:passwordRestablishment}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablished.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablished.pdf}
 	\caption{\label{img:passwordRestablished}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/newPassword.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/login/newPassword.pdf}
 	\caption{\label{img:newPassword}Text}
 \end{figure}
 
@@ -588,71 +1222,71 @@ En aquesta secció,
 \subsection{Interfícies pels Administradors}
 \label{subsec:interficies_administradors}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainNoCarregat.png}
-	\caption{\label{img:plansDocents_mainNoCarregat}Text}
+	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainNoCarregat.pdf}
+	\caption{\label{img:plansDocents_mainNoCarregat}Text1}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainCarregat.png}
-	\caption{\label{img:plansDocents_mainCarregat}Text}
+	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainCarregat.pdf}
+	\caption{\label{img:plansDocents_mainCarregat}Text2}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/aulesDialog.png}
-	\caption{\label{img:plansDocents_aulesDialog}Text}
+	\includegraphics[width=0.5\textwidth]{assets/interfaces/administradors/plansDocents/aulesDialog.pdf}
+	\caption{\label{img:plansDocents_aulesDialog}Text3}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/carregarDialog.png}
-	\caption{\label{img:plansDocents_carregarDialog}Text}
+	\includegraphics[width=0.7\textwidth]{assets/interfaces/administradors/plansDocents/carregarDialog.pdf}
+	\caption{\label{img:plansDocents_carregarDialog}Text4}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/esborrarBox.png}
-	\caption{\label{img:plansDocents_esborrarBox}Text}
+	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/plansDocents/esborrarBox.pdf}
+	\caption{\label{img:plansDocents_esborrarBox}Text5}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{assets/interfaces/administradors/plansDocents/confirmarEsborrarBox.png}
-	\caption{\label{img:plansDocents_confirmarEsborrarBox}Text}
+	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/plansDocents/confirmarEsborrarBox.pdf}
+	\caption{\label{img:plansDocents_confirmarEsborrarBox}Text6}
 \end{figure}
 
 %----------------------------
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/administradors/gestCoords/main.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/administradors/gestCoords/main.pdf}
 	\caption{\label{img:gestCoords_main}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{assets/interfaces/administradors/gestCoords/confirmarBox.png}
+	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/gestCoords/confirmarBox.pdf}
 	\caption{\label{img:gestCoords_confirmarBox}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{assets/interfaces/administradors/gestCoords/confirmarEsborrarBox.png}
+	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/gestCoords/confirmarEsborrarBox.pdf}
 	\caption{\label{img:gestCoords_confirmarEsborrarBox}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/administradors/gestCoords/gestUsuarisDialog.png}
+	\includegraphics[width=0.8\textwidth]{assets/interfaces/administradors/gestCoords/gestUsuarisDialog.pdf}
 	\caption{\label{img:gestCoords_gestUsuarisDialog}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{assets/interfaces/administradors/gestCoords/nouUsuariDialog.png}
+	\includegraphics[width=0.5\textwidth]{assets/interfaces/administradors/gestCoords/nouUsuariDialog.pdf}
 	\caption{\label{img:gestCoords_nouUsuariDialog}Text}
 \end{figure}
 
@@ -667,31 +1301,31 @@ En aquesta secció,
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/selHorari.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/selHorari.pdf}
 	\caption{\label{img:horarisGraus_selHorari}Text}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/visualitzacio.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/visualitzacio.pdf}
 	\caption{\label{img:horarisGraus_visualitzacio}Text}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/edicio.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/edicio.pdf}
 	\caption{\label{img:horarisGraus_edicio}Text}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisProfessors/main.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisProfessors/main.pdf}
 	\caption{\label{img:horarisProfessors_main}Text}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisAules/main.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisAules/main.pdf}
 	\caption{\label{img:horarisAules_main}Text}
 \end{figure}
 
@@ -702,18 +1336,18 @@ En aquesta secció,
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/directors/gestResp/main.png}
+	\includegraphics[width=\textwidth]{assets/interfaces/directors/gestResp/main.pdf}
 	\caption{\label{img:gestResp_main}Text}
 \end{figure}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=0.3]{assets/interfaces/directors/gestResp/assignDialog.png}
+	\includegraphics[width=0.5\textwidth]{assets/interfaces/directors/gestResp/assignDialog.pdf}
 	\caption{\label{img:gestResp_assignDialog}Text}
 \end{figure}
 
 \FloatBarrier
-\subsection{Interfícies pels Responsables de Docècia}
+\subsection{Interfícies pels Responsables de Docència}
 \label{subsec:interficies_responsables}
 
 
@@ -751,6 +1385,8 @@ En aquesta secció,
   \item Poder buscar usuaris per consultar les seves dades (nom, rol, departament, telèfon, email, etc.) i habilitar un link per enviar-li un email.
   \item Que l'inicialització dels cursos no es basi en un excel, sinó que es puguin recuperar les dades de les BDD de l'escola.
   \item Sistema d'avisos i notificacions.
+  \item Assignar un grup de professors a assignatures en concret, per facilitar l'assignació per part dels responsables de docència.
+  \item Que els professors puguin indicar preferències en quant a blocs horaris / grups.
   \item \ldots
 \end{itemize}
 
