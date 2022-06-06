@@ -309,7 +309,7 @@ A més a més, per evitar explicacions redundants, d'ara en endavant, quan es pa
 En aquesta subsecció, es llistaran els requisits funcionals generals del sistema, comuns per a tots els usuaris, independentment dels seus rols.
 
 \begin{itemize}
-  \item \texttt{\textbf{RF-G1 [1]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \textit{login}, que s'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir. L'autenticació d'un usuari ha de suposar la generació d'un \textit{JSON Web Token}~\cite{JWT}, per tal de mantenir la seva sessió i poder ser identificat de forma segura pel procés d'autorització del servidor.
+  \item \texttt{\textbf{RF-G1 [1]}}: Assegurar l'autenticació de tots els usuaris a través d'un formulari de \textit{login}, que s'ha de mostrar a la pantalla quan un usuari no autenticat accedeix a l'aplicació. Sense estar-ho, no l'ha de poder fer servir. L'autenticació d'un usuari ha de suposar la generació d'un \textit{JSON Web Token}~\cite{JWT}, per tal de mantenir la seva sessió i poder ser identificat de forma segura pel procés d'autorització de l'aplicació de l'API (o servidor).
   \item \texttt{\textbf{RF-G2 [1]}}: No permetre l'autoregistre d'usuaris, ja que usuaris de determinats rols s'encarregaran de donar d'alta altres usuaris del rol que els correspongui. El procés d'alta d'usuaris es detalla a continuació:
         \begin{enumerate}
           \item L'usuari que registra introdueix les dades de l'usuari que vol donar d'alta, entre les quals consta la seva adreça de correu electrònic. A continuació, l'usuari es crea però amb l'estat de ``desactivat''.
@@ -323,7 +323,7 @@ En aquesta subsecció, es llistaran els requisits funcionals generals del sistem
   \item \texttt{\textbf{RF-G7 [1]}}: Mostrar un menú que permeti a l'usuari navegar entre les diferents pàgines que exposen les funcionalitats principals corresponents al seu rol.
   \item \texttt{\textbf{RF-G8 [1]}}: Totes les pàgines de l'aplicació han de permetre la selecció del curs acadèmic al qual l'usuari es vol situar. S'han de poder seleccionar qualsevol dels cursos acadèmics passats (que tinguin pla docent), l'actual o el següent. No obstant això, només ha de ser modificable la informació de l'actual i del següent, a excepció de l'anterior, que ha de seguir essent modificable fins el proper 30 de juny. Per exemple, la informació relacionada amb el curs acadèmic 2021 - 2022 ha de ser modificable fins el 30 de juny de 2022.
   \item \texttt{\textbf{RF-G9 [1]}}: Els registres de la base de dades no s'han d'esborrar definitivament. En comptes d'això, tots han de tenir un camp que guardi la data en què han estat eliminats, si és que s'han eliminat. Si no ho estan, aquest camp ha de ser nul.
-  \item \texttt{\textbf{RF-G10 [1]}}: Per no desaprofitar espai de la memòria, una vegada la informació d'un curs acadèmic ja no es pugui modificar, s'esborraran definitivament tots els registres que tinguin data d'eliminació no nul·la de la base de dades en què està continguda.
+  \item \texttt{\textbf{RF-G10 [1]}}: Per no desaprofitar espai de la memòria, una vegada la informació d'un curs acadèmic ja no es pugui modificar, s'esborraran definitivament tots els registres que tinguin data d'eliminació no nul·la de la base de dades en els quals està continguda.
 \end{itemize}
 
 
@@ -518,7 +518,7 @@ En aquesta secció, es llistaran els requisits de domini del sistema.
 \section{Matriu de dependències}
 \label{sec:matriu_dependencies}
 
-En aquesta secció, es dibuixarà/representarà la matriu de dependències dels requisits. D'aquesta manera, es podran identificar els requisits funcionals que necessitin l'implementació d'altres per poder-se dur a terme.
+En aquesta secció, es representarà la matriu de dependències dels requisits. D'aquesta manera, es podran identificar els requisits funcionals que necessitin l'implementació d'altres per poder-se dur a terme.
 
 El format que adoptarà cadascuna de les dependències es defineix a continuació:
 \\[8pt]
@@ -578,22 +578,22 @@ En aquesta subsecció, es mostrarà la descomposició general de les tasques del
 	\caption{\label{img:pt_general}Descomposició general de les tasques del projecte.}
 \end{figure}
 
-\subsection{Gestió i anàlisi del projecte}
+\subsection{Gestió del projecte}
 \label{subsec:gestio_projecte}
 
-En aquesta subsecció, s'exposaran els paquets de treball que formen part de la branca de planificació \emph{Gestió i anàlisi del projecte}, la qual es pot tornar a veure a l'esquema següent:
+En aquesta subsecció, s'exposaran els paquets de treball que formen part de la branca de planificació \emph{Gestió del projecte}, la qual es pot tornar a veure a l'esquema següent:
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.35\textwidth]{assets/working_packages/gestioProjecte.pdf}
-	\caption{\label{img:pt_gestio_projecte}Esquema de la branca de planificació \emph{Gestió i anàlisi del projecte}.}
+	\caption{\label{img:pt_gestio_projecte}Esquema de la branca de planificació \emph{Gestió del projecte}.}
 \end{figure}
 
 \begin{table}[H]
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Gray}
-    \multicolumn{2}{c}{\textbf{PT\_1.1:} Definició dels requisits}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_1.1:}} Definició dels requisits}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Anàlisi dels requisits que ha de complir l'aplicatiu del projecte.\\
     \midrule
@@ -616,7 +616,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Gray}
-    \multicolumn{2}{c}{\textbf{PT\_1.2:} Planificació de tasques}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_1.2:}} Planificació de tasques}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Planificació de totes les tasques que involucra el projecte.\\
     \midrule
@@ -637,7 +637,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Gray}
-    \multicolumn{2}{c}{\textbf{PT\_1.3:} Documentació}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_1.3:}} Documentació}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Agrupació de la informació generada durant tot el procés de desenvolupament del projecte.\\
     \midrule
@@ -668,7 +668,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Green}
-    \multicolumn{2}{c}{\textbf{PT\_2.1:} Disseny de l'arquitectura}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_2.1:}} Disseny de l'arquitectura}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Estudi i disseny de l'arquitectura de l'aplicatiu del projecte.\\
     \midrule
@@ -689,7 +689,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Green}
-    \multicolumn{2}{c}{\textbf{PT\_2.2:} Disseny de la base de dades}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_2.2:}} Disseny de la base de dades}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Disseny de l'estructura de la base de dades de l'aplicatiu i determinació de la informació que s'hi emmagatzemarà.\\
     \midrule
@@ -710,7 +710,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Green}
-    \multicolumn{2}{c}{\textbf{PT\_2.3:} Disseny de les interfícies d'usuari}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_2.3:}} Disseny de les interfícies d'usuari}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Disseny de les interfícies d'usuari que es presentaran a l'aplicació web client.\\
     \midrule
@@ -752,7 +752,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.1.1:} Preparació inicial de l'aplicació de l'API}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.1:}} Preparació inicial de l'aplicació de l'API}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Preparació i configuració inicial de l'aplicació de l'API del servidor.\\
     \midrule
@@ -773,7 +773,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.1.2:} Configuració de la base de dades}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.2:}} Configuració de la base de dades}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Configuració inicial del sistema gestor de la base de dades i de l'ORM (\textit{Object-Relational Mapping}).\\
     \midrule
@@ -793,7 +793,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.1.3:} Definició dels models de dades}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.3:}} Definició dels models de dades}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Definició dels models de dades que s'han de guardar a la base de dades.\\
     \midrule
@@ -813,13 +813,13 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.1.4:} Implementació de l'enrutament}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.4:}} Implementació de l'enrutament}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Definició dels diferents \textit{endpoints} de l'API i implementació de l'enrutament de peticions.\\
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Definició dels \textit{endpoints} de l'API i de les seves rutes.
     \newline \textbf{T2:} Implementació de l'enrutament de peticions a l'\textit{endpoint} corresponent.
-    \newline \textbf{T2:} Implementació dels mecanismes d'autorització segons el rol de l'usuari.\\
+    \newline \textbf{T3:} Implementació dels mecanismes d'autorització segons el rol de l'usuari.\\
     \midrule
     \textbf{Temporalització}  & 25 hores.\\
     \midrule
@@ -833,7 +833,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.1.5:} Implementació del \textit{login} i del registre}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.5:}} Implementació del \textit{login} i del registre}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació del tractament de peticions d'autenticació i de registre d'usuaris.\\
     \midrule
@@ -853,7 +853,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.1.6:} Implementació dels serveis CRUD.}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.6:}} Implementació dels serveis CRUD.}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació dels serveis CRUD dels diferents models de dades.\\
     \midrule
@@ -874,7 +874,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.1.7:} Implementació de testos unitaris}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.7:}} Implementació de testos unitaris}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Disseny i implementació de testos unitaris per als diferents procediments de l'aplicació de l'API del servidor.\\
     \midrule
@@ -902,7 +902,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.2.1:} Preparació inicial de l'aplicació client}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.2.1:}} Preparació inicial de l'aplicació client}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Preparació i configuració inicial de l'aplicació client.\\
     \midrule
@@ -920,7 +920,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.2.2:} Implementació del \textit{login} i relacionats.}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.2.2:}} Implementació del \textit{login} i relacionats.}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació de les finestres i procediments relacionats amb l'autenticació dels usuaris.\\
     \midrule
@@ -939,7 +939,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.2.3:} Implementació de la part dels Administradors}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.2.3:}} Implementació de la part dels Administradors}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol d'Administrador.\\
     \midrule
@@ -960,7 +960,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.2.4:} Implementació de la part dels Coordinadors}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.2.4:}} Implementació de la part dels Coordinadors}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Coordinador.\\
     \midrule
@@ -980,7 +980,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.2.5:} Implementació de la part dels Directors de departament}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.2.5:}} Implementació de la part dels Directors de departament}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Director de departament.\\
     \midrule
@@ -1000,7 +1000,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.2.6:} Implementació de la part dels Responsables de docència}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.2.6:}} Implementació de la part dels Responsables de docència}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Responsable de docència.\\
     \midrule
@@ -1020,7 +1020,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Blue}
-    \multicolumn{2}{c}{\textbf{PT\_3.2.7:} Implementació de la part dels Professors}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_3.2.7:}} Implementació de la part dels Professors}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Professor.\\
     \midrule
@@ -1052,7 +1052,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Orange}
-    \multicolumn{2}{c}{\textbf{PT\_4.1:} Testeig de l'API del servidor}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_4.1:}} Testeig de l'API del servidor}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Realització de proves i depuració de l'API del servidor.\\
     \midrule
@@ -1072,7 +1072,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Orange}
-    \multicolumn{2}{c}{\textbf{PT\_4.2:} Testeig de l'aplicació client}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_4.2:}} Testeig de l'aplicació client}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Realització de proves i depuració de l'aplicació client.\\
     \midrule
@@ -1092,7 +1092,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Orange}
-    \multicolumn{2}{c}{\textbf{PT\_4.3:} Testeig en entorn preproductiu}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_4.3:}} Testeig en entorn preproductiu}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Realització de proves i depuració en un entorn igual que el productiu.\\
     \midrule
@@ -1124,7 +1124,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Purple}
-    \multicolumn{2}{c}{\textbf{PT\_6.1:} Preparació de l'aplicatiu}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_6.1:}} Preparació de l'aplicatiu}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Preparació de l'aplicatiu per al llançament a producció.\\
     \midrule
@@ -1145,7 +1145,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
   \begin{tabularx}{\textwidth}{l | X}
     \toprule
     \rowcolor{Purple}
-    \multicolumn{2}{c}{\textbf{PT\_6.2:} Posada en marxa al servidor de \textit{hosting}}\\
+    \multicolumn{2}{c}{\texttt{\textbf{PT\_6.2:}} Posada en marxa al servidor de \textit{hosting}}\\
     \midrule[0.9pt]
     \textbf{Descripció}       & Llançament a producció de l'aplicatiu al servidor de \textit{hosting}.\\
     \midrule
@@ -1166,6 +1166,33 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
 \section{Matriu de traçabilitat}
 \label{sec:matriu_tracabilitat}
 
+En aquesta secció, es representarà la matriu de traçabilitat que relaciona els paquets de treball definits a la secció anterior i els requisits (veure capítol~\ref{cap:requisits}).
+
+D'aquesta manera, es podrà saber quins requisits s'assoleixen un cop completades les tasques dels paquets de treball.
+
+El format que adoptarà cadascuna de les relacions es defineix a continuació:
+\\[8pt]
+\centerline{(\texttt{\textbf{RF-X}, \texttt{\textbf{RF-Y}}}, \texttt{\textbf{\ldots}}) $\longrightarrow$ (\texttt{\textbf{PT\_P}}, \texttt{\textbf{PT\_Q}, \texttt{\textbf{\ldots}}})}
+
+És a dir, la llista de requisits de la part anterior de la flexta s'assoleix un cop completada la de paquets de treball situada a la part posterior.
+
+La matriu de traçabilitat completa és la següent:
+\begin{itemize}
+  \item (\texttt{\textbf{RF-G1}}, \texttt{\textbf{RF-G3}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.5}}, \texttt{\textbf{PT\_3.2.2}})
+  \item (\texttt{\textbf{RF-G2}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.5}}, \texttt{\textbf{PT\_3.2.3}}, \texttt{\textbf{PT\_3.2.5}}, \texttt{\textbf{PT\_3.2.6}})
+  \item (\texttt{\textbf{RF-G4}}, \texttt{\textbf{RF-G6}}, \texttt{\textbf{RF-G7}}, \texttt{\textbf{RF-G8}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.3}}, \texttt{\textbf{PT\_3.2.4}}, \texttt{\textbf{PT\_3.2.5}}, \texttt{\textbf{PT\_3.2.6}}, \texttt{\textbf{PT\_3.2.7}})
+  \item (\texttt{\textbf{RF-G5}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.4}})
+  \item (\texttt{\textbf{RF-G9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_2.2}}, \texttt{\textbf{PT\_3.1.2}}, \texttt{\textbf{PT\_3.1.3}})
+  \item (\texttt{\textbf{RF-G10}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.2}}, \texttt{\textbf{PT\_3.2.3}})
+  \item (\texttt{\textbf{RF-A1}}, \texttt{\textbf{RF-A2}}, \texttt{\textbf{RF-A3}}, \texttt{\textbf{RF-A4}}, \texttt{\textbf{RF-A5}}, \texttt{\textbf{RF-A6}}, \texttt{\textbf{RF-A7}}, \texttt{\textbf{RF-A8}}, \texttt{\textbf{RF-A9}}, \texttt{\textbf{RF-A10}}, \texttt{\textbf{RF-A11}}, \texttt{\textbf{RF-A13}}, \texttt{\textbf{RF-A14}}, \texttt{\textbf{RF-A15}}, \texttt{\textbf{RF-A16}}, \texttt{\textbf{RF-A17}}, \texttt{\textbf{RF-A18}}, \texttt{\textbf{RF-A20}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.3}})
+  \item (\texttt{\textbf{RF-A12}}, \texttt{\textbf{RF-A19}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.5}}, \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.3}})
+  \item (\texttt{\textbf{RF-C1}}, \texttt{\textbf{RF-C2}}, \texttt{\textbf{RF-C3}}, \texttt{\textbf{RF-C4}}, \texttt{\textbf{RF-C5}}, \texttt{\textbf{RF-C6}}, \texttt{\textbf{RF-C7}}, \texttt{\textbf{RF-C8}}, \texttt{\textbf{RF-C9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.4}})
+  \item (\texttt{\textbf{RF-D1}}, \texttt{\textbf{RF-D2}}, \texttt{\textbf{RF-D3}}, \texttt{\textbf{RF-D4}}, \texttt{\textbf{RF-D5}}, \texttt{\textbf{RF-D6}}, \texttt{\textbf{RF-D7}}, \texttt{\textbf{RF-D9}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.5}})
+  \item (\texttt{\textbf{RF-D8}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.5}}, \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.5}})
+  \item (\texttt{\textbf{RF-R1}}, \texttt{\textbf{RF-R2}}, \texttt{\textbf{RF-R3}}, \texttt{\textbf{RF-R4}}, \texttt{\textbf{RF-R6}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.6}})
+  \item (\texttt{\textbf{RF-R5}}, \texttt{\textbf{RF-G3}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.5}}, \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.6}})
+  \item (\texttt{\textbf{RF-P1}}, \texttt{\textbf{RF-P2}}, \texttt{\textbf{RF-P3}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.7}})
+\end{itemize}
 
 \chapter{Estudi i decisions}
 \label{cap:estudi}
@@ -1189,9 +1216,9 @@ Tecnologies:
 \section{Interfícies d'usuari}
 \label{sec:interficies_usuari}
 
-En aquesta secció, s'exposarà el disseny de les diferents finestres que conformen l'aplicació web client.
+En aquesta secció, s'exposarà el disseny de les diferents finestres que conformaran l'aplicació web client.
 
-Cal destacar que l'aparença final de l'aplicació no ha de ser necessàriament igual que la que es mostrarà a les següents subseccions.
+Cal destacar que l'aparença final de l'aplicació no ha de ser necessàriament igual que la que es mostrarà a les subseccions següents.
 
 \subsection{Interfícies de \textit{login}}
 \label{subsec:interficies_login}
@@ -1201,66 +1228,66 @@ En aquesta subsecció, es presentarà el disseny de les finestres relacionades a
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/login/login.pdf}
-	\caption{\label{img:login}Disseny de l'interfície d'autenticació.}
+	\caption{\label{img:login}Disseny de la interfície d'autenticació.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablishment.pdf}
-	\caption{\label{img:passwordRestablishment}Disseny de l'interfície de restabliment de contrasenya.}
+	\caption{\label{img:passwordRestablishment}Disseny de la interfície de restabliment de contrasenya.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablished.pdf}
-	\caption{\label{img:passwordRestablished}Disseny de l'interfície de confirmació d'enviament de l'\textit{email} de restabliment de contrasenya.}
+	\caption{\label{img:passwordRestablished}Disseny de la interfície de confirmació d'enviament de l'\textit{email} per al restabliment de la contrasenya.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/login/newPassword.pdf}
-	\caption{\label{img:newPassword}Disseny de l'interfície de creació d'una nova contrasenya.}
+	\caption{\label{img:newPassword}Disseny de la interfície de creació d'una nova contrasenya.}
 \end{figure}
 
-\subsection{Interfícies específiques pels Administradors}
+\subsection{Interfícies específiques per als Administradors}
 \label{subsec:interficies_administradors}
 
-En aquesta subsecció, es presentarà el disseny de les finestres específiques pels usuaris amb rol d'Administrador.
+En aquesta subsecció, es presentarà el disseny de les finestres específiques per als usuaris amb rol d'Administrador.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainNoCarregat.pdf}
-	\caption{\label{img:plansDocents_mainNoCarregat}Disseny de l'interfície de càrrega d'un pla docent a un curs acadèmic que no en té.}
+	\caption{\label{img:plansDocents_mainNoCarregat}Disseny de la interfície de càrrega d'un pla docent a un curs acadèmic que no en té.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainCarregat.pdf}
-	\caption{\label{img:plansDocents_mainCarregat}Disseny de l'interfície de gestió del pla docent d'un curs acadèmic.}
+	\caption{\label{img:plansDocents_mainCarregat}Disseny de la interfície de gestió del pla docent d'un curs acadèmic.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{assets/interfaces/administradors/plansDocents/aulesDialog.pdf}
-	\caption{\label{img:plansDocents_aulesDialog}Disseny de l'interfície de determinació del nombre d'aules disponibles.}
+	\caption{\label{img:plansDocents_aulesDialog}Disseny de la interfície d'especificació del nombre d'aules disponibles.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{assets/interfaces/administradors/plansDocents/carregarDialog.pdf}
-	\caption{\label{img:plansDocents_carregarDialog}Disseny de l'interfície de càrrega d'un altre pla docent a un curs acadèmic.}
+	\caption{\label{img:plansDocents_carregarDialog}Disseny de la interfície de càrrega d'un pla docent diferent a un curs acadèmic.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/plansDocents/esborrarBox.pdf}
-	\caption{\label{img:plansDocents_esborrarBox}Disseny de l'interfície d'eliminació d'un pla docent.}
+	\caption{\label{img:plansDocents_esborrarBox}Disseny de la interfície d'advertència de l'eliminació definitiva d'un pla docent.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/plansDocents/confirmarEsborrarBox.pdf}
-	\caption{\label{img:plansDocents_confirmarEsborrarBox}Disseny de l'interfície de confirmació d'eliminació d'un pla docent.}
+	\caption{\label{img:plansDocents_confirmarEsborrarBox}Disseny de la interfície de confirmació de l'eliminació definitiva d'un pla docent.}
 \end{figure}
 
 \subsection{Interfícies per a la gestió d'usuaris}
@@ -1268,96 +1295,84 @@ En aquesta subsecció, es presentarà el disseny de les finestres específiques 
 
 En aquesta subsecció, es presentarà el disseny de les finestres per a la gestió d'usuaris.
 
-Aquest disseny s'aplica a tots els rols que gestionin usuaris, a excepció del de la figura~\ref{img:gestResp_main}, que és específic per a la gestió de Responsables de docència efectuada pels Directors de Departament.
+Aquest disseny s'aplica a tots els rols que gestionin usuaris, a excepció del de la figura~\ref{img:gestResp_main}, que és específic per a la gestió de Responsables de docència efectuada pels Directors de departament.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/administradors/gestCoords/main.pdf}
-	\caption{\label{img:gestCoords_main}Disseny de l'interfície de gestió i assignació d'usuaris.}
+	\caption{\label{img:gestCoords_main}Disseny de la interfície de gestió i assignació d'usuaris.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/gestCoords/confirmarBox.pdf}
-	\caption{\label{img:gestCoords_confirmarBox}Disseny de l'interfície de confirmació de l'assignació d'un usuari.}
+	\caption{\label{img:gestCoords_confirmarBox}Disseny de la interfície de confirmació de l'assignació d'un usuari.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/gestCoords/confirmarEsborrarBox.pdf}
-	\caption{\label{img:gestCoords_confirmarEsborrarBox}Disseny de l'interfície d'eliminació de l'assignació d'un usuari.}
+	\caption{\label{img:gestCoords_confirmarEsborrarBox}Disseny de la interfície d'advertència d'eliminació de l'assignació d'un usuari.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{assets/interfaces/administradors/gestCoords/gestUsuarisDialog.pdf}
-	\caption{\label{img:gestCoords_gestUsuarisDialog}Disseny de l'interfície de control de comptes d'usuari.}
+	\caption{\label{img:gestCoords_gestUsuarisDialog}Disseny de la interfície de control de comptes d'usuari.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{assets/interfaces/administradors/gestCoords/nouUsuariDialog.pdf}
-	\caption{\label{img:gestCoords_nouUsuariDialog}Disseny de l'interfície de creació d'un nou usuari.}
+	\caption{\label{img:gestCoords_nouUsuariDialog}Disseny de la interfície de creació d'un nou usuari.}
 \end{figure}
-
-\subsection{Interfícies per a la consulta i gestió d'horaris}
-\label{subsec:interficies_consulta_gestio_horaris}
-
-En aquesta subsecció, es presentarà el disseny de les finestres per a la consulta i gestió d'horaris, tant de graus com d'aules o de professors.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/selHorari.pdf}
-	\caption{\label{img:horarisGraus_selHorari}Text}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/visualitzacio.pdf}
-	\caption{\label{img:horarisGraus_visualitzacio}Text}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/edicio.pdf}
-	\caption{\label{img:horarisGraus_edicio}Text}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisProfessors/main.pdf}
-	\caption{\label{img:horarisProfessors_main}Text}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisAules/main.pdf}
-	\caption{\label{img:horarisAules_main}Text}
-\end{figure}
-
-
-\subsection{Interfícies pels Directors de Departament}
-\label{subsec:interficies_directors}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/directors/gestResp/main.pdf}
-	\caption{\label{img:gestResp_main}Text}
+	\caption{\label{img:gestResp_main}Disseny de la interfície de gestió d'usuaris específica per als Directors de departament.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{assets/interfaces/directors/gestResp/assignDialog.pdf}
-	\caption{\label{img:gestResp_assignDialog}Text}
+	\caption{\label{img:gestResp_assignDialog}Disseny de la interfície d'assignació d'usuaris específica per als Directors de departament.}
 \end{figure}
 
-\subsection{Interfícies pels Responsables de Docència}
-\label{subsec:interficies_responsables}
+\subsection{Interfícies per a la gestió i consulta d'horaris}
+\label{subsec:interficies_consulta_gestio_horaris}
 
+En aquesta subsecció, es presentarà el disseny de les finestres per a la gestió i consulta d'horaris, tant de graus com d'aules i professors.
 
-\subsection{Interfícies pels Professors}
-\label{subsec:interficies_professors}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/selHorari.pdf}
+	\caption{\label{img:horarisGraus_selHorari}Disseny de la interfície de selecció de l'horari d'un grau per tal de consultar-lo.}
+\end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisProfessors/main.pdf}
+	\caption{\label{img:horarisProfessors_main}Disseny de la interfície de selecció de l'horari d'un professor per tal de consultar-lo.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisAules/main.pdf}
+	\caption{\label{img:horarisAules_main}Disseny de la interfície de selecció de l'horari d'una aula per tal de consultar-lo.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/visualitzacio.pdf}
+  \caption{\label{img:horarisGraus_visualitzacio}Disseny de la interfície de visualització d'un horari.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/edicio.pdf}
+  \caption{\label{img:horarisGraus_edicio}Disseny de la interfície d'edició d'un horari (només pels Coordinadors).}
+\end{figure}
 
 
 \chapter{Implementació i proves}
