@@ -11,14 +11,21 @@
 \usepackage[labelfont=bf]{caption}
 \usepackage{booktabs}
 \usepackage{array}
-\usepackage{graphicx}
+\usepackage{graphicx, adjustbox}
+\usepackage{tikz}
 
+\usetikzlibrary{positioning}
+
+\tikzset{main node/.style={circle,fill=blue!20,draw,minimum size=1cm,inner sep=0pt},}
+
+\definecolor{TblDef}{HTML}{FFFFE6}
 \definecolor{Gray}{HTML}{E2E2E2}
 \definecolor{Green}{HTML}{D5E8D4}
 \definecolor{Blue}{HTML}{DAE8FC}
 \definecolor{Orange}{HTML}{FFE6CC}
 \definecolor{Purple}{HTML}{E1D5E7}
 
+\renewcommand\tabularxcolumn[1]{m{#1}}
 
 \begin{document}
 
@@ -49,7 +56,7 @@
         \textbf{Alumne}: Adrià Ribas Chico                                                 \\[0.7cm]
         \hline
         \\
-        \textbf{Tutor 1}: Dra. Marta Fort Masdevall                                        \\
+        \textbf{Tutora 1}: Dra. Marta Fort Masdevall                                        \\
         \textbf{Departament}: Informàtica, matemàtica aplicada i estadística               \\
         \textbf{Àrea}: Llenguatges i sistemes informàtics                                  \\[0.7cm]
         \hline
@@ -240,17 +247,48 @@ També es pot fer referència en el text a les taules (p.ex. veure la Taula~\ref
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\chapter{Viabilitat}
+\chapter{Estudi de viabilitat}
 \label{cap:viabilitat}
 
+\section{Costos de personal}
+\label{sec:costos_personal}
 
+En aquesta secció, es calcularan els costos relatius al personal que participa en el desenvolupament del projecte.
+
+Com que es tracta d'una aplicació web, és necessari diferenciar entre les persones que desenvolupen la part del servidor (\textit{back-end}) i les que desenvolupen la del client (\textit{front-end}).
+
+Tal i com es veurà al capítol~\ref{cap:estudi}, la tecnologia escollida per al \textit{back-end} és Node.js, mentre que l'escollida per al \textit{front-end} és Vue.js. Per tant, els preus que es tindran en compte als càlculs són els de desenvolupadors Node.js i desenvolupadors \textit{front-end} Javascript en general.
+
+A més a més, tenint en compte la importància que prèn per al projecte el disseny de les interfícies d'usuari, cal comptar també amb dissenyadors d'interfícies.
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{X  r  c  r}
+    \toprule
+    \rowcolor{TblDef}
+    \textbf{Personal}                               & \textbf{Temps}      & \textbf{Preu}   & \textbf{Cost total}\\
+    \midrule[0.9pt]
+    Desenvolupadors Node.js                         & 258 hores           & 18.00 €/hora    & 4644.00 € \\
+    \midrule
+    Desenvolupadors \textit{front-end} Javascript   & 243 hores           & 15.15 €/hora    & 3681.45 € \\
+    \midrule
+    Dissenyadors d'interfícies                      & 87 hores            & 14.68 €/hora    & 1277.16 € \\
+    \midrule[0.9pt]
+    \textbf{Total}                                  & \textbf{588 hores}  &                 & \textbf{9602.61 €} \\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:costos_personal} Taula de costos de personal.}
+\end{table}
+
+El temps de dedicació estimt dels diferents tipus de personal s'ha extret del capítol~\ref{cap:planificacio}. Cal remarcar que el temps dedicat a la gestió del projecte s'ha tingut en compte per al càlcul del temps dels desenvolupadors.
+
+L'estimació dels preus dels diferents tipus de personal s'ha obtingut de l'informe de salaris de la \emph{Guia HAYS 2022}~\cite{Hays}.
 
 \chapter{Metodologia}
 \label{cap:metodologia}
 
 
 
-\chapter{Marc de treball i conceptes previs}  % Els noms de les seccions són provisionals, per posar-hi algo
+\chapter{Marc de treball i conceptes previs}  % Els noms de les seccions són provisionals
 \label{cap:marcdetreball}
 
 \section{Conceptes previs}
@@ -604,7 +642,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
     \newline \textbf{T5:} Verificació i comentari dels requisits amb els tutors.
     \newline \textbf{T6:} Correcció del document de requisits.\\
     \midrule
-    \textbf{Temporalització}  & 60 hores.\\
+    \textbf{Temporalització}  & 45 hores.\\
     \midrule
     \textbf{Lliurable}        & Document de requisits del sistema (veure capítol~\ref{cap:requisits}).\\
     \bottomrule
@@ -625,7 +663,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
     \newline \textbf{T3:} Confecció de la matriu de traçabilitat.
     \newline \textbf{T4:} Estimació del temps necessari per al desenvolupament del projecte i elaboració del cronograma.\\
     \midrule
-    \textbf{Temporalització}  & 30 hores.\\
+    \textbf{Temporalització}  & 15 hores.\\
     \midrule
     \textbf{Lliurable}        & Documents de planificació i temporalització del projecte (veure capítol~\ref{cap:planificacio}).\\
     \bottomrule
@@ -645,7 +683,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
     \newline \textbf{T2:} Verificació i comentari de la memòria amb els tutors.
     \newline \textbf{T3:} Correcció i retocament final de la memòria.\\
     \midrule
-    \textbf{Temporalització}  & 150 hores.\\
+    \textbf{Temporalització}  & 60 hores.\\
     \midrule
     \textbf{Lliurable}        & Memòria del projecte.\\
     \bottomrule
@@ -677,7 +715,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
     \newline \textbf{T3:} Estudi i decisió del tipus de tecnologia amb la qual s'implementarà l'aplicació web client.
     \newline \textbf{T4:} Estudi i decisió del tipus de tecnologia amb la qual s'implementarà l'aplicació de l'API.\\
     \midrule
-    \textbf{Temporalització}  & 30 hores.\\
+    \textbf{Temporalització}  & 10 hores.\\
     \midrule
     \textbf{Lliurable}        & Document de valoració i justificació de les tecnologies que conformen l'arquitectura de l'aplicatiu del projecte.\\
     \bottomrule
@@ -761,7 +799,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \newline \textbf{T3:} Implementació del tractament general de peticions i d'errors.
     \newline \textbf{T4:} Implementació del sistema de depuració i monitoreig.\\
     \midrule
-    \textbf{Temporalització}  & 30 hores.\\
+    \textbf{Temporalització}  & 18 hores.\\
     \midrule
     \textbf{Lliurable}        & Aplicació de l'API del servidor preparada per ser implementada.\\
     \bottomrule
@@ -781,7 +819,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \newline \textbf{T2:} Configuració de l'ORM escollit.
     \newline \textbf{T3:} Determinació dels usuaris del sistema gestor de la base de dades.\\
     \midrule
-    \textbf{Temporalització}  & 6 hores.\\
+    \textbf{Temporalització}  & 5 hores.\\
     \midrule
     \textbf{Lliurable}        & Sistema gestor de la base de dades configurat.\\
     \bottomrule
@@ -801,7 +839,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \newline \textbf{T2:} Implementació de validadors de dades per a cada camp dels models.
     \newline \textbf{T3:} Implementació i configuració de les relacions entre models.\\
     \midrule
-    \textbf{Temporalització}  & 55 hores.\\
+    \textbf{Temporalització}  & 20 hores.\\
     \midrule
     \textbf{Lliurable}        & Models de dades definits.\\
     \bottomrule
@@ -821,7 +859,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \newline \textbf{T2:} Implementació de l'enrutament de peticions a l'\textit{endpoint} corresponent.
     \newline \textbf{T3:} Implementació dels mecanismes d'autorització segons el rol de l'usuari.\\
     \midrule
-    \textbf{Temporalització}  & 25 hores.\\
+    \textbf{Temporalització}  & 20 hores.\\
     \midrule
     \textbf{Lliurable}        & Enrutament implementat.\\
     \bottomrule
@@ -841,7 +879,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \newline \textbf{T2:} Implementació dels mecanismes de seguretat involucrats.
     \newline \textbf{T3:} Implementació de l'enviament dels correus electrònics involucrats.\\
     \midrule
-    \textbf{Temporalització}  & 40 hores.\\
+    \textbf{Temporalització}  & 20 hores.\\
     \midrule
     \textbf{Lliurable}        & \textit{Login} i registre implementats.\\
     \bottomrule
@@ -855,16 +893,17 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \rowcolor{Blue}
     \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.6:}} Implementació dels serveis CRUD.}\\
     \midrule[0.9pt]
-    \textbf{Descripció}       & Implementació dels serveis CRUD dels diferents models de dades.\\
+    \textbf{Descripció}       & Implementació dels serveis de creació, recuperació, modificació i eliminació per a cadascun dels models de dades.\\
     \midrule
-    \textbf{Tasques}          & \textbf{T1:} Implementació del procés de creació d'instàncies de cadascun dels models de dades.
-    \newline \textbf{T2:} Implementació del procés de recuperació d'instàncies de cadascun dels models de dades.
-    \newline \textbf{T3:} Implementació del procés de modificació d'instàncies de cadascun dels models de dades.
-    \newline \textbf{T4:} Implementació del procés d'eliminació d'instàncies de cadascun dels models de dades.\\
+    \textbf{Tasques}          & \textbf{T1:} Implementació dels serveis CRUD per als models de dades relacionats amb els Administradors.
+    \newline \textbf{T2:} Implementació dels serveis CRUD per als models de dades relacionats amb els Coordinadors.
+    \newline \textbf{T3:} Implementació dels serveis CRUD per als models de dades relacionats amb els Directors de departament.
+    \newline \textbf{T4:} Implementació dels serveis CRUD per als models de dades relacionats amb els Responsables de docència.
+    \newline \textbf{T5:} Implementació dels serveis CRUD per als models de dades relacionats amb els Professors.\\
     \midrule
-    \textbf{Temporalització}  & 70 hores.\\
+    \textbf{Temporalització}  & 85 hores.\\
     \midrule
-    \textbf{Lliurable}        & Serveis de CRUD. implementats.\\
+    \textbf{Lliurable}        & Serveis de CRUD implementats.\\
     \bottomrule
   \end{tabularx}
   \caption{\label{taula:pt_3.1.6} Taula del paquet de treball \emph{Implementació dels serveis CRUD.}}
@@ -880,7 +919,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Disseny, implementació i execució continuades de testos unitaris.\\
     \midrule
-    \textbf{Temporalització}  & 25 hores.\\
+    \textbf{Temporalització}  & 10 hores.\\
     \midrule
     \textbf{Lliurable}        & Testos implementats.\\
     \bottomrule
@@ -908,7 +947,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Preparació de l'entorn de desenvolupament.\\
     \midrule
-    \textbf{Temporalització}  & 8 hores.\\
+    \textbf{Temporalització}  & 9 hores.\\
     \midrule
     \textbf{Lliurable}        & Aplicació client preparada per ser implementada.\\
     \bottomrule
@@ -948,7 +987,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \newline \textbf{T3:} Implementació del conjunt de finestres relacionades amb la gestió de Coordinadors.
     \newline \textbf{T4:} Implementació del conjunt de finestres relacionades amb la gestió de Directors de departament.\\
     \midrule
-    \textbf{Temporalització}  & 25 hores.\\
+    \textbf{Temporalització}  & 45 hores.\\
     \midrule
     \textbf{Lliurable}        & Part dels usuaris Administradors implementada.\\
     \bottomrule
@@ -1060,7 +1099,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
     \newline \textbf{T2:} Efectuació de les proves i anàlisi dels resultats.
     \newline \textbf{T3:} Correcció dels errors que hagin pogut aparèixer.\\
     \midrule
-    \textbf{Temporalització}  & 12 hores.\\
+    \textbf{Temporalització}  & 5 hores.\\
     \midrule
     \textbf{Lliurable}        & Proves i depuració de l'API del servidor realitzada.\\
     \bottomrule
@@ -1080,7 +1119,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
     \newline \textbf{T2:} Efectuació de les proves i anàlisi dels resultats.
     \newline \textbf{T3:} Correcció dels errors que hagin pogut aparèixer.\\
     \midrule
-    \textbf{Temporalització}  & 16 hores.\\
+    \textbf{Temporalització}  & 20 hores.\\
     \midrule
     \textbf{Lliurable}        & Proves i depuració de l'aplicació client realitzada.\\
     \bottomrule
@@ -1193,6 +1232,442 @@ La matriu de traçabilitat completa és la següent:
   \item (\texttt{\textbf{RF-R5}}, \texttt{\textbf{RF-G3}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.5}}, \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.6}})
   \item (\texttt{\textbf{RF-P1}}, \texttt{\textbf{RF-P2}}, \texttt{\textbf{RF-P3}}) \hspace{1pt} $\longrightarrow$ \hspace{1pt} (\texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.7}})
 \end{itemize}
+
+\section{Temporalització}
+\label{sec:temporalitzacio}
+
+\subsection{Determinació d'activitats}
+\label{subsec:determinacio_activitats}
+
+En aquesta subsecció, a partir de la matriu de dependències (veure secció~\ref{sec:matriu_dependencies}) i la de traçabilitat (veure secció~\ref{sec:matriu_tracabilitat}), es determinaran les activitats que caldrà dur a terme per completar el desenvolupament del projecte.
+
+Una activitat és una agrupació de paquets de treball i/o de tasques de paquets de treball que cal completar per poder assolir una sèrie de requisits.
+
+Un cop s'hagin determinat les activitats, s'efectuarà una estimació del temps que podria requerir completar cadascuna. Aquesta estimació consistirà, primerament, en indicar tres valors de temps:
+
+\begin{itemize}
+  \item \textit{t(O)}: Estimació optimista.
+  \item \textit{t(M)}: El més probable.
+  \item \textit{t(P)}: Estimació pessimista.
+\end{itemize}
+
+Tot seguit, es calcularà el temps esperat de duració \textit{t(E)} de l'activitat. Aquest càlcul consisteix en una mitjana ponderada dels valors de l'estimació anterior, tal i com es pot veure a continuació:
+
+\begin{equation}
+  t(E) = \frac{t(O) + 4t(M) + t(P)}{6}
+\end{equation}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Gray}
+    \multicolumn{2}{c}{\texttt{\textbf{A1:}} Definició de requisits}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_1.1}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 20 hores.
+    \newline \textit{t(M)}: 30 hores.
+    \newline \textit{t(P)}: 45 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 31 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a1} Taula de l'activitat \emph{Definició de requisits}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Gray}
+    \multicolumn{2}{c}{\texttt{\textbf{A2:}} Planificació de tasques}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_1.2}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 10 hores.
+    \newline \textit{t(M)}: 15 hores.
+    \newline \textit{t(P)}: 25 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 16 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a2} Taula de l'activitat \emph{Planificació de tasques}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Green}
+    \multicolumn{2}{c}{\texttt{\textbf{A3:}} Disseny de l'arquitectura}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_2.1}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 6 hores.
+    \newline \textit{t(M)}: 10 hores.
+    \newline \textit{t(P)}: 20 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 11 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a3} Taula de l'activitat \emph{Disseny de l'arquitectura}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Green}
+    \multicolumn{2}{c}{\texttt{\textbf{A4:}} Disseny de la base de dades}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_2.2}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 15 hores.
+    \newline \textit{t(M)}: 25 hores.
+    \newline \textit{t(P)}: 30 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 24 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a4} Taula de l'activitat \emph{Disseny de la base de dades}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Green}
+    \multicolumn{2}{c}{\texttt{\textbf{A5:}} Disseny de les interfícies d'usuari}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_2.3}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 60 hores.
+    \newline \textit{t(M)}: 85 hores.
+    \newline \textit{t(P)}: 120 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 87 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a5} Taula de l'activitat \emph{Disseny de les interfícies d'usuari}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A6:}} Preparació inicial de l'aplicació de l'API}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_3.1.1}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 12 hores.
+    \newline \textit{t(M)}: 18 hores.
+    \newline \textit{t(P)}: 28 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 19 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a6} Taula de l'activitat \emph{Preparació inicial de l'aplicació de l'API}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A7:}} Configuració de la base de dades}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_3.1.2}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 3 hores.
+    \newline \textit{t(M)}: 5 hores.
+    \newline \textit{t(P)}: 10 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 6 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a7} Taula de l'activitat \emph{Configuració de la base de dades}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A8:}} Definició dels models de dades}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_3.1.3}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 18 hores.
+    \newline \textit{t(M)}: 20 hores.
+    \newline \textit{t(P)}: 30 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 21 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a8} Taula de l'activitat \emph{Definició dels models de dades}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A9:}} Implementació de l'enrutament}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_3.1.4}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 15 hores.
+    \newline \textit{t(M)}: 20 hores.
+    \newline \textit{t(P)}: 25 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 25 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a9} Taula de l'activitat \emph{Implementació de l'enrutament}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A10:}} Preparació inicial de l'aplicació client}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_3.2.1}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 6 hores.
+    \newline \textit{t(M)}: 8 hores.
+    \newline \textit{t(P)}: 15 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 9 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a10} Taula de l'activitat \emph{Preparació inicial de l'aplicació client}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A11:}} Implementació del \textit{login} i relacionats}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_3.1.5}}, \texttt{\textbf{PT\_3.2.2}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 25 hores.
+    \newline \textit{t(M)}: 35 hores.
+    \newline \textit{t(P)}: 50 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 36 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a11} Taula de l'activitat \emph{Implementació del \textit{login} i relacionats}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A12:}} Implementació de la part dels Administradors}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & [\textbf{T1}] de \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.3}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 50 hores.
+    \newline \textit{t(M)}: 60 hores.
+    \newline \textit{t(P)}: 75 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 61 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a12} Taula de l'activitat \emph{Implementació de la part dels Administradors}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A13:}} Implementació de la part dels Coordinadors}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & [\textbf{T2}] de \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.4}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 62 hores.
+    \newline \textit{t(M)}: 75 hores.
+    \newline \textit{t(P)}: 88 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 75 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a13} Taula de l'activitat \emph{Implementació de la part dels Coordinadors}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A14:}} Implementació de la part dels Directors de departament}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & [\textbf{T3}] de \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.5}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 20 hores.
+    \newline \textit{t(M)}: 25 hores.
+    \newline \textit{t(P)}: 35 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 26 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a14} Taula de l'activitat \emph{Implementació de la part dels Directors de departament}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A15:}} Implementació de la part dels Responsables de docència}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & [\textbf{T4}] de \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.6}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 20 hores.
+    \newline \textit{t(M)}: 25 hores.
+    \newline \textit{t(P)}: 30 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 25 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a15} Taula de l'activitat \emph{Implementació de la part dels Responsables de docència}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Blue}
+    \multicolumn{2}{c}{\texttt{\textbf{A16:}} Implementació de la part dels Professors}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & [\textbf{T5}] de \texttt{\textbf{PT\_3.1.6}}, \texttt{\textbf{PT\_3.2.7}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 10 hores.
+    \newline \textit{t(M)}: 15 hores.
+    \newline \textit{t(P)}: 25 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 16 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a16} Taula de l'activitat \emph{Implementació de la part dels Professors}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Orange}
+    \multicolumn{2}{c}{\texttt{\textbf{A17:}} Testeig de l'API del servidor}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_3.1.7}}, \texttt{\textbf{PT\_4.1}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 10 hores.
+    \newline \textit{t(M)}: 15 hores.
+    \newline \textit{t(P)}: 25 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 15 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a17} Taula de l'activitat \emph{Testeig de l'API del servidor}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Orange}
+    \multicolumn{2}{c}{\texttt{\textbf{A18:}} Testeig de l'aplicació client}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_4.2}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 15 hores.
+    \newline \textit{t(M)}: 20 hores.
+    \newline \textit{t(P)}: 25 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 20 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a18} Taula de l'activitat \emph{Testeig de l'aplicació client}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Orange}
+    \multicolumn{2}{c}{\texttt{\textbf{A19:}} Testeig en entorn preproductiu}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_4.3}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 7 hores.
+    \newline \textit{t(M)}: 10 hores.
+    \newline \textit{t(P)}: 20 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 11 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a19} Taula de l'activitat \emph{Testeig en entorn preproductiu}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Purple}
+    \multicolumn{2}{c}{\texttt{\textbf{A20:}} Posada en marxa de l'aplicatiu}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_5.1}}, \texttt{\textbf{PT\_5.2}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 8 hores.
+    \newline \textit{t(M)}: 12 hores.
+    \newline \textit{t(P)}: 16 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 12 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a20} Taula de l'activitat \emph{Posada en marxa de l'aplicatiu}.}
+\end{table}
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{l | X}
+    \toprule
+    \rowcolor{Gray}
+    \multicolumn{2}{c}{\texttt{\textbf{A21:}} Documentació}\\
+    \midrule[0.9pt]
+    \textbf{Tasques}                 & \texttt{\textbf{PT\_1.3}}.\\
+    \midrule
+    \textbf{Estimació de temps}      & \textit{t(O)}: 40 hores.
+    \newline \textit{t(M)}: 60 hores.
+    \newline \textit{t(P)}: 80 hores.\\
+    \midrule
+    \textbf{Durada esperada}         & \textbf{\textit{t(E)}: 60 hores}.\\
+    \bottomrule
+  \end{tabularx}
+  \caption{\label{taula:a21} Taula de l'activitat \emph{Documentació}.}
+\end{table}
+
+\subsection{Diagrama d'activitats}
+\label{subsec:diagrama_activitats}
+
+En aquesta subsecció, s'il·lustrarà el diagrama de les activitats planificades a la subsecció anterior.
+
+El diagrama consistirà en un graf els vèrtexs del qual representen activitats i les arestes relacions ``acabar per començar''. Les arestes també duran el temps de durada esperat de l'activitat que tenen com a origen.
+
+\begin{figure}[H]
+  \centering
+	\includegraphics[width=0.9\textwidth]{assets/planification_figs/activityDiagram.pdf}
+	\caption{\label{img:diagrama_activitats}Diagrama de les activitats planificades.}
+\end{figure}
+
+A partir del diagrama d'activitats, es pot saber fàcilment la durada màxima del projecte. Per calcular-la, cal sumar els temps de cadascuna de les activitats del camí crític del graf, és a dir, el camí des d'A1 fins a Fi més costós en temps.
+
+\textbf{A1} $\rightarrow$ \textbf{A2} $\rightarrow$ \textbf{A5} $\rightarrow$ \textbf{A11} $\rightarrow$ \textbf{A12} $\rightarrow$ \textbf{A13} $\rightarrow$ \textbf{A14} $\rightarrow$ \textbf{A15} $\rightarrow$ \textbf{A16} $\rightarrow$ \textbf{A18} $\rightarrow$ \textbf{A19} $\rightarrow$ \textbf{A20} $\rightarrow$ \textbf{A21} $\rightarrow$ Fi
+
+El resultat de la suma dels temps del camí crític i, per tant, la durada màxima estimada del projecte és de 427 hores. Si es suposen jornades de treball de 4 hores diàries i 5 dies a la setmana, el temps de desenvolupament del projecte seria de 21.35 setmanes (quasi bé 5 mesos).
+
+
+\subsection{Cronograma}
+\label{subsec:cronograma}
+
+En aquesta subsecció, es representarà el diagrama de Gantt que recull la planificació del projecte.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.3\textwidth, angle=90]{assets/planification_figs/ganttDiagram.pdf}
+  \caption{\label{img:diagrama_gantt}Diagrama de Gantt.}
+\end{figure}
+
+Tal i com es pot veure a la part esquerra del diagrama, a part de les activitats determinades a la subsecció~\ref{subsec:determinacio_activitats}, també hi apareixen les dates d'inici i de fi previstes per a cadascuna. Aquestes dates s'han calculat suposant jornades de treball de 4 hores diàries i 5 dies a la setmana.
+
 
 \chapter{Estudi i decisions}
 \label{cap:estudi}
