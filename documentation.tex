@@ -1849,6 +1849,111 @@ En aquesta subsecció, es presentarà el disseny de les finestres per a la gesti
   \caption{\label{img:horarisGraus_edicio}Disseny de la interfície d'edició d'un horari (només pels Coordinadors).}
 \end{figure}
 
+\section{Disseny de la base de dades}
+\label{disseny_bdd}
+
+
+
+\section{Anàlisi dels casos d'ús}
+\label{sec:casos_us}
+
+\subsection{Actors implicats}
+\label{subsec:casos_us_actors}
+
+En aquesta subsecció, es recolliran els actors que poden interactuar amb l'aplicació de manera externa. També s'indicaran les relacions d'especialització / generalització que estableixen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/use_cases/actors.pdf}
+  \caption{\label{img:casos_us_actors}Jerarquia d'actors que poden interactuar amb l'aplicació.}
+\end{figure}
+
+Tal com es pot veure a la figura~\ref{img:casos_us_actors}, els actors es corresponen amb els diferents rols d'usuari que participen en l'aplicació. Tots aquests actors, que disposen del seu propi conjunt d'interaccions possibles amb el sistema, també hereten el d'\emph{Usuari}, ja que en són especialitzacions.
+
+\subsection{Autenticació}
+\label{subsec:casos_us_auth}
+
+En aquesta subsecció, \dots
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/use_cases/auth.pdf}
+  \caption{\label{img:casos_us_auth}Diagrama de casos d'ús relacionats amb l'autenticació.}
+\end{figure}
+
+\subsection{Gestió del pla docent}
+\label{subsec:casos_us_pla}
+
+\subsubsection{General}
+
+En aquest apartat, \dots
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{assets/use_cases/pla_docent/general.pdf}
+  \caption{\label{img:casos_us_pla_general}Diagrama de casos d'ús general de la gestió del pla docent.}
+\end{figure}
+
+\subsubsection{Pujada d'un pla docent}
+
+En aquest apartat, \dots
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/use_cases/pla_docent/pujada.pdf}
+  \caption{\label{img:casos_us_pla_pujada}Diagrama de casos d'ús de la pujada d'un pla docent.}
+\end{figure}
+
+\subsubsection{Modificació del pla docent}
+
+En aquest apartat, \dots
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/use_cases/pla_docent/modif.pdf}
+  \caption{\label{img:casos_us_pla_modif}Diagrama de casos d'ús de la modificació del pla docent.}
+\end{figure}
+
+\subsection{Gestió d'usuaris}
+\label{subsec:casos_us_usuaris}
+
+En aquesta subsecció, \dots
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/use_cases/usuaris.pdf}
+  \caption{\label{img:casos_us_usuaris}Diagrama de casos d'ús de la gestió d'usuaris.}
+\end{figure}
+
+\subsection{Visualització d'horaris}
+\label{subsec:casos_us_c}
+
+En aquesta subsecció, \dots
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/use_cases/horaris/visualitzar.pdf}
+  \caption{\label{img:casos_us_horaris_visual}Diagrama de casos d'ús de la visualització d'horaris.}
+\end{figure}
+
+\subsection{Modificació d'horaris}
+\label{subsec:casos_us_d}
+
+En aquesta subsecció, \dots
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/use_cases/horaris/modificar/modif.pdf}
+  \caption{\label{img:casos_us_horaris_modif}Diagrama de casos d'ús de la modificació d'horaris.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{assets/use_cases/horaris/modificar/opt.pdf}
+  \caption{\label{img:casos_us_horaris_opt}Diagrama de casos d'ús de ??.}
+\end{figure}
+
+
 
 \chapter{Implementació i proves}
 \label{cap:implementacio}
