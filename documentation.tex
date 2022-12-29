@@ -18,6 +18,9 @@
 
 \tikzset{main node/.style={circle,fill=blue!20,draw,minimum size=1cm,inner sep=0pt},}
 
+\setlength{\headheight}{14.49998pt}
+\addtolength{\topmargin}{-0.89998pt}
+
 \definecolor{TblDef}{HTML}{FFFFE6}
 \definecolor{Gray}{HTML}{E2E2E2}
 \definecolor{Green}{HTML}{D5E8D4}
@@ -290,6 +293,9 @@ L'estimació dels preus dels diferents tipus de personal s'ha obtingut de l'info
 
 \chapter{Marc de treball i conceptes previs}  % Els noms de les seccions són provisionals
 \label{cap:marcdetreball}
+
+\section{Nomenclatura específica}
+\label{sec:nomenclatura}
 
 \section{Conceptes previs}
 \label{sec:conceptes_previs}
@@ -1694,172 +1700,6 @@ Express és la infraestructura o \textit{framework} d'aplicacions web que funcio
 \chapter{Anàlisi i disseny del sistema}
 \label{cap:analisi}
 
-\section{Interfícies d'usuari}
-\label{sec:interficies_usuari}
-
-En aquesta secció, s'exposarà el disseny de les diferents finestres que conformaran l'aplicació web client.
-
-Cal destacar que l'aparença final de l'aplicació no ha de ser necessàriament igual que la que es mostrarà a les subseccions següents.
-
-\subsection{Interfícies de \textit{login}}
-\label{subsec:interficies_login}
-
-En aquesta subsecció, es presentarà el disseny de les finestres relacionades amb la part d'autenticació.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/login.pdf}
-	\caption{\label{img:login}Disseny de la interfície d'autenticació.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablishment.pdf}
-	\caption{\label{img:passwordRestablishment}Disseny de la interfície de restabliment de contrasenya.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/passwordRestablished.pdf}
-	\caption{\label{img:passwordRestablished}Disseny de la interfície de confirmació d'enviament de l'\textit{email} per al restabliment de la contrasenya.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/login/newPassword.pdf}
-	\caption{\label{img:newPassword}Disseny de la interfície de creació d'una nova contrasenya.}
-\end{figure}
-
-\subsection{Interfícies específiques per als Administradors}
-\label{subsec:interficies_administradors}
-
-En aquesta subsecció, es presentarà el disseny de les finestres específiques per als usuaris amb rol d'Administrador.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainNoCarregat.pdf}
-	\caption{\label{img:plansDocents_mainNoCarregat}Disseny de la interfície de càrrega d'un pla docent a un curs acadèmic que no en té.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/administradors/plansDocents/mainCarregat.pdf}
-	\caption{\label{img:plansDocents_mainCarregat}Disseny de la interfície de gestió del pla docent d'un curs acadèmic.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\textwidth]{assets/interfaces/administradors/plansDocents/aulesDialog.pdf}
-	\caption{\label{img:plansDocents_aulesDialog}Disseny de la interfície d'especificació del nombre d'aules disponibles.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{assets/interfaces/administradors/plansDocents/carregarDialog.pdf}
-	\caption{\label{img:plansDocents_carregarDialog}Disseny de la interfície de càrrega d'un pla docent diferent a un curs acadèmic.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/plansDocents/esborrarBox.pdf}
-	\caption{\label{img:plansDocents_esborrarBox}Disseny de la interfície d'advertència de l'eliminació definitiva d'un pla docent.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/plansDocents/confirmarEsborrarBox.pdf}
-	\caption{\label{img:plansDocents_confirmarEsborrarBox}Disseny de la interfície de confirmació de l'eliminació definitiva d'un pla docent.}
-\end{figure}
-
-\subsection{Interfícies per a la gestió d'usuaris}
-\label{subsec:interficies_gestio_usuaris}
-
-En aquesta subsecció, es presentarà el disseny de les finestres per a la gestió d'usuaris.
-
-Aquest disseny s'aplica a tots els rols que gestionin usuaris, a excepció del de la figura~\ref{img:gestResp_main}, que és específic per a la gestió de Responsables de docència efectuada pels Directors de departament.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/administradors/gestCoords/main.pdf}
-	\caption{\label{img:gestCoords_main}Disseny de la interfície de gestió i assignació d'usuaris.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/gestCoords/confirmarBox.pdf}
-	\caption{\label{img:gestCoords_confirmarBox}Disseny de la interfície de confirmació de l'assignació d'un usuari.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{assets/interfaces/administradors/gestCoords/confirmarEsborrarBox.pdf}
-	\caption{\label{img:gestCoords_confirmarEsborrarBox}Disseny de la interfície d'advertència d'eliminació de l'assignació d'un usuari.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{assets/interfaces/administradors/gestCoords/gestUsuarisDialog.pdf}
-	\caption{\label{img:gestCoords_gestUsuarisDialog}Disseny de la interfície de control de comptes d'usuari.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\textwidth]{assets/interfaces/administradors/gestCoords/nouUsuariDialog.pdf}
-	\caption{\label{img:gestCoords_nouUsuariDialog}Disseny de la interfície de creació d'un nou usuari.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/directors/gestResp/main.pdf}
-	\caption{\label{img:gestResp_main}Disseny de la interfície de gestió d'usuaris específica per als Directors de departament.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{assets/interfaces/directors/gestResp/assignDialog.pdf}
-	\caption{\label{img:gestResp_assignDialog}Disseny de la interfície d'assignació d'usuaris específica per als Directors de departament.}
-\end{figure}
-
-\subsection{Interfícies per a la gestió i consulta d'horaris}
-\label{subsec:interficies_consulta_gestio_horaris}
-
-En aquesta subsecció, es presentarà el disseny de les finestres per a la gestió i consulta d'horaris, tant de graus com d'aules i professors.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/selHorari.pdf}
-	\caption{\label{img:horarisGraus_selHorari}Disseny de la interfície de selecció de l'horari d'un grau per tal de consultar-lo.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisProfessors/main.pdf}
-	\caption{\label{img:horarisProfessors_main}Disseny de la interfície de selecció de l'horari d'un professor per tal de consultar-lo.}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisAules/main.pdf}
-	\caption{\label{img:horarisAules_main}Disseny de la interfície de selecció de l'horari d'una aula per tal de consultar-lo.}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/visualitzacio.pdf}
-  \caption{\label{img:horarisGraus_visualitzacio}Disseny de la interfície de visualització d'un horari.}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{assets/interfaces/coordinadors/horarisGraus/edicio.pdf}
-  \caption{\label{img:horarisGraus_edicio}Disseny de la interfície d'edició d'un horari (només pels Coordinadors).}
-\end{figure}
-
-\section{Disseny de la base de dades}
-\label{disseny_bdd}
-
-
-
 \section{Anàlisi dels casos d'ús}
 \label{sec:casos_us}
 
@@ -1879,12 +1719,14 @@ Tal com es pot veure a la figura~\ref{img:casos_us_actors}, els actors es corres
 \subsection{Autenticació}
 \label{subsec:casos_us_auth}
 
-En aquesta subsecció, \dots
+En aquesta subsecció, es representaran els casos d'ús relacionats amb la part de l'autenticació d'usuaris (veure figura~\ref{img:casos_us_auth}).
+
+Quan es parli d'un \textit{Token}, s'estarà fent referència a un \textit{JSON Web Token}~\cite{JWT} generat per codificar certes dades amb una finalitat concreta (més informació al capítol~\ref{cap:estudi}).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{assets/use_cases/auth.pdf}
-  \caption{\label{img:casos_us_auth}Diagrama de casos d'ús relacionats amb l'autenticació.}
+  \caption{\label{img:casos_us_auth}Diagrama dels casos d'ús relacionats amb l'autenticació.}
 \end{figure}
 
 \subsection{Gestió del pla docent}
@@ -1892,17 +1734,17 @@ En aquesta subsecció, \dots
 
 \subsubsection{General}
 
-En aquest apartat, \dots
+En aquest apartat, es representaran els casos d'ús generals involucrats en la gestió del pla docent (veure figura~\ref{img:casos_us_pla_general}), els quals seran desglossats en els apartats posteriors de la subsecció.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{assets/use_cases/pla_docent/general.pdf}
+  \includegraphics[width=0.9\textwidth]{assets/use_cases/pla_docent/general.pdf}
   \caption{\label{img:casos_us_pla_general}Diagrama de casos d'ús general de la gestió del pla docent.}
 \end{figure}
 
 \subsubsection{Pujada d'un pla docent}
 
-En aquest apartat, \dots
+En aquest apartat, es representaran els casos d'ús involucrats en la pujada d'un pla docent (veure figura~\ref{img:casos_us_pla_pujada}).
 
 \begin{figure}[H]
   \centering
@@ -1912,7 +1754,7 @@ En aquest apartat, \dots
 
 \subsubsection{Modificació del pla docent}
 
-En aquest apartat, \dots
+En aquest apartat, es representaran els casos d'ús involucrats en la modificació d'un pla docent (veure figura~\ref{img:casos_us_pla_modif}).
 
 \begin{figure}[H]
   \centering
@@ -1923,7 +1765,11 @@ En aquest apartat, \dots
 \subsection{Gestió d'usuaris}
 \label{subsec:casos_us_usuaris}
 
-En aquesta subsecció, \dots
+En aquesta subsecció, es representaran els casos d'ús involucrats en la gestió d'usuaris (veure figura~\ref{img:casos_us_usuaris}).
+
+És important destacar que, per motius de llegibilitat, s'ha optat per representar només una vegada i de manera genèrica els casos d'ús ``Crear usuari'', ``Eliminar usuari'' i ``Reenviar correu d'activació''.
+
+En realitat, aquests casos d'ús només s'apliquen a un usuari d'un rol concret, el qual és definit segons el rol dels usuaris que s'estiguin gestionant: en la gestió de Coordinadors, només s'apliquen a usuaris Coordinadors i així successivament.
 
 \begin{figure}[H]
   \centering
@@ -1932,33 +1778,404 @@ En aquesta subsecció, \dots
 \end{figure}
 
 \subsection{Visualització d'horaris}
-\label{subsec:casos_us_c}
+\label{subsec:casos_us_veure_horaris}
 
-En aquesta subsecció, \dots
+En aquesta subsecció, es representaran els casos d'ús involucrats en la visualització d'horaris (veure figura~\ref{img:casos_us_veure_horaris}).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{assets/use_cases/horaris/visualitzar.pdf}
-  \caption{\label{img:casos_us_horaris_visual}Diagrama de casos d'ús de la visualització d'horaris.}
+  \caption{\label{img:casos_us_veure_horaris}Diagrama de casos d'ús de la visualització d'horaris.}
 \end{figure}
 
-\subsection{Modificació d'horaris}
-\label{subsec:casos_us_d}
+\subsection{Modificació d'horaris d'estudis}
+\label{subsec:casos_us_modif_horaris}
 
-En aquesta subsecció, \dots
+\subsubsection{General}
+
+En aquest apartat, es representaran els casos d'ús generals involucrats en la modificació dels horaris dels estudis (veure figura~\ref{img:casos_us_modif_horaris_general}), els quals seran desglossats en els apartats posteriors de la subsecció.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{assets/use_cases/horaris/modificar/general.pdf}
+  \caption{\label{img:casos_us_modif_horaris_general}Diagrama de casos d'ús general de la modificació d'horaris.}
+\end{figure}
+
+\subsubsection{Modificació d'un horari d'un estudi}
+
+En aquest apartat, es representaran els casos d'ús involucrats en la modificació d'un horari d'un estudi (veure figura~\ref{img:casos_us_horaris_modif}).
+
+És important destacar que el cas d'ús ``Modificar un horari del seu estudi'' es refereix a la modificació de l'horari d'un quadrimestre d'un dels cursos de l'estudi que gestiona el Coordinador en qüestió.
+
+A més a més, cal afegir que, per motius de llegibilitat, s'ha optat per representar només una vegada i de manera genèrica el cas d'ús ``Modificar dades relacionades amb el temps'', ja que serveix tant per blocs horaris com per blocs horaris genèrics.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{assets/use_cases/horaris/modificar/modif.pdf}
-  \caption{\label{img:casos_us_horaris_modif}Diagrama de casos d'ús de la modificació d'horaris.}
+  \caption{\label{img:casos_us_horaris_modif}Diagrama de casos d'ús de la modificació d'un horari d'un estudi.}
 \end{figure}
+
+\subsubsection{Visualització de solapaments}
+
+En aquest apartat, es representaran els casos d'ús involucrats en la visualització de solapaments entre blocs horaris (veure figura~\ref{img:casos_us_horaris_solap}).
+
+És important destacar que el cas d'ús ``Veure els solapaments entre blocs horaris'' es refereix als solapaments existents a l'horari d'un quadrimestre d'un dels cursos de l'estudi que gestiona el Coordinador en qüestió.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{assets/use_cases/horaris/modificar/opt.pdf}
-  \caption{\label{img:casos_us_horaris_opt}Diagrama de casos d'ús de ??.}
+  \includegraphics[width=0.9\textwidth]{assets/use_cases/horaris/modificar/solapaments.pdf}
+  \caption{\label{img:casos_us_horaris_solap}Diagrama de casos d'ús de la visualització de solapaments.}
 \end{figure}
 
+\section{Disseny de la base de dades}
+\label{sec:disseny_bdd}
+
+\subsection{Model entitat-relació}
+\label{subsec:bd_model_er}
+
+En aquesta subsecció, es presentarà el diagrama entitat-relació dissenyat per emmagatzemar i gestionar adequadament les dades de l'aplicació (veure figura~\ref{img:db}).
+
+Per tal d'evitar la rectificació manual del diagrama davant de qualsevol canvi en el disseny, s'ha optat per utilitzar una eina que en permeti la generació automàtica a partir de les taules que formin la base de dades. Més concretament, es tracta de DataGrip~\cite{JetBrains}.
+
+La part negativa d'aquest programa és que no explicita la cardinalitat de les relacions. Per aquest motiu, és molt important remarcar que totes les relacions són ``u a molts'' exceptuant les següents que són ``u a u'':
+\begin{itemize}
+  \item \texttt{Estudi} (0..1) $\longrightarrow$ (0..1) \texttt{Usuari}.
+  \item \texttt{Departament} (0..1) $\longrightarrow$ (0..1) \texttt{Usuari}.
+  \item \texttt{Àrea} (0..1) $\longrightarrow$ (0..1) \texttt{Usuari}.
+\end{itemize}
+
+També cal tenir en compte que les relacions ``molts a molts'' hi apareixen ja ``aplicades'' amb la taula intermitja entre les dues entitats en qüestió, la qual és necessària per a la seva implementació. A més a més, l'herència d'usuaris també hi apareix ``resolta'' amb una implementació concreta (veure capítol~\ref{cap:estudi} per conèixer els detalls d'aquesta decisió).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/db.pdf}
+	\caption{\label{img:db}Diagrama relacional de la base de dades.}
+\end{figure}
+
+\subsection{Descripció de les entitats}
+\label{subsec:bd_entitats}
+
+\subsubsection{Consideracions inicials}
+
+En aquest apartat, es presentaran una sèrie de consideracions inicials amb l'objectiu de clarificar el contingut dels que segueixen.
+
+En primer lloc, és necessari definir el format que adoptarà cadascun dels atributs de les taules:
+\\[8pt]
+\centerline{\texttt{\textbf{Nom} <Tipus> [Restriccions]}: Descripció}
+
+D'altra banda, cal destacar que totes les taules disposen de tres atributs comuns, els quals només es descriuen a continuació per tal d'evitar repeticions innecessàries:
+\begin{itemize}
+  \item \texttt{\textbf{createdAt} <datetime> [NOT NULL]}: Moment de la creació de l'entitat.
+  \item \texttt{\textbf{updatedAt} <datetime> [NOT NULL]}: Moment de l'última modificació de l'entitat.
+  \item \texttt{\textbf{deletedAt} <datetime>}: Moment de l'eliminació de l'entitat.
+\end{itemize}
+
+\subsubsection{Facultats o \textit{Schools}}
+
+En aquest apartat, es descriuran els atributs de la taula ``Facultats'' (``\textit{Schools}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{abv} <varchar(8)> [PRIMARY KEY]}: Abreviació (clau primària).
+  \item \texttt{\textbf{name} <varchar(50)> [NOT NULL]}: Nom.
+  \item \texttt{\textbf{currentStartYear} <smallint>}: Any d'inici del curs acadèmic actual.
+\end{itemize}
+
+\subsubsection{Usuaris o \textit{Users}}
+
+En aquest apartat, es descriuran els atributs de la taula ``Usuaris'' (``\textit{Users}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY AUTOINCREMENT]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{firstName} <varchar(30)> [NOT NULL]}: Nom.
+  \item \texttt{\textbf{lastName} <varchar(80)> [NOT NULL]}: Cognoms.
+  \item \texttt{\textbf{email} <varchar(40)> [NOT NULL]}: Adreça de correu electrònic.
+  \item \texttt{\textbf{secret} <varchar(255)> [NOT NULL]}: Contrasenya (encriptada).
+  \item \texttt{\textbf{role} <ENUM(<llista de rols>)> [NOT NULL]}: Rol.
+  \item \texttt{\textbf{activated} <tinyint(1)> [DEFAULT 0]}: Indica si l'usuari ha estat activat o no.
+  \item \texttt{\textbf{area} <varchar(10)>}: En cas que el rol sigui Professor, abreviació de l'àrea a la qual pertany (clau forana).
+  \item \texttt{\textbf{school} <varchar(8)>}: Abreviació de la facultat a la qual pertany (clau forana).
+\end{itemize}
+
+\subsubsection{Departaments o \textit{Departments}}
+
+En aquest apartat, es descriuran els atributs de la taula ``Departaments'' (``\textit{Departments}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{abv} <varchar(10)> [PRIMARY KEY]}: Abreviació (clau primària).
+  \item \texttt{\textbf{director} <int>}: Identificador numèric de l'usuari que el dirigeix (clau forana).
+\end{itemize}
+
+\subsubsection{FacultatDepartaments o \textit{SchoolDepartments}}
+
+En aquest apartat, es descriuran els atributs de la taula ``FacultatDepartaments'' (``\textit{SchoolDepartments}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{school} <varchar(8)>}: Abreviació de la facultat a la qual pertany (clau forana).
+  \item \texttt{\textbf{department} <varchar(10)>}: Abreviació del departament al qual pertany (clau forana).
+\end{itemize}
+
+Aquesta taula també conté un índex que assegura la unicitat de la parella d'atributs ``\textit{school}'' - ``\textit{department}''.
+
+\subsubsection{Àrees o \textit{Areas}}
+
+En aquest apartat, es descriuran els atributs de la taula ``Àrees'' (``\textit{Areas}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{abv} <varchar(10)> [PRIMARY KEY]}: Abreviació (clau primària).
+  \item \texttt{\textbf{responsable} <int>}: Identificador numèric de l'usuari que la gestiona (clau forana).
+  \item \texttt{\textbf{departament} <int>}: Abreviació del departament al qual pertany (clau forana).
+\end{itemize}
+
+\subsubsection{Estudis o \textit{Studies}}
+
+En aquest apartat, es descriuran els atributs de la taula ``Estudis'' (``\textit{Studies}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{abv} <varchar(8)> [PRIMARY KEY]}: Abreviació (clau primària).
+  \item \texttt{\textbf{school} <varchar(8)>}: Abreviació de la facultat a la qual pertany (clau forana).
+  \item \texttt{\textbf{coordinador} <int>}: Identificador numèric de l'usuari que el gestiona (clau forana).
+\end{itemize}
+
+\subsubsection{Assignatures o \textit{Subjects}}
+
+En aquest apartat, es descriuran els atributs de la taula ``Assignatures'' (``\textit{Subjects}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{code} <varchar(10)> [PRIMARY KEY]}: Codi (clau primària).
+  \item \texttt{\textbf{name} <varchar(100)> [NOT NULL]}: Nom.
+  \item \texttt{\textbf{semester} <tinyint> [NOT NULL]}: Semestre durant el qual es cursa.
+  \item \texttt{\textbf{credits} <tinyint>}: Nombre de crèdits.
+  \item \texttt{\textbf{bigGroups} <tinyint>}: Nombre de grups grans que ha de tenir.
+  \item \texttt{\textbf{mediumGroups} <tinyint>}: Nombre de grups mitjans que ha de tenir.
+  \item \texttt{\textbf{smallGroups} <tinyint>}: Nombre de grups petits que ha de tenir.
+\end{itemize}
+
+\subsubsection{EstudiAssignatures o \textit{StudySubjects}}
+
+En aquest apartat, es descriuran els atributs de la taula ``EstudiAssignatures'' (``\textit{StudySubjects}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{course} <tinyint> [NOT NULL]}: Curs en el qual es cursa l'assignatura a l'estudi.
+  \item \texttt{\textbf{study} <varchar(8)>}: Abreviació de l'estudi al qual pertany (clau forana).
+  \item \texttt{\textbf{subject} <varchar(10)>}: Codi de l'assignatura a la qual pertany (clau forana).
+\end{itemize}
+
+Aquesta taula també conté un índex que assegura la unicitat de la parella d'atributs ``\textit{study}'' - ``\textit{subject}''.
+
+\subsubsection{ÀreaAssignatures o \textit{AreaSubjects}}
+
+En aquest apartat, es descriuran els atributs de la taula ``ÀreaAssignatures'' (``\textit{AreaSubjects}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{area} <varchar(10)>}: Abreviació de l'àrea a la qual pertany (clau forana).
+  \item \texttt{\textbf{subject} <varchar(10)>}: Codi de l'assignatura a la qual pertany (clau forana).
+\end{itemize}
+
+Aquesta taula també conté un índex que assegura la unicitat de la parella d'atributs ``\textit{area}'' - ``\textit{subject}''.
+
+\subsubsection{TipusLaboratori o \textit{LabTypes}}
+
+En aquest apartat, es descriuran els atributs de la taula ``TipusLaboratori'' (``\textit{LabTypes}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{name} <varchar(50)> [PRIMARY KEY]}: Nom.
+  \item \texttt{\textbf{amount} <smallint>}: Quantitat existent.
+  \item \texttt{\textbf{capacity} <smallint>}: Capacitat d'alumnes.
+\end{itemize}
+
+\subsubsection{AssignaturaTipusLaboratori o \textit{SubjectLabTypes}}
+
+En aquest apartat, es descriuran els atributs de la taula ``AssignaturaTipusLaboratori'' (``\textit{SubjectLabTypes}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{labType} <varchar(50)>}: Nom del tipus de laboratori al qual pertany (clau forana).
+  \item \texttt{\textbf{subject} <varchar(10)>}: Codi de l'assignatura a la qual pertany (clau forana).
+\end{itemize}
+
+Aquesta taula també conté un índex que assegura la unicitat de la parella d'atributs ``\textit{labType}'' - ``\textit{subject}''.
+
+\subsubsection{Grups o \textit{Groups}}
+
+En aquest apartat, es descriuran els atributs de la taula ``Grups'' (``\textit{Groups}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{type} <enum(`small', `medium', `big')> [NOT NULL]}: Tipus.
+  \item \texttt{\textbf{number} <tinyint> [NOT NULL]}: Número (numeració segons tipus).
+  \item \texttt{\textbf{subject} <varchar(10)>}: Codi de l'assignatura a la qual pertany (clau forana).
+\end{itemize}
+
+\subsubsection{EstudiGrups o \textit{StudyGroups}}
+
+En aquest apartat, es descriuran els atributs de la taula ``EstudiGrups'' (``\textit{StudyGroups}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{group} <int>}: Identificador numèric del grup al qual pertany (clau forana).
+  \item \texttt{\textbf{study} <varchar(8)>}: Abreviació de l'estudi al qual pertany (clau forana).
+\end{itemize}
+
+Aquesta taula també conté un índex que assegura la unicitat de la parella d'atributs ``\textit{group}'' - ``\textit{study}''.
+
+\subsubsection{BlocsHoraris o \textit{TimeBlocks}}
+
+En aquest apartat, es descriuran els atributs de la taula ``BlocsHoraris'' (``\textit{TimeBlocks}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{day} <tinyint>}: Dia de la setmana al qual està assignat.
+  \item \texttt{\textbf{start} <time>}: Hora d'inici.
+  \item \texttt{\textbf{duration} <smallint> [NOT NULL]}: Duració.
+  \item \texttt{\textbf{week} <enum(`A', `B')>}: Setmana a la qual està assignat (NULL si ho està a totes).
+  \item \texttt{\textbf{group} <int>}: Identificador numèric del grup al qual pertany (clau forana).
+\end{itemize}
+
+\subsubsection{BlocsHorarisGenèrics o \textit{GenericTimeBlocks}}
+
+En aquest apartat, es descriuran els atributs de la taula ``BlocsHorarisGenèrics'' (``\textit{GenericTimeBlocks}'' al diagrama):
+\begin{itemize}
+  \item \texttt{\textbf{id} <int> [PRIMARY KEY]}: Identificador numèric (clau primària).
+  \item \texttt{\textbf{course} <tinyint> [NOT NULL]}: Curs al qual pertany.
+  \item \texttt{\textbf{semester} <tinyint> [NOT NULL]}: Semestre al qual pertany.
+  \item \texttt{\textbf{label} <varchar(255)> [NOT NULL]}: Etiqueta.
+  \item \texttt{\textbf{subLabel} <varchar(255)> [NOT NULL]}: Subetiqueta.
+  \item \texttt{\textbf{day} <tinyint>}: Dia de la setmana al qual està assignat.
+  \item \texttt{\textbf{start} <time>}: Hora d'inici.
+  \item \texttt{\textbf{duration} <smallint> [NOT NULL]}: Duració.
+  \item \texttt{\textbf{week} <enum(`A', `B')>}: Setmana a la qual està assignat (NULL si ho està a totes).
+  \item \texttt{\textbf{study} <varchar(8)>}: Abreviació de l'estudi al qual està assignat (clau forana).
+\end{itemize}
+
+\section{Interfícies d'usuari}
+\label{sec:interficies_usuari}
+
+En aquesta secció, s'exposarà el disseny de les diferents finestres que conformaran l'aplicació web client.
+
+Cal destacar que l'aparença final de l'aplicació no ha de ser necessàriament igual que la que es mostrarà a les subseccions següents.
+
+\subsection{Interfícies d'autenticació}
+\label{subsec:interficies_auth}
+
+En aquesta subsecció, es presentarà el disseny de les finestres més importants relacionades amb la part de l'autenticació.
+
+A la figura~\ref{img:login} es pot veure el disseny de la finestra en la qual un usuari pot autenticar-se o bé indicar que ha oblidat la seva contrasenya.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/auth/login.pdf}
+	\caption{\label{img:login}Disseny de la interfície d'autenticació.}
+\end{figure}
+
+A la figura~\ref{img:passwordRestablishment} es pot veure el disseny de la finestra en la qual un usuari pot introduir la seva adreça de correu electrònic per tal de restablir la seva contrasenya o bé tornar a la finestra d'autenticació.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/auth/passwordRestablishment.pdf}
+	\caption{\label{img:passwordRestablishment}Disseny de la interfície de restabliment de contrasenya.}
+\end{figure}
+
+A la figura~\ref{img:passwordRestablished} es pot veure el disseny de la finestra en la qual s'informa l'usuari que se li ha enviat un correu electrònic per restablir la seva contrasenya.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/auth/passwordRestablished.pdf}
+	\caption{\label{img:passwordRestablished}Disseny de la interfície de confirmació d'enviament d'un \textit{email} per al restabliment de la contrasenya.}
+\end{figure}
+
+A la figura~\ref{img:newPassword} es pot veure el disseny de la finestra en la qual l'usuari pot escollir una nova contrasenya.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/auth/newPassword.pdf}
+	\caption{\label{img:newPassword}Disseny de la interfície d'el·lecció d'una nova contrasenya.}
+\end{figure}
+
+\subsection{Interfícies de gestió del pla docent}
+\label{subsec:interficies_plaDocent}
+
+En aquesta subsecció, es presentarà el disseny de les finestres més importants involucrades en la gestió del pla docent.
+
+A la figura~\ref{img:plaDocent_pujada} es pot veure el disseny de la finestra en la qual un Administrador pot pujar el fitxer d'un pla docent per a la seva facultat i iniciar així el següent curs acadèmic. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/plaDocent/pujada.pdf}
+	\caption{\label{img:plaDocent_pujada}Disseny de la interfície de la pujada d'un pla docent.}
+\end{figure}
+
+A la figura~\ref{img:plaDocent_general} es pot veure el disseny de la finestra en la qual un Administrador pot consultar la informació general del pla docent actual, accedir a la modificació de les dades pertinents o bé anar a la finestra de pujada d'un pla docent per tal d'iniciar el curs següent.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/plaDocent/general.pdf}
+	\caption{\label{img:plaDocent_general}Disseny de la interfície de gestió del pla docent.}
+\end{figure}
+
+\subsection{Interfícies de gestió d'usuaris}
+\label{subsec:interficies_gestio_usuaris}
+
+En aquesta subsecció, es presentarà el disseny de les finestres més importants involucrades en la gestió d'usuaris.
+
+Aquests dissenys corresponen a la gestió de Coordinadors i la seva assignació a estudis. No obstant això, també són vàlids per a la gestió de Directors i la seva assignació a departaments, per a la gestió de Responsables de docència i la seva assignació a àrees i per a la gestió de Professors.
+
+A la figura~\ref{img:usuaris_assignacio} es pot veure el disseny de la finestra en la qual un usuari Administrador pot gestionar l'assignació d'usuaris Coordinadors a estudis o bé accedir al seu control.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/usuaris/assignacio.pdf}
+	\caption{\label{img:usuaris_assignacio}Disseny de la interfície d'assignació de Coordinadors a estudis.}
+\end{figure}
+
+A la figura~\ref{img:usuaris_assignacio} es pot veure el disseny de la finestra en la qual un usuari Administrador pot controlar usuaris Coordinadors. Més concretament, pot crear-ne, eliminar-ne o bé reenviar el correu electrònic d'activació als que no estiguin activats.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/usuaris/control.pdf}
+	\caption{\label{img:usuaris_control}Disseny de la interfície de control de Coordinadors.}
+\end{figure}
+
+A la figura~\ref{img:usuaris_crear} es pot veure el disseny de la finestra en la qual un usuari Administrador pot introduir les dades necessàries per crear nous usuaris Coordinadors.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{assets/interfaces/usuaris/crear.pdf}
+	\caption{\label{img:usuaris_crear}Disseny de la interfície de creació de Coordinadors.}
+\end{figure}
+
+\subsection{Interfícies de consulta i elaboració d'horaris}
+\label{subsec:interficies_horaris}
+
+En aquesta subsecció, es presentarà el disseny de les finestres més importants involucrades en la consulta i l'elaboració d'horaris.
+
+A la figura~\ref{img:horaris_seleccioEstudi} es pot veure el disseny de la finestra en la qual un usuari Coordinador pot accedir a les finestres de visualització o de modificació del grau que gestiona o bé a la selecció d'un horari dels estudis els quals comparteixen alguna assignatura amb el seu per tal de visualitzar-lo.
+
+Aquest disseny també és vàlid per a l'accés a la visualització dels horaris dels estudis corresponents per part d'un Director de departament o d'un Professor.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/horaris/seleccioEstudi.pdf}
+	\caption{\label{img:horaris_seleccioEstudi}Disseny de la interfície d'accés a la gestió d'un horari d'un estudi.}
+\end{figure}
+
+A la figura~\ref{img:horaris_seleccioProfessor} es pot veure el disseny de la finestra en la qual un usuari Coordinador pot accedir a la visualització d'un horari d'un dels Professors que imparteixen docència al seu grau.
+
+Aquest disseny també és vàlid per a l'accés a la visualització dels horaris dels professors corresponents per part d'un Director de departament o d'un Responsable de docència.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/horaris/seleccioProfessor.pdf}
+	\caption{\label{img:horaris_seleccioProfessor}Disseny de la interfície d'accés a la visualització d'un horari d'un Professor.}
+\end{figure}
+
+A la figura~\ref{img:horaris_seleccioAula} es pot veure el disseny de la finestra en la qual un usuari Coordinador pot accedir a la visualització d'un horari d'una aula.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/horaris/seleccioAula.pdf}
+	\caption{\label{img:horaris_seleccioAula}Disseny de la interfície d'accés a la visualització d'un horari d'una aula.}
+\end{figure}
+
+A la figura~\ref{img:horaris_visualitzacio} es pot veure el disseny de la finestra en la qual un usuari Coordinador visualitza un horari d'un estudi. A més a més, pot alternar entre les diferents vistes setmanals, accedir al detall d'un bloc horari i tornar a la finestra de selecció d'horaris.
+
+Aquest disseny també és vàlid per a la visualització d'horaris tant de Professors com d'aules.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/interfaces/horaris/visualitzacio.pdf}
+	\caption{\label{img:horaris_visualitzacio}Disseny de la interfície de visualització d'un horari d'un estudi.}
+\end{figure}
+
+A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la qual un usuari Coordinador visualitza un horari d'un estudi i pot realitzar-hi modificacions: pot crear blocs horaris, arrossegar-ne, canviar-ne la mida, la setmana, etc. A més a més, pot accedir al detall d'un bloc horari i modificar-lo des d'allà. Per últim, pot accedir a un menú d'opcions per modificar certes configuracions, com ara habilitar o deshabilitar opcions de filtratge, de visualització de solapaments, etc.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/interfaces/horaris/modif.pdf}
+  \caption{\label{img:horaris_modif}Disseny de la interfície de modificació d'un horari d'un estudi.}
+\end{figure}
 
 
 \chapter{Implementació i proves}
