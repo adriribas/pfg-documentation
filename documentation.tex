@@ -282,7 +282,7 @@ A més a més, tenint en compte la importància que prèn per al projecte el dis
   \caption{\label{taula:costos_personal} Taula de costos de personal.}
 \end{table}
 
-El temps de dedicació estimt dels diferents tipus de personal s'ha extret del capítol~\ref{cap:planificacio}. Cal remarcar que el temps dedicat a la gestió del projecte s'ha tingut en compte per al càlcul del temps dels desenvolupadors.
+El temps de dedicació estimat dels diferents tipus de personal s'ha extret del capítol~\ref{cap:planificacio}. Cal remarcar que el temps dedicat a la gestió del projecte s'ha tingut en compte per al càlcul del temps dels desenvolupadors.
 
 L'estimació dels preus dels diferents tipus de personal s'ha obtingut de l'informe de salaris de la \emph{Guia HAYS 2022}~\cite{Hays}.
 
@@ -291,16 +291,88 @@ L'estimació dels preus dels diferents tipus de personal s'ha obtingut de l'info
 
 
 
-\chapter{Marc de treball i conceptes previs}  % Els noms de les seccions són provisionals
+\chapter{Marc de treball i conceptes previs}
 \label{cap:marcdetreball}
 
 \section{Nomenclatura específica}
 \label{sec:nomenclatura}
 
-\section{Conceptes previs}
-\label{sec:conceptes_previs}
-Explicar setmanes a i b, assignatures compartides, què són els blocs (especials també)..., quantes hores
-són un crèdit, ¿explicar funcions de cada rol?...
+En aquesta secció, es definirà la nomenclatura específica del marc de treball del projecte: el procés de gestió dels horaris de la UdG aplicat a l'Escola Politècnica Superior. Aquesta nomenclatura serà utilitzada en la resta de la memòria.
+
+\begin{itemize}
+  \item \texttt{Facultat:} Secció d'una universitat a la qual correspon una branca general de coneixement, com ara ``Escola Politècnica Superior'' o ``Facultat de Medicina'' de la UdG.
+  \item \texttt{Curs acadèmic:} Període de temps format per l'últim quadrimestre d'un any i el primer del següent.
+  \item \texttt{Pla docent:} Instrument que defineix la informació clau sobre els estudis que es cursen en una facultat durant un curs acadèmic. Les dades més rellevants que contenen els de l'EPS són les següents:
+  \begin{itemize}
+    \item Per a cada assignatura:
+    \begin{itemize}
+      \item Graus als quals pertany.
+      \item Codi.
+      \item Nom.
+      \item Àrees a les quals pertany.
+      \item Departament al qual pertanyen cadascuna de les àrees.
+      \item Tipus de laboratori que té assignats.
+      \item Crèdits.
+      \item Nombre de grups grans.
+      \item Nombre de grups mitjans.
+      \item Nombre de grups petits.
+    \end{itemize}
+    \item Per a cada tipus de laboratori:
+    \begin{itemize}
+      \item Nom.
+      \item Quantitat d'aules.
+      \item Capacitat d'alumnes.
+    \end{itemize}
+  \end{itemize}
+  \item \texttt{Departament:} Grup destinat a la recerca i a l'ensenyament d'una matèria determinada en una o vàries facultats sota la direcció d'un director, com ara ``Informàtica, Matemàtica Aplicada i Estadística'' de l'EPS.
+  \item \texttt{Àrea:} Marc d'estudi concret dins la matèria d'un departament sota la gestió d'un responsable, com ara ``Llenguatges i Sistemes Informàtics'' del departament d'IMAE.
+  \item \texttt{Estudi:} Terme que engloba els diferents tipus d'estudis universitaris (ja siguin graus, màsters, etc.) sota la gestió d'un coordinador, com ara el ``Grau en Enginyeria Informàtica''. Un estudi pertany a una facultat concreta.
+  \item \texttt{Curs:} Any d'escolaritat d'un estudi que agrupa assignatures repartides en dos quadrimestres (anomenats respectivament primer i segon), com ara ``tercer curs'' o ``quart curs'' de GEINF.
+  \item \texttt{Quadrimestre:} Espai de quatre mesos corresponent al final d'un any (primer quadrimestre) o bé a l'inici del següent (segon quadrimestre).
+  \item \texttt{Assignatura:} Conjunt de coneixements d'una matèria que es cursa cada any durant un quadrimestre concret, com ara ``Estadística''. Cada assignatura pertany a una o múltiples àrees i s'imparteix a un o varis estudis, però no necessàriament en el mateix curs. A més a més, té assignat un conjunt de tipus de laboratori concret.
+  \item \texttt{Tipus de laboratori:} Grup de laboratoris que comparteixen les mateixes característiques i finalitats, com ara ``Infor''. Cada tipus de laboratori té definides tant la quantitat d'aules existent com la capacitat d'alumnes.
+  \item \texttt{Aula:} Espai en el qual s'imparteix docència, com ara ``PI-01''.
+  \item \texttt{Grup:} Concepte que es refereix a un grup de qualsevol tipus (gran, mitjà o petit) d'una assignatura determinada, com ara el ``grup gran 1'' d'Estadística. Una assignatura està composada per un nombre concret de grups de cada tipus i els grups d'un mateix tipus es numeren successivament per tal de distingir-los. A més a més, en el cas d'una assignatura compartida entre múltiples estudis, cadascun dels seus grups està assignat a un dels estudis o, fins i tot, a més d'un.
+  \item \texttt{Bloc horari:} Instància d'un grup determinat assignable a un horari, com ara el ``bloc horari 2 del grup gran 1 d'estadística''. S'entén per assignació a un horari, el fet de situar-ne un bloc horari a una setmana, dia i hora d'inici concreta. Cadascun conté la informació següent:
+  \begin{itemize}
+    \item Grup al qual pertany.
+    \item Dia (en cas que estigui assignat).
+    \item Hora d'inici (en cas que estigui assignat).
+    \item Duració.
+    \item Setmana (en cas que sigui una en concret).
+    \item Professor que hi imparteix docència.
+    \item Aula en la qual se n'imparteix docència.
+  \end{itemize}
+  En la majoria de casos, un grup disposa d'un sol bloc horari, encara que és possible que un grup faci més d'una classe a la setmana i, per tant, hagi de disposar de més d'un bloc horari. 
+  \item \texttt{Bloc horari genèric:} Bloc horari que no pertany a un grup, sinó directament a un quadrimestre d'un dels cursos d'un estudi, com ara la ``Franja Reservada per a Proves d'Avaluació Continuada del primer quadrimestre de tercer de GEINF''. Cadascun conté la informació següent:
+  \begin{itemize}
+    \item Estudi al qual pertany.
+    \item Curs.
+    \item Quadrimestre.
+    \item Etiqueta. Per exemple: ``Franja Reservada per a Proves d'Avaluació Continuada''.
+    \item Subetiqueta. Per exemple: ``PAC''.
+    \item Dia (en cas que estigui assignat).
+    \item Hora d'inici (en cas que estigui assignat).
+    \item Duració.
+    \item Setmana o setmanes.
+  \end{itemize}
+  \item \texttt{Setmana}: Concepte que fa referència als tipus amb els quals la universitat cataloga les setmanes (A o B). Un quadrimestre està format per setmanes A i per setmanes B. Per aquest motiu, els horaris dels dos tipus de setmana no han de ser necessàriament iguals i un bloc horari pot estar assignat a una setmana concreta o a les dues alhora.
+  \item \texttt{Vista setmanal:} Vista de l'horari d'una setmana concreta o de la combinació de les dues. Les tres vistes possibles són les següents:
+  \begin{itemize}
+    \item General (conformada per blocs horaris assignats a una de les setmanes o bé a totes).
+    \item Setmanes A (conformada per blocs horaris assignats a setmanes A).
+    \item Setmanes B (conformada per blocs horaris assignats a setmanes B).
+  \end{itemize}
+  \item \texttt{Solapament de blocs horaris:} Coincideixen múltiples blocs horaris pertanyents al mateix grup.
+  \item \texttt{Solapament de tipus de laboratori:} Excés d'aules d'un tipus de laboratori concret ocupades alhora en una franja de l'horari.
+  \item \texttt{Solapament de professors:} Coincideixen múltiples blocs horaris amb el mateix professor assignat.
+  \item \texttt{Solapament d'aules:} Coincideixen múltiples blocs horaris amb la mateixa aula assignada.
+  \item \texttt{Administrador:} Persona encarregada de gestionar un pla docent i de controlar Coordinadors i Directors de departament.
+  \item \texttt{Coordinador:} Persona encarregada de gestionar un estudi i de l'elaboració dels seus horaris.
+  \item \texttt{Director de departament:} Persona encarregada de dirigir un departament i de controlar els Responsables de docència de les seves àrees.
+  \item \texttt{Responsable de docència:} Persona encarregada de gestionar una àrea i de controlar els seus Professors.
+  \item \texttt{Professor:} Persona encarregada d'impartir docència.
+\end{itemize}
 
 \section{Funcionament actual}
 \label{sec:funcionament_actual}
