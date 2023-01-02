@@ -145,7 +145,7 @@ Actualment, per dur a terme l'elaboració dels horaris, aquestes persones utilit
 
 Ara per ara, per exemple, no tenen manera de detectar incompatibilitats horàries ni solapaments \textit{a priori} de manera automàtica. Degut a això, en moltes ocasions s'han de repetir certes fases del procés fins que el resultat és vàlid i la gent implicada hi està d'acord.
 
-Al capítol~\ref{cap:marcdetreball} es descriurà amb més profunditat com funcionen avui en dia aquests processos d'elaboració i gestió d'horaris de l'escola.
+Al capítol~\ref{cap:marcdetreball} es descriurà amb més profunditat com funcionen avui dia aquests processos d'elaboració i gestió d'horaris de l'escola.
 
 \section{Propòsit}
 \label{sec:proposit}
@@ -177,7 +177,7 @@ A més a més, l'aplicació hauria de ser accessible via web. D'aquesta manera, 
 
 En aquesta secció, es parlarà en primera persona sobre quines motivacions personals hi ha darrere del projecte i en justifiquen l'elecció.
 
-Un dels aspectes que més em motiven de la informàtica en general és el fet de poder ajudar la gent a estalviar el seu temps, el qual penso que és de gran valor. En moltes ocasions, una persona, un grup o fins i tot una institució, inverteix una quantitat elevada de temps en realitzar certes accions o activitats, sigui en l'àmbit que sigui. Aquest temps es pot reduir si l'acció o activitat en qüestió té una part suficientment mecànica. Tanmateix, encara que no la tingui, sovint és possible desenvolupar una eina informàtica que n'augmenti l'eficiència o, si més no, dinamitzar-la i fer que resulti més còmoda i pràctica.
+Un dels aspectes que més em motiven de la informàtica en general és el fet de poder ajudar la gent a estalviar el seu temps, el qual té un gran valor. En moltes ocasions, una persona, un grup o fins i tot una institució, inverteix una quantitat elevada de temps en realitzar certes accions o activitats, sigui en l'àmbit que sigui. Aquest temps es pot reduir si l'acció o activitat en qüestió té una part suficientment mecànica. Tanmateix, encara que no la tingui, sovint és possible desenvolupar una eina informàtica que n'augmenti l'eficiència o, si més no, dinamitzar-la i fer que resulti més còmoda i pràctica.
 
 D'aquí sorgeix el meu objectiu principal pel que fa a la informàtica, que és precisament aportar el meu gra de sorra a aquesta causa.
 
@@ -202,19 +202,16 @@ En aquesta secció, s'enumeraran els objectius generals del projecte, que ja s'h
 
 Al capítol~\ref{cap:requisits} es desenvoluparan aquests objectius generals i es concretaran els requisits específics de l'aplicatiu.
 
+AFEGIR QUE S'HAN DE LLEGIR LES DADES DEL PLA DOCENT!
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{-------------- EXEMPLES I UTILITATS --------------}
 \subsection{Paraules per començar seccions}
-\textbf{Idees:}
 
-Abordar, concretar, exposar, parlar, descriure, repassar, mostrar, ensenyar, desenvolupar, tractar, veure, aprofundir, investigar, discutir, indagar, detallar,
-enumerar,
-
+Abordar, concretar, exposar, parlar, descriure, repassar, mostrar, ensenyar, desenvolupar, tractar, veure, aprofundir, investigar, discutir, indagar, detallar, enumerar,
 
 \subsection{Altres}
-
-Això és un exemple de citació d'un llibre~\cite{Coleman1974}, un article científic~\cite{Ruiz2008} i una referència a una web~\cite{Halcon}.
 
 Exemple de taula:
 \begin{table}[htb]
@@ -247,7 +244,7 @@ Exemple de fòrmula:
 
 També es pot fer referència en el text a les taules (p.ex. veure la Taula~\ref{taula:taulaexemple}), a les figures (p.ex. veure la Figura~\ref{fig:logo}) o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Estudi de viabilitat}
@@ -260,7 +257,7 @@ En aquesta secció, es calcularan els costos relatius al personal que participa 
 
 Com que es tracta d'una aplicació web, és necessari diferenciar entre les persones que desenvolupen la part del servidor (\textit{back-end}) i les que desenvolupen la del client (\textit{front-end}).
 
-Tal i com es veurà al capítol~\ref{cap:estudi}, la tecnologia escollida per al \textit{back-end} és Node.js, mentre que l'escollida per al \textit{front-end} és Vue.js. Per tant, els preus que es tindran en compte als càlculs són els de desenvolupadors Node.js i desenvolupadors \textit{front-end} Javascript en general.
+Tal com es veurà al capítol~\ref{cap:estudi}, la tecnologia escollida per al \textit{back-end} és Node.js, mentre que l'escollida per al \textit{front-end} és Vue.js. Per tant, els preus que es tindran en compte als càlculs són els de desenvolupadors Node.js i desenvolupadors \textit{front-end} JavaScript en general.
 
 A més a més, tenint en compte la importància que prèn per al projecte el disseny de les interfícies d'usuari, cal comptar també amb dissenyadors d'interfícies.
 
@@ -272,7 +269,7 @@ A més a més, tenint en compte la importància que prèn per al projecte el dis
     \midrule[0.9pt]
     Desenvolupadors Node.js                         & 258 hores           & 18.00 €/hora    & 4644.00 € \\
     \midrule
-    Desenvolupadors \textit{front-end} Javascript   & 243 hores           & 15.15 €/hora    & 3681.45 € \\
+    Desenvolupadors \textit{front-end} JavaScript   & 243 hores           & 15.15 €/hora    & 3681.45 € \\
     \midrule
     Dissenyadors d'interfícies                      & 87 hores            & 14.68 €/hora    & 1277.16 € \\
     \midrule[0.9pt]
@@ -294,87 +291,7 @@ L'estimació dels preus dels diferents tipus de personal s'ha obtingut de l'info
 \chapter{Marc de treball i conceptes previs}
 \label{cap:marcdetreball}
 
-\section{Nomenclatura específica}
-\label{sec:nomenclatura}
-
-En aquesta secció, es definirà la nomenclatura específica del marc de treball del projecte: el procés de gestió dels horaris de la UdG aplicat a l'Escola Politècnica Superior. Aquesta nomenclatura serà utilitzada en la resta de la memòria.
-
-\begin{itemize}
-  \item \texttt{Facultat:} Secció d'una universitat a la qual correspon una branca general de coneixement, com ara ``Escola Politècnica Superior'' o ``Facultat de Medicina'' de la UdG.
-  \item \texttt{Curs acadèmic:} Període de temps format per l'últim quadrimestre d'un any i el primer del següent.
-  \item \texttt{Pla docent:} Instrument que defineix la informació clau sobre els estudis que es cursen en una facultat durant un curs acadèmic. Les dades més rellevants que contenen els de l'EPS són les següents:
-  \begin{itemize}
-    \item Per a cada assignatura:
-    \begin{itemize}
-      \item Graus als quals pertany.
-      \item Codi.
-      \item Nom.
-      \item Àrees a les quals pertany.
-      \item Departament al qual pertanyen cadascuna de les àrees.
-      \item Tipus de laboratori que té assignats.
-      \item Crèdits.
-      \item Nombre de grups grans.
-      \item Nombre de grups mitjans.
-      \item Nombre de grups petits.
-    \end{itemize}
-    \item Per a cada tipus de laboratori:
-    \begin{itemize}
-      \item Nom.
-      \item Quantitat d'aules.
-      \item Capacitat d'alumnes.
-    \end{itemize}
-  \end{itemize}
-  \item \texttt{Departament:} Grup destinat a la recerca i a l'ensenyament d'una matèria determinada en una o vàries facultats sota la direcció d'un director, com ara ``Informàtica, Matemàtica Aplicada i Estadística'' de l'EPS.
-  \item \texttt{Àrea:} Marc d'estudi concret dins la matèria d'un departament sota la gestió d'un responsable, com ara ``Llenguatges i Sistemes Informàtics'' del departament d'IMAE.
-  \item \texttt{Estudi:} Terme que engloba els diferents tipus d'estudis universitaris (ja siguin graus, màsters, etc.) sota la gestió d'un coordinador, com ara el ``Grau en Enginyeria Informàtica''. Un estudi pertany a una facultat concreta.
-  \item \texttt{Curs:} Any d'escolaritat d'un estudi que agrupa assignatures repartides en dos quadrimestres (anomenats respectivament primer i segon), com ara ``tercer curs'' o ``quart curs'' de GEINF.
-  \item \texttt{Quadrimestre:} Espai de quatre mesos corresponent al final d'un any (primer quadrimestre) o bé a l'inici del següent (segon quadrimestre).
-  \item \texttt{Assignatura:} Conjunt de coneixements d'una matèria que es cursa cada any durant un quadrimestre concret, com ara ``Estadística''. Cada assignatura pertany a una o múltiples àrees i s'imparteix a un o varis estudis, però no necessàriament en el mateix curs. A més a més, té assignat un conjunt de tipus de laboratori concret.
-  \item \texttt{Tipus de laboratori:} Grup de laboratoris que comparteixen les mateixes característiques i finalitats, com ara ``Infor''. Cada tipus de laboratori té definides tant la quantitat d'aules existent com la capacitat d'alumnes.
-  \item \texttt{Aula:} Espai en el qual s'imparteix docència, com ara ``PI-01''.
-  \item \texttt{Grup:} Concepte que es refereix a un grup de qualsevol tipus (gran, mitjà o petit) d'una assignatura determinada, com ara el ``grup gran 1'' d'Estadística. Una assignatura està composada per un nombre concret de grups de cada tipus i els grups d'un mateix tipus es numeren successivament per tal de distingir-los. A més a més, en el cas d'una assignatura compartida entre múltiples estudis, cadascun dels seus grups està assignat a un dels estudis o, fins i tot, a més d'un.
-  \item \texttt{Bloc horari:} Instància d'un grup determinat assignable a un horari, com ara el ``bloc horari 2 del grup gran 1 d'estadística''. S'entén per assignació a un horari, el fet de situar-ne un bloc horari a una setmana, dia i hora d'inici concreta. Cadascun conté la informació següent:
-  \begin{itemize}
-    \item Grup al qual pertany.
-    \item Dia (en cas que estigui assignat).
-    \item Hora d'inici (en cas que estigui assignat).
-    \item Duració.
-    \item Setmana (en cas que sigui una en concret).
-    \item Professor que hi imparteix docència.
-    \item Aula en la qual se n'imparteix docència.
-  \end{itemize}
-  En la majoria de casos, un grup disposa d'un sol bloc horari, encara que és possible que un grup faci més d'una classe a la setmana i, per tant, hagi de disposar de més d'un bloc horari. 
-  \item \texttt{Bloc horari genèric:} Bloc horari que no pertany a un grup, sinó directament a un quadrimestre d'un dels cursos d'un estudi, com ara la ``Franja Reservada per a Proves d'Avaluació Continuada del primer quadrimestre de tercer de GEINF''. Cadascun conté la informació següent:
-  \begin{itemize}
-    \item Estudi al qual pertany.
-    \item Curs.
-    \item Quadrimestre.
-    \item Etiqueta. Per exemple: ``Franja Reservada per a Proves d'Avaluació Continuada''.
-    \item Subetiqueta. Per exemple: ``PAC''.
-    \item Dia (en cas que estigui assignat).
-    \item Hora d'inici (en cas que estigui assignat).
-    \item Duració.
-    \item Setmana o setmanes.
-  \end{itemize}
-  \item \texttt{Setmana}: Concepte que fa referència als tipus amb els quals la universitat cataloga les setmanes (A o B). Un quadrimestre està format per setmanes A i per setmanes B. Per aquest motiu, els horaris dels dos tipus de setmana no han de ser necessàriament iguals i un bloc horari pot estar assignat a una setmana concreta o a les dues alhora.
-  \item \texttt{Vista setmanal:} Vista de l'horari d'una setmana concreta o de la combinació de les dues. Les tres vistes possibles són les següents:
-  \begin{itemize}
-    \item General (conformada per blocs horaris assignats a una de les setmanes o bé a totes).
-    \item Setmanes A (conformada per blocs horaris assignats a setmanes A).
-    \item Setmanes B (conformada per blocs horaris assignats a setmanes B).
-  \end{itemize}
-  \item \texttt{Solapament de blocs horaris:} Coincideixen múltiples blocs horaris pertanyents al mateix grup.
-  \item \texttt{Solapament de tipus de laboratori:} Excés d'aules d'un tipus de laboratori concret ocupades alhora en una franja de l'horari.
-  \item \texttt{Solapament de professors:} Coincideixen múltiples blocs horaris amb el mateix professor assignat.
-  \item \texttt{Solapament d'aules:} Coincideixen múltiples blocs horaris amb la mateixa aula assignada.
-  \item \texttt{Administrador:} Persona encarregada de gestionar un pla docent i de controlar Coordinadors i Directors de departament.
-  \item \texttt{Coordinador:} Persona encarregada de gestionar un estudi i de l'elaboració dels seus horaris.
-  \item \texttt{Director de departament:} Persona encarregada de dirigir un departament i de controlar els Responsables de docència de les seves àrees.
-  \item \texttt{Responsable de docència:} Persona encarregada de gestionar una àrea i de controlar els seus Professors.
-  \item \texttt{Professor:} Persona encarregada d'impartir docència.
-\end{itemize}
-
-\section{Funcionament actual}
+\section{¿¿¿Funcionament actual???}
 \label{sec:funcionament_actual}
 
 En aquesta secció, es detallaran quins són i com funcionen els mètodes de gestió i elaboració d'horaris de l'EPS que s'utilitzen actualment. Es veuran quins càrrecs de l'escola hi participen i les seves funcions, així com la manera en què interactuen entre ells i intercanvien la informació corresponent.
@@ -388,10 +305,219 @@ que assignen professors als grups.
 
 Grups grans i mitjans no hi ha restriccions d'aules. Grups petits sí,
 
-\section{Tecnologies}
-\label{sec:tecnologies}
+\section{Nomenclatura específica}
+\label{sec:nomenclatura}
 
-Tec
+En aquesta secció, es definirà la nomenclatura específica del marc de treball del projecte: el procés de gestió dels horaris de la UdG aplicat a l'Escola Politècnica Superior. Aquesta nomenclatura es farà servir en la resta de la memòria.
+
+\begin{itemize}
+  \item \texttt{Facultat:} Secció d'una universitat a la qual correspon una branca general de coneixement, com ara ``Escola Politècnica Superior'' o ``Facultat de Medicina'' de la UdG.
+  \item \texttt{Curs acadèmic:} Període de temps format per l'últim quadrimestre d'un any i el primer del següent.
+  \item \texttt{Pla docent:} Instrument que defineix la informació clau sobre els estudis que es cursen en una facultat durant un curs acadèmic. Les dades més rellevants que contenen els de l'EPS són les següents:
+  \begin{itemize}
+    \item Per a cada assignatura:
+    \begin{itemize}
+      \item Estudis als quals pertany
+      \item Codi
+      \item Nom
+      \item Àrees a les quals pertany
+      \item Departament al qual pertany cadascuna de les àrees
+      \item Tipus de laboratori que té assignats
+      \item Crèdits
+      \item Nombre de grups grans
+      \item Nombre de grups mitjans
+      \item Nombre de grups petits
+    \end{itemize}
+    \item Per a cada tipus de laboratori:
+    \begin{itemize}
+      \item Nom
+      \item Quantitat d'aules
+      \item Capacitat d'alumnes
+    \end{itemize}
+  \end{itemize}
+  \item \texttt{Departament:} Grup destinat a la recerca i a l'ensenyament d'una matèria determinada en una o diverses facultats sota la direcció d'un director, com ara ``Informàtica, Matemàtica Aplicada i Estadística'' de l'EPS.
+  \item \texttt{Àrea:} Marc d'estudi concret dins de la matèria d'un departament sota la gestió d'un responsable, com ara ``Llenguatges i Sistemes Informàtics'' del departament d'IMAE.
+  \item \texttt{Estudi:} Terme que engloba els diferents tipus d'estudis universitaris (ja siguin graus, màsters, etc.) com ara el ``Grau en Enginyeria Informàtica''. Un estudi pertany a una facultat concreta i és gestionat per un coordinador.
+  \item \texttt{Curs:} Any d'escolaritat d'un estudi que agrupa assignatures repartides en dos quadrimestres (anomenats respectivament primer i segon), com ara ``tercer curs'' o ``quart curs'' de GEINF.
+  \item \texttt{Quadrimestre:} Espai de quatre mesos corresponent al final d'un any (primer quadrimestre) o bé a l'inici del següent (segon quadrimestre).
+  \item \texttt{Assignatura:} Conjunt de coneixements d'una matèria que es cursa cada any durant un quadrimestre concret, com ara ``Estadística''. Cada assignatura pertany a una o múltiples àrees i s'imparteix a un o diversos estudis, però no necessàriament en el mateix curs. A més a més, té assignat un conjunt de tipus de laboratori concret.
+  \item \texttt{Tipus de laboratori:} Grup de laboratoris que comparteixen les mateixes característiques i finalitats, com ara ``Infor''. Cada tipus de laboratori té definides tant la quantitat d'aules existent com la capacitat d'alumnes.
+  \item \texttt{Aula:} Espai en el qual s'imparteix docència, com ara ``PI-01''.
+  \item \texttt{Grup:} Concepte que es refereix a un grup de qualsevol tipus (gran, mitjà o petit) d'una assignatura determinada, com ara el ``grup gran 1'' d'Estadística. Una assignatura està composta per un nombre concret de grups de cada tipus i els grups d'un mateix tipus es numeren successivament per tal de distingir-los. A més, en el cas d'una assignatura compartida entre múltiples estudis, cadascun dels seus grups està assignat a un dels estudis o, fins i tot, a més d'un.
+  \item \texttt{Bloc horari:} Instància d'un grup determinat assignable a un horari, com ara el ``bloc horari 2'' del grup gran 1 d'Estadística. S'entén per assignació a un horari el fet de situar-hi un bloc horari en una setmana, dia i hora d'inici concrets. Cadascun conté la informació següent:
+  \begin{itemize}
+    \item Grup al qual pertany
+    \item Dia (en cas que estigui assignat)
+    \item Hora d'inici (en cas que estigui assignat)
+    \item Duració
+    \item Setmana o setmanes
+    \item Professor que hi imparteix docència
+    \item Aula en la qual s'imparteix la docència
+  \end{itemize}
+  En la majoria de casos, un grup disposa d'un sol bloc horari, encara que és possible que un grup faci més d'una classe a la setmana i, per tant, hagi de disposar de més d'un bloc horari. 
+  \item \texttt{Bloc horari genèric:} Bloc horari que no pertany a un grup, sinó directament a un quadrimestre d'un dels cursos d'un estudi, com ara la ``Franja Reservada per a Proves d'Avaluació Continuada'' del primer quadrimestre de tercer de GEINF. Cadascun conté la informació següent:
+  \begin{itemize}
+    \item Estudi al qual pertany
+    \item Curs
+    \item Quadrimestre
+    \item Etiqueta. Per exemple: ``Franja Reservada per a Proves d'Avaluació Continuada''
+    \item Subetiqueta. Per exemple: ``PAC''
+    \item Dia (en cas que estigui assignat)
+    \item Hora d'inici (en cas que estigui assignat)
+    \item Duració
+    \item Setmana o setmanes
+  \end{itemize}
+  \item \texttt{Setmana}: Concepte que fa referència als tipus amb els quals la universitat cataloga les setmanes (A o B). Un quadrimestre està format per setmanes A i per setmanes B. Per aquest motiu, els horaris dels dos tipus de setmana no han de ser necessàriament iguals i un bloc horari pot estar assignat a una setmana concreta o a les dues alhora.
+  \item \texttt{Vista setmanal:} Vista de l'horari d'una setmana concreta o de la combinació de les dues. Les tres vistes possibles són les següents:
+  \begin{itemize}
+    \item General (conformada per blocs horaris assignats o a una de les setmanes o bé a totes).
+    \item Setmanes A (conformada per blocs horaris assignats a setmanes A).
+    \item Setmanes B (conformada per blocs horaris assignats a setmanes B).
+  \end{itemize}
+  \item \texttt{Solapament de blocs horaris:} Coincideixen múltiples blocs horaris pertanyents al mateix grup.
+  \item \texttt{Solapament de tipus de laboratori:} Excés d'aules d'un tipus de laboratori concret ocupades alhora.
+  \item \texttt{Solapament de professors:} Coincideixen múltiples blocs horaris amb el mateix professor assignat.
+  \item \texttt{Solapament d'aules:} Coincideixen múltiples blocs horaris amb la mateixa aula assignada.
+  \item \texttt{Administrador:} Persona encarregada de gestionar un pla docent i de controlar Coordinadors i Directors de departament.
+  \item \texttt{Coordinador:} Persona encarregada de gestionar un estudi i d'elaborar-ne els horaris.
+  \item \texttt{Director de departament:} Persona encarregada de dirigir un departament i de controlar els Responsables de docència de les seves àrees.
+  \item \texttt{Responsable de docència:} Persona encarregada de gestionar una àrea i de controlar-ne els Professors.
+  \item \texttt{Professor:} Persona encarregada d'impartir docència.
+\end{itemize}
+
+\section{Document d'un pla docent}
+\label{sec:document_pla_docent}
+
+En aquesta secció, es descriurà com és el format dels documents que conten un pla docent i que, tal com s'ha introduit al capítol~\ref{cap:intro}, l'aplicació ha de poder processar correctament.
+
+Es tracta de fitxers en format \emph{xlsx} (Microsoft Excel) que contenen diversos fulls: un per les assignatures de cada estudi, un per cada agrupació d'assignatures compartides i un pels tipus de laboratori. El nom del full d'un estudi és la seva pròpia abreviació i el de tipus de laboratori és ``Laboratoris''. Pel que fa al d'una agrupació d'assignatures compartides, no existeix una convenció determinada. Actualment n'hi ha quatre:
+\begin{itemize}
+  \item \texttt{Comp\_ARQ}: Recull les assignatures compartides entre els estudis GARQ i GATE.
+  \item \texttt{Compartides}: Recull les assignatures compartides entre els estudis GETI, GEB, GEM, GEE, GEEIA, GEQ.
+  \item \texttt{ComAlim}: Recull les assignatures compartides entre els estudis GEA i GINSA.
+  \item \texttt{ComInf}: Recull les assignatures compartides entre els estudis GEINF i GDDV.
+\end{itemize}
+
+Cadascun dels fulls que contenen assignatures s'organitzen en forma de taula de manera que les files corresponen a assignatures i les columnes als seus atributs. Els atributs rellevants per a l'aplicació són els següents:
+\begin{itemize}
+  \item \texttt{Codi:} Codi identificador.
+  \item \texttt{Assignatura:} Nom.
+  \item \texttt{Àrea:} Àrea a la qual pertany.
+  \item \texttt{Dept:} Departament al qual pertany l'àrea.
+  \item \texttt{Curs:} Curs durant el qual s'imparteix.
+  \item \texttt{Sem:} Semestre durant el qual s'imparteix.
+  \item \texttt{Cr.:} Nombre de crèdits.
+  \item \texttt{NGG:} Nombre de grups grans.
+  \item \texttt{NGM:} Nombre de grups mitjans.
+  \item \texttt{NGP:} Nombre de grups petits.
+  \item \texttt{Labs:} Nom del tipus de laboratori al qual s'imparteix.
+\end{itemize}
+
+Existeixen casos en què una assignatura pertany a més d'una àrea i/o s'imparteix a més d'un tipus de laboratori. En aquestes situacions, l'assignatura ocupa més d'una fila amb l'objectiu d'especificar les diferents àrees i tipus de laboratori.
+
+A més a més, és important destacar que una assignatura compartida pot cursar-se a cursos diferents en funció de l'estudi. En aquests casos, els cursos s'indiquen separats per ``/''. L'ordre d'estudis amb el qual s'especifiquen depèn de quina agrupació d'assignatures compartides es tracti:
+\begin{itemize}
+  \item \texttt{Comp\_ARQ}: <curs de GARQ>/<curs de GATE>
+  \item \texttt{Compartides}: Totes les assignatures es cursen durant el mateix curs.
+  \item \texttt{ComAlim}: <curs de GEA>/<curs de GINSA>
+  \item \texttt{ComInf}: <curs de GEINF>/<curs de GDDV>
+\end{itemize}
+
+A la figura~\ref{img:frag_pla_docent} es pot veure un fragment del full que conté les assignatures de GEINF.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/figs/fitxerPlaDocent.png}
+  \caption{\label{img:frag_pla_docent}Fragment del full d'un estudi d'un fitxer de pla docent.}
+\end{figure}
+
+% Citar introducció
+
+\section{Conceptes tècnics}
+\label{sec:conceptes_tecnics}
+
+\subsection{Introducció}
+\label{subsec:intro_conceptes_tecnics}
+
+En aquesta subsecció, s'introduiran els temes i els conceptes que es tractaran a la resta de la secció.
+
+Tal com s'ha esmentat al capítol~\ref{cap:intro}, la solució informàtica al problema que planteja el projecte s'ha d'implementar en format de plataforma o aplicació web. Si aquest requisit es suma al fet que l'emmagatzematge de dades és totalment necessari, ràpidament es pot concloure que l'arquitectura del sistema és de naturalesa client-servidor i que, consegüentment, es divideix en dues parts diferenciades (veure figura~\ref{img:esquema_web}): l'aplicació client o \textit{front-end} i l'aplicació servidor o \textit{back-end}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{assets/figs/esquemaWeb.pdf}
+  \caption{\label{img:esquema_web}Esquema de l'arquitectura d'una aplicació web convencional.}
+\end{figure}
+
+L'aplicació client s'executa sobre un navegador web i s'encarrega principalment d'interactuar amb l'usuari, de manera que pugui visualitzar i manipular les dades emmagatzemades al servidor. Per poder accedir a aquestes dades, l'aplicació client ha de ser capaç de comunicar-se a través d'Internet amb l'aplicació servidor, ja que s'executa a la màquina de l'usuari.
+
+L'aplicació servidor s'executa fora del navegador en una màquina remota. S'encarrega principalment d'atendre i servir les peticions de consulta o manipulació de dades que rep de les aplicacions client. Davant de cada petició, l'aplicació executa la lògica de negoci corresponent i persisteix les dades necessàries al SF (sistema de fitxers) o a la base de dades, la qual és operada per un SGBD (sistema gestor de bases de dades). A més a més, a part de simplificar el desenvolupament de l'aplicació client, impedeix l'accés directe a la base de dades des d'Internet, fet que seria molt perillós.
+
+\subsection{Aplicació client}
+
+En aquesta subsecció, es donaran a conèixer les tecnologies involucrades en el desenvolupament d'aplicacions web client.
+
+Les aplicacions web s'executen sobre un navegador i, generalment, estan compostes pels tres elements bàsics següents:
+\begin{itemize}
+  \item HTML (\textit{HyperText Markup Language})~\cite{HTML}: Llenguatge de marcat que defineix la semàntica i l'estructura del contingut d'una pàgina web.
+  \item CSS (\textit{Cascade Style Sheets})~\cite{CSS}: Llenguatge de fulls d'estil que defineix els estils i la presentació d'un document HTML.
+  \item JS (\textit{JavaScript})~\cite{JS}: Llenguatge de programació que defineix la lògica i el comportament del contingut d'una pàgina web i la fa interactiva. Es tracta d'un llenguatge d'un sol fil d'execució, que té suport per a programació orientada a objectes, imperativa i declarativa i que pot ser interpretat o compilat en temps d'execució.
+\end{itemize}
+
+Per poder desenvolupar una aplicació web interactiva i dinàmica, en la gran majoria dels casos és necessari treballar amb el DOM mitjançant JavaScript.
+
+El DOM (\textit{Document Object Model}) és una interfície per a documents HTML que n'estructura els elements en forma d'arbre i permet crear-hi, modificar-hi o esborrar-hi nodes, els quals representen un element HTML determinat. A través d'aquesta interfície és possible mutar en temps real el document HTML que el navegador està presentant.
+
+Treballar directament i de manera adequada amb el DOM requereix una comprensió molt profunda del seu funcionament. A mesura que augmenta el dinamisme de l'aplicació i s'implementen interaccions més complexes, el seu desenvolupament es complica notablement i la seva mantenibilitat disminueix. A més a més, requereix una quantitat de temps considerable.
+
+Degut a aquests motius, eventualment van sorgir els \textit{frameworks} JavaScript amb l'objectiu de brindar una millor experiència de desenvolupament i augmentar la mantenibilitat i l'escalabilitat de les aplicacions web.
+
+Un \textit{framework} JavaScript és un marc de treball que proporciona un conjunt d'eines implementades i provades que serveixen de base per crear aplicacions interactives i escalables. Els \textit{frameworks} abstreuen la gestió del DOM per tal d'estalviar al desenvolupador el fet d'haver de manipular-lo directament en la majoria d'ocasions.
+
+Actualment, existeixen un munt de \textit{frameworks} per escollir. La majoria funcionen de manera similar, però realitzen algunes tasques de manera diferent. Cadascun té els seus avantatges i inconvenients i pot estar enfocat a un tipus d'aplicació concret, cosa que provoca que no n'existeixi un de definitiu. A la pràctica, l'opció més viable sempre depèn del tipus d'aplicació que s'hagi d'implementar. Avui dia, els més populars són React JS, Vue JS, Angular JS i Ember JS, entre d'altres.
+
+\subsection{Aplicació servidor}
+
+En aquesta subsecció, es donaran a conèixer les tecnologies involucrades en el desenvolupament d'aplicacions servidor.
+
+A diferència de les aplicacions web client, les aplicacions servidor no estan tan limitades pel que fa a llenguatges de programació. Pràcticament es poden desenvolupar fent servir qualsevol llenguatge. No obstant això, tampoc es lliuren de la necessitat de l'existència de \textit{frameworks} que proporcionin eines que rellevin el desenvolupador en les tasques més comunes, complicades o de baix nivell.
+
+Actualment, hi ha una gran varietat d'opcions a l'hora d'escollir la tecnologia amb la qual s'ha de desenvolupar una determinada aplicació servidor. La tria depèn de múltiples factors, com ara de com ha de ser la comunicació amb l'aplicació client i l'emmagatzematge de les dades. Avui dia, els més populars són Firebase, Express.js, Spring Boot, Laravel, Django i Ruby on Rails, entre d'altres.
+
+\subsection{Comunicació entre client i servidor}
+
+En aquesta subsecció, es parlarà sobre com s'estableix la comunicació entre l'aplicació client i l'aplicació servidor.
+
+Tal com s'ha pogut veure anteriorment en la secció, l'existència d'eines que permetin implementar la comunicació entre diferents aplicacions és completament essencial. Aquestes eines reben el nom d'API (\textit{application programming interface}) i consisteixen un conjunt de normes i protocols que permeten la comunicació entre dues aplicacions, la qual es realitza mitjançant peticions i respostes.
+
+En el cas de la comunicació entre el \textit{front-end} i el \textit{back-end} d'una aplicació web, es necessiten API enfocades a l'obtenció i manipulació de dades. Al llarg del temps, han sorgit diversos protocols i arquitectures que permeten desenvolupar aquesta tipologia d'API, com ara XML-RPC, SOAP, JSON-RPC o REST.
+
+Actualment, l'opció més popular i utilitzada pel desenvolupament d'aquest tipus d'API és REST (\textit{Representational State Transfer})~\cite{REST}. A diferència d'altres opcions com SOAP, REST no és ni un protocol ni un estàndard, sinó un conjunt de pautes pel que fa a l'arquitectura. Una API és considerada una ``RESTful API'' o ``API REST'' si satisfà tots els principis REST~\cite{REST_CONSTRAINTS}.
+
+Tal com el seu nom indica, quan el client llança una petició contra una API REST, l'API li transfereix una representació de l'estat actual del recurs demanat. La informació s'entrega mitjançant el protocol HTTP (\textit{Hypertext Transfer Protocol})~\cite{HTTP} i en format JSON, XML o HTML, entre d'altres. El format més usat és JSON (\textit{JavaScript Object Notation})~\cite{JSON}, ja que és fàcilment comprensible tant per màquines com persones i, a més, no depèn de cap llenguatge de programació, encara que el seu nom pugui indicar el contrari.
+
+\subsection{Emmagatzematge i gestió de dades}
+
+En aquesta subsecció, es parlarà sobre com es gestiona l'emmagatzematge de les dades a la banda del servidor.
+
+En els últims anys, les dades s'han convertit en un dels punts més crítics de qualsevol aplicació. La importància d'una bona administració de les dades és clau i beneficiosa tant per a l'usuari del \textit{software} com per a l'organització que l'ha desenvolupat.
+
+No obstant això, aconseguir portar-ho a la pràctica no és tasca senzilla. Aquí és on entren en joc els SGBD (sistemes gestors de bases de dades). Un SGBD és un tipus de programari dedicat a fer d'interfície entre la base de dades i els seus usuaris. Permet administrar, emmagatzemar i recuperar la informació d'una base de dades de manera pràctica, eficient i segura. A més a més, poden implementar funcionalitats addicionals molt útils, com ara visualització de les dades o replicació.
+
+Generalment s'accedeix a les dades mitjançant llenguatges de consulta, com ara SQL (\textit{Structured Query Language}).
+
+Una de les característiques més rellevants dels SGBD és que han de complir sí o sí tots els principis ACID (\textit{Atomicity, Consistency, Isolation, Durability}). Això garantitza la fiabilitat de les seves transaccions, enteses com operacions compostes per d'altres que són individuals. Més concretament, els principis ACID són els següents:
+\begin{itemize}
+  \item \texttt{Atomicitat:} D'una transacció o se n'executen totes les operacions que la conformen o bé no se n'executa cap.
+  \item \texttt{Consistència:} L'estat en el qual es troba la base de dades quan finalitza una transacció ha de ser coherent amb l'estat que tenia abans de que comencés.
+  \item \texttt{Aïllament:} Cada transacció s'ha d'executar de manera aïllada envers la resta d'operacions.
+  \item \texttt{Definitivitat:} Si es confirma una transacció, el resultat ha de ser definitiu i no es pot perdre.
+\end{itemize}
+
+De nou, l'el·lecció d'un SGBD depèn en gran mesura de l'aplicació que s'hagi de desenvolupar. Existeixen un munt d'alternatives enfocades a diferents propòsits: tractament de dades relacionades, gestió de grans volums de dades, consulta molt ràpida, cerques eficients, etc.
+
+Actualment, els SGBD més populars són Oracle, MySQL, PostgreSQL, Redis, Elasticsearch i MongoDB, entre d'altres.
+
 
 \chapter{Requisits del sistema}
 \label{cap:requisits}
@@ -1329,7 +1455,7 @@ Un cop s'hagin determinat les activitats, s'efectuarà una estimació del temps 
   \item \textit{t(P)}: Estimació pessimista.
 \end{itemize}
 
-Tot seguit, es calcularà el temps esperat de duració \textit{t(E)} de l'activitat. Aquest càlcul consisteix en una mitjana ponderada dels valors de l'estimació anterior, tal i com es pot veure a continuació:
+Tot seguit, es calcularà el temps esperat de duració \textit{t(E)} de l'activitat. Aquest càlcul consisteix en una mitjana ponderada dels valors de l'estimació anterior, tal com es pot veure a continuació:
 
 \begin{equation}
   t(E) = \frac{t(O) + 4t(M) + t(P)}{6}
@@ -1744,30 +1870,160 @@ En aquesta subsecció, es representarà el diagrama de Gantt que recull la plani
   \caption{\label{img:diagrama_gantt}Diagrama de Gantt.}
 \end{figure}
 
-Tal i com es pot veure a la part esquerra del diagrama, a part de les activitats determinades a la subsecció~\ref{subsec:determinacio_activitats}, també hi apareixen les dates d'inici i de fi previstes per a cadascuna. Aquestes dates s'han calculat suposant jornades de treball de 4 hores diàries i 5 dies a la setmana.
+Tal com es pot veure a la part esquerra del diagrama, a part de les activitats determinades a la subsecció~\ref{subsec:determinacio_activitats}, també hi apareixen les dates d'inici i de fi previstes per a cadascuna. Aquestes dates s'han calculat suposant jornades de treball de 4 hores diàries i 5 dies a la setmana.
 
 
-\chapter{Estudi i decisions}
+\chapter{Estudis i decisions}
 \label{cap:estudi}
 
-Tecnologies:
-\begin{itemize}
-  \item Visual Studio Code. Extensions?
-  \item Git i GitHub
-  \item Node js
-  \item Express
-  \item Tots els paquets de npm?
-  \item MySQL
-  \item Postman
-  \item \ldots
-\end{itemize}
+\section{Estructura del projecte}
+\label{sec:decisions_estructura}
 
-NODE.JS
-Node.js és un entorn d'execució de JavaScript multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'events asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un Sistema Gestor de Bases de Dades, Node.js no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa d'altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
-Parlar de NPM i comunitat.
+\subsection{Introducció}
+\label{subsec:decisions_estructura_intro}
 
-EXPRESS
-Express és la infraestructura o \textit{framework} d'aplicacions web que funciona sobre Node.js més popular. Destaca per ser molt lleugera, minimalista i flexible, a més de ser senzilla d'utilitzar. Express proporciona al desenvolupador molts mètodes i utilitats que permeten la creació d'una API sòlida de manera relativament ràpida. 
+
+
+\subsection{Control de versions}
+\label{subsec:decisions_estructura_versions}
+% Git, Github
+
+
+
+\subsection{Estructura de l'aplicació}
+\label{subsec:decisions_estructura_estructura}
+% Monorepo, NPM
+
+
+
+\section{Aplicació client}
+\label{sec:decisions_client}
+
+\subsection{Introducció}
+\label{subsec:decisions_client_intro}
+
+
+
+\subsection{Bundler}
+\label{subsec:decisions_client_bundler}
+%Vite
+
+
+\subsection{\textit{Frameworks}}
+\label{subsec:decisions_client_frameworks}
+% Vue i quasar
+
+
+\subsection{Enrutament}
+\label{subsec:decisions_client_enrutament}
+% vue-router
+
+
+
+\subsection{Gestió d'estats globals}
+\label{subsec:decisions_client_estats}
+% pinia
+
+
+
+\subsection{Proves}
+\label{subsec:decisions_client_proves}
+% Chrome dev tools amb vue extension.
+
+
+
+\section{Aplicació servidor}
+\label{sec:decisions_servidor}
+
+\subsection{Introducció}
+\label{subsec:decisions_servidor_intro}
+
+
+
+\subsection{Entorn i llenguatge de programació}
+\label{subsec:decisions_servidor_entorn}
+% node+nodemon
+
+Node.js és un entorn d'execució de JavaScript multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'events asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un sistema gestor de bases de dades, Node.js no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa d'altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
+
+\subsection{\textit{Framework}}
+\label{subsec:decisions_servidor_framework}
+
+Express és el \textit{framework} que funciona sobre Node.js més popular. Destaca per ser molt lleuger, minimalista i flexible, a més de ser senzill d'utilitzar. Express proporciona al desenvolupador molts mètodes i utilitats que permeten la creació d'una API sòlida de manera relativament ràpida.
+
+\subsection{ORM}
+\label{subsec:decisions_servidor_orm}
+% Explicar els orms al capítol de marc de treball!
+
+
+
+\subsection{Proves}
+\label{subsec:decisions_servidor_proves}
+
+
+
+\section{Base de dades}
+\label{sec:decisions_bdd}
+
+\subsection{Introducció}
+\label{subsec:decisions_bdd_intro}
+
+
+
+\subsection{Entorn d'execució}
+\label{subsec:decisions_bdd_entorn}
+
+
+
+\subsection{Sistema gestor de bases de dades}
+\label{subsec:decisions_bdd_sgbd}
+
+
+
+\subsection{Proves}
+\label{subsec:decisions_bdd_proves}
+
+
+
+\section{Eines de desenvolupament}
+\label{sec:decisions_desenvolupament}
+
+\subsection{Introducció}
+\label{subsec:decisions_desenvolupament_intro}
+% dir que a part de les eines indicades a les respectives seccions hi ha vs code
+
+
+
+\subsection{Editor de codi}
+\label{subsec:decisions_desenvolupament_editor}
+% vs code + ext
+
+
+
+\section{Confecció de la memòria}
+\label{sec:decisions_memoria}
+
+\subsection{Introducció}
+\label{subsec:decisions_memoria_intro}
+
+
+
+\subsection{Confecció del document}
+\label{subsec:decisions_memoria_document}
+% dist de latex
+
+
+
+\subsection{Diagrames, esquemes i figures}
+\label{subsec:decisions_memoria_figures}
+
+
+
+\subsection{Diagrama de Gantt}
+\label{subsec:decisions_memoria_gantt}
+
+
+
 
 \chapter{Anàlisi i disseny del sistema}
 \label{cap:analisi}
@@ -1793,7 +2049,7 @@ Tal com es pot veure a la figura~\ref{img:casos_us_actors}, els actors es corres
 
 En aquesta subsecció, es representaran els casos d'ús relacionats amb la part de l'autenticació d'usuaris (veure figura~\ref{img:casos_us_auth}).
 
-Quan es parli d'un \textit{Token}, s'estarà fent referència a un \textit{JSON Web Token}~\cite{JWT} generat per codificar certes dades amb una finalitat concreta (més informació al capítol~\ref{cap:estudi}).
+Quan es parli d'un \textit{Token}, s'estarà fent referència a un \textit{JSON Web Token}~\cite{JWT} generat per codificar certes dades amb una finalitat concreta (més informació al capítol~\ref{cap:implementacio}).
 
 \begin{figure}[H]
   \centering
