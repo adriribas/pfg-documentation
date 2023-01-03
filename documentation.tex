@@ -296,6 +296,10 @@ L'estimació dels preus dels diferents tipus de personal s'ha obtingut de l'info
 
 En aquesta secció, es detallaran quins són i com funcionen els mètodes de gestió i elaboració d'horaris de l'EPS que s'utilitzen actualment. Es veuran quins càrrecs de l'escola hi participen i les seves funcions, així com la manera en què interactuen entre ells i intercanvien la informació corresponent.
 
+------------------------
+
+Idees
+
 Parlar del flux dels processos, etc \ldots
 
 Rectorat reparteix crèdits a les facultats. Cada facultat decideix quants grups grans, petits, etc. de cada grau en funció dels alumnes. Introdueix els excels.
@@ -304,6 +308,8 @@ solapaments. Un cop fets, els coordinadors passen els horaris a direcció. S'ent
 que assignen professors als grups.
 
 Grups grans i mitjans no hi ha restriccions d'aules. Grups petits sí,
+
+------------------------
 
 \section{Nomenclatura específica}
 \label{sec:nomenclatura}
@@ -475,6 +481,10 @@ Degut a aquests motius, eventualment van sorgir els \textit{frameworks} JavaScri
 Un \textit{framework} JavaScript és una infraestructura de \textit{software} que proporciona un conjunt d'eines implementades i provades que serveixen de base per crear aplicacions interactives i escalables. Els \textit{frameworks} abstreuen la gestió del DOM per tal d'estalviar al desenvolupador el fet d'haver de manipular-lo directament en la majoria d'ocasions.
 
 Actualment, existeixen un munt de \textit{frameworks} per escollir. La majoria funcionen de manera similar, però realitzen algunes tasques de manera diferent. Cadascun té els seus avantatges i inconvenients i pot estar enfocat a un tipus d'aplicació concret, cosa que provoca que no n'existeixi un de definitiu. A la pràctica, l'opció més viable sempre depèn del tipus d'aplicació que s'hagi d'implementar. Avui dia, els més populars són React JS, Vue JS, Angular JS i Ember JS, entre d'altres.
+
+Quan es treballa amb aquest tipus de \textit{software} i altres biblioteques de codi, de seguida apareix la necessitat d'unes eines anomenades \textit{bundlers} o ``empaquetadors''.
+
+Abans que els mòduls ES (que permeten la importació i exportació de fragments de codi JavaScript) estéssin disponibles per a navegadors web, els desenvolupadors no tenien cap mecanisme natiu per crear codi JavaScript de manera modular. Per aquest motiu, l'ús de \textit{bundlers} sempre havia sigut necessari per tal de concatenar el codi de \textit{frameworks} i biblioteques en arxius que poguéssin ser executats en el navegador. WebPack, Rollup i Parcel són uns dels \textit{bundlers} més populars.
 
 \subsection{Aplicació servidor}
 
@@ -1937,9 +1947,10 @@ Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure f
 
 
 
-\subsection{Bundler}
+\subsection{\textit{Bundler}}
 \label{subsec:decisions_client_bundler}
-%Vite
+
+
 
 \begin{figure}[H]
   \centering
