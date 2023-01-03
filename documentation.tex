@@ -125,9 +125,9 @@ Agraïments \ldots
 
 \tableofcontents
 
-%\listoffigures
+\listoffigures
 
-%\listoftables
+\listoftables
 
 \mainmatter
 
@@ -1896,7 +1896,7 @@ En aquesta subsecció, es justificarà l'el·lecció del sistema de control de v
 
 Disposar d'un sistema de control de versions a l'hora de desenvolupar una aplicació aporta un gran nombre d'avantatges, d'entre els quals destaca la capacitat de consultar o restaurar estats antics del codi i la de bifurcar el desenvolupament.
 
-Git~\cite{Git} (veure figura~\ref{img:logo_git}), és el sistema de control de versions més popular amb diferència i, encara que existeixin algunes alternatives, és la que més funcionalitats ofereix i l'opció preferida de la gran majoria de desenvolupadors. A banda d'aquests motius, Git és l'única eina d'aquesta tipologia amb què tinc experiència. 
+\textbf{Git}~\cite{Git} (veure figura~\ref{img:logo_git}), és el sistema de control de versions més popular amb diferència i, encara que existeixin algunes alternatives, és la que més funcionalitats ofereix i l'opció preferida de la gran majoria de desenvolupadors. A banda d'aquests motius, Git és l'única eina d'aquesta tipologia amb què tinc experiència. 
 
 \begin{figure}[H]
   \centering
@@ -1904,9 +1904,9 @@ Git~\cite{Git} (veure figura~\ref{img:logo_git}), és el sistema de control de v
   \caption{\label{img:logo_git}Logotip de Git.}
 \end{figure}
 
-Normalment, l'ús de Git sol acompanyar-se de l'allotjament dels repositoris a una plataforma web dedicada a aquesta funció. Aquests tipus de plataforma permeten evitar la pèrdua accidental del codi d'un projecte, a banda d'aportar incomptables funcionalitats per al treball col·laboratiu, entre d'altres.
+Normalment, l'ús de \textbf{Git} sol acompanyar-se de l'allotjament dels repositoris a una plataforma web dedicada a aquesta funció. Aquests tipus de plataforma permeten evitar la pèrdua accidental del codi d'un projecte, a banda d'aportar incomptables funcionalitats per al treball col·laboratiu, entre d'altres.
 
-Hi ha diverses alternatives pel que fa a aquest tipus de plataforma, com ara GitHub, GitLab o BitBucket. No obstant això, l'opció escollida per al projecte és \textbf{GitHub}~\cite{GitHub} (veure figura~\ref{img:logo_github}), ja que la domino més que la resta i em sento més còmode treballant-hi.
+Hi ha diverses alternatives pel que fa a aquest tipus de plataforma, com ara \textbf{GitHub}, GitLab o BitBucket. No obstant això, l'opció escollida per al projecte és \textbf{GitHub}~\cite{GitHub} (veure figura~\ref{img:logo_github}), ja que la domino més que la resta i em sento més còmode treballant-hi.
 
 \begin{figure}[H]
   \centering
@@ -1922,14 +1922,14 @@ En aquesta subsecció, es justificarà l'el·lecció de l'estructura del sistema
 Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, el projecte engloba el desenvolupament de dues apliacions: el client i el servidor. Aquestes aplicacions es poden estructurar de dues maneres diferents:
 \begin{itemize}
   \item \texttt{Multirepositori:} Separar les dues aplicacions en respositoris diferents. 
-  \item \texttt{Monorepositori:} Agrupar les dues aplicacions en el mateix repositori.
+  \item \texttt{\textbf{Monorepositori:}} Agrupar les dues aplicacions en el mateix repositori.
 \end{itemize}
 
-Els beneficis principals del multirepositori són que els repositoris individuals són més fàcils de gestionar i queden més nets i recollits. En canvi, encara que en el monorepositori passi el contrari, és un aspecte que no té gaire pes, ja que l'escala del projecte és petita. A més a més, aquesta alternativa ofereix avantatges més interessants, com ara una millor estandarització del codi i la possibilitat de la seva reutilització, entre d'altres.
+Els beneficis principals del multirepositori són que els repositoris individuals són més fàcils de gestionar i queden més nets i recollits. En canvi, encara que en el \textbf{monorepositori} passi el contrari, és un aspecte que no té gaire pes, ja que l'escala del projecte és petita. A més a més, aquesta alternativa ofereix avantatges més interessants, com ara una millor estandarització del codi i la possibilitat de la seva reutilització, entre d'altres.
 
 A més a més, tal com es veurà a les seccions~\ref{sec:decisions_client} i~\ref{sec:decisions_servidor}, el llenguatge de programació amb què s'han desenvolupat les dues aplicacions és el mateix: JavaScript. Gràcies a això es pot utilitzar un mateix gestor de paquets per a les dues.
 
-Els gestors de paquets de JavaScript actuals més populars també incorporen altres eines i utilitats que faciliten la gestió d'un monorepositori dividint-lo en diferents espais de treball. Permeten definir les dependències de cada espai de treball i també de comunes. Aquest fet fa que la instal·lació i actualització dels paquets sigui més ràpida i eficient que en el cas de l'estructuració del projecte en multirepositori. Per aquests motius i per comoditat, l'el·lecció per al projecte ha estat l'estructuració en monorepositori.
+Els gestors de paquets de JavaScript actuals més populars també incorporen altres eines i utilitats que faciliten la gestió d'un \textbf{monorepositori} dividint-lo en diferents espais de treball. Permeten definir les dependències de cada espai de treball i també de comunes. Aquest fet fa que la instal·lació i actualització dels paquets sigui més ràpida i eficient que en el cas de l'estructuració del projecte en multirepositori. Per aquests motius i per comoditat, l'el·lecció per al projecte ha estat l'estructuració en \textbf{monorepositori}.
 
 Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure figura~\ref{img:logo_npm}). Els motius d'aquesta el·lecció han estat, principalment, el coneixement previ de l'eina i que és el gestor de paquets estàndard de Node.js, l'entorn escollit per a l'aplicació servidor (veure secció~\ref{sec:decisions_servidor}).
 
@@ -1942,15 +1942,20 @@ Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure f
 \section{Aplicació client}
 \label{sec:decisions_client}
 
-%\subsection{Introducció}
-%\label{subsec:decisions_client_intro}
-
-
-
 \subsection{\textit{Bundler}}
 \label{subsec:decisions_client_bundler}
 
+En aquesta subsecció, es justificarà l'el·lecció del \textit{bundler} utilitzat en l'aplicació client: \textbf{Vite}.
 
+Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, existeixen múltiples eines d'aquesta tipologia que empaqueten el codi de tots els fitxers o mòduls JavaScript per tal de poder ser enviats al navegador en una sola petició, com ara WebPack, Rollup o Parcel.
+
+No obstant això, el codi font de les aplicacions \textit{front-end} modernes pot arribar a ser enorme a causa de l'ús de \textit{frameworks} i biblioteques. Aquest fet comporta, entre d'altres inconvenients, una mala experiència de desenvolupament, ja que, per exemple, si es fa servir HMR (\textit{hot module replacement}), les modificacions d'arxius poden tardar uns quants segons en veure's reflectides al navegador. A més a més, el temps d'espera necessari per posar en marxa un servidor de desenvolupament pot resultar excessivament llarg.
+
+Gràcies als avenços en l'ecosistema, com ara la disponibilitat de mòduls ES al navegador de forma nativa, han sorgit noves eines que se n'aprofiten i corregeixen els problemes que presenten els \textit{bundlers} comentats anteriorment.
+
+Degut a aquests motius i a que la documentació oficial del \textit{framework} escollit pel \textit{front-end} del projecte (veure subsecció~\ref{subsec:decisions_client_framework}) en recomana l'ús, s'ha triat \textbf{Vite}.
+
+\textbf{Vite}~\cite{Vite} (veure figura~\ref{img:logo_vite}) és una eina de compilació l'objectiu de la qual és proporcionar una experiència de desenvolupament àgil per a projectes web moderns. Entre d'altres funcionalitats, incorpora un servidor de desenvolupament que permet, per exemple, un HMR extremadament ràpid.
 
 \begin{figure}[H]
   \centering
@@ -1958,10 +1963,46 @@ Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure f
   \caption{\label{img:logo_vite}Logotip de Vite.}
 \end{figure}
 
-\subsection{\textit{Frameworks}}
-\label{subsec:decisions_client_frameworks}
-% Vue i quasar
+\subsection{\textit{Framework}}
+\label{subsec:decisions_client_framework}
 
+En aquesta subsecció, es justificarà l'el·lecció del \textit{framework} JavaScript utilitzat en l'aplicació client: \textbf{Vue}.
+
+Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, els \textit{frameworks} més populars per a \textit{front-end} són React, Angular i \textbf{Vue}. Normalment, les tecnologies més populars són les que tenen una comunitat més gran i, per tant, n'existeix més documentació, més articles i més preguntes i respostes sobre quasi bé qualsevol tipus de problema o dubte. Per aquest motiu, d'entrada, l'el·lecció s'ha disputat entre aquests tres \textit{frameworks}.
+
+No obstant això, Angular~\cite{Angular} ha estat la primera opció descartada. En comparació amb les altres alternatives, és la més pesada, més complexa i amb la corva d'aprenentatge més pronunciada, ja que disposa d'una gran quantitat d'eines i possibilitats que, en moltes ocasions, poden resultar excessives i agobiants a l'hora de desenvolupar aplicacions a petita o mitjana escala.
+
+En aquest punt, s'ha realitzat una comparació entre React~\cite{React} i \textbf{Vue}~\cite{Vue} tenint en compte els avantatges i inconvenients principals de cadascun~\cite{ReactVsVue}.
+\begin{itemize}
+  \item Avantatges principals de React:
+  \begin{itemize}
+    \item Disposa d'una sintaxi pròpia que permet implementar més funcionalitat amb menys codi.
+    \item No és difícil d'apendre per algú experimentat en JavaScript.
+    \item S'ha desenvolupat un conjunt d'eines i utilitats que, en resum, faciliten molt la comprensió i depuració del codi.
+  \end{itemize}
+  \item Inconvenients principals de React:
+  \begin{itemize}
+    \item La documentació és bastant pobre, ja que el \textit{software} evoluciona a un ritme molt ràpid i no es dóna l'abast a l'hora de documentar-lo.
+    \item Depèn molt d'altres eines que completen determinades funcionalitats que li falten.
+    \item Degut a la ràpida evolució i actualització, molts desenvolupadors no es senten còmodes en haver d'estar aprenent continuament com es fan determinades coses que, cada poc temps, canvien de manera de fer.
+  \end{itemize}
+  \item Avantatges principals de \textbf{Vue}:
+  \begin{itemize}
+    \item És molt còmode de treballar-hi gràcies a la llegibilitat i simplicitat del codi.
+    \item És molt lleguer, ja que només pesa 20KB.
+    \item La documentació és molt completa i detallada, fet que el fa ràpid i senzill d'apendre per a desenvolupadors sense gaire experiència en aquest món.
+    \item És capaç de detectar els components que contenen errors.
+  \end{itemize}
+  \item Inconvenients principals de \textbf{Vue}:
+  \begin{itemize}
+    \item És extremadament flexible, fet que facilita l'aparició d'irregularitats i errors.
+    \item No disposa de gaires eines i utilitats comunes que ajuden a simplificar el desenvolupament.
+  \end{itemize}
+\end{itemize}
+
+A l'hora de dur a terme la decisió final, s'ha valorat molt més l'opció més lleugera i que ofereix el codi més simple i llegible, la millor documentació i la corva d'aprenentatge menys pronunciada, ja que no tenia experiència prèvia en el desenvolupament d'aplicacions web. Per tant, \textbf{Vue} és el \textit{framework} escollit per a l'aplicació client del projecte.
+
+\textbf{Vue} (veure figura~\ref{img:logo_vue}) és un \textit{framework} JavaScript per desenvolupar interfícies d'usuari. Està construit sobre HTML, CSS i JavaScript i proporciona un model de programació declaratiu basat en components.
 
 \begin{figure}[H]
   \centering
@@ -1969,28 +2010,64 @@ Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure f
   \caption{\label{img:logo_vue}Logotip de Vue.}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.15\textwidth]{assets/logos/Quasar.png}
-  \caption{\label{img:logo_quasar}Logotip de Quasar.}
-\end{figure}
+El més comú és definir cada component en un fitxer diferent. Aquests fitxers utilitzen l'extensió ``.vue'' i se'ls anomena SFC (\textit{Single-File Component}). Cadascun està format per les tres parts principals següents:
+\begin{itemize}
+  \item \texttt{\textit{Script}}: Conté el codi JavaScript del component.
+  \item \texttt{\textit{Template}}: Conté l'estructura HTML del component.
+  \item \texttt{\textit{Style}}: Conté els estils CSS del component.
+\end{itemize}
 
 \subsection{Enrutament}
 \label{subsec:decisions_client_enrutament}
-% vue-router
 
+En aquesta subsecció, es presentarà l'eina utilitzada per l'enrutament de l'aplicació client: \textbf{Vue Router}.
 
+\textbf{Vue Router}~\cite{VueRouter} és l'enrutador oficial de Vue, el \textit{framework} escollit pel desenvolupament del \textit{front-end} del projecte (veure subsecció~\ref{subsec:decisions_client_framework}).
 
-\subsection{Gestió d'estats globals}
+\textbf{Vue Router} està profundament integrat amb el nucli de Vue i gràcies a ell es poden implementar rutes dinàmiques, rutes basades en components, enrutament dinàmic, historial de rutes, etc.
+
+\subsection{Gestió d'estats}
 \label{subsec:decisions_client_estats}
-% pinia
 
+En aquesta subsecció, es presentarà l'eina utilitzada per la gestió d'estats de l'aplicació client: \textbf{Pinia}.
+
+\textbf{Pinia}~\cite{Pinia} (veure figura~\ref{img:logo_pinia}) és l'eina de gestió d'estats oficial de Vue, el \textit{framework} escollit pel desenvolupament del \textit{front-end} del projecte (veure subsecció~\ref{subsec:decisions_client_framework}).
+
+\textbf{Pinia} permet emmagatzemar i manipular dades reactives més enllà de la jerarquia de components i de manera global. A més a més, accepta HMR i disposa de suport pel que fa a les eines per a desenvolupadors dels navegadors.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.12\textwidth]{assets/logos/Pinia.png}
   \caption{\label{img:logo_pinia}Logotip de Pinia.}
 \end{figure}
+
+\subsection{Estètica i funcionalitats addicionals}
+\label{subsec:decisions_client_estetica}
+
+En aquesta subsecció, es presentaran les eines utilitzades en quant a estètica i en quant a l'aportació de funcionalitats addicionals que simplifiquen el desenvolupament de l'aplicació client i la fan més robusta: \textbf{Material Colors, Material Icons i Quasar}.
+
+Material és un sistema de disseny que defineix unes guies d'estil enfocades al desenvolupament d'interfícies d'usuari d'alta qualitat. Per aquest motiu, abans de crear paletes de colors pròpies i buscar icones variades per al \textit{front-end} del projecte, es va optar per utilitzar \textbf{Material Colors}~\cite{MaterialColors} per escollir-ne les paletes de colors i \textbf{Material Icons}~\cite{MaterialIcons} per escollir-ne les icones.
+
+L'abast de l'aplicació client és relativament gran i construir-la des de zero, tot i utilitzar un \textit{framework}, hagués suposat un cost temporal massa elevat. Per tal d'agilitzar-ne el desenvolupament, es va decidir incorporar al projecte alguna biblioteca que disposés de components reutilitzables útils i que seguíssin unes certes guies d'estil, com ara botons, seleccionables, etc.
+
+L'alternativa més popular i més completa és Vuetify. No obstant això, aquesta eina encara no suporta l'última versió de Vue (Vue 3) i ha estat descartada. La segona millor opció després de Vuetify és \textbf{Quasar} i, encara que no sigui tant completa, ofereix components i funcionalitats molt útils i interessants.
+
+\textbf{Quasar}~\cite{Quasar} (veure figura~\ref{img:logo_quasar}) és un \textit{framework} de codi obert basat en Vue. Encara que normalment s'utilitzi com a \textit{framework} ``principal'' d'un projecte, també es pot incorporar a un projecte existent creat amb Vite en forma de \textit{plugin}, com el cas de l'aplicació client d'aquest projecte.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.15\textwidth]{assets/logos/Quasar.png}
+  \caption{\label{img:logo_quasar}Logotip de Quasar.}
+\end{figure}
+
+A continuació s'enumeren algunes de les funcionalitats que incorpora:
+\begin{itemize}
+  \item Components reutilitzables que van des de botons fins a taules complexes, arbres, etc.
+  \item Classes CSS globals i possibilitat de definició de variables CSS.
+  \item Eines (\textit{directives}) de Vue que permeten controlar events de ratolí, entre d'altres utilitats.
+  \item Eines (\textit{composables}) de Vue que faciliten la separació i reutilització de diàlegs, entre d'altres utilitats.
+  \item Suport per biblioteques d'icones com, per exemple, \textbf{Material Icons}.
+\end{itemize}
 
 \subsection{Proves}
 \label{subsec:decisions_client_proves}
@@ -2015,6 +2092,8 @@ Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure f
 \label{subsec:decisions_servidor_entorn}
 % node+nodemon
 
+PROVISIONAL:
+
 Node.js és un entorn d'execució de JavaScript multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'events asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un sistema gestor de bases de dades, Node.js no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa d'altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
 
 \begin{figure}[H]
@@ -2025,6 +2104,8 @@ Node.js és un entorn d'execució de JavaScript multiplataforma i de codi obert 
 
 \subsection{\textit{Framework}}
 \label{subsec:decisions_servidor_framework}
+
+PROVISIONAL:
 
 Express és el \textit{framework} que funciona sobre Node.js més popular. Destaca per ser molt lleuger, minimalista i flexible, a més de ser senzill d'utilitzar. Express proporciona al desenvolupador molts mètodes i utilitats que permeten la creació d'una API sòlida de manera relativament ràpida.
 
@@ -2645,7 +2726,7 @@ A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la
 
 \chapter{Implementació i proves}
 \label{cap:implementacio}
-
+% Explicar vue-router, pinia
 
 
 
