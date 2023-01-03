@@ -2022,18 +2022,14 @@ El més comú és definir cada component en un fitxer diferent. Aquests fitxers 
 
 En aquesta subsecció, es presentarà l'eina utilitzada per l'enrutament de l'aplicació client: \textbf{Vue Router}.
 
-\textbf{Vue Router}~\cite{VueRouter} és l'enrutador oficial de Vue, el \textit{framework} escollit pel desenvolupament del \textit{front-end} del projecte (veure subsecció~\ref{subsec:decisions_client_framework}).
-
-\textbf{Vue Router} està profundament integrat amb el nucli de Vue i gràcies a ell es poden implementar rutes dinàmiques, rutes basades en components, enrutament dinàmic, historial de rutes, etc.
+\textbf{Vue Router}~\cite{VueRouter} és l'enrutador oficial de Vue i està profundament integrat amb el seu nucli. Gràcies a aquesta utilitat, es poden implementar rutes dinàmiques, rutes basades en components, enrutament dinàmic, historial de rutes, etc.
 
 \subsection{Gestió d'estats}
 \label{subsec:decisions_client_estats}
 
 En aquesta subsecció, es presentarà l'eina utilitzada per la gestió d'estats de l'aplicació client: \textbf{Pinia}.
 
-\textbf{Pinia}~\cite{Pinia} (veure figura~\ref{img:logo_pinia}) és l'eina de gestió d'estats oficial de Vue, el \textit{framework} escollit pel desenvolupament del \textit{front-end} del projecte (veure subsecció~\ref{subsec:decisions_client_framework}).
-
-\textbf{Pinia} permet emmagatzemar i manipular dades reactives més enllà de la jerarquia de components i de manera global. A més a més, accepta HMR i disposa de suport pel que fa a les eines per a desenvolupadors dels navegadors.
+\textbf{Pinia}~\cite{Pinia} (veure figura~\ref{img:logo_pinia}) és l'eina de gestió d'estats oficial de Vue i permet emmagatzemar i manipular dades reactives més enllà de la jerarquia de components i de manera global. A més a més, accepta HMR i disposa d'integracions amb les eines per a desenvolupadors dels navegadors.
 
 \begin{figure}[H]
   \centering
@@ -2071,30 +2067,33 @@ A continuació s'enumeren algunes de les funcionalitats que incorpora:
 
 \subsection{Proves}
 \label{subsec:decisions_client_proves}
-% Chrome dev tools amb vue extension.
 
+En aquesta subsecció, es presentaran les eines utilitzades per a la realització de proves a l'aplicació client: \textbf{Chrome DevTools amb una extensió de Vue}.
+
+\textbf{Chrome DevTools}~\cite{ChromeDevTools} (veure figura~\ref{img:logo_chrome_dev_tools}) és un conjunt d'eines per a desenvolupadors que proporciona el navegador Google Chrome. Aquestes eines resulten molt útils a l'hora de comprovar que el \textit{software} funcioni i depurar-lo en cas que es produeixi algun error.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.22\textwidth]{assets/logos/ChromeDevTools.png}
-  \caption{\label{img:logo_chrome_dev_tools}Logotip de Chrome Dev Tools.}
+  \caption{\label{img:logo_chrome_dev_tools}Logotip de Chrome DevTools.}
 \end{figure}
+
+A més a més, Vue disposa d'una extensió que s'afegeix a aquestes eines i fa possible la realització de proves i depuració molt més específiques.
 
 \section{Aplicació servidor}
 \label{sec:decisions_servidor}
 
-%\subsection{Introducció}
-%\label{subsec:decisions_servidor_intro}
-
-
-
 \subsection{Entorn i llenguatge de programació}
 \label{subsec:decisions_servidor_entorn}
-% node+nodemon
+En aquesta subsecció, es justificarà l'el·lecció tant de l'entorn com del llenguatge de programació utilitzats en l'aplicació servidor: \textbf{JavaScript en l'entorn de Node.js}.
 
-PROVISIONAL:
+Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, existeix una quantitat considerable d'entorns i llenguatges de programació que permeten desenvolupar aplicacions de \textit{back-end}. D'entrada i per raons de temps, es descarten els llenguatges amb els quals no tinc cap tipus d'experiència.
 
-Node.js és un entorn d'execució de JavaScript multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'events asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un sistema gestor de bases de dades, Node.js no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa d'altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
+En aquest punt, les dues alternatives són \textbf{JavaScript en l'entorn de Node.js} i Java. Les aplicacions servidor desenvolupades amb Java són una bona opció però, en notables ocasions, els seus \textit{frameworks} comporten una configuració excessiva que requereix bastant temps i pot dur a errors. D'altra banda, els \textit{frameworks} \textbf{JavaScript} que funcionen sobre \textbf{Node.js} solen ser molt més lleugers i senzills de fer servir a nivell bàsic. A més a més, \textbf{JavaScript} és el llenguatge que més m'interessa apendre actualment.
+
+Per aquests motius i per evitar la incomoditat d'haver de desenvolupar a la vegada dues aplicacions amb llenguatges diferents, l'alternativa escollida ha estat \textbf{JavaScript en l'entorn de Node.js}.
+
+\textbf{Node.js}~\cite{Node} (veure figura~\ref{img:logo_node}) és un entorn d'execució de \textbf{JavaScript} multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'events asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un sistema gestor de bases de dades, \textbf{Node.js} no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa d'altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
 
 \begin{figure}[H]
   \centering
@@ -2105,21 +2104,24 @@ Node.js és un entorn d'execució de JavaScript multiplataforma i de codi obert 
 \subsection{\textit{Framework}}
 \label{subsec:decisions_servidor_framework}
 
-PROVISIONAL:
+En aquesta subsecció, es presentarà el \textit{framework} JavaScript utilitzat en l'aplicació servidor: \textbf{Express.js}.
 
-Express és el \textit{framework} que funciona sobre Node.js més popular. Destaca per ser molt lleuger, minimalista i flexible, a més de ser senzill d'utilitzar. Express proporciona al desenvolupador molts mètodes i utilitats que permeten la creació d'una API sòlida de manera relativament ràpida.
+\textbf{Express.js}~\cite{Express} (veure figura~\ref{img:logo_express}) és el \textit{framework} JavaScript que funciona sobre Node.js més popular. Destaca per ser molt lleuger, minimalista i flexible, a més de proporcionar una metodologia ràpida per crear API REST.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.24\textwidth]{assets/logos/Express.png}
-  \caption{\label{img:logo_express}Logotip de Express.js.}
+  \caption{\label{img:logo_express}Logotip d'Express.js.}
 \end{figure}
 
 \subsection{ORM}
 \label{subsec:decisions_servidor_orm}
-% Explicar els orms al capítol de marc de treball o aquí?
 
+En aquesta subsecció, es presentarà l'ORM utilitzat en l'aplicació servidor: \textbf{Sequelize}.
 
+Un ORM (\textit{object relational mapper}) és una tècnica o patró arquitectònic que permet comunicar l'aplicació servidor amb un sistema gestor de bases de dades. La seva finalitat és crear models virtuals per a cada taula de la base de dades i generar comandes SQL automàticament a partir d'instruccions executades amb el llenguatge de l'apliació.
+
+\textbf{Sequelize}~\cite{Sequelize} (veure figura~\ref{img:logo_sequelize}) és un ORM desenvolupat per a Node.js que suporta treballar amb diversos SGBD: PostgreSQL, MySQL, SQLite i MSSQL. Ofereix un ampli conjunt de funcionalitats, les principals del qual són: fort suport de transaccions, relacions, múltiples maneres de carregar dades, esborrat no definitiu, etc.
 
 \begin{figure}[H]
   \centering
@@ -2129,9 +2131,14 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
 
 \subsection{Proves}
 \label{subsec:decisions_servidor_proves}
-% postman
 
+En aquesta subsecció, es justificarà l'el·lecció de l'eina utilitzada per a la realització de proves a l'API que exposa l'aplicació servidor: \textbf{Postman}.
 
+Les dues alternatives que possibiliten realitzar aquestes proves més conegudes són \textbf{Postman} i Insomnia. Pel que fa a aquest projecte, les dues eines són igual d'útils i ofereixen quasi bé les mateixes possibilitats.
+
+No obstant això, l'opció amb la qual tinc més experiència és \textbf{Postman} i, per tant, és l'escollida.
+
+\textbf{Postman}~\cite{Postman} (veure figura~\ref{img:logo_postman}) és una plataforma d'API per a desenvolupadors que serveix per dissenyar i comprovar el funcionament de les API.
 
 \begin{figure}[H]
   \centering
@@ -2142,14 +2149,14 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
 \section{Base de dades}
 \label{sec:decisions_bdd}
 
-% \subsection{Introducció}
-% \label{subsec:decisions_bdd_intro}
-
-
-
 \subsection{Entorn d'execució}
 \label{subsec:decisions_bdd_entorn}
 
+En aquesta subsecció, es justificarà l'el·lecció de l'entorn d'execució sobre el qual s'executa l'SGBD del projecte: \textbf{Docker}.
+
+Abans d'instal·lar i fer servir un SGBD directament sobre el sistema operatiu de l'ordinador personal, s'ha optat per fer-ho en un entorn que cada vegada és més popular i que ofereix nombrosos avantatges: \textbf{Docker}.
+
+\textbf{Docker}~\cite{Docker} (veure figura~\ref{img:logo_docker}) és un \textit{software} de codi obert que automatitza el desplegament d'aplicacions dins de contenidors construïts sobre el nucli de Linux. Permet disposar d'imatges predefinides d'un determinat aplicatiu per tal de poder executar-les fàcilment, com ara la imatge d'un SGBD. El punt clau d'això és que un contenidor pot allotjar un determinat programari i tota la seva configuració, de manera que tot plegat sigui portable i ràpidament executable en altres màquines i sistemes operatius.
 
 \begin{figure}[H]
   \centering
@@ -2160,7 +2167,15 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
 \subsection{Sistema gestor de bases de dades}
 \label{subsec:decisions_bdd_sgbd}
 
+En aquesta subsecció, es justificarà l'el·lecció del sistema gestor de bases de dades utilitzat per gestionar les dades del projecte: \textbf{MySQL}.
 
+Per començar, si s'analitzen mínimament el tipus de dades que involucra el projecte, ràpidament es pot concloure que l'opció més òptima és decantar-se per una base de dades relacional, ja que estan molt relacionades entre sí.
+
+Els SGBD relacionals més populars i més ben documentats són Oracle, \textbf{MySQL}, Microsoft SQL Server i PostgreSQL. No obstant això, les dues opcions candidates són Oracle i \textbf{MySQL}, ja que són les úniques amb les quals tinc experiència.
+
+Tal com s'ha vist a la secció~\ref{sec:decisions_servidor}, l'ORM escollit per al projecte funciona només amb un conjunt limitat de SGBD, el qual no contempla Oracle. Per tant, el sistema gestor de bases de dades escollit és \textbf{MySQL}.
+
+\textbf{MySQL}~\cite{MySQL} (veure figura~\ref{img:logo_mysql}) és un sistema gestor de bases de dades relacional de codi lliure i multiusuari que funciona amb múltiples fils d'execució i utilitza el llenguatge SQL.
 
 \begin{figure}[H]
   \centering
@@ -2171,7 +2186,13 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
 \subsection{Proves}
 \label{subsec:decisions_bdd_proves}
 
+En aquesta subsecció, es justificarà l'el·lecció de l'eina utilitzada per a la realització de proves en quant a la base de dades: \textbf{DataGrip}.
 
+Existeixen diverses opcions que permeten verificar el correcte ús d'una base de dades gestionada, en el cas d'aquest projecte, per MySQL (veure subsecció~\ref{subsec:decisions_bdd_sgbd}): mitjançant comandes directament a una consola o utilitzant un programari específic com ara MySQL Workbench o \textbf{DataGrip}.
+
+Tot i tenir experiència amb MySQL Workbench, m'he decantat per \textbf{DataGrip} perquè l'he trobat molt més agradable visualment, més còmode i, sobretot, més potent, ja que ofereix més funcionalitats.
+
+\textbf{DataGrip}~\cite{DataGrip} (veure figura~\ref{img:logo_datagrip}) és un entorn de desenvolupament integrat que permet treballar amb bases de dades i SQL. Permet guardar consultes, modificar dades i generar diagrames, entre moltes altres funcionalitats. A més a més, és compatible amb un gran nombre de SGBD.
 
 \begin{figure}[H]
   \centering
@@ -2182,17 +2203,12 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
 \section{Eines de desenvolupament}
 \label{sec:decisions_desenvolupament}
 
-% \subsection{Introducció}
-% \label{subsec:decisions_desenvolupament_intro}
-
-
-
 \subsection{Editor de codi}
 \label{subsec:decisions_desenvolupament_editor}
-% dir que a part de les eines indicades a les respectives seccions hi ha vs code
-% vs code + ext
 
+En aquesta subsecció, es presentarà l'editor de codi amb què s'ha desenvolupat el projecte: \textbf{Visual Studio Code}.
 
+\textbf{Visual Studio Code}~\cite{VSCode} (veure figura~\ref{img:logo_vscode}) és un editor de codi font molt lleuger i extremadament flexible i configurable. Gràcies a les seves extensions, es pot utilitzar per desenvolupar codi en qualsevol llenguatge de programació i per obrir i interpretar una gran quantitat de tipus de fitxer.
 
 \begin{figure}[H]
   \centering
@@ -2200,19 +2216,17 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
   \caption{\label{img:logo_vscode}Logotip de Visual Studio Code.}
 \end{figure}
 
+Aquest editor ha resultat extremadament útil durant el desenvolupament del projecte, ja que s'ha pogut utilitzar tant pel codi font del \textit{front-end} i el \textit{back-end} com pel codi de la memòria, escrit amb LaTeX (veure secció~\ref{sec:decisions_memoria}).
+
 \section{Confecció de la memòria}
 \label{sec:decisions_memoria}
 
-% \subsection{Introducció}
-% \label{subsec:decisions_memoria_intro}
-
-
-
 \subsection{Elaboració del document}
 \label{subsec:decisions_memoria_document}
-% latex
 
+En aquesta subsecció, es presentarà l'eina utilitzada per a l'elaboració de la memòria del projecte: \textbf{LaTeX}.
 
+\textbf{LaTeX}~\cite{LaTeX} (veure figura~\ref{img:logo_latex}) és un sistema de composició de textos orientat a la creació de documents escrits que han de presentar una alta qualitat tipogràfica. Degut a les seves característiques, és molt utilitzat en articles i llibres científics, tesis tècniques, etc.
 
 \begin{figure}[H]
   \centering
@@ -2220,10 +2234,12 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
   \caption{\label{img:logo_latex}Logotip de LaTeX.}
 \end{figure}
 
-\subsection{Diagrames, esquemes i figures}
+\subsection{Disseny de les figures}
 \label{subsec:decisions_memoria_figures}
 
+En aquesta subsecció, es presentarà l'eina utilitzada per a l'elaboració de les figures presentades a la memòria: \textbf{Diagrams.net}.
 
+\textbf{Diagrams.net}~\cite{DiagramsNet} (veure figura~\ref{img:logo_diagrams}) és una eina de codi obert que permet crear una gran varietat d'esquemes i diagrames de qualsevol mena. Per exemple, es fa servir molt freqüentment per dibuixar diagrames UML.
 
 \begin{figure}[H]
   \centering
@@ -2234,7 +2250,9 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
 \subsection{Diagrama de Gantt}
 \label{subsec:decisions_memoria_gantt}
 
+En aquesta subsecció, es presentarà l'eina utilitzada per a l'elaboració del diagrama de Gantt presentat a la memòria (veure capítol~\ref{cap:planificacio}): \textbf{TeamGantt}.
 
+\textbf{TeamGantt}~\cite{TeamGantt} (veure figura~\ref{img:logo_teamGantt}) és una plataforma web que permet confeccionar diagrames de Gantt atractius i de manera relativament còmode.
 
 \begin{figure}[H]
   \centering
