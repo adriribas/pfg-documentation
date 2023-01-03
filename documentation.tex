@@ -472,7 +472,7 @@ Treballar directament i de manera adequada amb el DOM requereix una comprensió 
 
 Degut a aquests motius, eventualment van sorgir els \textit{frameworks} JavaScript amb l'objectiu de brindar una millor experiència de desenvolupament i augmentar la mantenibilitat i l'escalabilitat de les aplicacions web.
 
-Un \textit{framework} JavaScript és un marc de treball que proporciona un conjunt d'eines implementades i provades que serveixen de base per crear aplicacions interactives i escalables. Els \textit{frameworks} abstreuen la gestió del DOM per tal d'estalviar al desenvolupador el fet d'haver de manipular-lo directament en la majoria d'ocasions.
+Un \textit{framework} JavaScript és una infraestructura de \textit{software} que proporciona un conjunt d'eines implementades i provades que serveixen de base per crear aplicacions interactives i escalables. Els \textit{frameworks} abstreuen la gestió del DOM per tal d'estalviar al desenvolupador el fet d'haver de manipular-lo directament en la majoria d'ocasions.
 
 Actualment, existeixen un munt de \textit{frameworks} per escollir. La majoria funcionen de manera similar, però realitzen algunes tasques de manera diferent. Cadascun té els seus avantatges i inconvenients i pot estar enfocat a un tipus d'aplicació concret, cosa que provoca que no n'existeixi un de definitiu. A la pràctica, l'opció més viable sempre depèn del tipus d'aplicació que s'hagi d'implementar. Avui dia, els més populars són React JS, Vue JS, Angular JS i Ember JS, entre d'altres.
 
@@ -482,7 +482,7 @@ En aquesta subsecció, es donaran a conèixer les tecnologies involucrades en el
 
 A diferència de les aplicacions web client, les aplicacions servidor no estan tan limitades pel que fa a llenguatges de programació. Pràcticament es poden desenvolupar fent servir qualsevol llenguatge. No obstant això, tampoc es lliuren de la necessitat de l'existència de \textit{frameworks} que proporcionin eines que rellevin el desenvolupador en les tasques més comunes, complicades o de baix nivell.
 
-Actualment, hi ha una gran varietat d'opcions a l'hora d'escollir la tecnologia amb la qual s'ha de desenvolupar una determinada aplicació servidor. La tria depèn de múltiples factors, com ara de com ha de ser la comunicació amb l'aplicació client i l'emmagatzematge de les dades. Avui dia, els més populars són Firebase, Express.js, Spring Boot, Laravel, Django i Ruby on Rails, entre d'altres.
+Actualment, hi ha una gran varietat d'opcions a l'hora d'escollir la tecnologia amb la qual s'ha de desenvolupar una determinada aplicació servidor. La tria depèn de múltiples factors, com ara quina és la càrrega de peticions esperada o quina importància té el rendiment envers altres aspectes. Avui dia, els més populars són Firebase, Express.js, Spring Boot, Laravel, Django i Ruby on Rails, entre d'altres.
 
 \subsection{Comunicació entre client i servidor}
 
@@ -490,7 +490,7 @@ En aquesta subsecció, es parlarà sobre com s'estableix la comunicació entre l
 
 Tal com s'ha pogut veure anteriorment en la secció, l'existència d'eines que permetin implementar la comunicació entre diferents aplicacions és completament essencial. Aquestes eines reben el nom d'API (\textit{application programming interface}) i consisteixen un conjunt de normes i protocols que permeten la comunicació entre dues aplicacions, la qual es realitza mitjançant peticions i respostes.
 
-En el cas de la comunicació entre el \textit{front-end} i el \textit{back-end} d'una aplicació web, es necessiten API enfocades a l'obtenció i manipulació de dades. Al llarg del temps, han sorgit diversos protocols i arquitectures que permeten desenvolupar aquesta tipologia d'API, com ara XML-RPC, SOAP, JSON-RPC o REST.
+En el cas de la comunicació entre el \textit{front-end} i el \textit{back-end} d'una aplicació web, es necessiten API enfocades a l'obtenció i manipulació de dades. Al llarg del temps, han sorgit diversos protocols i arquitectures que permeten desenvolupar aquesta tipologia d'API, com ara XML-RPC, SOAP, JSON-RPC, REST o GraphQL.
 
 Actualment, l'opció més popular i utilitzada pel desenvolupament d'aquest tipus d'API és REST (\textit{Representational State Transfer})~\cite{REST}. A diferència d'altres opcions com SOAP, REST no és ni un protocol ni un estàndard, sinó un conjunt de pautes pel que fa a l'arquitectura. Una API és considerada una ``RESTful API'' o ``API REST'' si satisfà tots els principis REST~\cite{REST_CONSTRAINTS}.
 
@@ -1017,7 +1017,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \rowcolor{Blue}
     \multicolumn{2}{c}{\texttt{\textbf{PT\_3.1.2:}} Configuració de la base de dades}\\
     \midrule[0.9pt]
-    \textbf{Descripció}       & Configuració inicial del sistema gestor de la base de dades i de l'ORM (\textit{Object-Relational Mapping}).\\
+    \textbf{Descripció}       & Configuració inicial del sistema gestor de la base de dades i de l'ORM (\textit{object relational mapper}).\\
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Configuració de la connexió entre l'aplicació de l'API i el sistema gestor de la base de dades.
     \newline \textbf{T2:} Configuració de l'ORM escollit.
@@ -1876,31 +1876,64 @@ Tal com es pot veure a la part esquerra del diagrama, a part de les activitats d
 \chapter{Estudis i decisions}
 \label{cap:estudi}
 
-\section{Estructura del projecte}
+\section{Gestió i estructura del projecte}
 \label{sec:decisions_estructura}
-
-\subsection{Introducció}
-\label{subsec:decisions_estructura_intro}
-
-
 
 \subsection{Control de versions}
 \label{subsec:decisions_estructura_versions}
-% Git, Github
 
+En aquesta subsecció, es justificarà l'el·lecció del sistema de control de versions utilitzat en el projecte: \textbf{Git}.
 
+Disposar d'un sistema de control de versions a l'hora de desenvolupar una aplicació aporta un gran nombre d'avantatges, d'entre els quals destaca la capacitat de consultar o restaurar estats antics del codi i la de bifurcar el desenvolupament.
 
-\subsection{Estructura de l'aplicació}
+Git~\cite{Git} (veure figura~\ref{img:logo_git}), és el sistema de control de versions més popular amb diferència i, encara que existeixin algunes alternatives, és la que més funcionalitats ofereix i l'opció preferida de la gran majoria de desenvolupadors. A banda d'aquests motius, Git és l'única eina d'aquesta tipologia amb què tinc experiència. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.2\textwidth]{assets/logos/Git.png}
+  \caption{\label{img:logo_git}Logotip de Git.}
+\end{figure}
+
+Normalment, l'ús de Git sol acompanyar-se de l'allotjament dels repositoris a una plataforma web dedicada a aquesta funció. Aquests tipus de plataforma permeten evitar la pèrdua accidental del codi d'un projecte, a banda d'aportar incomptables funcionalitats per al treball col·laboratiu, entre d'altres.
+
+Hi ha diverses alternatives pel que fa a aquest tipus de plataforma, com ara GitHub, GitLab o BitBucket. No obstant això, l'opció escollida per al projecte és \textbf{GitHub}~\cite{GitHub} (veure figura~\ref{img:logo_github}), ja que la domino més que la resta i em sento més còmode treballant-hi.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.26\textwidth]{assets/logos/GitHub.png}
+  \caption{\label{img:logo_github}Logotip de GitHub.}
+\end{figure}
+
+\subsection{Estructura del projecte}
 \label{subsec:decisions_estructura_estructura}
-% Monorepo, NPM
 
+En aquesta subsecció, es justificarà l'el·lecció de l'estructura del sistema: \textbf{monorepositori}.
 
+Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, el projecte engloba el desenvolupament de dues apliacions: el client i el servidor. Aquestes aplicacions es poden estructurar de dues maneres diferents:
+\begin{itemize}
+  \item \texttt{Multirepositori:} Separar les dues aplicacions en respositoris diferents. 
+  \item \texttt{Monorepositori:} Agrupar les dues aplicacions en el mateix repositori.
+\end{itemize}
+
+Els beneficis principals del multirepositori són que els repositoris individuals són més fàcils de gestionar i queden més nets i recollits. En canvi, encara que en el monorepositori passi el contrari, és un aspecte que no té gaire pes, ja que l'escala del projecte és petita. A més a més, aquesta alternativa ofereix avantatges més interessants, com ara una millor estandarització del codi i la possibilitat de la seva reutilització, entre d'altres.
+
+A més a més, tal com es veurà a les seccions~\ref{sec:decisions_client} i~\ref{sec:decisions_servidor}, el llenguatge de programació amb què s'han desenvolupat les dues aplicacions és el mateix: JavaScript. Gràcies a això es pot utilitzar un mateix gestor de paquets per a les dues.
+
+Els gestors de paquets de JavaScript actuals més populars també incorporen altres eines i utilitats que faciliten la gestió d'un monorepositori dividint-lo en diferents espais de treball. Permeten definir les dependències de cada espai de treball i també de comunes. Aquest fet fa que la instal·lació i actualització dels paquets sigui més ràpida i eficient que en el cas de l'estructuració del projecte en multirepositori. Per aquests motius i per comoditat, l'el·lecció per al projecte ha estat l'estructuració en monorepositori.
+
+Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure figura~\ref{img:logo_npm}). Els motius d'aquesta el·lecció han estat, principalment, el coneixement previ de l'eina i que és el gestor de paquets estàndard de Node.js, l'entorn escollit per a l'aplicació servidor (veure secció~\ref{sec:decisions_servidor}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.2\textwidth]{assets/logos/NPM.png}
+  \caption{\label{img:logo_npm}Logotip de npm.}
+\end{figure}
 
 \section{Aplicació client}
 \label{sec:decisions_client}
 
-\subsection{Introducció}
-\label{subsec:decisions_client_intro}
+%\subsection{Introducció}
+%\label{subsec:decisions_client_intro}
 
 
 
@@ -1908,11 +1941,28 @@ Tal com es pot veure a la part esquerra del diagrama, a part de les activitats d
 \label{subsec:decisions_client_bundler}
 %Vite
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.16\textwidth]{assets/logos/Vite.png}
+  \caption{\label{img:logo_vite}Logotip de Vite.}
+\end{figure}
 
 \subsection{\textit{Frameworks}}
 \label{subsec:decisions_client_frameworks}
 % Vue i quasar
 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.14\textwidth]{assets/logos/Vue.png}
+  \caption{\label{img:logo_vue}Logotip de Vue.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.15\textwidth]{assets/logos/Quasar.png}
+  \caption{\label{img:logo_quasar}Logotip de Quasar.}
+\end{figure}
 
 \subsection{Enrutament}
 \label{subsec:decisions_client_enrutament}
@@ -1925,18 +1975,28 @@ Tal com es pot veure a la part esquerra del diagrama, a part de les activitats d
 % pinia
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.12\textwidth]{assets/logos/Pinia.png}
+  \caption{\label{img:logo_pinia}Logotip de Pinia.}
+\end{figure}
 
 \subsection{Proves}
 \label{subsec:decisions_client_proves}
 % Chrome dev tools amb vue extension.
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.22\textwidth]{assets/logos/ChromeDevTools.png}
+  \caption{\label{img:logo_chrome_dev_tools}Logotip de Chrome Dev Tools.}
+\end{figure}
 
 \section{Aplicació servidor}
 \label{sec:decisions_servidor}
 
-\subsection{Introducció}
-\label{subsec:decisions_servidor_intro}
+%\subsection{Introducció}
+%\label{subsec:decisions_servidor_intro}
 
 
 
@@ -1946,27 +2006,52 @@ Tal com es pot veure a la part esquerra del diagrama, a part de les activitats d
 
 Node.js és un entorn d'execució de JavaScript multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'events asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un sistema gestor de bases de dades, Node.js no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa d'altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.24\textwidth]{assets/logos/Node.png}
+  \caption{\label{img:logo_node}Logotip de Node.js.}
+\end{figure}
+
 \subsection{\textit{Framework}}
 \label{subsec:decisions_servidor_framework}
 
 Express és el \textit{framework} que funciona sobre Node.js més popular. Destaca per ser molt lleuger, minimalista i flexible, a més de ser senzill d'utilitzar. Express proporciona al desenvolupador molts mètodes i utilitats que permeten la creació d'una API sòlida de manera relativament ràpida.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.24\textwidth]{assets/logos/Express.png}
+  \caption{\label{img:logo_express}Logotip de Express.js.}
+\end{figure}
+
 \subsection{ORM}
 \label{subsec:decisions_servidor_orm}
-% Explicar els orms al capítol de marc de treball!
+% Explicar els orms al capítol de marc de treball o aquí?
 
 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.25\textwidth]{assets/logos/Sequelize.png}
+  \caption{\label{img:logo_sequelize}Logotip de Sequelize.}
+\end{figure}
 
 \subsection{Proves}
 \label{subsec:decisions_servidor_proves}
+% postman
 
 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.23\textwidth]{assets/logos/Postman.png}
+  \caption{\label{img:logo_postman}Logotip de Postman.}
+\end{figure}
 
 \section{Base de dades}
 \label{sec:decisions_bdd}
 
-\subsection{Introducció}
-\label{subsec:decisions_bdd_intro}
+% \subsection{Introducció}
+% \label{subsec:decisions_bdd_intro}
 
 
 
@@ -1974,55 +2059,96 @@ Express és el \textit{framework} que funciona sobre Node.js més popular. Desta
 \label{subsec:decisions_bdd_entorn}
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.25\textwidth]{assets/logos/Docker.png}
+  \caption{\label{img:logo_docker}Logotip de Docker.}
+\end{figure}
 
 \subsection{Sistema gestor de bases de dades}
 \label{subsec:decisions_bdd_sgbd}
 
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.2\textwidth]{assets/logos/MySQL.png}
+  \caption{\label{img:logo_mysql}Logotip de MySQL.}
+\end{figure}
+
 \subsection{Proves}
 \label{subsec:decisions_bdd_proves}
 
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.13\textwidth]{assets/logos/DataGrip.png}
+  \caption{\label{img:logo_datagrip}Logotip de DataGrip.}
+\end{figure}
+
 \section{Eines de desenvolupament}
 \label{sec:decisions_desenvolupament}
 
-\subsection{Introducció}
-\label{subsec:decisions_desenvolupament_intro}
-% dir que a part de les eines indicades a les respectives seccions hi ha vs code
+% \subsection{Introducció}
+% \label{subsec:decisions_desenvolupament_intro}
 
 
 
 \subsection{Editor de codi}
 \label{subsec:decisions_desenvolupament_editor}
+% dir que a part de les eines indicades a les respectives seccions hi ha vs code
 % vs code + ext
 
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.15\textwidth]{assets/logos/VSCode.png}
+  \caption{\label{img:logo_vscode}Logotip de Visual Studio Code.}
+\end{figure}
+
 \section{Confecció de la memòria}
 \label{sec:decisions_memoria}
 
-\subsection{Introducció}
-\label{subsec:decisions_memoria_intro}
+% \subsection{Introducció}
+% \label{subsec:decisions_memoria_intro}
 
 
 
-\subsection{Confecció del document}
+\subsection{Elaboració del document}
 \label{subsec:decisions_memoria_document}
-% dist de latex
+% latex
 
 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.27\textwidth]{assets/logos/LaTeX.png}
+  \caption{\label{img:logo_latex}Logotip de LaTeX.}
+\end{figure}
 
 \subsection{Diagrames, esquemes i figures}
 \label{subsec:decisions_memoria_figures}
 
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.13\textwidth]{assets/logos/diagramsNet.png}
+  \caption{\label{img:logo_diagrams}Logotip de Diagrams.net.}
+\end{figure}
+
 \subsection{Diagrama de Gantt}
 \label{subsec:decisions_memoria_gantt}
 
 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.25\textwidth]{assets/logos/teamGantt.png}
+  \caption{\label{img:logo_teamGantt}Logotip de Teamgantt.}
+\end{figure}
 
 
 \chapter{Anàlisi i disseny del sistema}
@@ -2163,7 +2289,7 @@ En aquest apartat, es representaran els casos d'ús involucrats en la visualitza
 
 En aquesta subsecció, es presentarà el diagrama entitat-relació dissenyat per emmagatzemar i gestionar adequadament les dades de l'aplicació (veure figura~\ref{img:db}).
 
-Per tal d'evitar la rectificació manual del diagrama davant de qualsevol canvi en el disseny, s'ha optat per utilitzar una eina que en permeti la generació automàtica a partir de les taules que formin la base de dades. Més concretament, es tracta de DataGrip~\cite{JetBrains}.
+Per tal d'evitar la rectificació manual del diagrama davant de qualsevol canvi en el disseny, s'ha optat per utilitzar una eina que en permeti la generació automàtica a partir de les taules que formin la base de dades. Més concretament, es tracta de DataGrip~\cite{DataGrip}.
 
 La part negativa d'aquest programa és que no explicita la cardinalitat de les relacions. Per aquest motiu, és molt important remarcar que totes les relacions són ``u a molts'' exceptuant les següents que són ``u a u'':
 \begin{itemize}
