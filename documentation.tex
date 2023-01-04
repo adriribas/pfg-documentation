@@ -50,7 +50,7 @@
         \textbf{Estudi}: Grau en Enginyeria Informàtica                                    \\[0.7cm]
         \hline
         \\
-        \textbf{Títol}: Eina de suport per a l’elaboració dels horaris dels graus de l’EPS \\[0.7cm]
+        \textbf{Títol}: Eina de suport per a l'elaboració dels horaris dels graus de l'EPS \\[0.7cm]
         \hline
         \\
         \textbf{Document}: Memòria                                                         \\[0.7cm]
@@ -139,7 +139,7 @@ Agraïments \ldots
 
 En aquesta secció, es resumiran els antecedents que han donat peu al plantejament d'aquest projecte.
 
-La idea del projecte neix de determinades necessitats que cert personal de l'Escola Politècnica Superior de la Universitat de Girona fa temps que té. Més concretament, es tracta d'una necessitat del personal encarregat de gestionar tot el que fa referència a la confecció i manteniment dels horaris del centre: horaris dels graus, dels professors, ocupació d'aules i espais, etc.
+La idea del projecte neix de determinades necessitats que cert personal de l'Escola Politècnica Superior de la Universitat de Girona fa temps que té. Més concretament, es tracta d'una necessitat del personal encarregat de gestionar tot el que fa referència a la confecció i manteniment dels horaris del centre: horaris dels estudis, dels professors, ocupació d'aules i espais, etc.
 
 Actualment, per dur a terme l'elaboració dels horaris, aquestes persones utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades ni específicament dissenyades per abordar aquest tipus de tasques. Tampoc existeix cap plataforma que unifiqui les fases d'aquest procés de gestió ni que n'estableixi una manera de fer comuna.
 
@@ -156,7 +156,7 @@ En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps ma
 
 El propòsit és desenvolupar una eina de suport informàtic que permeti a l'usuari elaborar horaris de forma àgil, eficient i segura. L'eina també hauria de ser capaç de comprovar automàticament la disponibilitat de les aules, les incompatibilitats horàries dels professors i la concordança entre les assignatures i el nombre de grups previstos. A més a més, hauria d'oferir diverses vistes per tal que l'usuari pugui visualitzar la informació, com ara:
 \begin{itemize}
-  \item Els horaris d'un grau per curs i quadrimestre.
+  \item Els horaris d'un estudi per curs i quadrimestre.
   \item Els horaris d'un professor per quadrimestre.
   \item L'ocupació d'un espai per quadrimestre.
 \end{itemize}
@@ -193,10 +193,10 @@ Actualment i cada vegada més, m'interessa el desenvolupament d'entorns web. És
 En aquesta secció, s'enumeraran els objectius generals del projecte, que ja s'han deixat entreveure prèviament a la secció~\ref{sec:proposit}. No obstant això, a continuació se'n presenta la llista completa:
 \begin{itemize}
   \item Proporcionar una interfície còmoda i intuïtiva per dur a terme les tasques de gestió i elaboració dels horaris de l'EPS.
-  \item Emmagatzemar i processar dinàmicament les dades i relacions referents als diversos graus, cursos, quadrimestres, assignatures, grups, espais, professors, etc.
+  \item Emmagatzemar i processar dinàmicament les dades i relacions referents als diversos estudis, cursos, quadrimestres, assignatures, grups, espais, professors, etc.
   \item Detectar i evitar automàticament qualsevol tipus d'inconsistència o incompatibilitat horària, per tal d'aportar seguretat al treball.
   \item Possibilitar la pujada d'arxius externs de dades que serveixin per obtenir la informació bàsica necessària per al funcionament de l'aplicació i generar possibles punts de partida per a la planificació dels horaris.
-  \item Permetre la visualització de l'ocupació de les aules, dels horaris dels professors i dels horaris dels grups de cada grau, entre d'altres vistes que puguin ser d'utilitat pels usuaris.
+  \item Permetre la visualització de l'ocupació de les aules, dels horaris dels professors i dels horaris dels grups de cada estudi, entre d'altres vistes que puguin ser d'utilitat pels usuaris.
   \item Admetre diferents rols d'usuari, als quals s'assigni una sèrie de tasques i un conjunt de permisos concret.
 \end{itemize}
 
@@ -302,7 +302,7 @@ Idees
 
 Parlar del flux dels processos, etc \ldots
 
-Rectorat reparteix crèdits a les facultats. Cada facultat decideix quants grups grans, petits, etc. de cada grau en funció dels alumnes. Introdueix els excels.
+Rectorat reparteix crèdits a les facultats. Cada facultat decideix quants grups grans, petits, etc. de cada estudi en funció dels alumnes. Introdueix els excels.
 A partir d'aquí, entren els coordinadors, per fer els horaris amb els seus mètodes. Canviar-los el mínim possible respecte l'any passat, per intentar evitar
 solapaments. Un cop fets, els coordinadors passen els horaris a direcció. S'entren al sistema i revisen solapaments. Si tot està bé, els responsables de docència,
 que assignen professors als grups.
@@ -550,7 +550,7 @@ Més concretament, el tipus de requisit es representarà mitjançant les seves s
 
 D'altra banda, cal remarcar que les descripcions dels requisits utilitzen la nomenclatura específica del marc de treball, detallada al capítol~\ref{cap:marcdetreball}.
 
-A més a més, per evitar explicacions redundants, d'ara en endavant, quan es parli de la visualització dels horaris d'un grau, no s'estarà fent referència a una vista del conglomerat d'horaris de tots els seus cursos i quadrimestres, sinó de vistes en què es mostra l'horari d'un quadrimestre específic en un curs específic. De la mateixa manera, la visualització dels horaris d'un professor o la de l'ocupació d'una aula es separa en quadrimestres.
+A més a més, per evitar explicacions redundants, d'ara en endavant, quan es parli de la visualització dels horaris d'un estudi, no s'estarà fent referència a una vista del conglomerat d'horaris de tots els seus cursos i quadrimestres, sinó de vistes en què es mostra l'horari d'un quadrimestre específic en un curs específic. De la mateixa manera, la visualització dels horaris d'un professor o la de l'ocupació d'una aula es separa en quadrimestres.
 
 \section{Requisits funcionals}
 \label{sec:requisits_funcionals}
@@ -605,8 +605,8 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 \subsubsection{Gestió de Coordinadors}
 \begin{itemize}
-  \item \texttt{\textbf{RF-A7 [1]}}: Visualitzar la llista de les assignacions de Coordinador als diferents graus del curs acadèmic.
-  \item \texttt{\textbf{RF-A8 [1]}}: Assignar un dels Coordinadors encara no assignats a qualsevol dels graus. Per fer efectiva l'assignació, ha de confirmar-la.
+  \item \texttt{\textbf{RF-A7 [1]}}: Visualitzar la llista de les assignacions de Coordinador als diferents estudis del curs acadèmic.
+  \item \texttt{\textbf{RF-A8 [1]}}: Assignar un dels Coordinadors encara no assignats a qualsevol dels estudis. Per fer efectiva l'assignació, ha de confirmar-la.
   \item \texttt{\textbf{RF-A9 [2]}}: Per defecte i automàticament, s'ha de fer una proposta inicial d'assignacions. Per a cada grau, s'ha de proposar l'assignació del mateix Coordinador que tenia al curs acadèmic anterior, amb l'objectiu d'agilitzar el procés. No obstant això, aquestes assignacions no seran efectives fins que, manualment, les hagi confirmat.
   \item \texttt{\textbf{RF-A10 [1]}}: Eliminar qualsevol de les assignacions ja confirmades.
   \item \texttt{\textbf{RF-A11 [1]}}: Visualitzar el llistat de tots els usuaris Coordinadors, juntament amb la seva informació: nom complet, adreça de correu electrònic, grau al qual està assignat aquest curs acadèmic i si està o no activat.
@@ -631,10 +631,10 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
 
 En aquesta subsecció, es llistaran els requisits funcionals particulars dels usuaris amb rol de Coordinador. Cadascun dels apartats que segueixen correspon a una de les seves funcionalitats principals.
 
-\subsubsection{Gestió d'horaris de graus}
+\subsubsection{Gestió d'horaris d'estudis}
 \begin{itemize}
   \item \texttt{\textbf{RF-C1 [1]}}: Visualitzar els horaris del grau que gestiona, separats en cursos i quadrimestres.
-  \item \texttt{\textbf{RF-C2 [1]}}: Visualitzar els horaris dels graus que ofereixin alguna assignatura compartida amb el grau que gestiona.
+  \item \texttt{\textbf{RF-C2 [1]}}: Visualitzar els horaris dels estudis que ofereixin alguna assignatura compartida amb el grau que gestiona.
   \item \texttt{\textbf{RF-C3 [1]}}: Carregar opcionalment uns horaris elaborats prèviament per tal d'omplir els actuals i tenir un punt de partida. Si els torna a carregar es substituiran.
   \item \texttt{\textbf{RF-C4 [1]}}: Editar els horaris dels quadrimestres de qualsevol dels cursos del grau que gestiona. El ventall de possibilitats del procés d'edició es detalla a continuació:
         \begin{itemize}
@@ -682,9 +682,9 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
   \item \texttt{\textbf{RF-D1 [1]}}: Visualitzar els horaris dels Professors que imparteixin docència a alguna assignatura de qualsevol de les àrees del seu departament.
 \end{itemize}
 
-\subsubsection{Consulta d'horaris de graus}
+\subsubsection{Consulta d'horaris d'estudis}
 \begin{itemize}
-  \item \texttt{\textbf{RF-D2 [1]}}: Visualitzar els horaris dels graus que ofereixin alguna assignatura de qualsevol de les àrees del seu departament.
+  \item \texttt{\textbf{RF-D2 [1]}}: Visualitzar els horaris dels estudis que ofereixin alguna assignatura de qualsevol de les àrees del seu departament.
 \end{itemize}
 
 \subsubsection{Gestió de Responsables de docència}
@@ -717,7 +717,7 @@ En aquesta subsecció, es llistaran els requisits particulars dels usuaris amb r
 
 \subsubsection{Gestió de Professors}
 \begin{itemize}
-  \item \texttt{\textbf{RF-R4 [1]}}: Visualitzar el llistat de tots els usuaris Professors que hagin d'impartir docència a alguna de les assignatures de la seva àrea, juntament amb la seva informació: nom complet, adreça de correu electrònic, graus que ofereixin alguna de les assignatures en què imparteix docència i si està o no activat.
+  \item \texttt{\textbf{RF-R4 [1]}}: Visualitzar el llistat de tots els usuaris Professors que hagin d'impartir docència a alguna de les assignatures de la seva àrea, juntament amb la seva informació: nom complet, adreça de correu electrònic, estudis que ofereixin alguna de les assignatures en què imparteix docència i si està o no activat.
   \item \texttt{\textbf{RF-R5 [1]}}: Donar d'alta usuaris Professors, és a dir, usuaris amb rol de Professor. Per fer-ho, ha d'entrar el seu nom, cognoms i adreça de correu electrònic. A continuació, es duu a terme el procés genèric explicat a la subsecció~\ref{subsec:requisits_generals}. A més a més, ha de poder reenviar-li el correu d'activació.
   \item \texttt{\textbf{RF-R6 [1]}}: Donar de baixa usuaris Professors. Aquesta acció ha d'esborrar les seves possibles assignacions a blocs horaris.
 \end{itemize}
@@ -738,9 +738,9 @@ En aquesta subsecció, es llistaran els requisits funcionals particulars dels us
   \item \texttt{\textbf{RF-P2 [1]}}: Visualitzar els horaris de les assignatures a les quals imparteixi docència.
 \end{itemize}
 
-\subsubsection{Consulta d'horaris de graus}
+\subsubsection{Consulta d'horaris d'estudis}
 \begin{itemize}
-  \item \texttt{\textbf{RF-P3 [2]}}: Visualitzar els horaris dels graus que ofereixin alguna de les assignatures en què imparteixi docència.
+  \item \texttt{\textbf{RF-P3 [2]}}: Visualitzar els horaris dels estudis que ofereixin alguna de les assignatures en què imparteixi docència.
 \end{itemize}
 
 \section{Requisits no funcionals}
@@ -1217,7 +1217,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \midrule[0.9pt]
     \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Coordinador.\\
     \midrule
-    \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres relacionades amb la gestió d'horaris de graus.
+    \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres relacionades amb la gestió d'horaris d'estudis.
     \newline \textbf{T2:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris de Professors.
     \newline \textbf{T3:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris d'aules.\\
     \midrule
@@ -1238,7 +1238,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \textbf{Descripció}       & Implementació de les finestres i procediments que involucren els usuaris amb rol de Director de departament.\\
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris de Professors.
-    \newline \textbf{T2:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris de graus.
+    \newline \textbf{T2:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris d'estudis.
     \newline \textbf{T3:} Implementació del conjunt de finestres relacionades amb la gestió de Responsables de docència.\\
     \midrule
     \textbf{Temporalització}  & 15 hores.\\
@@ -1279,7 +1279,7 @@ A diferència de la resta de branques, aquesta no conté directament un conjunt 
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Implementació del conjunt de finestres relacionades amb la consulta dels propis horaris.
     \newline \textbf{T2:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris d'assignatures.
-    \newline \textbf{T3:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris de graus.\\
+    \newline \textbf{T3:} Implementació del conjunt de finestres relacionades amb la consulta d'horaris de'estudis.\\
     \midrule
     \textbf{Temporalització}  & 15 hores.\\
     \midrule
@@ -2653,6 +2653,8 @@ A la figura~\ref{img:plaDocent_pujada} es pot veure el disseny de la finestra en
 	\caption{\label{img:plaDocent_pujada}Disseny de la interfície de la pujada d'un pla docent.}
 \end{figure}
 
+\newpage
+
 A la figura~\ref{img:plaDocent_general} es pot veure el disseny de la finestra en la qual un Administrador pot consultar la informació general del pla docent actual, accedir a la modificació de les dades pertinents o bé anar a la finestra de pujada d'un pla docent per tal d'iniciar el curs següent.
 
 \begin{figure}[H]
@@ -2695,7 +2697,7 @@ A la figura~\ref{img:usuaris_crear} es pot veure el disseny de la finestra en la
 
 En aquesta subsecció, es presentarà el disseny de les finestres més importants involucrades en la consulta i l'elaboració d'horaris.
 
-A la figura~\ref{img:horaris_seleccioEstudi} es pot veure el disseny de la finestra en la qual un usuari Coordinador pot accedir a les finestres de visualització o de modificació del grau que gestiona o bé a la selecció d'un horari dels estudis els quals comparteixen alguna assignatura amb el seu per tal de visualitzar-lo.
+A la figura~\ref{img:horaris_seleccioEstudi} es pot veure el disseny de la finestra en la qual un usuari Coordinador pot accedir a les finestres de visualització o de modificació d'un horari del grau que gestiona o bé a la selecció d'un horari dels estudis els quals comparteixen alguna assignatura amb el seu per tal de visualitzar-lo.
 
 Aquest disseny també és vàlid per a l'accés a la visualització dels horaris dels estudis corresponents per part d'un Director de departament o d'un Professor.
 
@@ -2744,16 +2746,548 @@ A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la
 
 \chapter{Implementació i proves}
 \label{cap:implementacio}
-% Explicar vue-router, pinia
+% Seguretat, autenticació (incloure: quan usuari desactivat o eliminat), ruta dels horaris, middlewares i utilitats backend, format de l'API, variables d'entorn, config, enviament de correu, axios i interceptors, stores pinia, detecció solapaments lab?,
 
-
+% proves de creació de taules, atributs, relacions..., proves a l'API (postman), proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
 
 
 \chapter{Implantació i resultats}
 \label{cap:implantacio}
 
+\section{Implantació en l'entorn local}
+\label{sec:implantacio}
 
+En aquesta secció, es parlarà sobre com està implantada localment l'aplicació del projecte, tant el \textit{front-end} i el \textit{back-end} com el sistema gestor de bases de dades.
 
+L'aplicació de \textit{front-end} és operada pel servidor de desenvolupament que proporciona Vite (veure capítol~\ref{cap:estudi}). Aquest servidor està exposat al domini ``localhost'' i al port TCP 3000 de l'ordinador. Per tal que Vite serveixi l'aplicació, només cal accedir a l'adreça ``http://localhost:3000'' a través del navegador.
+
+Al mateix temps, és necessari que l'aplicació de \textit{back-end} també s'estigui executant i que pugui servir a les peticions que li faci el client. Aquesta aplicació utilitza Node.js (veure capítol~\ref{cap:estudi}) per muntar un servidor que exposa l'API a l'adreça ``http://localhost:8000/api''. L'aplicació client coneix aquesta adreça i és capaç de llançar-hi peticions.
+
+Per últim, el sistema gestor de bases de dades també ha d'estar exposat a la xarxa local per tal que l'aplicació de \textit{back-end} pugui comunicar-s'hi. Tal com s'ha vist al capítol~\ref{cap:estudi}, MySQL s'executa dins d'un contenidor de Docker, el qual n'exposa la connexió a través del port TCP 3306.
+
+\section{Resultats obtinguts}
+\label{sec:resultats}
+
+\subsection{Consideracions inicials}
+\label{subsec:resultats_consideracions}
+
+En aquesta subsecció, es presentaran una sèrie de consideracions inicials que cal tenir en compte a la resta de la secció.
+
+Els resultats es presentaran en forma de captures de pantalla que mostren el funcionament del programari desenvolupat durant el projecte. Totes les captures tindran la mateixa mida per tal d'oferir una perspectiva realística de com són les interfícies.
+
+És important destacar que, per no sobrecarregar la memòria amb masses imatges, s'han obviat certes parts o estats de les interfícies que no són de vital importància, com ara notificacions d'informació o error, estats de càrrega, seleccionables desplegats, etc.
+
+\newpage
+
+\subsection{Autenticació}
+\label{subsec:resultats_auth}
+
+En aquesta subsecció, s'exposaran els resultats obtinguts pel que fa a l'autenticació.
+
+A la figura~\ref{img:resultats_auth_autenticacio} es pot veure la interfície resultant en la qual un usuari pot realitzar les accions següents:
+\begin{itemize}
+  \item Entrar l'adreça de correu electrònic i contrasenya del seu usuari per tal d'autenticar-se.
+  \item Prémer l'enllaç ``Restableix-la aquí'' per tal de procedir a restablir la contrasenya del seu usuari.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/auth/autenticacio.png}
+  \caption{\label{img:resultats_auth_autenticacio}Interfíce resultant d'autenticació.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_auth_restabliment} es pot veure la interfície resultant en la qual un usuari pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Entrar l'adreça de correu electrònic del seu usuari per tal de restablir-ne la contrasenya.
+  \item Prémer l'enllaç ``Autentica't aquí'' per tal de procedir a autenticar-se.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/auth/restabliment.png}
+  \caption{\label{img:resultats_auth_restabliment}Interfície resultant de restabliment de contrasenya.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_auth_restablerta} es pot veure la interfície resultant en la qual un usuari pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Informar-se de que se li ha enviat un correu electrònic a través del qual pot restablir la contrasenya del seu usuari.
+  \item Prémer l'enllaç ``Fes-ho aquí'' per tal de procedir a autenticar-se.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/auth/restablerta.png}
+  \caption{\label{img:resultats_auth_restablerta}Interfície resultant de confirmació d'enviament d'un \textit{email} per al restabliment de la contrasenya.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_auth_novaContrasenya} es pot veure la interfície resultant en la qual un usuari pot realitzar, principalment, l'acció següent:
+\begin{itemize}
+  \item Entrar dues vegades una contrasenya per tal d'escollir-ne una nova per al seu usuari.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/auth/novaContrasenya.png}
+  \caption{\label{img:resultats_auth_novaContrasenya}Interfíce resultant d'el·lecció d'una nova contrasenya.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_auth_logout} es pot veure la interfície resultant en la qual un usuari pot realitzar, principalment, les acció següent:
+\begin{itemize}
+  \item Prémer el botó ``Sortir'' situat a la part dreta de la barra superior per tal d'obrir un diàleg de confirmació a través del qual pot tancar la sessió.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/auth/logout.png}
+  \caption{\label{img:resultats_auth_logout}Interfíce resultant de tancament de sessió.}
+\end{figure}
+
+\newpage
+
+\subsection{Gestió del pla docent}
+\label{subsec:resultats_plaDocent}
+
+En aquesta subsecció, s'exposaran els resultats obtinguts pel que fa a la gestió del pla docent.
+
+A la figura~\ref{img:resultats_plaDocent_pujada} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Seleccionar el fitxer d'un pla docent del seu ordinador per tal de pujar-lo i inicialitzar, d'aquesta manera, el curs acadèmic en qüestió.
+\end{itemize}
+
+Cal destacar que es tracta del cas en què encara no s'ha pujat mai cap pla docent al sistema. En la situació d'estar pujant el pla docent del curs acadèmic següent, també es dóna la possibilitat de cancel·lar i tornar a la gestió del pla docent actual.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/plaDocent/pujada.png}
+  \caption{\label{img:resultats_plaDocent_pujada}Interfície resultant de la pujada d'un pla docent.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_plaDocent_estudis} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Visualitzar els estudis del pla docent actual.
+  \item Prémer un botó de desplegament per tal de visualitzar les assignatures impartides en un curs concret de l'estudi en qüestió.
+  \item Alternar entre els cursos de l'estudi en qüestió per tal de visualitzar les assignatures corresponents.
+  \item Situar el ratoí sobre l'abreviació d'una àrea o departament d'una assignatura per tal de visualitzar-ne el nom complet.
+  \item Prémer el botó de modificació d'una assignatura per tal de procedir a fer-ho.
+\end{itemize}
+
+Cal destacar que, igual que passa en les figures~\ref{img:resultats_plaDocent_departaments} i~\ref{img:resultats_plaDocent_tipusLab}, també es possibilita tant alternar entre la informació del pla docent com procedir a iniciar el curs acadèmic següent.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/plaDocent/estudis.png}
+  \caption{\label{img:resultats_plaDocent_estudis} Interfície resultant de visualització i gestió dels estudis i assignatures d'un pla docent.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_plaDocent_modAssignatura} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Modificar el nombre de grups de cada tipus de l'assignatura en qüestió.
+  \item Desassignar àrees concretes de l'assignatura en qüestió.
+  \item Accedir a l'assignació d'una altra àrea.
+  \item Situar el ratolí sobre l'abreviació d'un departament per tal de visualitzar-ne el nom complet.
+  \item Assignar múltiples tipus de laboratori a l'assignatura en qüestió mitjançant el desplegable.
+  \item Desassignar tots els tipus de laboratori de l'assignatura en qüestió.
+  \item Desassignar un tipus de laboratori concret de l'assignatura en qüestió.
+  \item Prémer el botó ``Guardar'' per tal de fer efectius els canvis.
+  \item Prémer el botó ``Cancel·lar'' per tal de descartar els canvis.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/plaDocent/modAssignatura.png}
+  \caption{\label{img:resultats_plaDocent_modAssignatura}Interfície resultant de modificació d'una assignatura.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_plaDocent_modAssignaturaArea} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Obrir el desplegable ``Departament'' per tal d'escollir el departament que conté l'àrea que vol assignar a l'assignatura en qüestió.
+  \item Obrir el desplegable ``Àrea'' per tal d'escollir l'àrea que vol assignar a l'assignatura en qüestió.
+\end{itemize}
+
+Cal destacar que el desplegable ``Àrea'' està bloquejat mentre no es selecciona un departament. A més a més, aquest desplegable no conté àrees que ja estan assignades a l'assignatura en qüestió i, en cas que només n'hi hagi una, es selecciona automàticament després d'haver escollit el departament. El botó ``Afegir'' també romandrà bloquejat mentre no s'hagi escollit una àrea concreta.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/plaDocent/modAssignaturaArea.png}
+  \caption{\label{img:resultats_plaDocent_modAssignaturaArea}Interfície resultant de selecció d'una àrea per assignar-la a una assignatura.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_plaDocent_departaments} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Visualitzar els departaments del pla docent actual.
+  \item Prémer un botó de desplegament per tal de visualitzar les àrees pertanyents al departament en qüestió.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/plaDocent/departaments.png}
+  \caption{\label{img:resultats_plaDocent_departaments}Interfície resultant de visualització dels departaments i àrees d'un pla docent.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_plaDocent_tipusLab} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Visualitzar els tipus de laboratori del pla docent actual.
+  \item Prémer el botó de modificació d'una tipus de laboratori per tal de procedir a fer-ho.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/plaDocent/tipusLab.png}
+  \caption{\label{img:resultats_plaDocent_tipusLab}Interfície resultant de visualització i gestió dels tipus de laboratori d'un pla docent.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_plaDocent_modTipusLab} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Modificar la quantitat d'aules del tipus de laboratori en qüestió.
+  \item Modificar la capacitat d'alumnes del tipus de laboratori en qüestió.
+  \item Prémer el botó ``Guardar'' per tal de fer efectius els canvis.
+  \item Prémer el botó ``Cancel·lar'' per tal de descartar els canvis.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/plaDocent/modTipusLab.png}
+  \caption{\label{img:resultats_plaDocent_modTipusLab}Interfície resultant de modificació d'un tipus de laboratori.}
+\end{figure}
+
+\newpage
+
+\subsection{Gestió d'usuaris}
+\label{subsec:resultats_usuaris}
+
+En aquesta subsecció, s'exposaran els resultats obtinguts pel que fa a la gestió d'usuaris.
+
+Aquests resultats corresponen a les interfícies de gestió de Coordinadors i la seva assignació a estudis. No obstant això, també són vàlids per a la gestió de Directors i la seva assignació a departaments, per a la gestió de Responsables de docència i la seva assignació a àrees i per a la gestió de Professors.
+
+A la figura~\ref{img:resultats_usuaris_assignacio} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Seleccionar un usuari Coordinador mitjançant el desplegable ``Seleccionar usuari'' i prémer el botó d'assignació per tal d'assignar-lo a un dels estudi lliures.
+  \item Prémer el botó de desassignació per tal de desassignar un usuari Coordinador d'un estudi.
+  \item Prémer el botó ``GESTIÓ DELS USUARIS'' per tal d'accedir a la gestió dels usuaris Coordinadors.
+\end{itemize}
+
+Cal destacar que un usuari Coordinador que ja estigui assignat a un estudi no apareix als desplegables. A més a més, el botó d'assignació corresponent a un desplegable romandrà bloquejat mentre no hi hagi cap usuari seleccionat.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/usuaris/assignacio.png}
+  \caption{\label{img:resultats_usuaris_assignacio}Interfície resultant d'assignació de Coordinadors a estudis.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_usuaris_gestio} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Prémer el botó ``NOU USUARI'' per tal d'accedir a la creació d'un nou usuari Coordinador.
+  \item Prémer el botó ``Reenviar correu'' per tal de tornar a enviar un correu electrònic d'activació a l'usuari en qüestió.
+  \item Prémer el botó ``Eliminar'' per tal d'eliminar l'usuari en qüestió.
+\end{itemize}
+
+Cal destacar que només apareix l'opció de reenviar el correu electrònic d'activació als usuaris que encara no han estat activats. A més a més, després de prémer el botó que els envia, queda bloquejat uns segons per tal d'evitar l'enviament massiu de correus. També s'indica si els usuaris estan o no assignats a un estudi i, en cas afirmatiu, a quin.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/usuaris/gestio.png}
+  \caption{\label{img:resultats_usuaris_gestio}Interfície resultant de la gestió de Coordinadors.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_usuaris_creacio} es pot veure la interfície resultant en la qual un Administrador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Entrar el nom, cognoms i adreça de correu electrònic de l'usuari Coordinador que s'estigui creant.
+  \item Prémer el botó ``Crear'' o la tecla ``enter'' per tal de crear l'usuari corresponent.
+  \item Prémer el botó ``Cancel·lar'' per tal d'abortar el procés de creació.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/usuaris/creacio.png}
+  \caption{\label{img:resultats_usuaris_creacio}Interfície resultant de creació d'un nou Coordinador.}
+\end{figure}
+
+\newpage
+
+\subsection{Consulta i elaboració d'horaris}
+\label{subsec:resultats_horaris}
+
+En aquesta subsecció, s'exposaran els resultats obtinguts pel que fa a la consulta i elaboració d'horaris.
+
+A la figura~\ref{img:resultats_horaris_tria} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Prémer el botó de visualització per tal d'accedir a la visualització de l'horari en qüestió del grau que gestiona o bé d'un dels estudis amb els quals comparteix assignatures.
+  \item Prémer el botó de modificació per tal d'accedir a la modificació de l'horari en qüestió del grau que gestiona.
+\end{itemize}
+
+Aquest resultat també és vàlid per a l'accés a la visualització dels horaris dels estudis corresponents per part d'un Director de departament o d'un Professor.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/tria.png}
+  \caption{\label{img:resultats_horaris_tria}Interfície resultant d'accés a visualitzar o a modificar un horari d'un estudi.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_visualitzacio} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Informar-se de quin horari està visualitzant mitjançant els \textit{breadcrumbs} de la part superior esquerra.
+  \item Prémer l'icona de la part esquerra dels \textit{breadcrumbs} per tal de tornar a l'accés a horaris.
+  \item Visualitzar la distribució de l'horari en una vista setmanal concreta.
+  \item Alternar entre vistes setmanals mitjançant el grup de botons de la part superior dreta.
+  \item Informar-se sobre el color que representa cada tipus de grup mitjançant la llegenda de la part superior central.
+  \item Situar el ratolí sobre un bloc horari o per tal d'informar-se'n de l'hora d'inici, l'hora de fi i de la duració.
+  \item Prémer un bloc horari per tal d'accedir a la visualització de tota la seva informació.
+\end{itemize}
+
+Cal destacar que els blocs d'horaris dels grups pertanyents a assignatures compartides només són visibles si el grup en qüestió està assignat, com a mínim, a l'estudi del qual és l'horari. A més a més, totes les possibilitats que involucren blocs horaris, també serveixen per a blocs horaris genèrics.
+
+Aquest resultat també és vàlid per a la visualització d'horaris tant de Professors com d'aules.
+
+\newpage
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/visualitzacio.png}
+  \caption{\label{img:resultats_horaris_visualitzacio}Interfície resultant de visualització d'un horari d'un estudi.}
+\end{figure}
+
+A la figura~\ref{img:resultats_horaris_visualitzacioVistaB} es pot veure com queda la distribució del mateix horari de la figura anterior si l'usuari Coordinador a canviat a la vista de setmanes B.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/visualitzacioVistaB.png}
+  \caption{\label{img:resultats_horaris_visualitzacioVistaB}Interfície resultant de la visualització d'un horari horari d'un estudi en la vista de setmanes B.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_visualitzacioBloc} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Visualitzar el tipus i el número del grup al qual pertany el bloc horari.
+  \item Visualitzar el nom de l'assignatura a la qual pertany el grup del bloc horari.
+  \item Visualitzar la informació temporal del bloc horari: dia, hora d'inici, hora de fi, duració i setmana.
+  \item Visualitzar el nom de l'espai assignat al bloc horari.
+  \item Visualitzar el nom i els cognoms del Professor assignat al bloc horari.
+  \item Visualitzar les àrees i departaments als quals està assignada l'assignatura a la qual pertany el grup del bloc horari.
+  \item Visualitzar l'abreviació i el nom dels estudis als quals està assignat el grup del bloc horari.
+  \item Visualitzar els tipus de laboratori assignats a l'assignatura a la qual pertany el grup del bloc horari.
+\end{itemize}
+
+Cal destacar que els estudis als quals està assignat el grup del bloc horari només apareixen en cas que l'assignatura a la qual pertany el grup sigui compartida. De la mateixa manera, els tipus de laboratori assignats a l'assignatura en qüestió només apareixen en cas que es tracti d'un grup petit.
+
+\newpage
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/visualitzacioBloc.png}
+  \caption{\label{img:resultats_horaris_visualitzacioBloc}Interfície resultant de visualització de la informació d'un bloc horari.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_visualitzacioBlocGeneric} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Visualitzar l'etiqueta del bloc horari genèric.
+  \item Visualitzar la subetiqueta del bloc horari genèric.
+  \item Visualitzar la informació temporal del bloc horari genèric: dia, hora d'inici, hora de fi, duració i setmana.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/visualitzacioBlocGeneric.png}
+  \caption{\label{img:resultats_horaris_visualitzacioBlocGeneric}Interfície resultant de visualització de la informació d'un bloc horari genèric.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_modificacio} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Arrossegar l'icona de la intersecció entre els dos panells per tal de canviar-ne les proporcions.
+  \item Plegar o desplegar les opcions disponibles al panell de la dreta.
+  \item Informar-se dels blocs horaris pendents de col·locar respecte el total de blocs d'una assignatura o bé genèrics.
+  \item Arrossegar un bloc horari no col·locat i deixar-lo anar a l'horari per tal d'afegir-lo.
+  \item Arrossegar un bloc horari col·locat i deixar-lo anar a la zona dels ``no col·locats'' per tal de treure'l.
+  \item Arrossegar un bloc horari col·locat i deixar-lo anar a l'horari per tal de moure'l.
+  \item Agafar amb el ratolí un dels extrems verticals d'un bloc horari col·locat i arrossegar el ratolí per tal d'allargar-lo o escurçar-lo, de manera que es modifiqui la informació temporal corresponent.
+  \item Prémer un bloc horari (col·locat o no col·locat) per tal d'accedir a la modificació de tota la seva informació.
+\end{itemize}
+
+Cal destacar que les opcions de visualització vistes a la figura~\ref{img:resultats_horaris_visualitzacio} també estan disponibles en aquesta interfície. A més a més, totes les possibilitats que involucren blocs horaris, també serveixen per a blocs horaris genèrics.
+
+\newpage
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/modificacio.png}
+  \caption{\label{img:resultats_horaris_modificacio}Interfície resultant de modificació d'un horari d'un estudi.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_modificacioBloc} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Modificar l'hora d'inici i l'hora de fi del bloc horari mitjançant l'entrada manual o bé l'ús d'un rellotge desplegable a través del botó de la part dreta d'aquests camps.
+  \item Modificar la duració del bloc horari.
+  \item Canviar el dia en què el bloc horari està situat o esborrar-lo per tal de treure'l de l'horari.
+  \item Canviar la setmana en què el bloc horari està assignat.
+  \item Dessassignar un estudi del grup del bloc horari.
+  \item Assignar un estudi al grup del bloc horari mitjançant el desplegable ``Afegir estudi''.
+  \item Prémer el botó ``Guardar'' per tal de fer efectius els canvis.
+  \item Prémer el botó ``Cancel·lar'' per tal de descartar els canvis.
+\end{itemize}
+
+Cal destacar que els camps tant de les hores com el de la duració s'assisteixen i actualitzen automàticament i no deixen entrar valors que es surtin dels rangs permesos. La duració es prioritza sobre les hores. A més a més, al desplegable dels estudis només hi apareixeran aquells amb què l'assignatura en qüestió estigui compartida.
+
+\newpage
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/modificacioBloc.png}
+  \caption{\label{img:resultats_horaris_modificacioBloc}Interfície resultant de modificació d'un bloc horari.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_modificacioBlocGeneric} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Modificar la informació temporal del bloc horari genèric: dia, hora d'inici, hora de fi, duració i setmana.
+  \item Modificar l'etiqueta i la subetiqueta del bloc horari genèric.
+  \item Prémer el botó ``Guardar'' per tal de fer efectius els canvis.
+  \item Prémer el botó ``Cancel·lar'' per tal de descartar els canvis.
+\end{itemize}
+
+Cal destacar que les opcions de modificació de la informació temporal coincideixen amb les que s'han vist a la figura~\ref{img:resultats_horaris_modificacioBloc}. A més a més, el camp de la subetiqueta no permet l'entrada de més de 10 caràcters.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/modificacioBlocGeneric.png}
+  \caption{\label{img:resultats_horaris_modificacioBlocGeneric}Interfície resultant de modificació d'un bloc horari genèric.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_modificacioBlocSolapat} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, l'acció següent:
+\begin{itemize}
+  \item Situar el ratolí sobre un tipus de laboratori marcat com a solapat amb una icona vermella per tal de visualitzar els cursos de cadascun dels estudis implicats en el solapament.
+\end{itemize}
+
+Cal destacar que també es mostra un apartat anomenada ``NO ASSIGNATS'' per tal de comptabilitzar els blocs horaris d'assignatures compartides el grup dels quals no està assignat a cap estudi.
+
+Aquest format també serveix per marcar els altres elements amb risc de solapament.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/modificacioBlocSolapat.png}
+  \caption{\label{img:resultats_horaris_modificacioBlocSolapat}Interfície resultant de visualització de la informació detallada sobre els solapaments de tipus de laboratori.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_solapamentDrag} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Visualitzar els les franges horàries en què es produïria algun tipus de solapament si hi deixés anar el bloc horari que estigui arrossegant en un moment determinat.
+\end{itemize}
+
+Cal destacar que això també funciona mentre s'allarga o s'escurça un bloc horari.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/solapamentDrag.png}
+  \caption{\label{img:resultats_horaris_solapamentDrag}Interfície resultant de visualització de possibles solapaments a l'horari.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_solapamentMarques} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, l'acció:
+\begin{itemize}
+  \item Visualitzar una marca vermella en els blocs horaris que provoquen solapaments.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/solapamentMarques.png}
+  \caption{\label{img:resultats_horaris_solapamentMarques}Interfície resultant de visualització de marques en els blocs horaris que es solapen.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_configuracio} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Habilitar o deshabilitar el filtratge de blocs horaris d'assignatures compartides el grup dels quals no està assignat a cap estudi.
+  \item Habilitar o deshabilitar el filtratge de blocs horaris d'assignatures comparties el grup dels quals està assignat només a altres estudis.
+  \item Accedir a la gestió de blocs horaris.
+  \item Accedir a la gestió de blocs horaris genèrics.
+  \item Activar o desactivar la visualització de solapaments de blocs horaris sobre l'horari.
+  \item Activar o desactivar la visualització de solapaments de tipus de laboratori sobre l'horari.
+  \item Activar o desactivar la visualització de solapaments de Professors sobre l'horari.
+  \item Activar o desactivar la visualització de solapaments d'aules sobre l'horari.
+\end{itemize}
+
+Cal destacar que aqueta figura està enfocada a presentar les funcionalitats de l'opció de configuració del panell de la dreta.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/configuracio.png}
+  \caption{\label{img:resultats_horaris_configuracio}Interfície resultant de configuració de la modificació d'un horari.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_creacioBlocs} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Utilitzar el desplegable per tal de seleccionar l'assignatura de la qual es volen gestionar els blocs horaris.
+  \item Alternar entre el tipus de grup dels quals es volen gestionar els blocs horaris.
+  \item Eliminar un bloc horari d'un grup.
+  \item Prémer el botó ``+'' per tal de crear un bloc horari per a un grup.
+  \item Prémer el botó ``Guardar'' per tal de fer efectius els canvis.
+  \item Prémer el botó ``Cancel·lar'' per tal de descartar els canvis.
+\end{itemize}
+
+Cal destacar que es pot alternar tant d'assignatura com de tipus de grup sense perdre els canvis per tal de fer tota la gestió desitjada i guardar-ne els canvis de manera conjunta.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/creacioBlocs.png}
+  \caption{\label{img:resultats_horaris_creacioBlocs}Interfície resultant de gestió de blocs horaris.}
+\end{figure}
+
+\newpage
+
+A la figura~\ref{img:resultats_horaris_creacioBlocGeneric} es pot veure la interfície resultant en la qual un Coordinador pot realitzar, principalment, les accions següents:
+\begin{itemize}
+  \item Eliminar un bloc horari genèric.
+  \item Accedir a la modificació bàsica (etiqueta, subetiqueta i, en cas que no estigui col·locat, duració) d'un bloc horari genèric, amb la possibilitat de guardar o descartar els canvis temporals.
+  \item Prémer el botó ``+'' per tal d'accedir a la creació d'un nou bloc horari genèric (molt semblant a la modificació).
+  \item Prémer el botó ``Guardar'' per tal de fer efectius els canvis.
+  \item Prémer el botó ``Cancel·lar'' per tal de descartar els canvis.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/results/horaris/creacioBlocGeneric.png}
+  \caption{\label{img:resultats_horaris_creacioBlocGeneric}Interfície resultant de la gestió de blocs horaris genèrics.}
+\end{figure}
 
 
 \chapter{Conclusions}
