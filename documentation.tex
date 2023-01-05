@@ -183,9 +183,9 @@ En aquesta secció, es resumiran els antecedents que han donat peu al plantejame
 
 La idea del projecte neix de determinades necessitats que cert personal de l'Escola Politècnica Superior de la Universitat de Girona fa temps que té. Més concretament, es tracta d'una necessitat del personal encarregat de gestionar tot el que fa referència a la confecció i manteniment dels horaris del centre: horaris dels estudis, dels professors, ocupació d'aules i espais, etc.
 
-Actualment, per dur a terme l'elaboració dels horaris, aquestes persones utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades ni específicament dissenyades per abordar aquest tipus de tasques. Tampoc existeix cap plataforma que unifiqui les fases d'aquest procés de gestió ni que n'estableixi una manera de fer comuna.
+Actualment, en els processos d'elaboració dels horaris i de distribució de docència en professors hi intervenen més de quaranta persones, les quals utilitzen mètodes i eines incòmodes i poc àgils, a part de no estar automatitzades ni específicament dissenyades per abordar aquest tipus de tasques. Tampoc existeix cap plataforma que unifiqui les fases d'aquest procés de gestió ni que n'estableixi una manera de fer comuna.
 
-Ara per ara, per exemple, no tenen manera de detectar incompatibilitats horàries ni solapaments \textit{a priori} de manera automàtica. Degut a això, en moltes ocasions s'han de repetir certes fases del procés fins que el resultat és vàlid i la gent implicada hi està d'acord.
+No tenen manera de detectar incompatibilitats horàries ni solapaments \textit{a priori} de manera automàtica. Degut a això, en moltes ocasions s'han de repetir certes fases del procés fins que el resultat és vàlid i la gent implicada hi està d'acord.
 
 Al capítol~\ref{cap:marcdetreball} es descriurà amb més profunditat com funcionen avui dia aquests processos d'elaboració i gestió d'horaris de l'escola.
 
@@ -194,7 +194,7 @@ Al capítol~\ref{cap:marcdetreball} es descriurà amb més profunditat com funci
 
 En aquesta secció, s'exposarà el propòsit general del projecte, tenint en compte els antecedents vists a la secció~\ref{sec:antecedents}.
 
-En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per a la gent que se n'ocupa. És per això que Marta Fort Masdevall, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau que té la finalitat de trobar una solució al problema.
+En definitiva, la gestió dels horaris de l'EPS suposa una inversió de temps massa elevada per a la gent que se n'ocupa. És per això que Marta Fort Masdevall, coordinadora d'estudi del Grau en Enginyeria Informàtica de la universitat, proposa un projecte de fi de grau pensat per a dues persones que té la finalitat de trobar una solució al problema.
 
 El propòsit és desenvolupar una eina de suport informàtic que permeti a l'usuari elaborar horaris de forma àgil, eficient i segura. L'eina també hauria de ser capaç de comprovar automàticament la disponibilitat de les aules, les incompatibilitats horàries dels professors i la concordança entre les assignatures i el nombre de grups previstos. A més a més, hauria d'oferir diverses vistes per tal que l'usuari pugui visualitzar la informació, com ara:
 \begin{itemize}
@@ -229,64 +229,38 @@ D'altra banda, em motiva molt el fet de desenvolupar una aplicació que podrà s
 
 Actualment i cada vegada més, m'interessa el desenvolupament d'entorns web. És per això que un factor decisiu a l'hora d'escollir aquesta proposta de PFG ha estat que un dels requisits sigui desenvolupar-lo en format de plataforma web.
 
+Per últim, m'agradaria afegir que, per motius d'ambició i d'obtenció més àmplia de coneixements, he decidit dur a terme el projecte de manera individual, encara que estigui pensat per a dues persones. Fer-lo sol em portarà molt més temps, però permetrà no perdre'm cap detall de tot el que suposa desenvolupar una aplicació d'aquest estil.
+
 \section{Objectius generals}
 \label{sec:objectius_generals}
 
 En aquesta secció, s'enumeraran els objectius generals del projecte, que ja s'han deixat entreveure prèviament a la secció~\ref{sec:proposit}. No obstant això, a continuació se'n presenta la llista completa:
 \begin{itemize}
-  \item Proporcionar una interfície còmoda i intuïtiva per dur a terme les tasques de gestió i elaboració dels horaris de l'EPS.
+  \item Desenvolupar una plataforma o aplicació web que permeti dur a terme les tasques de gestió i elaboració dels horaris de l'EPS.
+  \item Proporcionar unes interfícies d'usuari curosament dissenyades que siguin atractives, intuïtives, còmodes i, sobretot, eficients.
   \item Emmagatzemar i processar dinàmicament les dades i relacions referents als diversos estudis, cursos, quadrimestres, assignatures, grups, espais, professors, etc.
-  \item Detectar i evitar automàticament qualsevol tipus d'inconsistència o incompatibilitat horària, per tal d'aportar seguretat al treball.
-  \item Possibilitar la pujada d'arxius externs de dades que serveixin per obtenir la informació bàsica necessària per al funcionament de l'aplicació i generar possibles punts de partida per a la planificació dels horaris.
-  \item Permetre la visualització de l'ocupació de les aules, dels horaris dels professors i dels horaris dels grups de cada estudi, entre d'altres vistes que puguin ser d'utilitat pels usuaris.
+  \item Detectar automàticament i avisar de qualsevol tipus d'inconsistència o incompatibilitat horària, per tal d'aportar seguretat al treball.
+  \item Possibilitar la pujada d'arxius externs de dades que serveixin per obtenir la informació bàsica necessària per al funcionament de l'aplicació.
+  \item Permetre la visualització de l'ocupació de les aules, dels horaris dels professors i dels horaris de cada estudi, entre d'altres vistes que puguin ser d'utilitat pels usuaris.
   \item Admetre diferents rols d'usuari, als quals s'assigni una sèrie de tasques i un conjunt de permisos concret.
 \end{itemize}
 
+És important remarcar que la finalitat de l'aplicació no és l'elaboració d'horaris i la distribució de docència de manera automàtica. Per contra, el que es vol aconseguir és una eina específica que no sigui de mal utilitzar i que permeti, gràcies a múltiples ajudes i automatitzacions, realitzar les tasques necessàries manualment.
+
 Al capítol~\ref{cap:requisits} es desenvoluparan aquests objectius generals i es concretaran els requisits específics de l'aplicatiu.
 
-AFEGIR QUE S'HAN DE LLEGIR LES DADES DEL PLA DOCENT!
+\section{Estructura del document}
+\label{sec:estructura_document}
 
+En aquesta secció, es concretarà tant l'estructura del document com les desviacions que presenta respecte l'estipulat.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{-------------- EXEMPLES I UTILITATS --------------}
-\subsection{Paraules per començar seccions}
+El document conté tots els capítols que s'estipulen a la \textit{Guia dels projectes final de grau de l'enginyeria informàtica}~\cite{GuiaPFG}.
 
-Abordar, concretar, exposar, parlar, descriure, repassar, mostrar, ensenyar, desenvolupar, tractar, veure, aprofundir, investigar, discutir, indagar, detallar, enumerar,
+No obstant això, presenta certes variacions pel que fa a l'ordre. De manera estàndard, els capítols 4, 5 i 6 han de ser, respectivament, ``Planificació'', ``Marc de treball i conceptes prèvis'' i ``Requisits del sistema''.
 
-\subsection{Altres}
+S'ha considerat que la comprensió del document milloraria si el marc de treball i els requisits es presentessin abans que la planificació, ja que, tant en els requisits com en la planificació, es fan servir la nomenclatura i els conceptes definits en el marc de treball. A més a més, la planificació s'ha realitzat a partir dels requisits.
 
-Exemple de taula:
-\begin{table}[htb]
-  \centering
-  \begin{tabular}{ | r | c | c | l | }
-    \hline
-    Any  & Matriculats & Aprovats & Percentatge \\
-    \hline
-    2019 & 65          & 47       & 72.3\%      \\
-    2020 & 69          & 48       & 69.6\%      \\
-    2021 & 75          & 58       & 77.3\%      \\
-    \hline
-  \end{tabular}
-  \caption{\label{taula:taulaexemple} Aquí és on s'ha de posar el peu de taula. }
-\end{table}
-
-Exemple de figura:
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=8 cm]{/assets/logos/EPS.png}
-  \caption{\label{fig:logo} Logotip de l'Escola Politècnica Superior.}
-\end{figure}
-
-Exemple de fòrmula:
-\begin{equation}
-  H(X) = -\sum_{i=1}^{N}p_s(x_i) \log \left( p_s(x_i) \right).
-  \label{equ:entropia}
-\end{equation}
-
-
-També es pot fer referència en el text a les taules (p.ex. veure la Taula~\ref{taula:taulaexemple}), a les figures (p.ex. veure la Figura~\ref{fig:logo}) o a les fòrmules (p.ex. veure Equació~\ref{equ:entropia}).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Consegüentment, els capítols 4, 5 i 6 d'aquest document són, respectivament, ``Marc de treball i conceptes prèvis'', ``Requisits del sistema'' i ``Planificació''.
 
 
 \chapter{Estudi de viabilitat}
