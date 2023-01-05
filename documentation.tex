@@ -30,92 +30,130 @@
 
 \renewcommand\tabularxcolumn[1]{m{#1}}
 
+\AtBeginDocument{
+\hypersetup{pdftitle=Eina de suport per a l'elaboració dels horaris dels graus de l'EPS}
+\hypersetup{pdfauthor=Adrià Ribas Chico}
+}
+
 \begin{document}
 
-\frontmatter
-
-\pagenumbering{gobble}
-
-\thispagestyle{empty}
-\begin{table}[htb]
-  \centering
-  \begin{Large}
-    \resizebox{\textwidth}{!}{\begin{tabular}{| l |}
-        \hline
-        \\
-        \includegraphics[scale=0.9]{/assets/logos/EPS.png}                                 \\[0.7cm]
-        \centerline{Projecte de fi de grau}                                                \\[1cm]
-        \hline
-        \\
-        \textbf{Estudi}: Grau en Enginyeria Informàtica                                    \\[0.7cm]
-        \hline
-        \\
-        \textbf{Títol}: Eina de suport per a l'elaboració dels horaris dels graus de l'EPS \\[0.7cm]
-        \hline
-        \\
-        \textbf{Document}: Memòria                                                         \\[0.7cm]
-        \hline
-        \\
-        \textbf{Alumne}: Adrià Ribas Chico                                                 \\[0.7cm]
-        \hline
-        \\
-        \textbf{Tutora 1}: Dra. Marta Fort Masdevall                                        \\
-        \textbf{Departament}: Informàtica, matemàtica aplicada i estadística               \\
-        \textbf{Àrea}: Llenguatges i sistemes informàtics                                  \\[0.7cm]
-        \hline
-        \\
-        \textbf{Tutor 2}: Dr. Antonio Rodríguez Benítez                                    \\
-        \textbf{Departament}: Informàtica, matemàtica aplicada i estadística               \\
-        \textbf{Àrea}: Llenguatges i sistemes informàtics                                  \\[0.7cm]
-        \hline
-        \\
-        \textbf{Convocatòria (mes/any)}: Juny de 2022                                      \\[0.7cm]
-        \hline
-      \end{tabular}}
-  \end{Large}
-\end{table}
-
-\newpage
-
+\newgeometry{margin=1in}
 \begin{titlepage}
 
-  % Upper part of the page
-  \includegraphics[scale=0.9]{/assets/logos/EPS.png} \\[1cm]
-  \begin{center}
-    \textsc{\Large Projecte Fi de Grau} \\[1cm]
+\setlength{\parskip}{0pt}
 
-    % Title
-    \begin{spacing}{2}
-      \HRule \\
-      \textbf{\Huge Eina de suport per a l’elaboració dels horaris dels graus de l’EPS} \\
-      \HRule \\[0.5cm]
-    \end{spacing}
+\begin{center}
+\includegraphics[width=0.65\textwidth]{assets/logos/EPS_centrat.png}
 
-    % Author and supervisor and other data
-    {
+\vspace{2cm}
+
+{\Large Grau en Enginyeria Informàtica\par}
+\vspace{0.2cm}
+\vspace{3.5cm}
+\textsc{\Large Projecte Final de Grau}
+\vspace{0.2cm}
+
+\HRule 
+\vspace{0.4cm}
+{\huge \bfseries Eina de suport per a l'elaboració dels horaris dels graus de l'EPS\par}
+\vspace{0.4cm}
+\HRule
+\vspace{1cm}
+ 
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushleft}
     \large
-    \emph{Autor:} \\
-    Adrià \textsc{Ribas Chico} \\[1cm]
-    Juny de 2022 \\[1cm]
-    Grau en Enginyeria Informàtica \\[1cm]
+    \emph{Autor:}\\
+    Adrià Ribas Chico
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+\begin{flushright} 
+    \large
     \emph{Tutors:} \\
-    Dra. Marta \textsc{Fort Masdevall} \\
-    Dr. Antonio \textsc{Rodríguez Benítez} \\
-    }
+    Dra. Marta Fort Masdevall \\
+    Dr. Antonio Rodríguez Benítez
+\end{flushright}
+\end{minipage}
 
-  \end{center}
+\vspace{1.2cm}
+
+\textsc{\Large Memòria}
+
+\vspace{1.2cm}
+
+{\large
+Convocatòria:\\
+Gener 2023
+
+\vspace{0.9cm}
+
+Departament:\\
+Informàtica, Matemàtica Aplicada i Estadística\\
+}
+\vfill
+\end{center}
 \end{titlepage}
+\restoregeometry
 
-\titlepage
+\thispagestyle{empty}
+\vspace*{\fill}
 
-\dominitoc
+{\bfseries  \Large }
+\vspace{0.75cm}
 
+\begin{footnotesize}
+
+  \begin{flushleft} 
+    \begin{tabular}{ @{}lp{0.4\textwidth}@{} } 
+    \emph{Projecte:}  & Projecte Final de Grau\\ 
+    \emph{Document:}  & Memòria\\ 
+    \emph{Títol}:    & Eina de suport per a l'elaboració dels horaris dels graus de l'EPS\\
+    \emph{Autor}:   & Adrià Ribas Chico\\
+    \emph{Data}:     & 10 de gener de 2022\\
+    
+    \end{tabular}
+    \end{flushleft}
+    
+    \vspace{0.75cm}
+    
+    
+    \begin{minipage}[t]{\textwidth}
+      \begin{flushleft} 
+        \emph{Estudi:}\\
+        Grau en Enginyeria Informàtica\\
+        \href{https://www.udg.edu}{Universitat de Girona}
+      \end{flushleft}
+    \end{minipage}
+    
+    \vspace{0.75cm}
+    
+    \begin{minipage}[t]{0.5\textwidth}
+      \begin{flushleft} 
+        \emph{Tutora 1:}\\
+        Dra. Marta Fort Masdevall\\
+        Universitat de Girona\\
+        Informàtica, Matemàtica Aplicada i Estadística\\
+        \href{mailto:marta.fort@udg.edu}{marta.fort@udg.edu}
+      \end{flushleft}
+    \end{minipage}
+    
+    \begin{minipage}[t]{0.5\textwidth}
+      \begin{flushleft} 
+        \emph{Tutor 2:}\\
+        Dr. Antonio Rodríguez Benítez\\
+        Universitat de Girona\\
+        Informàtica, Matemàtica Aplicada i Estadística\\
+        \href{mailto:antonio.rodriguez@udg.edu}{antonio.rodriguez@udg.edu}
+      \end{flushleft}
+    \end{minipage}
+
+\end{footnotesize}
+
+\let\cleardoublepage\clearpage
 \pagenumbering{roman}
-
-\chapter*{Resum}
-\label{cap:resum}
-
-Resum del projecte \ldots
+\frontmatter
+\dominitoc
 
 \chapter*{Agraïments}
 \label{cap:agraiments}
@@ -124,11 +162,10 @@ Agraïments \ldots
 
 
 \tableofcontents
-
 \listoffigures
-
 \listoftables
 
+\pagenumbering{gobble}
 \mainmatter
 
 \chapter{Introducció}
@@ -2626,6 +2663,8 @@ A la figura~\ref{img:passwordRestablishment} es pot veure el disseny de la fines
 	\caption{\label{img:passwordRestablishment}Disseny de la interfície de restabliment de contrasenya.}
 \end{figure}
 
+\newpage
+
 A la figura~\ref{img:passwordRestablished} es pot veure el disseny de la finestra en la qual s'informa l'usuari que se li ha enviat un correu electrònic per restablir la seva contrasenya.
 \begin{figure}[H]
 	\centering
@@ -2692,6 +2731,8 @@ A la figura~\ref{img:usuaris_crear} es pot veure el disseny de la finestra en la
 	\caption{\label{img:usuaris_crear}Disseny de la interfície de creació de Coordinadors.}
 \end{figure}
 
+\newpage
+
 \subsection{Interfícies de consulta i elaboració d'horaris}
 \label{subsec:interficies_horaris}
 
@@ -2707,6 +2748,8 @@ Aquest disseny també és vàlid per a l'accés a la visualització dels horaris
 	\caption{\label{img:horaris_seleccioEstudi}Disseny de la interfície d'accés a la gestió d'un horari d'un estudi.}
 \end{figure}
 
+\newpage
+
 A la figura~\ref{img:horaris_seleccioProfessor} es pot veure el disseny de la finestra en la qual un usuari Coordinador pot accedir a la visualització d'un horari d'un dels Professors que imparteixen docència al seu grau.
 
 Aquest disseny també és vàlid per a l'accés a la visualització dels horaris dels professors corresponents per part d'un Director de departament o d'un Responsable de docència.
@@ -2717,6 +2760,8 @@ Aquest disseny també és vàlid per a l'accés a la visualització dels horaris
 	\caption{\label{img:horaris_seleccioProfessor}Disseny de la interfície d'accés a la visualització d'un horari d'un Professor.}
 \end{figure}
 
+\newpage
+
 A la figura~\ref{img:horaris_seleccioAula} es pot veure el disseny de la finestra en la qual un usuari Coordinador pot accedir a la visualització d'un horari d'una aula.
 
 \begin{figure}[H]
@@ -2724,6 +2769,8 @@ A la figura~\ref{img:horaris_seleccioAula} es pot veure el disseny de la finestr
 	\includegraphics[width=\textwidth]{assets/interfaces/horaris/seleccioAula.pdf}
 	\caption{\label{img:horaris_seleccioAula}Disseny de la interfície d'accés a la visualització d'un horari d'una aula.}
 \end{figure}
+
+\newpage
 
 A la figura~\ref{img:horaris_visualitzacio} es pot veure el disseny de la finestra en la qual un usuari Coordinador visualitza un horari d'un estudi. A més a més, pot alternar entre les diferents vistes setmanals, accedir al detall d'un bloc horari i tornar a la finestra de selecció d'horaris.
 
@@ -2734,6 +2781,8 @@ Aquest disseny també és vàlid per a la visualització d'horaris tant de Profe
 	\includegraphics[width=\textwidth]{assets/interfaces/horaris/visualitzacio.pdf}
 	\caption{\label{img:horaris_visualitzacio}Disseny de la interfície de visualització d'un horari d'un estudi.}
 \end{figure}
+
+\newpage
 
 A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la qual un usuari Coordinador visualitza un horari d'un estudi i pot realitzar-hi modificacions: pot crear blocs horaris, arrossegar-ne, canviar-ne la mida, la setmana, etc. A més a més, pot accedir al detall d'un bloc horari i modificar-lo des d'allà. Per últim, pot accedir a un menú d'opcions per modificar certes configuracions, com ara habilitar o deshabilitar opcions de filtratge, de visualització de solapaments, etc.
 
@@ -2757,13 +2806,57 @@ A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la
 \section{Implantació en l'entorn local}
 \label{sec:implantacio}
 
-En aquesta secció, es parlarà sobre com està implantada localment l'aplicació del projecte, tant el \textit{front-end} i el \textit{back-end} com el sistema gestor de bases de dades.
+En aquesta secció, es parlarà sobre com l'aplicació del projecte està implantada localment, tant el \textit{front-end} i el \textit{back-end} com el sistema gestor de bases de dades.
 
 L'aplicació de \textit{front-end} és operada pel servidor de desenvolupament que proporciona Vite (veure capítol~\ref{cap:estudi}). Aquest servidor està exposat al domini ``localhost'' i al port TCP 3000 de l'ordinador. Per tal que Vite serveixi l'aplicació, només cal accedir a l'adreça ``http://localhost:3000'' a través del navegador.
 
 Al mateix temps, és necessari que l'aplicació de \textit{back-end} també s'estigui executant i que pugui servir a les peticions que li faci el client. Aquesta aplicació utilitza Node.js (veure capítol~\ref{cap:estudi}) per muntar un servidor que exposa l'API a l'adreça ``http://localhost:8000/api''. L'aplicació client coneix aquesta adreça i és capaç de llançar-hi peticions.
 
 Per últim, el sistema gestor de bases de dades també ha d'estar exposat a la xarxa local per tal que l'aplicació de \textit{back-end} pugui comunicar-s'hi. Tal com s'ha vist al capítol~\ref{cap:estudi}, MySQL s'executa dins d'un contenidor de Docker, el qual n'exposa la connexió a través del port TCP 3306.
+
+A continuació, es repassaran els passos que cal seguir per posar en marxa localment tot el conjunt de l'aplicatiu.
+\begin{enumerate}
+  \item Instal·lar Docker~\cite{Docker}.
+  \item Obrir una terminal i descarregar una imatge de la versió més recent de MySQL:\\
+    \centerline{\texttt{> docker pull mysql:latest}}
+  \item Aixecar un contenidor amb la imatge descarregada:\\
+    \centerline{\texttt{> docker run ---name=<nom contenidor> -p 3306:3306}}
+    \centerline{\texttt{--e MYSQL\_ROOT\_PASSWORD=<contrasenya> -d mysql:latest}}
+  \item Obrir una terminal dins del contenidor:\\
+    \centerline{\texttt{> docker exec -it <nom contenidor> bash}}
+  \item Executar-hi MySql i entrar la contrasenya escollida anteriorment:\\
+    \centerline{\texttt{> mysql -u root -p}}
+  \item Crear-hi l'usuari que farà servir l'aplicació de \textit{back-end}:\\
+    \centerline{\texttt{> CREATE USER 'pfg-app-server'@'\%'}}
+    \centerline{\texttt{IDENTIFIED BY 'pfg';}}
+  \item Proporcionar a l'usuari creat tots els privilegis de la base de dades:\\
+    \centerline{\texttt{> GRANT ALL PRIVILEGES ON * . *}}
+    \centerline{\texttt{TO 'pfg-app-server'@'\%';}}
+  \item Fer efectius els canvis de permisos:\\
+    \centerline{\texttt{> FLUSH PRIVILEGES;}}
+  \item Crear la base de dades:\\
+    \centerline{\texttt{> CREATE SCHEMA pfg\_app\_dev;}}
+  \item Clonar el repositori de l'aplicació del projecte en una carpeta local, el qual està disponible a \href{https://github.com/adriribas/pfg-application}{github.com/adriribas/pfg-application}
+  \item Definir les variables d'entorn del servidor creant un fitxer anomenat ``.env'' (sense extensió) dins del directori ``/packages/server'' des de l'arrel del projecte que contingui les línies següents:
+  \begin{itemize}
+    \item \texttt{HOST='localhost'}
+    \item \texttt{PORT=8000}
+    \item \texttt{DEBUG='pfgs:*'}
+    \item \texttt{pfgs\_authJwtPrivateKey='contrasenyaSecreta1'}
+    \item \texttt{pfgs\_resetPasswordJwtPrivateKey='contrasenyaSecreta2'}
+    \item \texttt{pfgs\_emailConfirmationJwtPrivateKey='contrasenyaSecreta3'}
+    \item \texttt{pfgs\_user='pfg-app-server'}
+    \item \texttt{pfgs\_dbSecret='pfg'}
+  \end{itemize}
+  \item Instal·lar la versió 16 de Node.js~\cite{Node}.
+  \item Obrir una terminal en el directori arrel de l'aplicació i instal·lar totes les dependències necessàries:\\
+    \centerline{\texttt{> npm install}}
+  \item Executar l'aplicació de \textit{back-end}:\\
+    \centerline{\texttt{> npm run start:server}}
+  \item Obrir una altra terminal en el mateix directori i executar l'aplicació de \textit{front-end}:\\
+    \centerline{\texttt{> npm run start:client}}
+  \item Accedir a \href{http://localhost:3000}{http://localhost:3000} des d'un navegador.
+\end{enumerate}
 
 \section{Resultats obtinguts}
 \label{sec:resultats}
