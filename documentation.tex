@@ -263,9 +263,9 @@ El document conté tots els capítols que s'estipulen a la \textit{Guia dels pro
 
 No obstant això, presenta certes variacions pel que fa a l'ordre. De manera estàndard, els capítols 4, 5 i 6 han de ser, respectivament, ``Planificació'', ``Marc de treball i conceptes prèvis'' i ``Requisits del sistema''.
 
-S'ha considerat que la comprensió del document milloraria si el marc de treball i els requisits es presentessin abans que la planificació, ja que, tant en els requisits com en la planificació, es fan servir la nomenclatura i els conceptes definits en el marc de treball. A més a més, la planificació s'ha realitzat a partir dels requisits.
+S'ha considerat que la comprensió del document milloraria si el marc de treball i els requisits es presentessin abans de la planificació, ja que, tant en els requisits com en la planificació, es fan servir la nomenclatura i els conceptes definits en el marc de treball. A més a més, la planificació s'ha realitzat a partir dels requisits.
 
-Consegüentment, els capítols 4, 5 i 6 d'aquest document són, respectivament, ``Marc de treball i conceptes prèvis'', ``Requisits del sistema'' i ``Planificació''.
+Consegüentment, els capítols~\ref{cap:marcdetreball},~\ref{cap:requisits} i~\ref{cap:planificacio} d'aquest document són, respectivament, ``Marc de treball i conceptes prèvis'', ``Requisits del sistema'' i ``Planificació''.
 
 
 \chapter{Estudi de viabilitat}
@@ -276,20 +276,20 @@ Consegüentment, els capítols 4, 5 i 6 d'aquest document són, respectivament, 
 
 En aquesta secció, es valorarà si la realització del projecte és tècnicament viable.
 
-Tal com s'ha explicitat al capítol~\ref{cap:intro}, el projecte no inclou el llançament a producció del programari. Per tant, com que es tracta del desenvolupament d'una aplicació web, només fa falta un ordinador que disposi del \textit{software} necessari per executar-la (veure capítol~\ref{cap:implantacio}).
+Tal com s'ha explicitat al capítol~\ref{cap:intro}, el projecte no inclou el llançament a producció del programari. Per tant, com que tracta del desenvolupament d'una aplicació web, només fa falta un ordinador que disposi del \textit{software} necessari per executar-la, de manera local, en l'entorn de desenvolupament (veure capítol~\ref{cap:implantacio}).
 
 \section{Costos de personal}
 \label{sec:costos_personal}
 
 En aquesta secció, es calcularan els costos relatius al personal que participa en el desenvolupament del projecte.
 
-Com que es tracta d'una aplicació web, és necessari diferenciar entre les persones que desenvolupen la part del servidor (\textit{back-end}) i les que desenvolupen la del client (\textit{front-end}).
+Com que el projecte tracta d'una aplicació web, és necessari diferenciar entre les persones que desenvolupen la part del servidor (\textit{back-end}) i les que desenvolupen la del client (\textit{front-end}).
 
-Tal com es veurà al capítol~\ref{cap:estudi}, la tecnologia escollida per al \textit{back-end} és Node.js, mentre que l'escollida per al \textit{front-end} és Vue.js. Per tant, els preus que es tindran en compte als càlculs són els de desenvolupadors Node.js i desenvolupadors \textit{front-end} JavaScript en general.
+Tal com es veurà al capítol~\ref{cap:estudi}, la tecnologia escollida per al \textit{back-end} és Node.js, mentre que l'escollida per al \textit{front-end} és Vue. Per tant, els preus que es tindran en compte als càlculs són els de desenvolupadors Node.js i desenvolupadors \textit{front-end} JavaScript en general.
 
-A més a més, tenint en compte la importància que prèn per al projecte el disseny de les interfícies d'usuari, cal comptar també amb dissenyadors d'interfícies. El valor dels preus s'ha obtingut de l'informe de salaris de la \emph{Guia HAYS 2022}~\cite{Hays}.
+A més a més, degut a la importància que prèn per al projecte el disseny de les interfícies d'usuari, cal comptar també amb dissenyadors d'interfícies.
 
-A la taula~\ref{taula:costos_personal} es pot observar el detall de quina és l'aproximació dels costos de personal que suposaria el projecte.
+A la taula~\ref{taula:costos_personal} es pot observar el detall de quina és l'aproximació dels costos de personal que suposaria el projecte. El valor dels sous s'ha obtingut de l'informe de salaris de la \emph{Guia HAYS 2022}~\cite{Hays}.
 
 \begin{table}[H]
   \begin{tabularx}{\textwidth}{X  r  c  r}
@@ -309,7 +309,7 @@ A la taula~\ref{taula:costos_personal} es pot observar el detall de quina és l'
   \caption{\label{taula:costos_personal} Taula de costos de personal.}
 \end{table}
 
-El temps de dedicació estimat dels diferents tipus de personal s'ha extret del capítol~\ref{cap:planificacio}. És important destacar que, per calcular els imports, s'ha fet servir el temps total que comportaria el desenvolupament del 100\% del projecte, sense les acotacions marcades al capítol~\ref{cap:intro}.
+El temps de dedicació estimat dels diferents tipus de personal s'ha extret del capítol~\ref{cap:planificacio}. És important destacar que, per calcular els imports, s'ha fet servir el valor de temps total que comportaria el desenvolupament del 100\% del projecte, sense les acotacions marcades al capítol~\ref{cap:intro}.
 
 Per últim, esmentar que el temps dedicat a la gestió del projecte s'ha tingut en compte per al càlcul del temps dels desenvolupadors.
 
@@ -1404,7 +1404,7 @@ Cal destacar que el testeig tant de l'aplicació client com de l'aplicació serv
     \rowcolor{Orange}
     \multicolumn{2}{c}{\texttt{\textbf{PT\_4.1:}} Testeig de l'aplicació servidor}\\
     \midrule[0.9pt]
-    \textbf{Descripció}       & Realització de proves i depuració de l'aplicació servidor.\\
+    \textbf{Descripció}       & Realització de proves manuals i depuració de l'aplicació servidor.\\
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Disseny de les proves que s'han de realitzar.
     \newline \textbf{T2:} Efectuació de les proves i anàlisi dels resultats.
@@ -1424,7 +1424,7 @@ Cal destacar que el testeig tant de l'aplicació client com de l'aplicació serv
     \rowcolor{Orange}
     \multicolumn{2}{c}{\texttt{\textbf{PT\_4.2:}} Testeig de l'aplicació client}\\
     \midrule[0.9pt]
-    \textbf{Descripció}       & Realització de proves i depuració de l'aplicació client.\\
+    \textbf{Descripció}       & Realització de proves manuals i depuració de l'aplicació client.\\
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Disseny de les proves que s'han de realitzar.
     \newline \textbf{T2:} Efectuació de les proves i anàlisi dels resultats.
@@ -1444,7 +1444,7 @@ Cal destacar que el testeig tant de l'aplicació client com de l'aplicació serv
     \rowcolor{Orange}
     \multicolumn{2}{c}{\texttt{\textbf{PT\_4.3:}} Testeig general de casos d'ús}\\
     \midrule[0.9pt]
-    \textbf{Descripció}       & Realització de proves i depuració replicant casos d'ús reals.\\
+    \textbf{Descripció}       & Realització de proves i depuració replicant manualment casos d'ús reals.\\
     \midrule
     \textbf{Tasques}          & \textbf{T1:} Simulació de situacions reals a mode de prova.
     \newline \textbf{T2:} Correcció dels errors que hagin pogut aparèixer.\\
@@ -1464,7 +1464,7 @@ En aquesta subsecció, s'exposaran els paquets de treball que formen part de la 
 
 Tal com es pot veure a la figura~\ref{img:pt_llancament_roduccio}, els paquets de treball del llançament a producció són la preparació de l'aplicatiu i la posada en marxa al servidor de \textit{hosting} (veure taules~\ref{taula:pt_5.1} i~\ref{taula:pt_5.2}, respectivament).
 
-Cal destacar que la posada en marxa en l'entorn productiu no forma part l'abast del projecte i que, per tant, no es comptabilitza. Tot i així, per tal d'obtenir una planificació completa, s'ha decidit contemplar-ho.
+Cal destacar que la posada en marxa en l'entorn productiu no forma part l'abast del projecte i que, per tant, no es comptabilitzarà en el còmput de temps total. Tot i així, per tal d'obtenir una planificació completa, s'ha decidit contemplar-ho.
 
 \begin{figure}[htpb]
 	\centering
@@ -1571,6 +1571,8 @@ Tot seguit, es calcularà el temps esperat de duració \textit{t(E)} de l'activi
 \begin{equation*}
   t(E) = \frac{t(O) + 4t(M) + t(P)}{6}
 \end{equation*}
+
+Les taules marcades en gris (\ref{taula:a1},~\ref{taula:a2} i~\ref{taula:a21}) corresponen a la fase de gestió del projecte, les marcades en verd (\ref{taula:a3},~\ref{taula:a4} i~\ref{taula:a5}) a la d'anàlisi i disseny, les marcades en blau (\ref{taula:a6},~\ref{taula:a7},~\ref{taula:a8},~\ref{taula:a9},~\ref{taula:a10},~\ref{taula:a11},~\ref{taula:a12},~\ref{taula:a13},~\ref{taula:a14},~\ref{taula:a15} i~\ref{taula:a16}) a la de desenvolupament, les marcades en taronja (\ref{taula:a17},~\ref{taula:a18} i~\ref{taula:a19}) a la de proves i, finalment, la marcada en lila (\ref{taula:a20}) a la de llançament a producció
 
 \begin{table}[H]
   \begin{tabularx}{\textwidth}{l | X}
@@ -1993,7 +1995,14 @@ En aquesta subsecció, es representarà el diagrama de Gantt que recull la plani
 \chapter{Estudis i decisions}
 \label{cap:estudi}
 
-\section{Gestió i estructura del projecte}
+\section{Introducció i estructura}
+\label{sec:estudi_intro}
+
+En aquesta secció, s'introduirà el contingut de la resta del capítol i se'n detallarà l'estructura.
+
+Primerament, es parlarà sobre com s'ha gestionat i estructurat el projecte en quant al codi (veure secció~\ref{sec:decisions_estructura}). Tot seguit, ja s'entrarà en detall en les tecnologies utilitzades pel desenvolupament del programari, tant de l'aplicació client com de l'aplicació servidor (veure seccions~\ref{sec:decisions_client} i~\ref{sec:decisions_servidor}, respectivament). També s'explicaran les decisions que involucren la base de dades (veure secció~\ref{sec:decisions_bdd}). Per últim, s'indicaran les eines que s'han fet servir tant pel desenvolupament del programari com per a la confecció de la memòria (veure seccions~\ref{sec:decisions_desenvolupament} i~\ref{sec:decisions_memoria}, respectivament)
+
+\section{Gestió i estructuració del projecte}
 \label{sec:decisions_estructura}
 
 \subsection{Control de versions}
@@ -2021,7 +2030,9 @@ Hi ha diverses alternatives pel que fa a aquest tipus de plataforma, com ara \te
   \caption{\label{img:logo_github}Logotip de GitHub.}
 \end{figure}
 
-\subsection{Estructura del projecte}
+Per últim, esmentar que aquestes eines s'han fet servir tant pel programari com per a la memòria.
+
+\subsection{Estructuració del projecte}
 \label{subsec:decisions_estructura_estructura}
 
 En aquesta subsecció, es justificarà l'el·lecció de l'estructura del sistema: \textbf{monorepositori}.
@@ -2036,7 +2047,7 @@ Els beneficis principals del multirepositori són que els repositoris individual
 
 A més a més, tal com es veurà a les seccions~\ref{sec:decisions_client} i~\ref{sec:decisions_servidor}, el llenguatge de programació amb què s'han desenvolupat les dues aplicacions és el mateix: JavaScript. Gràcies a això es pot utilitzar un mateix gestor de paquets per a les dues.
 
-Els gestors de paquets de JavaScript actuals més populars també incorporen altres eines i utilitats que faciliten la gestió d'un \textbf{monorepositori} dividint-lo en diferents espais de treball. Permeten definir les dependències de cada espai de treball i també de comunes. Aquest fet fa que la instal·lació i actualització dels paquets sigui més ràpida i eficient que en el cas de l'estructuració del projecte en multirepositori. Per aquests motius i per comoditat, l'el·lecció per al projecte ha estat l'estructuració en \textbf{monorepositori}.
+Els gestors de paquets de JavaScript actuals més populars també incorporen altres eines i utilitats que faciliten la gestió d'un \textbf{monorepositori} dividint-lo en diferents espais de treball. Permeten definir les dependències de cada espai de treball i també les comunes. Aquest fet fa que la instal·lació i actualització dels paquets sigui més ràpida i eficient que en el cas de l'estructuració del projecte en multirepositori. Per aquests motius i per comoditat, l'el·lecció per al projecte ha estat l'estructuració en \textbf{monorepositori}.
 
 Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure figura~\ref{img:logo_npm}). Els motius d'aquesta el·lecció han estat, principalment, el coneixement previ de l'eina i que és el gestor de paquets estàndard de Node.js, l'entorn escollit per a l'aplicació servidor (veure secció~\ref{sec:decisions_servidor}).
 
@@ -2054,7 +2065,7 @@ Pel que fa al gestor de paquets, s'ha optat per \textbf{npm}~\cite{npm} (veure f
 
 En aquesta subsecció, es justificarà l'el·lecció del \textit{bundler} utilitzat en l'aplicació client: \textbf{Vite}.
 
-Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, existeixen múltiples eines d'aquesta tipologia que empaqueten el codi de tots els fitxers o mòduls JavaScript per tal de poder ser enviats al navegador en una sola petició, com ara WebPack, Rollup o Parcel.
+Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, existeixen múltiples eines d'aquesta tipologia que empaqueten el codi de tots els fitxers o mòduls JavaScript per tal de poder ser enviats al navegador en una sola petició, com ara \textbf{Vite}, WebPack, Rollup o Parcel.
 
 No obstant això, el codi font de les aplicacions \textit{front-end} modernes pot arribar a ser enorme a causa de l'ús de \textit{frameworks} i biblioteques. Aquest fet comporta, entre d'altres inconvenients, una mala experiència de desenvolupament, ja que, per exemple, si es fa servir HMR (\textit{hot module replacement}), les modificacions d'arxius poden tardar uns quants segons en veure's reflectides al navegador. A més a més, el temps d'espera necessari per posar en marxa un servidor de desenvolupament pot resultar excessivament llarg.
 
@@ -2379,26 +2390,30 @@ En aquesta subsecció, es presentarà l'eina utilitzada per a l'elaboració del 
 
 En aquesta subsecció, es recolliran els actors que poden interactuar amb l'aplicació de manera externa. També s'indicaran les relacions d'especialització / generalització que estableixen.
 
+Tal com es pot veure a la figura~\ref{img:casos_us_actors}, els actors corresponen als diferents rols d'usuari que participen en l'aplicació. Tots aquests actors, que disposen del seu propi conjunt d'interaccions possibles amb el sistema, també hereten el d'\emph{Usuari}, ja que en són especialitzacions.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{assets/use_cases/actors.pdf}
   \caption{\label{img:casos_us_actors}Jerarquia d'actors que poden interactuar amb l'aplicació.}
 \end{figure}
 
-Tal com es pot veure a la figura~\ref{img:casos_us_actors}, els actors es corresponen amb els diferents rols d'usuari que participen en l'aplicació. Tots aquests actors, que disposen del seu propi conjunt d'interaccions possibles amb el sistema, també hereten el d'\emph{Usuari}, ja que en són especialitzacions.
+\newpage
 
 \subsection{Autenticació}
 \label{subsec:casos_us_auth}
 
 En aquesta subsecció, es representaran els casos d'ús relacionats amb la part de l'autenticació d'usuaris (veure figura~\ref{img:casos_us_auth}).
 
-Quan es parli d'un \textit{Token}, s'estarà fent referència a un \textit{JSON Web Token}~\cite{JWT} generat per codificar certes dades amb una finalitat concreta (més informació al capítol~\ref{cap:implementacio}).
+Quan es parli d'un \textit{Token}, s'estarà fent referència a un \textit{JSON Web Token}~\cite{JWT} generat per codificar certes dades amb una finalitat concreta (més informació sobre la implementació al capítol~\ref{cap:implementacio}).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{assets/use_cases/auth.pdf}
   \caption{\label{img:casos_us_auth}Diagrama dels casos d'ús relacionats amb l'autenticació.}
 \end{figure}
+
+\newpage
 
 \subsection{Gestió del pla docent}
 \label{subsec:casos_us_pla}
@@ -2413,6 +2428,8 @@ En aquest apartat, es representaran els casos d'ús generals involucrats en la g
   \caption{\label{img:casos_us_pla_general}Diagrama de casos d'ús general de la gestió del pla docent.}
 \end{figure}
 
+\newpage
+
 \subsubsection{Pujada d'un pla docent}
 
 En aquest apartat, es representaran els casos d'ús involucrats en la pujada d'un pla docent (veure figura~\ref{img:casos_us_pla_pujada}).
@@ -2423,6 +2440,8 @@ En aquest apartat, es representaran els casos d'ús involucrats en la pujada d'u
   \caption{\label{img:casos_us_pla_pujada}Diagrama de casos d'ús de la pujada d'un pla docent.}
 \end{figure}
 
+\newpage
+
 \subsubsection{Modificació del pla docent}
 
 En aquest apartat, es representaran els casos d'ús involucrats en la modificació d'un pla docent (veure figura~\ref{img:casos_us_pla_modif}).
@@ -2432,6 +2451,8 @@ En aquest apartat, es representaran els casos d'ús involucrats en la modificaci
   \includegraphics[width=\textwidth]{assets/use_cases/pla_docent/modif.pdf}
   \caption{\label{img:casos_us_pla_modif}Diagrama de casos d'ús de la modificació del pla docent.}
 \end{figure}
+
+\newpage
 
 \subsection{Gestió d'usuaris}
 \label{subsec:casos_us_usuaris}
@@ -2448,6 +2469,8 @@ En realitat, aquests casos d'ús només s'apliquen a un usuari d'un rol concret,
   \caption{\label{img:casos_us_usuaris}Diagrama de casos d'ús de la gestió d'usuaris.}
 \end{figure}
 
+\newpage
+
 \subsection{Visualització d'horaris}
 \label{subsec:casos_us_veure_horaris}
 
@@ -2458,6 +2481,8 @@ En aquesta subsecció, es representaran els casos d'ús involucrats en la visual
   \includegraphics[width=\textwidth]{assets/use_cases/horaris/visualitzar.pdf}
   \caption{\label{img:casos_us_veure_horaris}Diagrama de casos d'ús de la visualització d'horaris.}
 \end{figure}
+
+\newpage
 
 \subsection{Modificació d'horaris d'estudis}
 \label{subsec:casos_us_modif_horaris}
@@ -2471,6 +2496,8 @@ En aquest apartat, es representaran els casos d'ús generals involucrats en la m
   \includegraphics[width=0.9\textwidth]{assets/use_cases/horaris/modificar/general.pdf}
   \caption{\label{img:casos_us_modif_horaris_general}Diagrama de casos d'ús general de la modificació d'horaris.}
 \end{figure}
+
+\newpage
 
 \subsubsection{Modificació d'un horari d'un estudi}
 
@@ -2486,6 +2513,8 @@ A més a més, cal afegir que, per motius de llegibilitat, s'ha optat per repres
   \caption{\label{img:casos_us_horaris_modif}Diagrama de casos d'ús de la modificació d'un horari d'un estudi.}
 \end{figure}
 
+\newpage
+
 \subsubsection{Visualització de solapaments}
 
 En aquest apartat, es representaran els casos d'ús involucrats en la visualització de solapaments entre blocs horaris (veure figura~\ref{img:casos_us_horaris_solap}).
@@ -2497,6 +2526,8 @@ En aquest apartat, es representaran els casos d'ús involucrats en la visualitza
   \includegraphics[width=0.9\textwidth]{assets/use_cases/horaris/modificar/solapaments.pdf}
   \caption{\label{img:casos_us_horaris_solap}Diagrama de casos d'ús de la visualització de solapaments.}
 \end{figure}
+
+\newpage
 
 \section{Disseny de la base de dades}
 \label{sec:disseny_bdd}
@@ -2517,6 +2548,8 @@ La part negativa d'aquest programa és que no explicita la cardinalitat de les r
 
 També cal tenir en compte que les relacions ``molts a molts'' hi apareixen ja ``aplicades'' amb la taula intermitja entre les dues entitats en qüestió, la qual és necessària per a la seva implementació. A més a més, l'herència d'usuaris també hi apareix ``resolta'' amb una implementació concreta (veure capítol~\ref{cap:estudi} per conèixer els detalls d'aquesta decisió).
 
+\newpage
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/db.pdf}
@@ -2534,7 +2567,7 @@ En primer lloc, és necessari definir el format que adoptarà cadascun dels atri
 \\[8pt]
 \centerline{\texttt{\textbf{Nom} <Tipus> [Restriccions]}: Descripció}
 
-D'altra banda, cal destacar que totes les taules disposen de tres atributs comuns, els quals només es descriuen a continuació per tal d'evitar repeticions innecessàries:
+D'altra banda, cal destacar que la majoria de les taules disposen de tres atributs comuns, els quals només es descriuen a continuació per tal d'evitar repeticions innecessàries:
 \begin{itemize}
   \item \texttt{\textbf{createdAt} <datetime> [NOT NULL]}: Moment de la creació de l'entitat.
   \item \texttt{\textbf{updatedAt} <datetime> [NOT NULL]}: Moment de l'última modificació de l'entitat.
@@ -2846,6 +2879,8 @@ A la figura~\ref{img:horaris_visualitzacio} es pot veure el disseny de la finest
 
 Aquest disseny també és vàlid per a la visualització d'horaris tant de Professors com d'aules.
 
+Cal destacar que s'ha tingut molt en compte el fet que es pugui visualitzar tota la informació necessària sense haver de fer cap clic, cosa que ha resultat notablement dificultosa a causa de la gran quantitat de dades a distribuïr en un espai bastant limitat.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/horaris/visualitzacio.pdf}
@@ -2936,7 +2971,7 @@ A continuació, es repassaran els passos que cal seguir per posar en marxa local
 
 En aquesta subsecció, es presentaran una sèrie de consideracions inicials que cal tenir en compte a la resta de la secció.
 
-Els resultats es presentaran en forma de captures de pantalla que mostren el funcionament del programari desenvolupat durant el projecte. Totes les captures tindran la mateixa mida per tal d'oferir una perspectiva realística de com són les interfícies.
+Els resultats es presentaran en forma de captures de pantalla que mostren el funcionament del programari desenvolupat durant el projecte. Totes les captures tindran la mateixa mida per tal d'oferir una perspectiva realística de com són les interfícies d'usuari.
 
 És important destacar que, per no sobrecarregar la memòria amb masses imatges, s'han obviat certes parts o estats de les interfícies que no són de vital importància, com ara notificacions d'informació o error, estats de càrrega, seleccionables desplegats, etc.
 
@@ -3456,12 +3491,42 @@ A la figura~\ref{img:resultats_horaris_creacioBlocGeneric} es pot veure la inter
 \chapter{Conclusions}
 \label{cap:conclusions}
 
+\section{Assoliment dels objectius i els requisits}
+\label{sec:assoliment_objectius}
 
+En aquesta secció, es farà un ànalisi dels els objectius i requisits plantejats inicialment en comparació amb els resultats obtinguts.
 
+L'objectiu principal del projecte era desenvolupar una aplicació web que permetés l'elaboració dels horaris de l'EPS a través d'interfícies d'usuari còmodes, atractives i eficients. A més a més, havia de ser capaç de detectar els possibles solapaments que s'hi poguéssin produir i avisar-ne l'usuari.
+
+Abans d'arribar a aquest punt, però, havien d'assolir-se altres objectius essencials: obtenir la informació bàsica per al funcionament de l'aplicació a partir d'arxius de plans docents i oferir un control d'usuaris estructurat en un conjunt de rols.
+
+Tal com s'ha vist al capítol~\ref{cap:implantacio}, els resultats obtinguts no només satisfan els objectius principals, sinó que també aporten alguns detalls i funcionalitats extres.
+
+En general, es pot dir que s'ha aconseguit la meta del projecte. No obstant això, al capítol~\ref{cap:intro} també s'indicaven altres objectius amb un pes inferior als anteriors. Més concretament, es tractava de la distribució de docència i de l'assignació d'aules i la visualització dels seus horaris.
+
+Tal com s'havia calculat al capítol~\ref{cap:planificacio}, si no s'acotaven aquests objectius, la finalització del projecte a temps no era possible. No obstant això, també s'havia esmentat que era important implementar l'aplicació pensant en fer una base de codi de qualitat, la qual en facilités un futur desenvolupament.
+
+El resultat d'aquest últim punt també ha estat satisfactori, ja que la implementació de les interfícies dels horaris està basada en jerarquies de components altament reutilitzables. A més a més, les bases de la part corresponent a l'aplicació servidor també estan pensades en aquest sentit.
+
+Pel que fa als requisits, cal indicar que s'han aconseguit tots els que tenien màxima prioritat (veure capítol~\ref{cap:requisits}). A més, s'han assentat les bases per al futur desenvolupament dels requisits amb prioritats inferiors.
+
+\section{Valoració personal}
+\label{sec:valoracio}
+
+En aquesta secció, es valorarà, en primera persona, l'experiència personal viscuda durant el transcurs del projecte.
+
+Des que es va plantejar, de seguida es va veure que el projecte era molt ambiciós i que, el més recomanable era desenvolupar-lo entre dues persones. Tot i així, vaig decidir enfrontar-m'hi sol per tal de no perdre'm ni un detall sobre tot el que comportava, com ara la seva gestió, decisions d'arquitectura, la implementació d'una apliació del costat del servidor i, sobre tot, el desenvolupament del client d'una plataforma web, món en què em vull dedicar i del qual encara no tenia cap tipus d'experiència.
+
+En aquest sentit, valoro molt positivament el procés de desenvolupament del projecte, ja que, gràcies als coneixements assolits durant la carrera, he pogut adquirir-ne de nous i apendre sobre tecnologies que desconeixia.
+
+Pel que fa als resultats obtinguts, n'estic molt orgullós i la realitat és que no m'esperava que fossin, des del meu punt de vista, tan satisfactoris. Igualment, crec que hi ha coses que es poden millorar i que ara les faria de diferent manera.
+
+Per últim, m'agradaria afegir que el projecte també m'ha ofert una perspectiva bastant ``realista'' sobre el que implica el desenvolupament d'un producte per a un client, en aquest cas la Marta.
 
 
 \chapter{Treball futur}
 \label{cap:treball_futur}
+% Diferenciar requisits deixats per futur de les altres coses
 
 \begin{itemize}
   \item Poder buscar usuaris per consultar les seves dades (nom, rol, departament, telèfon, email, etc.) i habilitar un link per enviar-li un email.
@@ -3469,7 +3534,9 @@ A la figura~\ref{img:resultats_horaris_creacioBlocGeneric} es pot veure la inter
   \item Sistema d'avisos i notificacions.
   \item Assignar un grup de professors a assignatures en concret, per facilitar l'assignació per part dels responsables de docència.
   \item Que els professors puguin indicar preferències en quant a blocs horaris / grups.
-  \item \ldots
+  \item Idiomes.
+  \item Generació automàtica d'horaris i assignacions
+  \item Assignació de profes (manual)
 \end{itemize}
 
 
