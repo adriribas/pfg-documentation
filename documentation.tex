@@ -14,6 +14,7 @@
 \usepackage{graphicx, adjustbox}
 \usepackage{tikz}
 \usepackage{pdflscape}
+\usepackage{listings}
 
 \usetikzlibrary{positioning}
 
@@ -2901,10 +2902,109 @@ A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la
 \chapter{Implementació i proves}
 \label{cap:implementacio}
 
+\section{Configuració, variables d'entorn i \textit{logging}}
+% Biblioteca config, fitxers config, variables entorn, logs, 
+
+En aquesta secció, s'explicarà com s'ha implementat la configuració de l'aplicació servidor, com es defineixen les variables d'entorn i com és el sistema de \textit{logs}.
+
+Tota aplicació d'aquest estil necessita guardar informació de configuració, com ara dades de la connexió amb la base de dades, adreces de correu electrònic o qualsevol altra informació més específica.
+
+Escriure aquestes dades de configuració directament al codi és una mala pràctica. A més a més, poden variar segons l'entorn (o \textit{environment}) en el que s'estigui executant l'aplicació, ja sigui desenvolupament, producció, etc. Degut a això, s'ha utilitzat un paquet anomenat \texttt{config} que permet definir la configuració per a cada entorn en fitxers diferents, de manera que des del codi només s'ha d'indicar l'identificador d'un paràmetre per tal d'obtenir-ne el valor corresponent (en funció de l'entorn).
+
+No obstant això, hi ha paràmetres molt sensibles que, el fet deixar-los en aquests fitxers de configuració, suposaria una gran vulnerabilitat de seguretat. Les dades més crítiques, com ara claus d'encriptació o credencials de la base de dades, es guarden a les variables d'entorn de la màquina en què s'executi l'aplicació.
+
+Per aquest motiu, el paquet \texttt{config} també permet mapejar paràmetres amb el noms de les variables d'entorn corresponents. Mitjançant això, les claus d'encriptació dels \textit{tokens} i les credencials de la base de dades de l'aplicació es guarden en variables d'entorn.
+
+A la figura~\ref{img:devConfig} es pot veure un fragment del fitxer (JSON) de configuració que s'aplica a l'entorn de desenvolupament.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{assets/code/config/devConfig.png}
+  \caption{\label{img:devConfig}Fragment del fitxer de configuració aplicat a l'entorn de desenvolupament.}
+\end{figure}
+
+Per raons de traçabilitat i depuració, s'han implementat diversos sistemes de \textit{logging} que permet registrar informació i escriure-la tant en fitxers com a la consola.
+
+En primer lloc, s'ha utilitzat un paquet anomenat \texttt{morgan} que registra a la consola totes les peticions rebudes i la seva resposta.
+
+També s'ha utilitzat \texttt{debug}, un paquet que ha permès mostrar els missatges desitjats a la consola en un format agradable. A més a més, el paquet es pot activar o desactivar a través de variables d'entorn.
+
+Finalment, s'ha fet servir el paquet \texttt{winston} per crear fitxers de \textit{log} dels aspectes que s'han considerat més importants, com ara els errors i les comandes SQL enviades a la base de dades.
+
+\section{Seguretat i autenticació}
+\label{sec:seguretat}
+%Obtenció token navegador, crida dades usuari, usuari activat / desactivat o eliminat, axios interceptors
+
+En aquesta secció, es destacaran els aspectes més importants relacionats amb la implementació dels mecanismes de seguretat i els processos d'autenticació.
+
+A continuació s'explicarà, pas a pas, com és exactament el procés d'autenticació i se'n donaran detalls de la implementació.
+
+\begin{enumerate}
+  \item El client fa una petició d'autenticació al servidor. Concretament, ho fa enviant-li les credencials de l'usuari mitjançant una crida POST a la ruta \texttt{/api/auth}.
+  \item El servidor rep la petició i la comença a processar. Primer comprova que el format de les credencials sigui el correcte. A la figura~\ref{img:credJoi} es pot veure com es defineix el format d'aquestes dades mitjançant el paquet \texttt{joi}. Concretament, s'hi està estipulant que tant el correu com la contrasenya no poden estar buits i que el format del correu ha de ser vàlid.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{assets/code/seguretat/esquemaJoiAuth.png}
+    \caption{\label{img:credJoi}Definició del format de les credencials mitjançant \texttt{Joi}.}
+  \end{figure}
+  \item Tot seguit, s'obtenen les dades de l'usuari de la base de dades i es comprova que realment existeixi i que estigui activat.
+  \item Després, es compara la contrasenya real de l'usuari amb la que s'havia rebut del client. És important destacar que la contrasenya real es guarda encriptada mitjançant el paquet \texttt{bcrypt}. A la figura~\ref{img:contrasenya} es pot veure com es compara la contrasenya rebuda (authData.secret) amb la contrasenya real encriptada (user.secret). A més, a la figura~\ref{img:encriptacioContrasenya} es pot veure com es fa l'encriptació de la contrasenya (value). El segon paràmetre fa referència a la complexitat de l'encriptació (12 és més que suficient).
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.97\textwidth]{assets/code/seguretat/contrasenya.png}
+    \caption{\label{img:contrasenya}Comparació d'una contrasenya amb una contrasenya encriptada mitjançant \texttt{bcrypt}.}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{assets/code/seguretat/encriptacioContrasenya.png}
+    \caption{\label{img:encriptacioContrasenya}Encriptació d'una contrasenya mitjançant \texttt{bcrypt}.}
+  \end{figure}
+  \item En aquest punt, ja es sap que totes les dades són correctes i es procedeix a generar un \textit{token} d'autenticació. Més concretament, es tracta d'un JWT (\textit{Json Web Token})~\cite{JWT} que, mitjançant una clau definida, en aquest cas, a les variables d'entorn, permet encriptar un conjunt de dades juntament amb una temps d'expiració. La cadena de caràcters resultant s'anomena \textit{token} i es fa servir molt per mantenir sessions d'usuari sense estat, ja que s'emmagatzema només al client. A la figura~\ref{img:generacioToken} es pot veure com es genera un \textit{token} mitjançant el paquet \texttt{jwt}. Cal aclarir que la funció ``sign'' rep tres paràmetres (dades, clau i opcions) que s'obtenen de la configuració a partir del tipus (type) de \textit{token} que es vulgui generar (autenticació, restabliment de contrasenya o activació de correu). En el cas de l'autenticació, només s'hi guarda l'identificador de l'usuari.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{assets/code/seguretat/generacioToken.png}
+    \caption{\label{img:generacioToken}Generació d'un JWT mitjançant \texttt{jwt}.}
+  \end{figure}
+  \item Per últim, tant les dades de l'usuari com el \textit{token} generat s'envien com a respota al client, que guarda el \textit{token} al \textit{local storage} del navegador per tal de mantenir la sessió iniciada.
+\end{enumerate}
+
+A partir de que l'usuari està autenticat, totes les peticions que el client faci a l'API contindràn una camp anomenat ``Authorization'' a la capçalera. El valor d'aquest camp serà el \textit{token} d'autenticació que s'havia obtingut en el procés d'autenticació. Més concretament, la convenció diu que davant del \textit{token} hi ha de constar la paraula ``Bearer''.
+
+Davant de qualsevol petició a l'API, el servidor comprova la presència i la validesa aquest \textit{token}. Gràcies a això, es disposa d'un mecanisme d'autorització d'ús de l'API que evita peticions no desitjades. A continuació, es detallarà com és exactament aquest procés.
+
+\begin{enumerate}
+  \item El servidor rep una petició que requereix autenticació (pràcticament totes) i n'extreu el \textit{token} que conté el camp ``Authorization'' de la capçalera.
+  \item Seguidament, procedeix a validar-lo i a desencriptar-ne les dades (identificador de l'usuari). A la figura~\ref{img:validacioToken} es pot veure com es realitza aquesta validació a través del paquet \texttt{jwt}. La clau d'encriptació que fa servir és la mateixa que en la generació, guardada a les variables d'entorn.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{assets/code/seguretat/validacioToken.png}
+    \caption{\label{img:validacioToken}Validació d'un \textit{token} d'autenticació mitjançant \texttt{jwt}.}
+  \end{figure}
+  \item A continuació, s'intenta recuperar l'usuari en qüestió de la base de dades. Si l'usuari existeix i està activat, es crida la següent funció de la línia de processament de peticions. Gràcies a això, si un usuari que està autenticat és eliminat, no podrà realitzar cap més operació, ja que a la que faci una crida més al servidor, se li tancarà la sessió.
+\end{enumerate}
+
+% has access a rutes
+Per últim, cal remarcar que, com a mesura de seguretat, s'ha implementat un mecanisme de validació d'accés a les diferents rutes del client. Tal com s'ha vist al capítol~\ref{cap:requisits}, cada rol d'usuari disposa d'un conjunt de funcionalitats principals. Com que cadascuna correspon a una ruta diferent (\texttt{/plans-docents}, /\texttt{horaris-graus}, etc.), el problema pot sorgir quan un usuari intenta accedir a una ruta que formi part d'un rol diferent al seu.
+
+Inicialment, el conjunt de rutes de cada rol d'usuari es va guardar en un fitxer JavaScript a l'aplicació client. No obstant això, es va veure que fer-ho d'aquesta manera suposava una vulnerabilitat, ja que qualsevol pot veure i modificar aquests fitxers. Així doncs, es va decidir optar per una opció més segura: guardar aquesta informació al servidor i fer-li una petició d'accés cada vegada que un usuari vulgui accedir a una altra ruta. Concretament, es va habilitar la crida \texttt{GET /api/auth/access/:nom-ruta}.
+
+\section{API}
+
+Format de les peticions i respostes, filtres, fields, include, etc., enrutament (pipeline, errorsAsync)
 
 
-% Seguretat, autenticació (incloure: quan usuari desactivat o eliminat), ruta dels horaris, middlewares i utilitats backend, format de l'API, variables d'entorn, config, enviament de correu, axios i interceptors, stores pinia, detecció solapaments lab?,
 
+
+\section{Enrutament client}
+% Rutes. Dir rutes iguals que van per diferents rols, ruta horaris
+
+
+% Exemples d'un model de sequelize amb associate
+
+
+% enviament de correu, stores pinia, detecció solapaments lab?,
+
+% ---------
 % proves de creació de taules, atributs, relacions..., proves a l'API (postman), proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
 
 
