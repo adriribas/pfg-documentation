@@ -2900,6 +2900,9 @@ A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la
 
 \chapter{Implementació i proves}
 \label{cap:implementacio}
+
+
+
 % Seguretat, autenticació (incloure: quan usuari desactivat o eliminat), ruta dels horaris, middlewares i utilitats backend, format de l'API, variables d'entorn, config, enviament de correu, axios i interceptors, stores pinia, detecció solapaments lab?,
 
 % proves de creació de taules, atributs, relacions..., proves a l'API (postman), proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
@@ -2972,6 +2975,8 @@ A continuació, es repassaran els passos que cal seguir per posar en marxa local
 En aquesta subsecció, es presentaran una sèrie de consideracions inicials que cal tenir en compte a la resta de la secció.
 
 Els resultats es presentaran en forma de captures de pantalla que mostren el funcionament del programari desenvolupat durant el projecte. Totes les captures tindran la mateixa mida per tal d'oferir una perspectiva realística de com són les interfícies d'usuari.
+
+A més a més, aquesta secció també fa la funció de manual d'usuari.
 
 És important destacar que, per no sobrecarregar la memòria amb masses imatges, s'han obviat certes parts o estats de les interfícies que no són de vital importància, com ara notificacions d'informació o error, estats de càrrega, seleccionables desplegats, etc.
 
@@ -3494,17 +3499,17 @@ A la figura~\ref{img:resultats_horaris_creacioBlocGeneric} es pot veure la inter
 \section{Assoliment dels objectius i els requisits}
 \label{sec:assoliment_objectius}
 
-En aquesta secció, es farà un ànalisi dels els objectius i requisits plantejats inicialment en comparació amb els resultats obtinguts.
+En aquesta secció, es farà un ànalisi comparatiu entre els objectius i requisits plantejats inicialment respecte els resultats obtinguts.
 
 L'objectiu principal del projecte era desenvolupar una aplicació web que permetés l'elaboració dels horaris de l'EPS a través d'interfícies d'usuari còmodes, atractives i eficients. A més a més, havia de ser capaç de detectar els possibles solapaments que s'hi poguéssin produir i avisar-ne l'usuari.
 
 Abans d'arribar a aquest punt, però, havien d'assolir-se altres objectius essencials: obtenir la informació bàsica per al funcionament de l'aplicació a partir d'arxius de plans docents i oferir un control d'usuaris estructurat en un conjunt de rols.
 
-Tal com s'ha vist al capítol~\ref{cap:implantacio}, els resultats obtinguts no només satisfan els objectius principals, sinó que també aporten alguns detalls i funcionalitats extres.
+Tal com s'ha vist en el capítol~\ref{cap:implantacio}, els resultats obtinguts no només satisfan els objectius principals, sinó que també aporten alguns detalls i funcionalitats extres.
 
-En general, es pot dir que s'ha aconseguit la meta del projecte. No obstant això, al capítol~\ref{cap:intro} també s'indicaven altres objectius amb un pes inferior als anteriors. Més concretament, es tractava de la distribució de docència i de l'assignació d'aules i la visualització dels seus horaris.
+En general, es pot dir que s'ha aconseguit la meta del projecte. No obstant això, en el capítol~\ref{cap:intro} també s'indicaven altres objectius amb un pes inferior als anteriors. Més concretament, es tracta de la distribució de docència i de l'assignació d'aules i la visualització dels seus horaris.
 
-Tal com s'havia calculat al capítol~\ref{cap:planificacio}, si no s'acotaven aquests objectius, la finalització del projecte a temps no era possible. No obstant això, també s'havia esmentat que era important implementar l'aplicació pensant en fer una base de codi de qualitat, la qual en facilités un futur desenvolupament.
+Tal com s'havia calculat en el capítol~\ref{cap:planificacio}, si no s'acotaven aquests objectius, la finalització del projecte a temps no era possible. No obstant això, també s'havia esmentat que era important implementar l'aplicació pensant en fer una base de codi de qualitat, la qual en facilités un futur desenvolupament.
 
 El resultat d'aquest últim punt també ha estat satisfactori, ja que la implementació de les interfícies dels horaris està basada en jerarquies de components altament reutilitzables. A més a més, les bases de la part corresponent a l'aplicació servidor també estan pensades en aquest sentit.
 
@@ -3526,17 +3531,40 @@ Per últim, m'agradaria afegir que el projecte també m'ha ofert una perspectiva
 
 \chapter{Treball futur}
 \label{cap:treball_futur}
-% Diferenciar requisits deixats per futur de les altres coses
+
+\section{Feina pendent ja contemplada}
+\label{sec:feina_pendent}
+
+En aquesta secció, es recolliran els punts del projecte que es van plantejar inicialment però que, degut al temps, no ha estat possible desenvolupar-los completament, sinó les bases.
 
 \begin{itemize}
-  \item Poder buscar usuaris per consultar les seves dades (nom, rol, departament, telèfon, email, etc.) i habilitar un link per enviar-li un email.
-  \item Que l'inicialització dels cursos no es basi en un excel, sinó que es puguin recuperar les dades de les BDD de l'escola.
-  \item Sistema d'avisos i notificacions.
-  \item Assignar un grup de professors a assignatures en concret, per facilitar l'assignació per part dels responsables de docència.
-  \item Que els professors puguin indicar preferències en quant a blocs horaris / grups.
-  \item Idiomes.
-  \item Generació automàtica d'horaris i assignacions
-  \item Assignació de profes (manual)
+  \item Assignació d'aules a blocs horaris per part dels Administradors.
+  \item Visualització dels horaris de les aules per part dels Coordinadors.
+  \item Control del solapament d'aules durant el procés de modificació dels horaris dels estudis per part dels Coordinadors.
+  \item Donar d'alta de Professors i assignar-los a blocs horaris per part dels Responsables de docència.
+  \item Visualització dels horaris dels Professors per part d'ells mateixos, dels Coordinadors, dels Directors de departament i dels Responsables de docència.
+  \item Control del solapament de Professors durant el procés de modificació dels horaris dels estudis per part dels Coordinadors.
+  \item Visualització dels horaris dels estudis per part dels Directors de departament i dels Professors.
+  \item Visualització dels horaris de les assignatures per part dels Professors.
+\end{itemize}
+
+\section{Ampliacions i millores addicionals}
+\label{sec:ampliacions}
+
+En aquesta secció, es contemplaran possibles ampliacions i millores que poden efectuar-se al projecte.
+
+\begin{itemize}
+  \item Llançament de l'aplicació a producció.
+  \item Recuperació de la informació dels plans docents directament des de les bases de dades de la universitat, en comptes de fer-ho a partir d'un fitxer.
+  \item Possibilitar als Professors indicar les seves preferències horaries per tal que tenir-les en compte.
+  \item Cerca d'usuaris per tal de comunicar-s'hi ja sigui, de manera interna o a través de correus electrònics. Això permetria facilitar les tasques i solucionar problemes còmodament.
+  \item Sistema d'avisos i notificacions que permetés als usuaris assabentar-se dels events importants relacionats amb ells. Algun exemple seria el sorgiment d'una incompatibilitat, l'assignació d'un professor o canvis en el pla docent, entre d'altres.
+  \item Fer les interfícies multi-idioma.
+  \item Adequar les interfícies per a tauletes i dispositius mòbils, encara que n'hi ha que ja ho estan.
+  \item Possibilitat d'alternar les interfícies entre un tema clar i un tema fosc.
+  \item Realització de propostes d'horaris generats automàticament, tenint en compte les preferències dels Professors i evitant qualsevol tipus de solapament, entre d'altres aspectes.
+  \item Ampliació de l'aplicació per tal de fer-la més genèrica, de manera que pogués servir per a qualsevol facultat i universitat.
+  \item Reescriure el codi font en TypeScript, per tal d'aprofitar les millores que presenta sobre el llenguatge actual, JavaScript.
 \end{itemize}
 
 
@@ -3544,29 +3572,5 @@ Per últim, m'agradaria afegir que el projecte també m'ha ofert una perspectiva
 
 \bibliographystyle{ThesisStyleBreakable}
 \bibliography{biblio}
-%\printnomenclature
-
-%\appendix
-
-%\include{Appendix1}
-
-\chapter*{Manual d'usuari}
-
-\section*{Rol 1}
-
-
-
-\section*{Rol 2}
-
-
-
-\section*{Rol 3}
-
-
-
-\section*{Rol 4}
-
-
-
 
 \end{document}
