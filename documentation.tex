@@ -2900,10 +2900,13 @@ A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la
 \chapter{Implementació i proves}
 \label{cap:implementacio}
 
-\section{Configuració, variables d'entorn i \textit{logging}}
-\label{sec:configuracio_servidor}
+\section{Aplicació servidor (\textit{back-end})}
+\label{sec:imp_servidor}
 
-En aquesta secció, s'explicarà com s'ha implementat la configuració de l'aplicació servidor, com es defineixen les variables d'entorn i com és el sistema de \textit{logs}.
+\subsection{Configuració, variables d'entorn i \textit{logging}}
+\label{subsec:configuracio_servidor}
+
+En aquesta subsecció, s'explicarà com s'ha implementat la configuració de l'aplicació servidor, com es defineixen les variables d'entorn i com és el sistema de \textit{logs}.
 
 Tota aplicació d'aquest estil necessita guardar informació de configuració, com ara dades de la connexió amb la base de dades, adreces de correu electrònic o qualsevol altra informació més específica.
 
@@ -2929,11 +2932,10 @@ També s'ha utilitzat \texttt{debug}, un paquet que ha permès mostrar els missa
 
 Finalment, s'ha fet servir el paquet \texttt{winston} per crear fitxers de \textit{log} dels aspectes que s'han considerat més importants, com ara els errors i les comandes SQL enviades a la base de dades.
 
-\section{Seguretat i autenticació}
-\label{sec:seguretat}
-%Obtenció token navegador, crida dades usuari, usuari activat / desactivat o eliminat, axios interceptors
+\subsection{Seguretat i autenticació}
+\label{subsec:seguretat}
 
-En aquesta secció, es destacaran els aspectes més importants relacionats amb la implementació dels mecanismes de seguretat i els processos d'autenticació.
+En aquesta subsecció, es destacaran els aspectes més importants relacionats amb la implementació dels mecanismes de seguretat i els processos d'autenticació.
 
 A continuació s'explicarà, pas a pas, com és exactament el procés d'autenticació i se'n donaran detalls de la implementació.
 
@@ -2985,10 +2987,10 @@ En darrer lloc, cal remarcar que, com a mesura de seguretat, s'ha implementat un
 
 Inicialment, el conjunt de rutes de cada rol d'usuari es va guardar en un fitxer JavaScript a l'aplicació client. No obstant això, es va veure que fer-ho d'aquesta manera suposava una vulnerabilitat, ja que qualsevol pot veure i modificar aquests fitxers. Així doncs, es va decidir optar per una opció més segura: guardar aquesta informació al servidor i fer-li una petició d'accés cada vegada que un usuari vulgui accedir a una altra ruta. Concretament, es va habilitar la crida \texttt{GET /api/auth/access/:nom-ruta}, que fa servir el \textit{token} d'autenticació de l'usuari per obtenir-ne el rol.
 
-\section{Models de dades}
-\label{sec:models_dades}
+\subsection{Models de dades}
+\label{subsec:models_dades}
 
-En aquesta secció, es detallarà com es defineixen els models de dades que, mitjançant l'ORM \texttt{Sequelize} (veure capítol~\ref{cap:estudi}), permeten mantenir les taules de la base de dades.
+En aquesta subsecció, es detallarà com es defineixen els models de dades que, mitjançant l'ORM \texttt{Sequelize} (veure capítol~\ref{cap:estudi}), permeten mantenir les taules de la base de dades.
 
 Al principi de l'execució de l'aplicació servidor, es fa servir \texttt{Sequelize} per establir una connexió amb la base de dades i sincronitzar-hi els models de dades definits. Cadascun del models s'ha declarat en un fitxer diferent en què se n'indiquen els atributs i les relacions, entre altres paràmetres i configuracions.
 
@@ -3020,19 +3022,19 @@ En darrer lloc, el mètode ``hasMany'' indica que un estudi pertany a múltiples
   \caption{\label{img:associate} Funció que defineix les relacions del model de dades per als estudis.}
 \end{figure}
 
-\section{Enviament de correus electrònics}
-\label{sec:enviament_correus}
+\subsection{Enviament de correus electrònics}
+\label{subsec:enviament_correus}
 
-En aquesta secció, es parlarà sobre l'estat de l'enviament de correus electrònics.
+En aquesta subsecció, es parlarà sobre l'estat de l'enviament de correus electrònics.
 
 Tal com s'ha vist en altres capítols, l'aplicació servidor ha d'enviar correus electrònics tant per a l'activació d'usuaris com per al restabliment de contrasenyes. Després d'implementar-ho, es van provar múltiples servidors que efectuessin els enviaments, però, malauradament, no es va aconseguir fer-ho funcionar.
 
 De moment, en comptes de ser enviat, el contingut dels correus electrònics es mostra a la consola per tal d'obtenir-ne les dades necessàries per fer funcionar l'aplicació. S'ha decidit abordar el tema del servidor d'enviament un cop s'hagi de llançar l'aplicació a producció, en un possible futur.
 
-\section{Implementació de l'API}
-\label{sec:api}
+\subsection{Implementació de l'API}
+\label{subsec:api}
 
-En aquesta secció, es donaran a conèixer alguns detalls sobre el disseny i la implementació de l'API.
+En aquesta subsecció, es donaran a conèixer alguns detalls sobre el disseny i la implementació de l'API.
 
 Un dels aspectes més complicats de tractar ha estat la recuperació eficient de les dades que el client requereix en cada moment. En la majoria de rutes i vistes del client, la informació que es necessita involucra bastantes taules de la base de dades, moltes de les quals estan relacionades entre si. Això comporta haver de fer un nombre considerable de crides al servidor, cosa que penalitza notablement el rendiment. A més a més, en molts casos, només es requereix una part concreta dels atributs de les entitats. 
 
@@ -3065,18 +3067,69 @@ Degut a aquests motius, s'ha implementat un conjunt de mecanismes a l'API que pe
 
 Tots aquests mecanismes es poden combinar per tal de formar peticions complexes que milloren el rendiment de l'aplicació.
 
-En darrer lloc, cal comentar que s'ha implementat un sistema que evita que el processament d'una petició es quedi penjat davant d'errors inesperats. La solució es basa en encapsular els controladors de les peticions amb una funció que els crida dins d'un bloc \textit{try-catch} i, en cas d'error, crida la següent funció de la línia de processament de peticions. Concretament, aquesta funció escriu l'error als \textit{logs} (veure secció~\ref{sec:configuracio_servidor}) i envia una resposta 500 (\textit{internal server error}) al client. Cal remarcar que el motiu dels errors no s'envia per tal d'evitar-ne usos mal intencionats.
+En darrer lloc, cal comentar que s'ha implementat un sistema que evita que el processament d'una petició es quedi penjat davant d'errors inesperats. La solució es basa en encapsular els controladors de les peticions amb una funció que els crida dins d'un bloc \textit{try-catch} i, en cas d'error, crida la següent funció de la línia de processament de peticions. Concretament, aquesta funció escriu l'error als \textit{logs} (veure subsecció~\ref{subsec:configuracio_servidor}) i envia una resposta 500 (\textit{internal server error}) al client. Cal remarcar que el motiu dels errors no s'envia per tal d'evitar-ne usos mal intencionats.
 
-\section{Enrutament del client}
-\label{sec:enrutament_client}
+\subsection{Proves de la base de dades}
+\label{subsec:proves_bdd}
 
-En aquesta secció, s'indicaran alguns dels punts més rellevants i problemàtics pel que fa a l'enrutament de l'aplicació client.
+En aquesta subsecció, s'explicarà com s'han realitzat les proves a la base de dades i se n'aportarà algun exemple.
+
+Les proves de la base de dades han consistit, principalment, en comprovar que l'aplicació servidor hi crea les taules correctament, així com els atributs, les claus foranes, etc. L'eina utilitzada per fer-les ha estat \texttt{DataGrip} (veure capítol~\ref{cap:estudi}).
+
+Primerament, s'ha comprovat que s'hagin generat totes les taules corresponents als models de dades definits a l'aplicació servidor (veure subsecció~\ref{subsec:models_dades}). A la figura~\ref{img:taules_bdd} se'n pot veure el conjunt (noms en anglès).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.305\textwidth]{assets/proves/taules.png}
+  \caption{\label{img:taules_bdd} Taules de la base de dades generades per l'apliació servidor.}
+\end{figure}
+
+Després d'haver verificat la creació de les taules, s'ha comprovat que els atributs, les restriccions i les claus de cadascuna siguin correctes. Com a exemple, a la figura~\ref{img:atributs_taula} es pot veure el resultat de la prova realitzada a la taula d'estudis (\textit{Studies}). Les claus principals es marquen amb una clau groga, mentre que les foranes es marquen amb una blava. La resta d'atributs s'indiquen amb gris i el cercle inferior esquerre d'alguns significa que tenen una restricció ``NOT NULL'', és a dir, que mai pot ser nul.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.305\textwidth]{assets/proves/atributsTaula.png}
+  \caption{\label{img:atributs_taula} Atributs de la taula \textit{Studies}.}
+\end{figure}
+
+\subsection{Proves de l'API}
+\label{subsec:proves_api}
+
+En aquesta subsecció, s'explicarà com s'han realitzat les proves a l'API i se n'aportarà algun exemple.
+
+Aquesta tipologia de proves s'ha dut a terme per verificar el processament de peticions que efectua l'aplicació servidor. L'eina utilitzada per fer-les ha estat \texttt{Postman} (veure capítol~\ref{cap:estudi}), el qual ha permès llançar peticions HTTP contra l'API i visualitzar-ne les respostes.
+
+En primer lloc, s'ha validat el funcionament de l'autorització a les diferents crides (veure subsecció~\ref{subsec:seguretat}). Com que el mecanisme d'autorització és el mateix per a totes, amb una comprovació és suficient. A la figura~\ref{img:no_token} es pot veure com l'aplicació servidor no deixa efectuar la petició \texttt{GET /api/studies/GEINF}, ja que que requereix l'existència d'un \textit{token} al camp ``Authorization'' de la capçalera.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/proves/noToken.png}
+  \caption{\label{img:no_token} Resposta del servidor quan una petició no duu el \textit{token} per a l'autorització.}
+\end{figure}
+
+D'altra banda, a la figura~\ref{img:invalidToken} es pot veure com, si el \textit{token} és invàlid, tampoc deixa efectuar la petició anterior.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/proves/invalidToken.png}
+  \caption{\label{img:invalidToken} Resposta del servidor quan el \textit{token} per a l'autorització d'una petició és invàlid.}
+\end{figure}
+
+
+
+\section{Aplicació client (\textit{front-end})}
+\label{sec:imp_client}
+
+\subsection{Enrutament}
+\label{subsec:enrutament_client}
+
+En aquesta subsecció, s'indicaran alguns dels punts més rellevants i problemàtics pel que fa a l'enrutament de l'aplicació client.
 
 En primer lloc, s'ha implementat un mecanisme que assegura que l'usuari no pugui accedir a rutes que no existeixen ni a rutes a les quals no pot fer-ho. Aquest mecanisme consisteix en l'execució d'una funció que s'executa abans d'entrar a qualsevol ruta. A la figura~\ref{img:beforeEach} es pot veure exactament com és aquesta funció, funcionament de la qual s'explica a continuació:
 \begin{enumerate}
   \item S'assegura que les dades i l'estat d'autenticació de l'usuari estiguin sincronitzats.
   \item Si l'usuari està autenticat, es continua amb el procés. En cas contrari, es comprova que la ruta a la qual vol accedir no requereixi autenticació. Si no en requereix, se li permet l'accés, sinó se'l redirigeix a la ruta de \textit{login} (autenticació).
-  \item En aquest punt es sap que l'usuari està autenticat. Tot seguit, es comprova que la ruta existeixi i que, a més a més, l'usuari tingui permís per accedir-hi (veure secció~\ref{sec:seguretat}). Si la ruta existeix i l'usuari hi té accés, se li permet entrar-hi. En cas contrari, se'l redirigeix a la ruta per defecte del seu rol d'usuari.
+  \item En aquest punt es sap que l'usuari està autenticat. Tot seguit, es comprova que la ruta existeixi i que, a més a més, l'usuari tingui permís per accedir-hi (veure subsecció~\ref{subsec:seguretat}). Si la ruta existeix i l'usuari hi té accés, se li permet entrar-hi. En cas contrari, se'l redirigeix a la ruta per defecte del seu rol d'usuari.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -3118,10 +3171,10 @@ Tal com es pot intuir, la validació del format de la URL de la ruta ``studySche
 
 Pel que fa a les dues primeres, la solució implementada ha estat el redireccionament de l'usuari a la ruta d'elecció d'horaris (``studyScheduleChoosing''). Pel que fa a les últimes, la solució ha estat comprovar si l'usuari disposa de permisos per visualitzar els horaris de l'estudi indicat. En cas afirmatiu, l'acció es canvia a visualitzar. Si no, també se'l redirecciona a la ruta d'elecció d'horaris.
 
-\section{Solapaments de tipus de laboratori}
-\label{sec:solapaments_lab}
+\subsection{Solapaments de tipus de laboratori}
+\label{subsec:solapaments_lab}
 
-En aquesta secció, es repassaran els aspectes més importants de la implementació de la detecció dels solapaments de tipus de laboratori.
+En aquesta subsecció, es repassaran els aspectes més importants de la implementació de la detecció dels solapaments de tipus de laboratori.
 
 Els solapaments de tipus de laboratori es produeixen quan s'excedeix la quantitat d'aules d'un mateix tipus de laboratori durant una franja horaria determinada. Cal notar que, en aquesta classe de solapaments, hi afecten els horaris d'un quadrimestre concret de tots els cursos de tots els estudis.
 
@@ -3131,15 +3184,37 @@ Encara que podrien haver funcionat, aquestes solucions no permetien fer una dete
 
 Per aquest motiu, es va optar per fer una divisió dels dies en franges variables en funció de tots els blocs horaris implicats. D'aquesta manera, es pot fer una detecció exacta del nombre d'aules de cada tipus de laboratori ocupades en cada moment de l'horari.
 
-A la figura~\ref{img:franges} es pot veure un exemple
+A la figura~\ref{img:franges} es pot veure un exemple de com es faria la divisió en franges d'un dilluns a partir dels blocs horaris pertanyents a grups petits que s'imparteixen al tipus de laboratori ``INFOR'', que disposa de deu aules. Per fer les delimitacions, es tenen en compte les hores d'inici i de fi de cada bloc horari. Una franja correspon al període comprès entre dos inicis i/o fins consecutius de blocs horaris.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{assets/figs/franges.pdf}
-  \caption{\label{img:franges} .}
+  \caption{\label{img:franges} Exemple de la divisió d'un dia en franges per a calcular l'ocupació de les aules del tipus de laboratori ``INFOR''.}
 \end{figure}
 
-%Abans d'entrar en detall en el procés que els detecta, 
+Tal com s'ha indicat en altres capítols, els solapaments s'han de calcular mentre s'està modificant un horari concret. Per aquest motiu, en aquestes situacions, només cal calcular l'ocupació dels tipus de laboratori implicats. A més, també s'han de tenir en compte les setmanes en què els blocs horaris estan situats. La solució implementada es basa en les dues fases següents:
+
+\begin{itemize}
+  \item Quan es carrega la interfície de modificació d'un horari: calcular l'ocupació de les aules dels tipus de laboratori implicats, per possibilitar-ne una futura consulta ràpida. Aquesta informació es torna a calcular cada vegada que l'horari pateix una modificació.
+  \item Quan es volen consultar els solapaments dels tipus de laboratori en què s'imparteix el grup d'un bloc horari determinat: consultar-ne l'ocupació per tal de saber tant si s'estan solapant com en quines franges provocarien solapament en cas que s'hi col·loquessin.
+\end{itemize}
+
+A continuació, s'explicarà com s'han aplicat, en aquest cas, els mecanismes de l'API detallats a la subsecció~\ref{subsec:api}. En primer lloc, cal recuperar els blocs horaris dels grups de totes les assignatures implicades, és a dir, de les assignatures que tinguin assignats almenys un dels tipus de laboratori que apareixen a l'horari en qüestió. Per fer-ho, es fa servir una sola crida al servidor, gràcies al disseny i implementació de l'API.
+
+A la figura~\ref{img:cridaAssignatures} es pot veure com es realitza aquesta petició amb exactitud. Concretament, s'estan filtrant les assignatures segons quadrimestre (\textit{filterData}) i conjunt de tipus de laboratori (\textit{associations}). A més, pel que fa als atributs, només se'n recuperen el codi i el nom (\textit{fields}): els únics necessaris. A més, per a cadascuna, també se n'obtenen els grups i blocs horaris (\textit{include}). D'altra banda, conèixer-ne els estudis és essencial per poder donar informació sobre els cursos i estudis implicats en els possibles solapaments que puguin tenir lloc.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{assets/code/solapaments/cridaAssignatures.png}
+  \caption{\label{img:cridaAssignatures} Petició per recuperar la informació necessària per calcular solapaments de tipus de laboratori.}
+\end{figure}
+
+A partir d'aquest punt, es calcula l'ocupació de cada tipus de laboratori per a cada dia i setmana. D'aquesta manera, quan l'usuari necessiti veure els solapaments d'un conjunt de tiups de laboratori concret, l'aplicació només haurà de consultar les dades d'ocupació corresponents.
+
+\subsection{Proves}
+\label{subsec:proves_client}
+
+
 
 % ---------
 % proves de creació de taules, atributs, relacions..., proves a l'API (postman), proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
