@@ -3118,8 +3118,28 @@ Tal com es pot intuir, la validació del format de la URL de la ruta ``studySche
 
 Pel que fa a les dues primeres, la solució implementada ha estat el redireccionament de l'usuari a la ruta d'elecció d'horaris (``studyScheduleChoosing''). Pel que fa a les últimes, la solució ha estat comprovar si l'usuari disposa de permisos per visualitzar els horaris de l'estudi indicat. En cas afirmatiu, l'acció es canvia a visualitzar. Si no, també se'l redirecciona a la ruta d'elecció d'horaris.
 
+\section{Solapaments de tipus de laboratori}
+\label{sec:solapaments_lab}
 
-%  stores pinia, detecció solapaments lab?,
+En aquesta secció, es repassaran els aspectes més importants de la implementació de la detecció dels solapaments de tipus de laboratori.
+
+Els solapaments de tipus de laboratori es produeixen quan s'excedeix la quantitat d'aules d'un mateix tipus de laboratori durant una franja horaria determinada. Cal notar que, en aquesta classe de solapaments, hi afecten els horaris d'un quadrimestre concret de tots els cursos de tots els estudis.
+
+El primer aspecte a tenir en compte i a decidir és com fer la divisió de cada dia de l'horari en franges. Primerament, es van plantejar diverses solucions que es basaven en dividir els dies en intervals fixes, com ara de 8:00h a 8:30h, de 9:00h a 9:30h, etc.
+
+Encara que podrien haver funcionat, aquestes solucions no permetien fer una detecció del tot exacta: es podria donar el cas, per exemple, que un tipus de laboratori no estigués disponible de les 8:30h a les 8:45h, però sí de 8:45h a 9:00h. Amb una divisió de les franges en intervals de mitja hora, el període de les 8:45h a les 9:00h es consideraria no disponible, quan en realitat sí que ho està.
+
+Per aquest motiu, es va optar per fer una divisió dels dies en franges variables en funció de tots els blocs horaris implicats. D'aquesta manera, es pot fer una detecció exacta del nombre d'aules de cada tipus de laboratori ocupades en cada moment de l'horari.
+
+A la figura~\ref{img:franges} es pot veure un exemple
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{assets/figs/franges.pdf}
+  \caption{\label{img:franges} .}
+\end{figure}
+
+%Abans d'entrar en detall en el procés que els detecta, 
 
 % ---------
 % proves de creació de taules, atributs, relacions..., proves a l'API (postman), proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
