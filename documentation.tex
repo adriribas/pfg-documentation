@@ -37,6 +37,10 @@
 \hypersetup{pdfauthor=Adrià Ribas Chico}
 }
 
+\makeatletter
+     \renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
+\makeatother
+
 \begin{document}
 
 \newgeometry{margin=1in}
@@ -165,7 +169,9 @@ Informàtica, Matemàtica Aplicada i Estadística\\
 \chapter*{Agraïments}
 \label{cap:agraiments}
 
-Agraïments \ldots
+Per començar, vull reconèixer a la Marta Fort i a l'Antonio Rodríguez tots els consells, ajudes i, sobretot, el temps que han invertit.
+
+A més, vull donar les gràcies a la meva família pel suport incondicional i, en especial, a l'Alba per formar part d'aquest projecte.
 
 
 \tableofcontents
@@ -451,6 +457,8 @@ El rectorat reparteix els crèdits a les facultats seguint uns criteris que tene
 A partir d'aquest punt, els coordinadors de cada estudi n'elaboren els horaris i l'administrador hi assigna les aules corresponents i comprova la concordança entre el nombre de grups previstos i el nombre de grups que hi apareixen. A més a més, comprova les incompatibilitats horàries que s'hagin pogut produir a causa de l'excés d'ocupació de determinats tipus de laboratori. Un cop s'obtenen uns horaris viables, l'administrador els introdueix a la base de dades del pla docent de la UdG. En aquest moment, els horaris es fan visibles i consultables pel professorat i, en particular, pels responsables de docència. Aquestes persones s'encarreguen d'assignar docència als professors i d'intentar evitar que es produeixin incompatibilitats horàries. És molt comú que, durant aquest procés, es detectin col·lisions entre assignatures que ha d'impartir un mateix professor, fet que implica haver de refer els horaris.
 
 Fins el maig de 2022, aquest procés s'ha fet de manera manual, ja que no hi ha hagut cap eina de suport pel que fa a aquestes tasques. Cada persona dissenyava estratègies pròpies que l'ajudaven a realitzar les seves funcions: des de simples fulls de paper, fins a documents d'Excel o plantilles de PowerPoint. La més sofisticada eren les plantilles de PowerPoint (veure figura~\ref{img:plantilla_power}), ja que s'hi dibuixaven les graelles dels horaris, quadres de text per representar blocs horaris, etc. El programa permetia pintar els blocs amb colors per tal de distingir-ne el tipus de grup, saber si era compartit, si tenia restriccions, etc. Encara que era una eina fàcil de fer servir i proporcionava ajuda visual, tenia una gran limitació: no hi havia cap manera fàcil i ràpida de comprovar l'ocupació dels laboratoris, els horaris dels professors, la concordança entre grups compartits, etc.
+
+\newpage
 
 \begin{figure}[H]
   \centering
@@ -906,6 +914,8 @@ Cada paquet de treball contindrà la informació següent:
 \end{itemize}
 
 És molt important destacar que la planificació s'ha fet tenint en compte el 100\% del projecte, sense les acotacions marcades al capítol~\ref{cap:intro}. Gràcies a això, es pot observar que sense aquestes acotacions la data de finalització estimada del projecte se'n va massa enllà (veure secció~\ref{sec:temporalitzacio}).
+
+\newpage
 
 \subsection{Visió general}
 \label{subsec:visio_general}
@@ -2758,6 +2768,9 @@ Cal destacar que l'aparença final de l'aplicació no ha de ser necessàriament 
 En aquesta subsecció, es presentarà el disseny de les finestres més importants relacionades amb la part de l'autenticació.
 
 A la figura~\ref{img:login} es pot veure el disseny de la finestra en la qual un usuari pot autenticar-se o bé indicar que ha oblidat la seva contrasenya.
+
+\newpage
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/interfaces/auth/login.pdf}
@@ -3010,9 +3023,11 @@ L'opció ``paranoid'' del bloc de configuracions addicionals indica que l'elimin
 
 A més, també es pot veure com s'obtenen els noms dels estudis, els quals no apareixen als fitxers dels plans docents (veure capítol~\ref{cap:marcdetreball}). \texttt{Sequelize} permet definir atributs de tipus ``VIRTUAL'' que, en comptes d'emmagatzemar-se a la base de dades, es calculen mitjançant el respectiu mètode ``get''. En aquest cas, els noms dels estudis estan mapejats amb l'abreviació corresponent en un fitxer JSON allotjat al servidor. Sens dubte, no és la millor solució; l'opció òptima seria obtenir totes aquestes dades de les bases de dades de la universitat (veure capítol~\ref{cap:treball_futur}).
 
+
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{assets/code/modelsDades/modelEstudipng.png}
+  \includegraphics[width=0.89\textwidth]{assets/code/modelsDades/modelEstudipng.png}
   \caption{\label{img:modelEstudi} Fragment de la definició del model de dades per als estudis.}
 \end{figure}
 
@@ -3100,6 +3115,8 @@ Després d'haver verificat la creació de les taules, s'ha comprovat que els atr
   \caption{\label{img:atributs_taula} Atributs de la taula \textit{Studies}.}
 \end{figure}
 
+\newpage
+
 \subsection{Proves de l'API}
 \label{subsec:proves_api}
 
@@ -3116,6 +3133,8 @@ En primer lloc, s'ha validat el funcionament de l'autorització a les diferents 
 \end{figure}
 
 D'altra banda, a la figura~\ref{img:invalidToken} es pot veure com, si el \textit{token} és invàlid, tampoc deixa efectuar la petició anterior.
+
+\newpage
 
 \begin{figure}[H]
   \centering
@@ -3147,11 +3166,15 @@ En darrer lloc, es mostrarà el resultat d'una de les proves que comproven el fu
 
 La resposta que retorna l'aplicació servidor davant de la petició anterior es pot veure a la figura~\ref{img:respostaSubjects}. Degut a la grandària de la resposta, només se'n mostra un fragment que conté una part de les dades d'una de les assignatures retornades. Es pot comprovar que només en retorna els atributs sol·licitats i que inclou els estudis i els grups tal com s'havia demanat. Pel que fa al filtratge, encara que no es pugui observar a la figura, només ha retornat les assignatures que compleixen els filtres indicats.
 
+\newpage
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{assets/proves/respostaSubjects.png}
+  \includegraphics[width=0.85\textwidth]{assets/proves/respostaSubjects.png}
   \caption{\label{img:respostaSubjects} Fragment de la resposta de l'aplicació servidor davant d'una petició de filtratge d'assignatures.}
 \end{figure}
+
+\newpage
 
 \section{Aplicació client}
 \label{sec:imp_client}
@@ -3174,6 +3197,8 @@ En primer lloc, s'ha implementat un mecanisme que assegura que l'usuari no pugui
   \caption{\label{img:beforeEach} Funció que s'executa abans d'entrar a qualsevol ruta.}
 \end{figure}
 
+\newpage
+
 D'altra banda, la ruta més complexa d'implementar ha estat la de veure o modificar horaris d'estudis. S'ha volgut fer que tots els horaris siguin accessibles directament des d'una URL, per si en un futur cal fer-hi redireccions, per si un usuari se'n vol guardar un als marcadors del navegador, etc. Més concretament, la ruta adopta la forma següent:
 \begin{itemize}
   \item \texttt{/horaris-graus:} s'hi mostra la interfície que permet escollir l'horari a visualitzar o a modificar.
@@ -3190,6 +3215,8 @@ A la figura~\ref{img:rutaHoraris} es pot veure un fragment de la definició d'aq
     \texttt{/horaris-graus/GEINF/3/1?action=edit}
   \end{center}
 \end{itemize}
+
+\newpage
 
 \begin{figure}[H]
   \centering
@@ -3222,6 +3249,8 @@ Per aquest motiu, es va optar per fer una divisió dels dies en franges variable
 
 A la figura~\ref{img:franges} es pot veure un exemple de com es faria la divisió en franges d'un dilluns a partir dels blocs horaris pertanyents a grups petits que s'imparteixen al tipus de laboratori ``INFOR'', que disposa de deu aules. Per fer les delimitacions, es tenen en compte les hores d'inici i de fi de cada bloc horari. Una franja correspon al període comprès entre dos inicis i/o fins consecutius de blocs horaris.
 
+\newpage
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{assets/figs/franges.pdf}
@@ -3235,6 +3264,8 @@ Tal com s'ha indicat en altres capítols, els solapaments s'han de calcular ment
   \item Quan es volen consultar els solapaments dels tipus de laboratori en què s'imparteix el grup d'un bloc horari determinat: consultar-ne l'ocupació per tal de saber tant si s'estan solapant com en quines franges provocarien solapament en cas que s'hi col·loquessin.
 \end{itemize}
 
+\newpage
+
 A continuació, s'explicarà com s'han aplicat, en aquest cas, els mecanismes de l'API detallats a la secció~\ref{sec:imp_servidor}. En primer lloc, cal recuperar els blocs horaris dels grups de totes les assignatures implicades, és a dir, de les assignatures que tinguin assignats almenys un dels tipus de laboratori que apareixen a l'horari en qüestió. Per fer-ho, es fa servir una sola crida al servidor, gràcies al disseny i implementació de l'API.
 
 A la figura~\ref{img:cridaAssignatures} es pot veure com es realitza aquesta petició amb exactitud. Concretament, s'estan filtrant les assignatures segons quadrimestre (\textit{filterData}) i conjunt de tipus de laboratori (\textit{associations}). A més, pel que fa als atributs, només se'n recuperen el codi i el nom (\textit{fields}): els únics necessaris. A més, per a cadascuna, també se n'obtenen els grups i blocs horaris (\textit{include}). D'altra banda, conèixer-ne els estudis és essencial per poder donar informació sobre els cursos i estudis implicats en els possibles solapaments que puguin tenir lloc.
@@ -3247,6 +3278,8 @@ A la figura~\ref{img:cridaAssignatures} es pot veure com es realitza aquesta pet
 
 A partir d'aquest punt, es calcula l'ocupació de cada tipus de laboratori per a cada dia i setmana. D'aquesta manera, quan l'usuari necessiti veure els solapaments d'un conjunt de tiups de laboratori concret, l'aplicació només haurà de consultar les dades d'ocupació corresponents.
 
+\newpage
+
 \subsection{Usabilitat i estètica}
 \label{subsec:usabilitat_estetica}
 
@@ -3256,13 +3289,17 @@ Una de les parts més rellevants i complexes en quant a estètica i llegibilitat
 
 Per a cada dia, primerament, es divideixen els blocs horaris en ``columnes'' que formen ``grups'': cada columna conté blocs horaris que no col·lisionen entre ells, mentre que cada grup conté un conjunt de columnes que col·lisionen entre elles. D'aquesta manera, es poden posicionar els blocs horaris grup per grup amb la certesa que no col·lisionen. A la figura~\ref{img:layout} es pot veure la implementació d'aquest alogritme. Per tal que la figura no quedi massa llarga, s'ha plegat la part d'ordenació, que simplement ordena els blocs horaris en funció de les hores d'inici i de fi (de més aviat a més tard).
 
+Dins de cada grup, la posició horitzontal relativa dels blocs horaris de les columnes és l'índex de la columna a què pertanyen respecte el total de columnes del grup. D'altra banda, per calcular-ne l'amplada cal veure, a partir de l'índex de la seva columna, quantes columnes d'aquell grup hi ha (a la dreta) amb què no col·lisiona amb cap dels blocs. Gràcies a aquest nombre i al nombre de columnes del grup en qüestió, es pot calcular l'amplada relativa dels blocs horaris.
+
+\newpage
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{assets/code/usabilitat/layout.png}
   \caption{\label{img:layout} Algoritme que divideix els blocs horaris d'un dia concret en grups i columnes.}
 \end{figure}
 
-Dins de cada grup, la posició horitzontal relativa dels blocs horaris de les columnes és l'índex de la columna a què pertanyen respecte el total de columnes del grup. D'altra banda, per calcular-ne l'amplada cal veure, a partir de l'índex de la seva columna, quantes columnes d'aquell grup hi ha (a la dreta) amb què no col·lisiona amb cap dels blocs. Gràcies a aquest nombre i al nombre de columnes del grup en qüestió, es pot calcular l'amplada relativa dels blocs horaris. A la figura~\ref{img:colspan} es pot veure com es calcula el nombre de columnes màxim que pot ocupar horitzontalment un bloc.
+A la figura~\ref{img:colspan} es pot veure com es calcula el nombre de columnes màxim que pot ocupar horitzontalment un bloc.
 
 \begin{figure}[H]
   \centering
@@ -3292,6 +3329,8 @@ En quant als colors de les interfícies d'horaris, s'ha escollit un color distin
 
 Un altre aspecte a destacar és que s'ha habilitat una manera per saber, directament sobre el calendari, l'hora d'inici, de fi i duració exactes de cada bloc horari. Es tracta d'una targeta que es desplega quan el ratolí es situa sobre d'un bloc concret. A la figura~\ref{img:hourTooltip} se'n pot veure un exemple.
 
+\newpage
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{assets/code/usabilitat/hourTooltip.png}
@@ -3306,13 +3345,14 @@ Addicionalment, cal afegir que, després de contemplar diverses opcions per marc
   \caption{\label{img:impl_solapament} Blocs horaris marcats com a solapats.}
 \end{figure}
 
+\newpage
+
 En darrer lloc, cal remarcar que s'han tingut en compte diferents mides de pantalla a l'hora d'implementar les interfícies: per tal d'adaptar-se a la pantalla, es modifiquen textos, canvia la disposició i mida de certs elements, etc.
 
 Hi ha bastants més factors i mecanismes implementats que contribueixen a l'usabilitat i estètica de les interfícies de l'aplicació client. No obstant això, en aquesta subsecció s'han esmentat només les que s'han cregut més rellevants.
 
 \subsection{Proves}
 \label{subsec:proves_client}
-% proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
 
 En aquesta subsecció, s'explicarà com s'han realitzat algunes de les proves a l'aplicació client i se n'aportaran exemples.
 
@@ -3323,6 +3363,8 @@ Pel que fa a la gestió d'usuaris, s'ha verificat que no aparegui un usuari ja a
   \includegraphics[width=\textwidth]{assets/proves/assignUser.png}
   \caption{\label{img:assignUser} Contingut del desplegable d'usuaris quan ja n'hi ha algun d'assignat.}
 \end{figure}
+
+\newpage
 
 D'altra banda, també s'ha comprovat el funcionament dels algoritmes de col·locació de blocs horaris en situacions complexes (veure subsecció~\ref{subsec:usabilitat_estetica}). A la figura~\ref{img:proves_layout} es pot veure un exemple de com es distribueixen els blocs horaris en una situació relativament complexa: no es tapen entre ells i la seva amplada és la màxima possible. A més, també s'hi pot apreciar que l'abreviació dels textos en funció de l'àrea funciona correctament.
 
@@ -3335,6 +3377,8 @@ D'altra banda, també s'ha comprovat el funcionament dels algoritmes de col·loc
 Una altra prova que s'ha considerat rellevant de comentar ha estat la del funcionament de les vistes setmanals. A les següents figures, es pot veure el mateix fragment d'un horari vist, respectivament, des de la vista general (veure figura~\ref{img:setGeneral}), la vista de setmanes A (veure figura~\ref{img:setA}) i la vista de setmanes B (veure figura~\ref{img:setB}). A la general s'hi havien de mostrar tots els blocs, mentre que a la de setmanes A només s'hi havien de mostrar els blocs assignats a aquest tipus de setmana o a tots dos alhora. El mateix per a la vista de les B.
 
 Les proves realitzades per verificar el funcionament dels diferents filtres de blocs horaris s'han realitzat de la mateixa manera i han resultat exitoses.
+
+\newpage
 
 \begin{figure}[H]
   \centering
@@ -3989,22 +4033,22 @@ Finalment, m'agradaria afegir que el projecte també m'ha ofert una perspectiva 
 \chapter{Treball futur}
 \label{cap:treball_futur}
 
-En aquest capítol, es presentaran les idees de treball futur pensades pel projecte. Més concretament, se'n detallaran de bàsiques o essencials (veure secció~\ref{sec:ampliacions_basiques}) i d'addicionals (veure secció~\ref{sec:ampliacions_addicionals}).
+En aquest capítol, es presentaran les idees de treball futur pensades pel projecte. Més concretament, se'n detallaran de bàsiques o essencials (veure secció~\ref{sec:ampliacions_basiques}) i d'addicionals (veure secció~\ref{sec:ampliacions_addicionals}). En els dos casos, els punts s'ordenen de més prioritaris a menys prioritaris.
 
 \section{Ampliacions i millores bàsiques}
 \label{sec:ampliacions_basiques}
 
-En aquesta secció, es recolliran els punts del projecte que es van plantejar inicialment però que, degut al temps que comportaria, no ha estat possible desenvolupar-los completament, sinó les bases.
+En aquesta secció, es recolliran els aspectes bàsics que calen ampliar per tal de poder dur a terme una gestió d'horaris completa.
 
 \begin{itemize}
-  \item Assignació d'aules a blocs horaris per part dels Administradors.
-  \item Visualització dels horaris de les aules per part dels Coordinadors.
-  \item Control del solapament d'aules durant el procés de modificació dels horaris dels estudis per part dels Coordinadors.
   \item Donar d'alta de Professors i assignar-los a blocs horaris per part dels Responsables de docència.
   \item Visualització dels horaris dels Professors per part d'ells mateixos, dels Coordinadors, dels Directors de departament i dels Responsables de docència.
   \item Control del solapament de Professors durant el procés de modificació dels horaris dels estudis per part dels Coordinadors.
   \item Visualització dels horaris dels estudis per part dels Directors de departament i dels Professors.
   \item Visualització dels horaris de les assignatures per part dels Professors.
+  \item Assignació d'aules a blocs horaris per part dels Administradors, amb control de solapaments.
+  \item Visualització dels horaris de les aules per part dels Coordinadors.
+  \item Control del solapament d'aules durant el procés de modificació dels horaris dels estudis per part dels Coordinadors.
 \end{itemize}
 
 \section{Ampliacions i millores addicionals}
@@ -4014,14 +4058,14 @@ En aquesta secció, es contemplaran possibles ampliacions i millores addicionals
 
 \begin{itemize}
   \item Llançament de l'aplicació a producció.
-  \item Recuperació de la informació dels plans docents directament des de les bases de dades de la universitat, en comptes de fer-ho a partir d'un fitxer.
-  \item Possibilitar als Professors indicar les seves preferències horàries per tal que tenir-les en compte.
-  \item Cerca d'usuaris per tal de comunicar-s'hi, ja sigui de manera interna o a través de correus electrònics. Això permetria facilitar les tasques i solucionar problemes còmodament.
   \item Sistema d'avisos i notificacions que permetés als usuaris assabentar-se dels esdeveniments importants relacionats amb ells. Algun exemple seria el sorgiment d'una incompatibilitat, l'assignació d'un professor o canvis en el pla docent, entre altres.
-  \item Fer les interfícies multiidioma.
-  \item Adequar les interfícies per a tauletes i dispositius mòbils, encara que n'hi ha que ja ho estan.
-  \item Possibilitat d'alternar les interfícies entre un tema clar i un tema fosc.
+  \item Cerca d'usuaris per tal de comunicar-s'hi, ja sigui de manera interna o a través de correus electrònics. Això permetria facilitar les tasques i solucionar problemes còmodament.
+  \item Possibilitar als Professors indicar les seves preferències horàries per tal que tenir-les en compte.
+  \item Recuperació de la informació dels plans docents directament de les bases de dades de la universitat, en comptes de fer-ho a partir d'un fitxer.
   \item Realització de propostes d'horaris generats automàticament, tenint en compte les preferències dels Professors i evitant qualsevol tipus de solapament, entre altres aspectes.
+  \item Adequar les interfícies per a tauletes i dispositius mòbils, encara que n'hi ha que ja ho estan.
+  \item Fer les interfícies multiidioma.
+  \item Possibilitat d'alternar les interfícies entre un tema clar i un tema fosc.
   \item Ampliació de l'aplicació per tal de fer-la més genèrica, de manera que pogués servir per a qualsevol facultat i universitat.
   \item Reescriure el codi font en TypeScript, per tal d'aprofitar les millores que presenta sobre el llenguatge actual, JavaScript.
 \end{itemize}
