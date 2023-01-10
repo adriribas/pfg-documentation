@@ -2900,7 +2900,7 @@ A la figura~\ref{img:horaris_modif} es pot veure el disseny de la finestra en la
 \chapter{Implementació i proves}
 \label{cap:implementacio}
 
-\section{Aplicació servidor (\textit{back-end})}
+\section{Aplicació servidor}
 \label{sec:imp_servidor}
 
 \subsection{Configuració, variables d'entorn i \textit{logging}}
@@ -3038,7 +3038,7 @@ En aquesta subsecció, es donaran a conèixer alguns detalls sobre el disseny i 
 
 Un dels aspectes més complicats de tractar ha estat la recuperació eficient de les dades que el client requereix en cada moment. En la majoria de rutes i vistes del client, la informació que es necessita involucra bastantes taules de la base de dades, moltes de les quals estan relacionades entre si. Això comporta haver de fer un nombre considerable de crides al servidor, cosa que penalitza notablement el rendiment. A més a més, en molts casos, només es requereix una part concreta dels atributs de les entitats. 
 
-Degut a aquests motius, s'ha implementat un conjunt de mecanismes a l'API que permeten fer peticions més potents i eficients. Al conjunt de crides corresponent de cada taula, s'hi ha afegit \texttt{POST /api/<nom-taula>/filter}, la qual conté les parts següents:
+Degut a aquests motius, s'ha implementat un conjunt de mecanismes a l'API que permeten fer peticions més potents i eficients. Al conjunt de crides corresponent de cada taula, s'hi ha afegit \texttt{POST /api/<nom-entitat>/filter}, la qual conté les parts següents:
 \begin{itemize}
   \item \textbf{Paràmetres de la URL}
   \begin{itemize}
@@ -3115,9 +3115,37 @@ D'altra banda, a la figura~\ref{img:invalidToken} es pot veure com, si el \texti
   \caption{\label{img:invalidToken} Resposta del servidor quan el \textit{token} per a l'autorització d'una petició és invàlid.}
 \end{figure}
 
+També cal afegir que s'han realitzat proves per validar que els usuaris no puguin crear-ne ni esborrar-ne d'altres sense disposar dels permisos corresponents. Per exemple, un usuari que no sigui Administrador no pot crear ni esborrar usuaris Coordinadors. A la figura~\ref{img:noPermissions} es pot veure una prova en què un Director de departament intenta eliminar un Administrador.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/proves/noPermissions.png}
+  \caption{\label{img:noPermissions} Resposta del servidor quan un usuari intenta esborrar-ne un altre i no té els permisos suficients.}
+\end{figure}
 
-\section{Aplicació client (\textit{front-end})}
+En darrer lloc, es mostrarà el resultat d'una de les proves que comproven el funcionament de les crides de filtratge descrites a la subsecció~\ref{subsec:api}. A la figura~\ref{img:peticioSubjects} es pot veure l'exemple d'una petició de filtratge d'assignatures. Concretament, li indica al servidor el següent:
+\begin{itemize}
+  \item \texttt{fields:} només recupera els atributs ``code'' (codi) i ``name'' (nom) de les assignatures.
+  \item \texttt{include:} inclou també, per a cada assignatura, els ``Study'' (estudis) i els ``Group'' (grups) amb què està relacionada. Per facilitar certes funcionalitats, en aquest cas, incloure els grups també implica incloure'n els blocs horaris i els estudis amb què estan relacionats.
+  \item \texttt{data:} recupera només les assignatures l'atribut ``semester'' (quadrimestre) de les quals sigui ``1''.
+  \item \texttt{associations:} recupera només les assignatures que estiguin relacionades amb almenys un dels ``labType'' (tipus de laboratori) anomenats ``INFOR'' o ``LINUX''.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/proves/peticioSubjects.png}
+  \caption{\label{img:peticioSubjects} Exemple d'una petició de filtratge d'assignatures.}
+\end{figure}
+
+La resposta que retorna l'aplicació servidor davant de la petició anterior es pot veure a la figura~\ref{img:respostaSubjects}. Degut a la grandària de la resposta, només se'n mostra un fragment que conté una part de les dades d'una de les assignatures retornades. Es pot comprovar que només en retorna els atributs sol·licitats i que inclou els estudis i els grups tal com s'havia demanat. Pel que fa al filtratge, encara que no es pugui observar a la figura, només ha retornat les assignatures que compleixen els filtres indicats.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{assets/proves/respostaSubjects.png}
+  \caption{\label{img:respostaSubjects} Fragment de la resposta de l'aplicació servidor davant d'una petició de filtratge d'assignatures.}
+\end{figure}
+
+\section{Aplicació client}
 \label{sec:imp_client}
 
 \subsection{Enrutament}
@@ -3199,7 +3227,7 @@ Tal com s'ha indicat en altres capítols, els solapaments s'han de calcular ment
   \item Quan es volen consultar els solapaments dels tipus de laboratori en què s'imparteix el grup d'un bloc horari determinat: consultar-ne l'ocupació per tal de saber tant si s'estan solapant com en quines franges provocarien solapament en cas que s'hi col·loquessin.
 \end{itemize}
 
-A continuació, s'explicarà com s'han aplicat, en aquest cas, els mecanismes de l'API detallats a la subsecció~\ref{subsec:api}. En primer lloc, cal recuperar els blocs horaris dels grups de totes les assignatures implicades, és a dir, de les assignatures que tinguin assignats almenys un dels tipus de laboratori que apareixen a l'horari en qüestió. Per fer-ho, es fa servir una sola crida al servidor, gràcies al disseny i implementació de l'API.
+A continuació, s'explicarà com s'han aplicat, en aquest cas, els mecanismes de l'API detallats a la secció~\ref{sec:imp_servidor}. En primer lloc, cal recuperar els blocs horaris dels grups de totes les assignatures implicades, és a dir, de les assignatures que tinguin assignats almenys un dels tipus de laboratori que apareixen a l'horari en qüestió. Per fer-ho, es fa servir una sola crida al servidor, gràcies al disseny i implementació de l'API.
 
 A la figura~\ref{img:cridaAssignatures} es pot veure com es realitza aquesta petició amb exactitud. Concretament, s'estan filtrant les assignatures segons quadrimestre (\textit{filterData}) i conjunt de tipus de laboratori (\textit{associations}). A més, pel que fa als atributs, només se'n recuperen el codi i el nom (\textit{fields}): els únics necessaris. A més, per a cadascuna, també se n'obtenen els grups i blocs horaris (\textit{include}). D'altra banda, conèixer-ne els estudis és essencial per poder donar informació sobre els cursos i estudis implicats en els possibles solapaments que puguin tenir lloc.
 
@@ -3211,13 +3239,120 @@ A la figura~\ref{img:cridaAssignatures} es pot veure com es realitza aquesta pet
 
 A partir d'aquest punt, es calcula l'ocupació de cada tipus de laboratori per a cada dia i setmana. D'aquesta manera, quan l'usuari necessiti veure els solapaments d'un conjunt de tiups de laboratori concret, l'aplicació només haurà de consultar les dades d'ocupació corresponents.
 
+\subsection{Usabilitat i estètica}
+\label{subsec:usabilitat_estetica}
+
+En aquesta subsecció, es donaran a conèixer alguns dels aspects més importants pel que fa a la usabilitat i a l'estètica de la part de les interfícies d'horaris.
+
+Una de les parts més rellevants i complexes en quant a estètica i llegibilitat ha estat la distribució i la mida dels blocs horaris. S'han implementat algoritmes que, per a cada dia, calculen tant la posició horitzontal com l'amplada dels blocs horaris, en funció de les col·lisions que es puguin produir amb la resta.
+
+Per a cada dia, primerament, es divideixen els blocs horaris en ``columnes'' que formen ``grups'': cada columna conté blocs horaris que no col·lisionen entre ells, mentre que cada grup conté un conjunt de columnes que col·lisionen entre elles. D'aquesta manera, es poden posicionar els blocs horaris grup per grup amb la certesa que no col·lisionen. A la figura~\ref{img:layout} es pot veure la implementació d'aquest alogritme. Per tal que la figura no quedi massa llarga, s'ha plegat la part d'ordenació, que simplement ordena els blocs horaris en funció de les hores d'inici i de fi (de més aviat a més tard).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/code/usabilitat/layout.png}
+  \caption{\label{img:layout} Algoritme que divideix els blocs horaris d'un dia concret en grups i columnes.}
+\end{figure}
+
+Dins de cada grup, la posició horitzontal relativa dels blocs horaris de les columnes és l'índex de la columna a què pertanyen respecte el total de columnes del grup. D'altra banda, per calcular-ne l'amplada cal veure, a partir de l'índex de la seva columna, quantes columnes d'aquell grup hi ha (a la dreta) amb què no col·lisiona amb cap dels blocs. Gràcies a aquest nombre i al nombre de columnes del grup en qüestió, es pot calcular l'amplada relativa dels blocs horaris. A la figura~\ref{img:colspan} es pot veure com es calcula el nombre de columnes màxim que pot ocupar horitzontalment un bloc.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{assets/code/usabilitat/colSpan.png}
+  \caption{\label{img:colspan} Algoritme que calcula el nombre de columnes que pot ocupar horitzontalment un bloc horari.}
+\end{figure}
+
+També és important destacar que, per tal de millorar considerablement la fluïdesa tant de l'arrosegament, com de l'allargament i l'escurçament dels blocs horaris, s'ha fet el següent: quan es deixa anar un bloc horari després d'haver-lo arrossegat, en primer lloc, s'executen els algoritmes de col·locació per tal d'efectuar ràpidament el canvi visual. Un cop s'ha col·locat, es fa la crida corresponent a l'API i s'espera la resposta. Si ha anat bé, ja no cal fer res més (a part de notificar-ho a l'usuari). En canvi, si ha anat malament, es desfà el canvi visual i se'n notifica a l'usuari. Gràcies a això, com que en la gran majoria de casos no es produeixen errors, és molt millor, en termes de fluïdesa, efectuar el canvi visual sense esperar la resposta del servidor.
+
+A més a més, pel que fa al text que es mostra als blocs horaris, quan l'àrea és relativament petita, a partir d'un cert punt se n'abrevien els textos per tal que no sobresurtin. L'algoritme d'abreviació té en compte els textos d'una sola paraula (``Estadística'' $\rightarrow$ ``Est'') i els números que hi puguin aparèixer (``Metodologia i Tecnologia de la Programació II'' $\rightarrow$ ``MTP2'').
+
+D'altra banda, es prohibeix tant l'arrossegament com l'allargament d'un bloc horari fora dels límits permesos. A més a més, el canvi manual de l'hora d'inici, de fi i la duració és assistit:
+\begin{itemize}
+  \item Quan es modifica l'hora d'inici, es modifica, consegüentment, l'hora de fi. No es deixa introduir una hora d'inici que, sumada amb la duració, faci que l'hora de fi surti dels límits establerts.
+  \item Quan es modifica l'hora de fi, es modifica, consegüentment, l'hora d'inici. No es deixa introduir una hora de fi que, si se li resta la duració, faci que l'hora d'inici surti dels límits establerts.
+  \item Quan es modifica la duració, es modifica, consegüentment, l'hora de fi. Si amb aquesta duració, l'hora de fi es surt del límit, en comptes de permetre-ho, es fixa al límit i es modifica l'hora d'inici de manera corresponent.
+  \item Si l'usuari, pel motiu que sigui, aconsegueix introduir valors invàlids, l'aplicació no li deixa guardar les modificacions.
+\end{itemize}
+
+En quant als colors de les interfícies d'horaris, s'ha escollit un color distintiu per a cada tipus de grup. A partir d'aquests colors, s'ha implementat un mecanisme que permet que l'estètica de qualsevol element relacionat amb un tipus de grup concret segueixi la mateixa línia de colors. A la figura\ref{img:getColor} es pot veure com és la funció que rep un tipus de grup com a paràmetre i retorna una funció que en retorna el color específic d'un element en concret. Els noms d'aquests elements es defineixen al fitxer de constants (per exemple ``botóGuardar'', ``fonsBloc'', ``fonsSetmana'', etc.).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/code/usabilitat/getColor.png}
+  \caption{\label{img:getColor} Funció que retorna la funció que permet obtenir el color d'un element concret segons un tipus de grup.}
+\end{figure}
+
+Un altre aspecte a destacar és que s'ha habilitat una manera per saber, directament sobre el calendari, l'hora d'inici, de fi i duració exactes de cada bloc horari. Es tracta d'una targeta que es desplega quan el ratolí es situa sobre d'un bloc concret. A la figura~\ref{img:hourTooltip} se'n pot veure un exemple.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{assets/code/usabilitat/hourTooltip.png}
+  \caption{\label{img:hourTooltip} Targeta que indica l'hora d'inici, de fi i duració exactes d'un bloc horari.}
+\end{figure}
+
+Addicionalment, cal afegir que, després de contemplar diverses opcions per marcar els solapaments, s'ha optat per la que s'ha cregut més distingible i més atractiva estèticament: un quadre vermell pels blocs horaris solapats i una franja gris pels possibles solapaments que es marquen quan s'arrossega un bloc. A la figura~\ref{img:impl_solapament} se'n pot veure un exemple.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{assets/code/usabilitat/solapament.png}
+  \caption{\label{img:impl_solapament} Blocs horaris marcats com a solapats.}
+\end{figure}
+
+En darrer lloc, cal remarcar que s'han tingut en compte diferents mides de pantalla a l'hora d'implementar les interfícies: per tal d'adaptar-se a la pantalla, es modifiquen textos, canvia la disposició i mida de certs elements, etc.
+
+Hi ha bastants més factors i mecanismes implementats que contribueixen a l'usabilitat i estètica de les interfícies de l'apliació client. No obstant això, en aquesta subsecció s'han esmentat només les que s'han cregut més rellevants.
+
 \subsection{Proves}
 \label{subsec:proves_client}
+% proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
 
+En aquesta subsecció, s'explicarà com s'han realitzat algunes de les proves a l'aplicació client i se n'aportaran exemples.
 
+Pel que fa a la gestió d'usuaris, s'ha verificat que no aparegui un usuari ja assignat com a possible opció d'una altra assignació. Com a exemple, a la figura~\ref{img:assignUser} es pot veure com, efectivament, l'usuari ``Marta Fort'' no apareix com a opció als desplegables d'assignació de Coordinadors a estudis, ja que ja està assignat.
 
-% ---------
-% proves de creació de taules, atributs, relacions..., proves a l'API (postman), proves pla docent, proves assignació usuari, proves vistes setmanals horari (i intentar entrar a un que no pot), modificació d'horaris (moure,resize,assignar a estudis, solapaments, filtratge)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/proves/assignUser.png}
+  \caption{\label{img:assignUser} Contingut del desplegable d'usuaris quan ja n'hi ha algun d'assignat.}
+\end{figure}
+
+D'altra banda, també s'ha comprovat el funcionament dels algoritmes de col·locació de blocs horaris en situacions complexes (veure subsecció~\ref{subsec:usabilitat_estetica}). A la figura~\ref{img:proves_layout} es pot veure un exemple de com es distribueixen els blocs horaris en una situació relativament complexa: no es tapen entre ells i la seva amplada és la màxima possible. A més, també s'hi pot apreciar que l'abreviació dels textos en funció de l'àrea funciona correctament.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{assets/proves/layout.png}
+  \caption{\label{img:proves_layout} Distribució de blocs horaris al calendari en una situació complexa.}
+\end{figure}
+
+Una altra prova que s'ha considerat rellevant de comentar ha estat la del funcionament de les vistes setmanals. A les següents figures, es pot veure el mateix fragment d'un horari vist, respectivament, des de la vista general (veure figura~\ref{img:setGeneral}), la vista de setmanes A (veure figura~\ref{img:setA}) i la vista de setmanes B (veure figura~\ref{img:setB}). A la general s'hi havien de mostrar tots els blocs, mentre que a la de setmanes A només s'hi havien de mostrar els blocs assignats a aquest tipus de setmana o a tots dos alhora. El mateix per a la vista de les B.
+
+Les proves realitzades per verificar el funcionament dels diferents filtres de blocs horaris s'han realitzat de la mateixa manera i han resultat exitoses.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/proves/setGeneral.png}
+  \caption{\label{img:setGeneral} Fragment d'un horari vist des de la vista setmanal general.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/proves/setA.png}
+  \caption{\label{img:setA} Fragment d'un horari vist des de la vista de setmanes A.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/proves/setB.png}
+  \caption{\label{img:setB} Fragment d'un horari vist des de la vista de setmanes B.}
+\end{figure}
+
+L'última prova important que es destacarà es basa en comprovar que els solapaments de tipus de laboratori es detectin correctament. Per a la prova, s'han situat blocs horaris al primer i tercer curs de GEINF i s'han assignat uns quants grups a GEINF i uns quants grups a GDDV, ja que s'han utilitzat assignatures compartides entre aquests dos estudis. A la figura~\ref{img:solapaments} es pot veure com, efectivament, el tipus de laboratori ``INFOR'' està marcat com a solapat i a la dreta apareix la targeta indicant-ne els detalls, ja que s'hi ha situat el ratoí a sobre. En aquesta targeta s'hi mostren els cursos de cada estudi implicats en el solapament.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/proves/solapaments.png}
+  \caption{\label{img:solapaments} Detall dels solapaments d'un tipus de laboratori determinat.}
+\end{figure}
 
 
 \chapter{Implantació i resultats}
