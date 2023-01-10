@@ -441,25 +441,32 @@ En aquesta secció, es definirà la nomenclatura específica del marc de treball
   \item \texttt{Professor:} Persona encarregada d'impartir docència.
 \end{itemize}
 
-\section{¿¿¿Funcionament actual???}
+\section{Funcionament actual}
 \label{sec:funcionament_actual}
 
 En aquesta secció, es detallaran quins són i com funcionen els mètodes de gestió i elaboració d'horaris de l'EPS que s'utilitzen actualment. Es veuran quins càrrecs de l'escola hi participen i les seves funcions, així com la manera en què interactuen entre ells i intercanvien la informació corresponent.
 
-------------------------
+El rectorat reparteix els crèdits a les facultats seguint uns criteris que tenen en compte, entre d'altres aspectes, el nombre d'alumnes matriculats a cada centre i el grau d'experimentalitat dels estudis que imparteix. Cada facultat o escola decideix quin serà el seu pla docent mitjançant la programació d'aquests estudis en funció dels crèdits dels quals disposen.
 
-Idees
+A partir d'aquest punt, els coordinadors de cada estudi n'elaboren els horaris i l'administrador hi assigna les aules corresponents i comprova la concordança entre el nombre de grups previstos i el nombre de grups que hi apareixen. A més a més, comprova les incompatibilitats horàries que s'hagin pogut produir a causa de l'excés d'ocupació de determinats tipus de laboratori. Un cop s'obtenen uns horaris viables, l'administrador els introdueix a la base de dades del pla docent de la UdG. En aquest moment, els horaris es fan visibles i consultables pel professorat i, en particular, pels responsables de docència. Aquestes persones s'encarreguen d'assignar docència als professors i d'intentar evitar que es produeixin incompatibilitats horàries. És molt comú que, durant aquest procés, es detectin col·lisions entre assignatures que ha d'impartir un mateix professor, fet que implica haver de refer els horaris.
 
-Parlar del flux dels processos, etc \ldots
+Fins el maig de 2022, aquest procés s'ha fet de manera manual, ja que no hi ha hagut cap eina de suport pel que fa a aquestes tasques. Cada persona dissenyava estratègies pròpies que l'ajudaven a realitzar les seves funcions: des de simples fulls de paper, fins a documents d'Excel o plantilles de PowerPoint. La més sofisticada eren les plantilles de PowerPoint (veure figura~\ref{img:plantilla_power}), ja que s'hi dibuixaven les graelles dels horaris, quadres de text per representar blocs horaris, etc. El programa permetia pintar els blocs amb colors per tal de distingir-ne el tipus de grup, saber si era compartit, si tenia restriccions, etc. Encara que era una eina fàcil de fer servir i proporcionava ajuda visual, tenia una gran limitació: no hi havia cap manera fàcil i ràpida de comprovar l'ocupació dels laboratoris, els horaris dels professors, la concordança entre grups compartits, etc.
 
-Rectorat reparteix crèdits a les facultats. Cada facultat decideix quants grups grans, petits, etc. de cada estudi en funció dels alumnes. Introdueix els excels.
-A partir d'aquí, entren els coordinadors, per fer els horaris amb els seus mètodes. Canviar-los el mínim possible respecte de l'any passat, per intentar evitar
-solapaments. Un cop fets, els coordinadors passen els horaris a direcció. S'entren al sistema i revisen solapaments. Si tot està bé, els responsables de docència,
-que assignen professors als grups.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/figs/powerHoraris.png}
+  \caption{\label{img:plantilla_power}Exemple d'una plantilla de PowerPoint utilitzada per a l'elaboració d'horaris.}
+\end{figure}
 
-Grups grans i mitjans no hi ha restriccions d'aules. Grups petits sí,
-
-------------------------
+No obstant això, el maig de 2022, l'equip directiu de l'EPS va posar a disposició dels coordinadors una aplicació que solucionava el problema parcialment. A partir d'una rèplica dels horaris del curs acadèmic actual, afegien o treien grups per tal que s'ajustessin al proper curs. Els grups tenien un estudi, dia, hora d'inici, durada i aula assignada. A més, es podien arrossegar per tal de col·locar-los al lloc corresponent. L'aplicació també comprovava la disponibilitat de les aules i marcava en vermell aquells grups que la seva aula estigués ocupada. Aquesta eina va suposar de gran ajuda per als coordinadors, però, igualment, presentava certes limitacions, com ara:
+\begin{itemize}
+  \item Tant les assignatures com els grups no eren fàcilment identificables: calia prémer sobre un grup per poder veure de quin es tractava i a quina assignatura pertanyia.
+  \item Només comprovava la disponibilitat de l'aula en què s'hi havia assignat un grup concret, en comptes de buscar si n'hi havia alguna equivalent disponible.
+  \item No permetia personalitzar la informació que mostrava.
+  \item No es podien afegir fàcilment blocs horaris genèrics per a altres tasques específiques, com ara reunions, proves d'avaluació continuada (PAC), etc.
+  \item No permetia fer el procés d'assignació de docència al professorat ni consultar els horaris dels professors.
+  \item No era fàcilment ampliable ni tampoc una solució integral, ja que només es centrava en una part del procés.
+\end{itemize}
 
 \section{Document d'un pla docent}
 \label{sec:document_pla_docent}
@@ -596,7 +603,7 @@ No obstant això, aconseguir portar-ho a la pràctica no és tasca senzilla. Aqu
 
 Generalment s'accedeix a les dades mitjançant llenguatges de consulta, com ara SQL (\textit{Structured Query Language}).
 
-Una de les característiques més rellevants dels SGBD és que han de complir sí o sí tots els principis ACID (\textit{Atomicity, Consistency, Isolation, Durability}). Això garantitza la fiabilitat de les seves transaccions, enteses com operacions compostes per d'altres que són individuals. Més concretament, els principis ACID són els següents:
+Una de les característiques més rellevants dels SGBD és que han de complir sí o sí tots els principis ACID (\textit{Atomicity, Consistency, Isolation, Durability}). Això garantitza la fiabilitat de les seves transaccions, enteses com operacions compostes per altres que són individuals. Més concretament, els principis ACID són els següents:
 \begin{itemize}
   \item \texttt{Atomicitat:} D'una transacció o se n'executen totes les operacions que la conformen o bé no se n'executa cap.
   \item \texttt{Consistència:} L'estat en el qual es troba la base de dades quan finalitza una transacció ha de ser coherent amb l'estat que tenia abans de que comencés.
@@ -2033,7 +2040,7 @@ Per acabar, cal esmentar que aquestes eines s'han fet servir tant pel programari
 
 En aquesta subsecció, es justificarà l'elecció de l'estructura del sistema: \textbf{monorepositori}.
 
-Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, el projecte engloba el desenvolupament de dues apliacions: el client i el servidor. Aquestes aplicacions es poden estructurar de dues maneres diferents:
+Tal com s'ha vist al capítol~\ref{cap:marcdetreball}, el projecte engloba el desenvolupament de dues aplicacions: el client i el servidor. Aquestes aplicacions es poden estructurar de dues maneres diferents:
 \begin{itemize}
   \item \texttt{Multirepositori:} Separar les dues aplicacions en respositoris diferents. 
   \item \texttt{\textbf{Monorepositori:}} Agrupar les dues aplicacions en el mateix repositori.
@@ -2207,7 +2214,7 @@ En aquest punt, les dues alternatives són \textbf{JavaScript en l'entorn de Nod
 
 Per aquests motius i per evitar la incomoditat d'haver de desenvolupar a la vegada dues aplicacions amb llenguatges diferents, l'alternativa escollida ha estat \textbf{JavaScript en l'entorn de Node.js}.
 
-\textbf{Node.js}~\cite{Node} (veure figura~\ref{img:logo_node}) és un entorn d'execució de \textbf{JavaScript} multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'esdeveniments asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un sistema gestor de bases de dades, \textbf{Node.js} no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa d'altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
+\textbf{Node.js}~\cite{Node} (veure figura~\ref{img:logo_node}) és un entorn d'execució de \textbf{JavaScript} multiplataforma i de codi obert que funciona fora del navegador i està orientat al processament d'esdeveniments asíncrons. Està dissenyat principalment per crear aplicacions de xarxa escalables. L'escalabilitat és possible gràcies a la seva capacitat d'atendre múltiples connexions simultàniament sense cap possibilitat de bloqueig: utilitza un sol fil d'execució, el qual executa una funció (\textit{callback}) per a cada connexió. Si aquesta funció realitza una operació asíncrona, com ara comunicar-se amb un sistema gestor de bases de dades, \textbf{Node.js} no es bloqueja mentre espera que finalitzi l'operació, sinó que n'executa altres que tingui pendents, com per exemple atendre una altra connexió. No obstant això, un cop hagi acabat l'operació, continuarà amb l'execució de la funció.
 
 \begin{figure}[H]
   \centering
@@ -2233,7 +2240,7 @@ En aquesta subsecció, es presentarà el \textit{framework} JavaScript utilitzat
 
 En aquesta subsecció, es presentarà l'ORM utilitzat en l'aplicació servidor: \textbf{Sequelize}.
 
-Un ORM (\textit{object relational mapper}) és una tècnica o patró arquitectònic que permet comunicar l'aplicació servidor amb un sistema gestor de bases de dades. La seva finalitat és crear models virtuals per a cada taula de la base de dades i generar comandes SQL automàticament a partir d'instruccions executades amb el llenguatge de l'apliació.
+Un ORM (\textit{object relational mapper}) és una tècnica o patró arquitectònic que permet comunicar l'aplicació servidor amb un sistema gestor de bases de dades. La seva finalitat és crear models virtuals per a cada taula de la base de dades i generar comandes SQL automàticament a partir d'instruccions executades amb el llenguatge de l'aplicació.
 
 \textbf{Sequelize}~\cite{Sequelize} (veure figura~\ref{img:logo_sequelize}) és un ORM desenvolupat per a Node.js que suporta treballar amb diversos SGBD: PostgreSQL, MySQL, SQLite i MSSQL. Ofereix un ampli conjunt de funcionalitats, les principals del qual són: fort suport de transaccions, relacions, múltiples maneres de carregar dades, esborrat no definitiu, etc.
 
@@ -3082,7 +3089,7 @@ Primerament, s'ha comprovat que s'hagin generat totes les taules corresponents a
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.305\textwidth]{assets/proves/taules.png}
-  \caption{\label{img:taules_bdd} Taules de la base de dades generades per l'apliació servidor.}
+  \caption{\label{img:taules_bdd} Taules de la base de dades generades per l'aplicació servidor.}
 \end{figure}
 
 Després d'haver verificat la creació de les taules, s'ha comprovat que els atributs, les restriccions i les claus de cadascuna siguin correctes. Com a exemple, a la figura~\ref{img:atributs_taula} es pot veure el resultat de la prova realitzada a la taula d'estudis (\textit{Studies}). Les claus principals es marquen amb una clau groga, mentre que les foranes es marquen amb una blava. La resta d'atributs s'indiquen amb gris i el cercle inferior esquerre d'alguns significa que tenen una restricció ``NOT NULL'', és a dir, que mai pot ser nul.
@@ -3301,7 +3308,7 @@ Addicionalment, cal afegir que, després de contemplar diverses opcions per marc
 
 En darrer lloc, cal remarcar que s'han tingut en compte diferents mides de pantalla a l'hora d'implementar les interfícies: per tal d'adaptar-se a la pantalla, es modifiquen textos, canvia la disposició i mida de certs elements, etc.
 
-Hi ha bastants més factors i mecanismes implementats que contribueixen a l'usabilitat i estètica de les interfícies de l'apliació client. No obstant això, en aquesta subsecció s'han esmentat només les que s'han cregut més rellevants.
+Hi ha bastants més factors i mecanismes implementats que contribueixen a l'usabilitat i estètica de les interfícies de l'aplicació client. No obstant això, en aquesta subsecció s'han esmentat només les que s'han cregut més rellevants.
 
 \subsection{Proves}
 \label{subsec:proves_client}
